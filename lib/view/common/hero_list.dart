@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
 
-import 'package:hots_dog_api/hots_dog_api.dart';
+import 'package:heroes_companion_data/heroes_companion_data.dart' as data;
 
 class HeroList extends StatelessWidget {
-  final List<HeroInfo> heroes;
+  final List<data.Hero> heroes;
 
   HeroList(this.heroes) : super(key: new Key('todo_list'));
 
@@ -15,9 +15,9 @@ class HeroList extends StatelessWidget {
       key: new Key('todo_list'),
       itemCount: heroes.length,
       itemBuilder: (BuildContext context, int index) {
-        final heroInfo = heroes[index];
+        final hero = heroes[index];
 
-        return new HeroListItem(heroInfo: heroInfo);
+        return new HeroListItem(hero: hero);
       }),
     );
   }

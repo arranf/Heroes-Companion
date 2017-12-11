@@ -1,15 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:hots_dog_api/hots_dog_api.dart';
+import 'package:heroes_companion_data/heroes_companion_data.dart' as data;
 
 class HeroListItem extends StatelessWidget{
   final GestureTapCallback onTap;
-  final HeroInfo heroInfo;
+  final data.Hero hero;
 
   HeroListItem({
     this.onTap,
-    @required this.heroInfo,
+    @required this.hero,
   });
 
   @override
@@ -21,12 +21,12 @@ class HeroListItem extends StatelessWidget{
          children: <Widget>[
            new Container(height: 2.0,),
            new Text(
-             heroInfo.name,
+             hero.name,
             style: new TextStyle(
               fontSize: 18.0
             ),),
             new Container(height: 8.0,),
-            new Text(heroInfo.role),
+            new Text(hero.role),
             new Container(
               margin: new EdgeInsets.symmetric(vertical: 8.0),
               height: 2.0,

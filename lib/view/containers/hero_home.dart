@@ -3,7 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/view/common/hero_list.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
+
+
+import 'package:heroes_companion_data/heroes_companion_data.dart' as data;
+
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/state.dart';
 
@@ -22,7 +25,7 @@ class HeroHome extends StatelessWidget {
 }
 
 class _ViewModel {
-  final List<HeroInfo> heroes;
+  final List<data.Hero> heroes;
   final bool loading;
 
   _ViewModel({

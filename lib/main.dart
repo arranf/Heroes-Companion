@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 
 import 'package:heroes_companion/redux/reducers/app_state.dart';
-import 'package:heroes_companion/redux/middleware/game_info_middleware.dart';
+import 'package:heroes_companion/redux/middleware/heroes_middleware.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
@@ -20,7 +22,7 @@ App app;
 void main() {
   // Listens to onChange events and when the initial load is completed the main app is run
   void listener(AppState state) {
-    if (state.isLoading == false && state.gameInfo != null){
+    if (state.isLoading == false && state.heroes != null){
       subscription.cancel();
       runApp(app);
     }
@@ -29,8 +31,14 @@ void main() {
   // Run the splasscreen, create an instance of app, dispatch and event to load the initial data, and setup a listener to check for completion
   runApp(new Splash(appName));
   app = new App();
+  // TODO Refactor this
+  // Create a dataprovider singleton, start it then when it's ready dispatch an event
+  new DataProvider();
   subscription = app.store.onChange.listen(listener);
-  app.store.dispatch(new LoadGameInfoAction());
+  DataProvider.start().then((a) {
+    app.store.dispatch(new LoadHeroAction());
+  });
+  
 }
 
 
@@ -38,7 +46,7 @@ class App extends StatelessWidget {
   final store = new Store<AppState>(
     appReducer,
     initialState: new AppState.loading(),
-    middleware: createGameInfoMiddleware(),
+    middleware: createHeroMiddleware(),
   ); 
 
   App();
@@ -52,7 +60,7 @@ class App extends StatelessWidget {
         routes: {
           Routes.home: (context) {
             return new StoreBuilder<AppState>(
-              onInit: (store) => store.dispatch(new LoadGameInfoAction()),
+              onInit: (store) => store.dispatch(new LoadHeroAction()),
               builder: (context, store) {
                 return new HomeScreen();
               },

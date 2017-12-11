@@ -1,29 +1,29 @@
+import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
 
 @immutable
 class AppState {
-  final GameInfo gameInfo;
+  final List<Hero> heroes;
   final bool isLoading;
 
-  AppState({this.isLoading = false, this.gameInfo});
+  AppState({this.isLoading = false, this.heroes});
 
   factory AppState.loading() => new AppState(isLoading: true);
 
   AppState copyWith({
     bool isLoading,
-    GameInfo gameInfo
+    Hero hero
   }) {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,
-      gameInfo: gameInfo ?? this.gameInfo
+      heroes: hero ?? this.heroes
     );
   }
 
   @override
   int get hashCode =>
       isLoading.hashCode ^
-      gameInfo.hashCode;
+      heroes.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -31,11 +31,11 @@ class AppState {
       other is AppState &&
           runtimeType == other.runtimeType &&
           isLoading == other.isLoading &&
-          gameInfo == other.gameInfo;
+          heroes == other.heroes;
 
   @override
   String toString() {
-    return 'AppState{isLoading: $isLoading, GameInfo: $gameInfo}';
+    return 'AppState{isLoading: $isLoading, heroes: $heroes}';
   }
 }
 
