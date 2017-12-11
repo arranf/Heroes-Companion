@@ -48,7 +48,7 @@ class App extends StatelessWidget {
       store: store,
       child: new MaterialApp(
         title: appName,
-        theme: new ThemeData.light(),
+        theme: new ThemeData(primaryColor: Colors.deepPurple),
         routes: {
           Routes.home: (context) {
             return new StoreBuilder<AppState>(
