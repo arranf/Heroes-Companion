@@ -1,4 +1,4 @@
-package com.yourcompany.heroescompanion;
+package com.heroescompanion.app;
 
 import android.os.Bundle;
 

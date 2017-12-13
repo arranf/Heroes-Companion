@@ -1,4 +1,4 @@
 import 'package:heroes_companion/redux/state.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
+import 'package:heroes_companion_data/heroes_companion_data.dart';
 
-List<HeroInfo> heroesSelector(AppState state) => state.gameInfo.heroInfo;
+List<Hero> heroesSelector(AppState state) => state.heroes;

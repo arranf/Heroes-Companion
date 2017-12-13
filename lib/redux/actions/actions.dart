@@ -1,11 +1,17 @@
-import 'package:hots_dog_api/hots_dog_api.dart';
+import 'package:heroes_companion_data/heroes_companion_data.dart';
 
-class LoadGameInfoAction {}
+class HeroesNotLoadedAction {}
 
-class GameInfoNotLoadedAction {}
+class HeroesLoadedAction {
+  final List<Hero> heroes;
 
-class GameInfoLoadedAction {
-  final GameInfo gameInfo;
+  HeroesLoadedAction(this.heroes);
+}
 
-  GameInfoLoadedAction(this.gameInfo);
+class StartLoadingAction {}
+
+class UpdateHeroAction {
+  final Hero hero;
+
+  UpdateHeroAction(this.hero);
 }
