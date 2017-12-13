@@ -36,7 +36,6 @@ void main() {
   DataProvider.start().then((a) {
     getHeroes(app.store);
   });
-  
 }
 
 class App extends StatelessWidget {

@@ -9,3 +9,9 @@ class HeroesLoadedAction {
 }
 
 class StartLoadingAction {}
+
+class UpdateHeroAction {
+  final Hero hero;
+
+  UpdateHeroAction(this.hero);
+}

@@ -9,3 +9,15 @@ void getHeroes(Store<AppState> store) {
     .then((heroes) => store.dispatch(new HeroesLoadedAction(heroes)))
     .catchError((Exception e) => store.dispatch(new HeroesNotLoadedAction()));
 }
+
+void setFavorite(Store<AppState> store, Hero hero) {
+  hero.is_favorite = true;
+  DataProvider.heroProvider.update(hero)
+    .then((int i) => store.dispatch(new UpdateHeroAction(hero)));
+}
+
+void unFavorite(Store<AppState> store, Hero hero) {
+  hero.is_favorite = false;
+  DataProvider.heroProvider.update(hero)
+    .then((int i) => store.dispatch(new UpdateHeroAction(hero)));
+}

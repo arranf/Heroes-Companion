@@ -7,9 +7,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        return new Scaffold(
-          appBar: new AppBar( title: new Text('Heroes Companion')),
-          body: new HeroHome(),
-        );
+    return new Scaffold(
+      appBar: new AppBar( title: new Text('Heroes Companion')),
+      body: new HeroHome(),
+    );
   }
 }
