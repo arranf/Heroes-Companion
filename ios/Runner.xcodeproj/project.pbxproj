@@ -382,7 +382,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.heroesCompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heroescompanion.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -404,7 +404,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.heroesCompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.heroescompanion.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

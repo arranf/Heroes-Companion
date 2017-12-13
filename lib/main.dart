@@ -38,9 +38,7 @@ void main() {
   DataProvider.start().then((a) {
     app.store.dispatch(new LoadHeroAction());
   });
-  
 }
-
 
 class App extends StatelessWidget {
   final store = new Store<AppState>(
