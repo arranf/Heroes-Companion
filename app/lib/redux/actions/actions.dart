@@ -24,3 +24,11 @@ class BuildInfoLoadedAction {
 }
 
 class BuildInfoNotLoadedAction {}
+
+class WinRatesLoadedAction {
+  final WinRates winRates;
+
+  WinRatesLoadedAction(this.winRates);
+}
+
+class WinRatesNotLoadedAction {}
