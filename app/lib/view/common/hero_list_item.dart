@@ -3,7 +3,7 @@ import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 
 class HeroListItem extends StatelessWidget{
-  final GestureTapCallback onTap;
+  final dynamic onTap;
   final dynamic favorite;
   final Hero hero;
 
@@ -16,7 +16,7 @@ class HeroListItem extends StatelessWidget{
   @override
    Widget build(BuildContext context) {
     return new GestureDetector(
-     onTapUp: (TapUpDetails tap) => this.favorite(this.hero),
+     onTapUp: (TapUpDetails tap) => this.onTap(context, this),
      child: new Container(
        margin: new EdgeInsets.all(8.0),
        child: new Column(
