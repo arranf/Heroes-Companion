@@ -1,0 +1,11 @@
+final String table_name = "abilities";
+final String column_id = "Id";
+final String column_hero_id = "HeroId";
+final String column_ability_id = "AbilityId";
+final String column_character_form = "CharacterForm";
+final String column_name = "Name";
+final String column_description = "Description";
+final String column_hotkey = "Hotkey";
+final String column_cooldown = "Cooldown";
+final String column_mana_cost = "ManaCost";
+final String column_trait = "Trait";
