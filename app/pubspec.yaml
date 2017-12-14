@@ -8,6 +8,8 @@ dependencies:
   sqflite: any
   heroes_companion_data:
     path: ../heroes_companion_data
+  hots_dog_api:
+    path: ../../hots_dog_api
   flutter:
     sdk: flutter
 

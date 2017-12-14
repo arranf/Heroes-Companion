@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:heroes_companion/view/routes/hero_detail_container.dart';
+import 'package:heroes_companion/services/build_info_service.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
@@ -21,7 +21,7 @@ App app;
 void main() {
   // Listens to onChange events and when the initial load is completed the main app is run
   void listener(AppState state) {
-    if (state.isLoading == false && state.heroes != null){
+    if (state.isLoading == false && state.heroes != null && state.buildInfo != null){
       subscription.cancel();
       runApp(app);
     }
@@ -36,6 +36,7 @@ void main() {
   subscription = app.store.onChange.listen(listener);
   DataProvider.start().then((a) {
     getHeroes(app.store);
+    getBuildInfo(app.store);
   });
 }
 
