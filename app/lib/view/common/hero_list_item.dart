@@ -29,7 +29,8 @@ class HeroListItem extends StatelessWidget{
             style: new TextStyle(
               fontSize: 18.0,
             )),
-            new Icon(Icons.star, color: hero.is_favorite ? Colors.grey : Colors.purpleAccent,)
+            new Icon(Icons.star, color: hero.is_favorite ? Colors.grey : Colors.purpleAccent,),
+            new Text(hero.abilities == null ? '' : hero.abilities[0].name)
            ],),
           new Container(height: 8.0,),
           new Text(hero.role),
