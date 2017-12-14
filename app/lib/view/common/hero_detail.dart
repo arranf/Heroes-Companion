@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:meta/meta.dart';
 
 class HeroDetail extends StatelessWidget {
   final Hero hero;
+  final dynamic favorite; 
 
-  HeroDetail(this.hero, {key}) : super(key: key);
+  HeroDetail(this.hero, {key, @required this.favorite}) : super(key: key);
   
   @override
   Widget build (BuildContext context) {
@@ -14,8 +16,11 @@ class HeroDetail extends StatelessWidget {
         actions: [
           new IconButton(
             tooltip: hero.is_favorite ? 'Unfavorite ${hero.name}' : 'Favorite ${hero.name}',
-            icon: new Icon(Icons.favorite),
-            onPressed: () => (debugPrint('Favorite')),
+            icon: new Icon(
+              Icons.favorite,
+              color: hero.is_favorite ? Colors.red : Theme.of(context).buttonColor
+            ),
+            onPressed: () => this.favorite(this.hero),
           ),
         ],
       ),

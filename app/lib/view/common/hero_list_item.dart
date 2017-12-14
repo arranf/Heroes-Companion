@@ -4,12 +4,10 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 
 class HeroListItem extends StatelessWidget{
   final dynamic onTap;
-  final dynamic favorite;
   final Hero hero;
 
   HeroListItem({
     this.onTap,
-    this.favorite,
     @required this.hero,
   });
 
@@ -28,9 +26,7 @@ class HeroListItem extends StatelessWidget{
              hero.name,
             style: new TextStyle(
               fontSize: 18.0,
-            )),
-            new Icon(Icons.star, color: hero.is_favorite ? Colors.grey : Colors.purpleAccent,),
-            new Text(hero.abilities == null ? '' : hero.abilities[0].name)
+            ))
            ],),
           new Container(height: 8.0,),
           new Text(hero.role),
