@@ -25,7 +25,7 @@ class HeroProvider {
     List<Map> maps = await _database.query(
       hero_table.table_name,
       columns: null,
-      orderBy: "date(${hero_table.column_release_date}) DESC"
+      orderBy: "${hero_table.column_name} ASC"
     );
     
     if (maps.length > 0) {
