@@ -3,7 +3,8 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:flutter/foundation.dart';
 
-bool isAppLoading(AppState state) => state.isLoading && state.heroBuildWinRatesLoading;
+bool isAppLoading(AppState state) =>
+    state.isLoading && state.heroBuildWinRatesLoading;
 
 bool isLoadingSelector(AppState state) => state.isLoading;
 
@@ -11,9 +12,9 @@ List<Hero> heroesSelector(AppState state) => state.heroes;
 
 Optional<Hero> heroSelectorByCompanionId(List<Hero> heroes, int id) {
   try {
-    return new Optional.of(heroes.firstWhere((h) => h.heroes_companion_hero_id == id));
-  }
-  catch (e) {
+    return new Optional.of(
+        heroes.firstWhere((h) => h.heroes_companion_hero_id == id));
+  } catch (e) {
     return new Optional.absent();
   }
 }
@@ -22,7 +23,7 @@ List<BuildInfo> buildsSelector(AppState state) => state.gameBuilds;
 
 BuildInfo currentBuildSelector(AppState state) {
   if (state.gameBuilds == null) {
-    throw new Exception('Build Info hasn''t been loaded');
+    throw new Exception('Build Info hasn' 't been loaded');
   }
   return state.gameBuilds[0];
 }
@@ -31,20 +32,19 @@ WinRates winRatesSelector(AppState state) => state.winRates;
 
 Optional<WinLossCount> winLossCountByCompanionId(AppState state, int id) {
   Optional<Hero> hero = heroSelectorByCompanionId(state.heroes, id);
-  if (hero.isNotPresent){
+  if (hero.isNotPresent) {
     debugPrint('No hero found');
     return new Optional.absent();
   }
   try {
     return new Optional.of(state.winRates.current[hero.value.name]);
-  }
-  catch (e) {
+  } catch (e) {
     debugPrint("Winrates: ${state.winRates}, isLoading: ${state.isLoading}");
     return new Optional.absent();
   }
 }
 
-bool buildWinRatesLoading (AppState state) => state.heroBuildWinRatesLoading;
+bool buildWinRatesLoading(AppState state) => state.heroBuildWinRatesLoading;
 
 Map<int, BuildWinRates> buildWinRates(AppState state) {
   return state.heroBuildWinRates;
@@ -52,8 +52,8 @@ Map<int, BuildWinRates> buildWinRates(AppState state) {
 
 Optional<BuildWinRates> buildWinRatesByCompanionId(AppState state, int id) {
   Map<int, BuildWinRates> rates = buildWinRates(state);
-  if (rates != null && rates.containsKey(id)){
+  if (rates != null && rates.containsKey(id)) {
     return new Optional.of(rates[id]);
   }
-    return new Optional.absent();
+  return new Optional.absent();
 }

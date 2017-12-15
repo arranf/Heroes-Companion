@@ -33,15 +33,12 @@ class _ViewModel {
   final dynamic onTap = (BuildContext context, HeroListItem heroListItem) {
     debugPrint('Push to detail');
     Navigator.of(context).push(new PageRouteBuilder(
-     pageBuilder: (context, a1, a2) => new HeroDetailContainer(heroListItem.hero.heroes_companion_hero_id),
-   ));
+          pageBuilder: (context, a1, a2) => new HeroDetailContainer(
+              heroListItem.hero.heroes_companion_hero_id),
+        ));
   };
 
-  _ViewModel({
-    @required this.heroes,
-    @required this.loading,
-    this.favorite
-  });
+  _ViewModel({@required this.heroes, @required this.loading, this.favorite});
 
   static _ViewModel fromStore(Store<AppState> store) {
     return new _ViewModel(

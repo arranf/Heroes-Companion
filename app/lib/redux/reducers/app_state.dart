@@ -10,11 +10,12 @@ import 'package:heroes_companion/redux/state.dart';
 // We create the State reducer by combining many smaller reducers into one!
 AppState appReducer(AppState state, action) {
   return new AppState(
-    isLoading: loadingReducer(state.isLoading, action),
-    heroes: heroesReducer(state.heroes, action),
-    gameBuilds: buildInfoReducer(state.gameBuilds, action),
-    winRates: winRatesReducer(state.winRates, action),
-    heroBuildWinRates: heroesBuildWinRatesReducer(state.heroBuildWinRates, action),
-    heroBuildWinRatesLoading: heroesBuildWinRatesloadingReducer(state.heroBuildWinRatesLoading, action)
-  );
+      isLoading: loadingReducer(state.isLoading, action),
+      heroes: heroesReducer(state.heroes, action),
+      gameBuilds: buildInfoReducer(state.gameBuilds, action),
+      winRates: winRatesReducer(state.winRates, action),
+      heroBuildWinRates:
+          heroesBuildWinRatesReducer(state.heroBuildWinRates, action),
+      heroBuildWinRatesLoading: heroesBuildWinRatesloadingReducer(
+          state.heroBuildWinRatesLoading, action));
 }

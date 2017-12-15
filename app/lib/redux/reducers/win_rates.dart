@@ -3,11 +3,13 @@ import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
 final winRatesReducer = combineTypedReducers<WinRates>([
-  new ReducerBinding<WinRates, FetchWinRatesSucceededAction>(_setLoadedWinRates),
+  new ReducerBinding<WinRates, FetchWinRatesSucceededAction>(
+      _setLoadedWinRates),
   new ReducerBinding<WinRates, FetchWinRatesFailedAction>(_setNoWinRates)
 ]);
 
-WinRates _setLoadedWinRates(WinRates winRates, FetchWinRatesSucceededAction action) {
+WinRates _setLoadedWinRates(
+    WinRates winRates, FetchWinRatesSucceededAction action) {
   return action.winRates;
 }
 

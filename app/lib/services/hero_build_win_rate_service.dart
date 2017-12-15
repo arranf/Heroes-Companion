@@ -9,10 +9,13 @@ import 'package:flutter/foundation.dart';
 void getHeroCurrentBuildWinRates(Store<AppState> store, Hero hero) {
   store.dispatch(new BuildWinRatesStartLoadingAction());
   BuildInfo buildInfo = currentBuildSelector(store.state);
-  DataProvider.buildWinRatesProvider.getBuildWinRates(buildInfo.number, hero.name)
-    .then((buildWinRates) => store.dispatch(new FetchBuildWinRatesSucceededAction(buildWinRates, hero.heroes_companion_hero_id)))
-    .catchError((dynamic e) {
-      debugPrint(e.toString()); 
-      store.dispatch(new FetchBuildWinRatesFailedAction());
-    });
+  DataProvider.buildWinRatesProvider
+      .getBuildWinRates(buildInfo.number, hero.name)
+      .then((buildWinRates) => store.dispatch(
+          new FetchBuildWinRatesSucceededAction(
+              buildWinRates, hero.heroes_companion_hero_id)))
+      .catchError((dynamic e) {
+    debugPrint(e.toString());
+    store.dispatch(new FetchBuildWinRatesFailedAction());
+  });
 }

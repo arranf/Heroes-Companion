@@ -11,9 +11,17 @@ class AppState {
   final bool heroBuildWinRatesLoading;
   final Map<int, BuildWinRates> heroBuildWinRates;
 
-  AppState({this.isLoading = false, this.heroBuildWinRatesLoading = false, this.heroes, this.gameBuilds, this.winRates, this.heroBuildWinRates,});
+  AppState({
+    this.isLoading = false,
+    this.heroBuildWinRatesLoading = false,
+    this.heroes,
+    this.gameBuilds,
+    this.winRates,
+    this.heroBuildWinRates,
+  });
 
-  factory AppState.loading() => new AppState(isLoading: true, heroBuildWinRatesLoading: false);
+  factory AppState.loading() =>
+      new AppState(isLoading: true, heroBuildWinRatesLoading: false);
 
   AppState copyWith({
     bool isLoading,
@@ -28,7 +36,8 @@ class AppState {
       heroes: hero ?? this.heroes,
       gameBuilds: buildInfo ?? this.gameBuilds,
       winRates: winRates ?? this.winRates,
-      heroBuildWinRatesLoading: heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
+      heroBuildWinRatesLoading:
+          heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
       heroBuildWinRates: heroBuildWinRates ?? this.heroBuildWinRates,
     );
   }
@@ -59,4 +68,3 @@ class AppState {
     return 'AppState{isLoading: $isLoading, heroes: $heroes, buildInfo: $gameBuilds, winRates: $winRates}';
   }
 }
-

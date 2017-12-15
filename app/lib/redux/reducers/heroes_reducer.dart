@@ -8,7 +8,8 @@ final heroesReducer = combineTypedReducers<List<Hero>>([
   new ReducerBinding<List<Hero>, UpdateHeroAction>(_updateHero),
 ]);
 
-List<Hero> _setLoadedHeroes(List<Hero> hero, FetchHeroesSucceededAction action) {
+List<Hero> _setLoadedHeroes(
+    List<Hero> hero, FetchHeroesSucceededAction action) {
   return action.heroes;
 }
 
@@ -18,6 +19,9 @@ List<Hero> _setNoHeroes(List<Hero> hero, FetchHeroesFailedAction action) {
 
 List<Hero> _updateHero(List<Hero> heroes, UpdateHeroAction action) {
   return heroes
-      .map((Hero hero) => hero.heroes_companion_hero_id == action.hero.heroes_companion_hero_id ? action.hero : hero)
-      .toList(); 
+      .map((Hero hero) =>
+          hero.heroes_companion_hero_id == action.hero.heroes_companion_hero_id
+              ? action.hero
+              : hero)
+      .toList();
 }

@@ -12,29 +12,36 @@ import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
-class HeroDetailContainer extends StatelessWidget { 
+class HeroDetailContainer extends StatelessWidget {
   final int heroesCompanionId;
 
-  HeroDetailContainer(this.heroesCompanionId) : super(key: Routes.heroDetailKey);
+  HeroDetailContainer(this.heroesCompanionId)
+      : super(key: Routes.heroDetailKey);
 
   @override
   Widget build(BuildContext context) {
     return new StoreConnector<AppState, _ViewModel>(
-      onInit: (store) { 
-        if(winRatesSelector(store.state) == null) {
-          getCurrentWinRates(store);
-        }
-        Optional<Hero> hero = heroSelectorByCompanionId(heroesSelector(store.state), heroesCompanionId);
-        if (hero.isPresent) {
-          getHeroCurrentBuildWinRates(store, hero.value);
-        }
-      },
-      ignoreChange: (state) => heroSelectorByCompanionId(state.heroes, heroesCompanionId).isNotPresent,
-      converter: (Store<AppState> store) => new _ViewModel.from(store, heroesCompanionId),
-      builder: (context, vm) {
-        return new HeroDetail(vm.hero, favorite: vm.favorite, winLossCount: vm.winLossCount, buildWinRates: vm.buildWinRates);
-      } 
-    );
+        onInit: (store) {
+          if (winRatesSelector(store.state) == null) {
+            getCurrentWinRates(store);
+          }
+          Optional<Hero> hero = heroSelectorByCompanionId(
+              heroesSelector(store.state), heroesCompanionId);
+          if (hero.isPresent) {
+            getHeroCurrentBuildWinRates(store, hero.value);
+          }
+        },
+        ignoreChange: (state) =>
+            heroSelectorByCompanionId(state.heroes, heroesCompanionId)
+                .isNotPresent,
+        converter: (Store<AppState> store) =>
+            new _ViewModel.from(store, heroesCompanionId),
+        builder: (context, vm) {
+          return new HeroDetail(vm.hero,
+              favorite: vm.favorite,
+              winLossCount: vm.winLossCount,
+              buildWinRates: vm.buildWinRates);
+        });
   }
 }
 
@@ -44,12 +51,11 @@ class _ViewModel {
   final WinLossCount winLossCount;
   final BuildWinRates buildWinRates;
 
-  _ViewModel({
-    @required this.hero,
-    @required this.favorite,
-    this.winLossCount,
-    this.buildWinRates
-  });
+  _ViewModel(
+      {@required this.hero,
+      @required this.favorite,
+      this.winLossCount,
+      this.buildWinRates});
 
   factory _ViewModel.from(Store<AppState> store, int id) {
     final dynamic _favorite = (Hero hero) {
@@ -62,10 +68,10 @@ class _ViewModel {
     final buildWinRates = buildWinRatesByCompanionId(store.state, id);
 
     return new _ViewModel(
-            hero: hero.value,
-            favorite: _favorite,
-            winLossCount: winLossCount.isPresent ? winLossCount.value : null,
-            buildWinRates: buildWinRates.isPresent ? buildWinRates.value : null,
-      ); 
+      hero: hero.value,
+      favorite: _favorite,
+      winLossCount: winLossCount.isPresent ? winLossCount.value : null,
+      buildWinRates: buildWinRates.isPresent ? buildWinRates.value : null,
+    );
   }
 }

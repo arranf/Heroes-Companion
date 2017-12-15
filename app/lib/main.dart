@@ -22,7 +22,9 @@ App app;
 void main() {
   // Listens to onChange events and when the initial load is completed the main app is run
   void listener(AppState state) {
-    if (state.isLoading == false && heroesSelector(state) != null && buildsSelector(state) != null){
+    if (state.isLoading == false &&
+        heroesSelector(state) != null &&
+        buildsSelector(state) != null) {
       subscription.cancel();
       runApp(app);
     }
@@ -42,29 +44,27 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  final store = new Store<AppState>(
-    appReducer,
-    initialState: new AppState.loading()
-  ); 
+  final store =
+      new Store<AppState>(appReducer, initialState: new AppState.loading());
 
   App();
 
   @override
   Widget build(BuildContext context) => new StoreProvider(
-      store: store,
-      child: new MaterialApp(
-        title: appName,
-        theme: new ThemeData(primaryColor: Colors.deepPurple, backgroundColor: Colors.white),
-        // Named routes only
-        routes: {
-          Routes.home: (BuildContext context) {
-            return new StoreBuilder<AppState>(
-              builder: (context, store) {
-                return new HomeScreen();
-              },
-            );
-          }
-        }
-      ),
-    );
+        store: store,
+        child: new MaterialApp(
+            title: appName,
+            theme: new ThemeData(
+                primaryColor: Colors.deepPurple, backgroundColor: Colors.white),
+            // Named routes only
+            routes: {
+              Routes.home: (BuildContext context) {
+                return new StoreBuilder<AppState>(
+                  builder: (context, store) {
+                    return new HomeScreen();
+                  },
+                );
+              }
+            }),
+      );
 }

@@ -8,9 +8,10 @@ import 'package:flutter/foundation.dart';
 void getCurrentWinRates(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
   // TODO Change interface to actually throw an exception in the case we need special handling
-  DataProvider.winRateProvider.getWinRates(currentBuildSelector(store.state).number)
-    .then((winRates) {
-      store.dispatch(new FetchWinRatesSucceededAction(winRates));
-    })
-    .catchError((Exception e) => store.dispatch(new FetchWinRatesFailedAction()));
+  DataProvider.winRateProvider
+      .getWinRates(currentBuildSelector(store.state).number)
+      .then((winRates) {
+    store.dispatch(new FetchWinRatesSucceededAction(winRates));
+  }).catchError(
+          (Exception e) => store.dispatch(new FetchWinRatesFailedAction()));
 }
