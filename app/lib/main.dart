@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/services/build_info_service.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -21,7 +22,7 @@ App app;
 void main() {
   // Listens to onChange events and when the initial load is completed the main app is run
   void listener(AppState state) {
-    if (state.isLoading == false && state.heroes != null && state.buildInfo != null){
+    if (state.isLoading == false && heroesSelector(state) != null && buildsSelector(state) != null){
       subscription.cancel();
       runApp(app);
     }

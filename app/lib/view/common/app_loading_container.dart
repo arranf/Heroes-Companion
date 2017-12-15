@@ -14,7 +14,7 @@ class AppLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return new StoreConnector<AppState, bool>(
       distinct: true,
-      converter: (Store<AppState> store) => isLoadingSelector(store.state),
+      converter: (Store<AppState> store) => isAppLoading(store.state),
       builder: builder,
     );
   }

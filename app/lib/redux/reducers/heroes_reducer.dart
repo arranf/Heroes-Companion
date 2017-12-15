@@ -3,16 +3,16 @@ import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
 final heroesReducer = combineTypedReducers<List<Hero>>([
-  new ReducerBinding<List<Hero>, HeroesLoadedAction>(_setLoadedHeroes),
-  new ReducerBinding<List<Hero>, HeroesNotLoadedAction>(_setNoHeroes),
+  new ReducerBinding<List<Hero>, FetchHeroesSucceededAction>(_setLoadedHeroes),
+  new ReducerBinding<List<Hero>, FetchHeroesFailedAction>(_setNoHeroes),
   new ReducerBinding<List<Hero>, UpdateHeroAction>(_updateHero),
 ]);
 
-List<Hero> _setLoadedHeroes(List<Hero> hero, HeroesLoadedAction action) {
+List<Hero> _setLoadedHeroes(List<Hero> hero, FetchHeroesSucceededAction action) {
   return action.heroes;
 }
 
-List<Hero> _setNoHeroes(List<Hero> hero, HeroesNotLoadedAction action) {
+List<Hero> _setNoHeroes(List<Hero> hero, FetchHeroesFailedAction action) {
   return null;
 }
 

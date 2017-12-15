@@ -8,9 +8,10 @@ import 'package:meta/meta.dart';
 class HeroDetail extends StatelessWidget {
   final Hero hero;
   final WinLossCount winLossCount;
+  final BuildWinRates buildWinRates;
   final dynamic favorite; 
 
-  HeroDetail(this.hero, {key, @required this.favorite, this.winLossCount}) : super(key: key);
+  HeroDetail(this.hero, {key, @required this.favorite, this.winLossCount, this.buildWinRates,}) : super(key: key);
   
   @override
   Widget build (BuildContext context) {
@@ -70,6 +71,9 @@ class HeroDetail extends StatelessWidget {
                       ),
                       new Text(
                         winLossCount != null ? "Win Percentage: ${winLossCount.winPercentange().toString()}" : '' 
+                      ),
+                      new Text(
+                        buildWinRates != null ? buildWinRates.winning_builds.length.toString() : ''
                       )
                     ],
                   ),

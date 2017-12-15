@@ -7,6 +7,6 @@ void getBuildInfo(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
   // TODO Change interface to actually throw an exception in the case we need special handling
   DataProvider.gameInfoProvider.getBuilds()
-    .then((buildInfo) => store.dispatch(new BuildInfoLoadedAction(buildInfo)))
-    .catchError((Exception e) => store.dispatch(new HeroesNotLoadedAction()));
+    .then((buildInfo) => store.dispatch(new FetchBuildInfoSucceededAction(buildInfo)))
+    .catchError((Exception e) => store.dispatch(new FetchHeroesFailedAction()));
 }

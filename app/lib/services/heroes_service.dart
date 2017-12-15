@@ -6,8 +6,8 @@ import 'package:redux/redux.dart';
 void getHeroes(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
   DataProvider.heroProvider.getHeroes()
-    .then((heroes) => store.dispatch(new HeroesLoadedAction(heroes)))
-    .catchError((Exception e) => store.dispatch(new HeroesNotLoadedAction()));
+    .then((heroes) => store.dispatch(new FetchHeroesSucceededAction(heroes)))
+    .catchError((Exception e) => store.dispatch(new FetchHeroesFailedAction()));
 }
 
 void setFavorite(Store<AppState> store, Hero hero) {

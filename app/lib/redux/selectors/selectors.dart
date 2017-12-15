@@ -3,8 +3,12 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:flutter/foundation.dart';
 
+bool isAppLoading(AppState state) => state.isLoading && state.heroBuildWinRatesLoading;
+
 bool isLoadingSelector(AppState state) => state.isLoading;
+
 List<Hero> heroesSelector(AppState state) => state.heroes;
+
 Optional<Hero> heroSelectorByCompanionId(List<Hero> heroes, int id) {
   try {
     return new Optional.of(heroes.firstWhere((h) => h.heroes_companion_hero_id == id));
@@ -14,11 +18,13 @@ Optional<Hero> heroSelectorByCompanionId(List<Hero> heroes, int id) {
   }
 }
 
+List<BuildInfo> buildsSelector(AppState state) => state.gameBuilds;
+
 BuildInfo currentBuildSelector(AppState state) {
-  if (state.buildInfo == null) {
+  if (state.gameBuilds == null) {
     throw new Exception('Build Info hasn''t been loaded');
   }
-  return state.buildInfo[0];
+  return state.gameBuilds[0];
 }
 
 WinRates winRatesSelector(AppState state) => state.winRates;
@@ -36,4 +42,18 @@ Optional<WinLossCount> winLossCountByCompanionId(AppState state, int id) {
     debugPrint("Winrates: ${state.winRates}, isLoading: ${state.isLoading}");
     return new Optional.absent();
   }
+}
+
+bool buildWinRatesLoading (AppState state) => state.heroBuildWinRatesLoading;
+
+Map<int, BuildWinRates> buildWinRates(AppState state) {
+  return state.heroBuildWinRates;
+}
+
+Optional<BuildWinRates> buildWinRatesByCompanionId(AppState state, int id) {
+  Map<int, BuildWinRates> rates = buildWinRates(state);
+  if (rates != null && rates.containsKey(id)){
+    return new Optional.of(rates[id]);
+  }
+    return new Optional.absent();
 }

@@ -1,12 +1,12 @@
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
 
-class HeroesNotLoadedAction {}
+class FetchHeroesFailedAction {}
 
-class HeroesLoadedAction {
+class FetchHeroesSucceededAction {
   final List<Hero> heroes;
 
-  HeroesLoadedAction(this.heroes);
+  FetchHeroesSucceededAction(this.heroes);
 }
 
 class StartLoadingAction {}
@@ -17,18 +17,29 @@ class UpdateHeroAction {
   UpdateHeroAction(this.hero);
 }
 
-class BuildInfoLoadedAction {
+class FetchBuildInfoSucceededAction {
   final List<BuildInfo> buildInfo;
 
-  BuildInfoLoadedAction(this.buildInfo);
+  FetchBuildInfoSucceededAction(this.buildInfo);
 }
 
-class BuildInfoNotLoadedAction {}
+class FetchBuildInfoFailedAction {}
 
-class WinRatesLoadedAction {
+class FetchWinRatesSucceededAction {
   final WinRates winRates;
 
-  WinRatesLoadedAction(this.winRates);
+  FetchWinRatesSucceededAction(this.winRates);
 }
 
-class WinRatesNotLoadedAction {}
+class FetchWinRatesFailedAction {}
+
+class FetchBuildWinRatesSucceededAction {
+  final BuildWinRates buildWinRates;
+  final int heroCompanionId;
+
+  FetchBuildWinRatesSucceededAction(this.buildWinRates, this.heroCompanionId);
+}
+
+class FetchBuildWinRatesFailedAction {}
+
+class BuildWinRatesStartLoadingAction {}
