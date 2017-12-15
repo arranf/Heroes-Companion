@@ -73,7 +73,13 @@ class HeroDetail extends StatelessWidget {
                         winLossCount != null ? "Win Percentage: ${winLossCount.winPercentange().toString()}" : '' 
                       ),
                       new Text(
-                        buildWinRates != null ? buildWinRates.winning_builds.length.toString() : ''
+                        buildWinRates != null && buildWinRates.winning_builds.length > 0 ? 
+                          buildWinRates.winning_builds
+                          .reduce((a, b) => a.win_rate > b.win_rate ? a : b).talents_names
+                          .map((id) => buildWinRates.talents.firstWhere((t) => t.id == id))
+                          .map((t) => t.name)
+                          .join('\n') 
+                        : ''
                       )
                     ],
                   ),
