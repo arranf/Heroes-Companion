@@ -54,7 +54,7 @@ class App extends StatelessWidget {
       store: store,
       child: new MaterialApp(
         title: appName,
-        theme: new ThemeData(primaryColor: Colors.deepPurple),
+        theme: new ThemeData(primaryColor: Colors.deepPurple, backgroundColor: Colors.white),
         // Named routes only
         routes: {
           Routes.home: (BuildContext context) {
