@@ -2,7 +2,7 @@ import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/view/common/app_loading_container.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
+import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
 import 'package:meta/meta.dart';
 
 class HeroDetail extends StatelessWidget {
@@ -26,6 +26,95 @@ class HeroDetail extends StatelessWidget {
       return loading ? new LoadingView() : _buildDetail(context);
     });
   }
+  
+  Widget _buildTitleRow(BuildContext context){
+    return new Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        new Image.asset('assets/images/heroes/${hero.icon_file_name}'),
+        new Column (
+           children: [
+            new Text(
+              hero.name,
+              style: Theme.of(context).textTheme.headline
+              
+            ),
+            new Text(
+              '${hero.type} ${hero.role}',
+              style: Theme.of(context).textTheme.subhead,
+            ),
+          ]
+        ),
+        new Column(
+          children: [
+            new Text(
+              winLossCount != null ? '${winLossCount.winPercentange().toStringAsFixed(1)} Win %' : '',
+              style: Theme.of(context).textTheme.headline,
+            ),
+            new Text (
+              winLossCount != null ? '${(winLossCount.wins + winLossCount.losses).toString()} games played' : ''
+            ),
+          ],
+        )
+      ]
+    );
+  }
+
+  Widget _buildTalentRows(BuildContext context){
+    if (buildWinRates != null) {
+      List<Widget> children = [];
+      if (buildWinRates.popular_builds != null){
+        children.add(new Text('Popular Builds'));
+        List<BuildStatistics> interestingPopularBuilds = new List<BuildStatistics>.from(buildWinRates.popular_builds.where((b) => b.talents_names.length == 6));
+        List<Widget> popularBuilds = new List.generate(interestingPopularBuilds.length, (i) => _buildTalentRow(context, interestingPopularBuilds[i]));
+        children.addAll(popularBuilds);
+      }
+
+      if (buildWinRates.winning_builds != null){
+        children.add(new Text('Winning Builds', style: Theme.of(context).textTheme.subhead,));
+        List<BuildStatistics> interestingWinningBuilds = new List<BuildStatistics>.from(buildWinRates.winning_builds.where((b) => b.talents_names.length == 6));
+        List<Widget> winningBuilds = new List.generate(interestingWinningBuilds.length, (i) => _buildTalentRow(context, interestingWinningBuilds[i]));
+        children.addAll(winningBuilds);
+      }
+      
+      return new Column(
+        children: children
+      );
+    }
+    return new Container();
+  }
+
+  Widget _buildTalentRow(BuildContext context, BuildStatistics build){
+    return new Column(
+      key: new Key(build.hashCode.toString()),
+      children: [
+        new Row(
+          children: <Widget>[
+            new Text('${build.win_rate.toStringAsFixed(2)} Win %'),
+            new Text('${build.total_games_played} Games Played')
+          ],
+        ),
+        new FittedBox(
+          child: new Row(
+            children: new List.generate(build.talents_names.length, (i) => _buildTalent(context, build.talents_names[i]))
+          )
+        )
+      ],
+    );
+  }
+
+  Widget _buildTalent(BuildContext context, String talentName){
+    Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
+    return new Column(
+      key: new Key(talentName),
+      children: [
+        new Text(
+          talent.sort_order.toString()
+        ),
+        new Image.asset('assets/images/talents/${talent.icon_file_name}')
+      ],
+    );
+  }
 
   Widget _buildDetail(BuildContext context) {
     return new Scaffold(
@@ -48,55 +137,11 @@ class HeroDetail extends StatelessWidget {
         padding: new EdgeInsets.all(16.0),
         child: new ListView(
           children: [
-            new Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                new Padding(
-                  padding: new EdgeInsets.only(right: 8.0),
-                  child: new Checkbox(
-                    value: hero.is_owned,
-                    onChanged: (value) => debugPrint('Collect'),
-                  ),
-                ),
-                new Expanded(
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      new Padding(
-                        padding: new EdgeInsets.only(
-                          top: 8.0,
-                          bottom: 16.0,
-                        ),
-                        child: new Text(
-                          hero.name,
-                          style: Theme.of(context).textTheme.headline,
-                        ),
-                      ),
-                      new Text(
-                        hero.role,
-                        style: Theme.of(context).textTheme.subhead,
-                      ),
-                      new Text(winLossCount != null
-                          ? "Win Percentage: ${winLossCount.winPercentange().toString()}"
-                          : ''),
-                      new Text(buildWinRates != null &&
-                              buildWinRates.winning_builds.length > 0
-                          ? buildWinRates.winning_builds
-                              .reduce((a, b) => a.win_rate > b.win_rate ? a : b)
-                              .talents_names
-                              .map((id) => buildWinRates.talents
-                                  .firstWhere((t) => t.id == id))
-                              .map((t) => t.name)
-                              .join('\n')
-                          : '')
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            _buildTitleRow(context),
+            _buildTalentRows(context)
           ],
         ),
-      ),
+      )
     );
   }
 }

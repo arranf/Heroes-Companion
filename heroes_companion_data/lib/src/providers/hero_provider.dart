@@ -30,6 +30,10 @@ class HeroProvider {
     
     if (maps.length > 0) {
       List<Hero> heroes = new List.generate(maps.length, (int index ) => new Hero.fromMap(maps[index]));
+      await heroes.forEach( (hero) async {
+      //    hero.abilities = await DataProvider.abilityProvider.getAbilitiesForHero(hero.hero_id);
+         hero.talents = await DataProvider.talentProvider.getTalentsForHero(hero.hero_id);
+      });
       return heroes; 
     }
     return null;
