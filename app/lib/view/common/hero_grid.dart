@@ -23,6 +23,7 @@ class HeroGrid extends StatelessWidget {
     });
     return new Container(
       child: new GridView.count(
+          childAspectRatio: 1.2,
           key: new Key('hero_list'),
           children: heroChildren, 
           primary: false,
