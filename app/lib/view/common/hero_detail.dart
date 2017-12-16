@@ -63,18 +63,24 @@ class HeroDetail extends StatelessWidget {
   Widget _buildTalentRows(BuildContext context){
     if (buildWinRates != null) {
       List<Widget> children = [];
-      if (buildWinRates.popular_builds != null){
-        children.add(new Text('Popular Builds'));
-        List<BuildStatistics> interestingPopularBuilds = new List<BuildStatistics>.from(buildWinRates.popular_builds.where((b) => b.talents_names.length == 6));
-        List<Widget> popularBuilds = new List.generate(interestingPopularBuilds.length, (i) => _buildTalentRow(context, interestingPopularBuilds[i]));
-        children.addAll(popularBuilds);
+      if (buildWinRates.winning_builds != null){
+        List<BuildStatistics> interestingWinningBuilds = new List<BuildStatistics>.from(buildWinRates.winning_builds.where((b) => b.talents_names.length == 6));
+        if (interestingWinningBuilds.length > 0){
+          children.add(new Text('Winning Builds', style: Theme.of(context).textTheme.headline,));
+          List<Widget> winningBuilds = new List.generate(interestingWinningBuilds.length, (i) => _buildTalentRow(context, interestingWinningBuilds[i]));
+          children.addAll(winningBuilds);
+        }
       }
 
-      if (buildWinRates.winning_builds != null){
-        children.add(new Text('Winning Builds', style: Theme.of(context).textTheme.subhead,));
-        List<BuildStatistics> interestingWinningBuilds = new List<BuildStatistics>.from(buildWinRates.winning_builds.where((b) => b.talents_names.length == 6));
-        List<Widget> winningBuilds = new List.generate(interestingWinningBuilds.length, (i) => _buildTalentRow(context, interestingWinningBuilds[i]));
-        children.addAll(winningBuilds);
+      if (buildWinRates.popular_builds != null){
+        List<BuildStatistics> interestingPopularBuilds = new List<BuildStatistics>.from(buildWinRates.popular_builds.where((b) => b.talents_names.length == 6));
+        if (interestingPopularBuilds.length > 0){
+          children.add(new Text('Popular Builds', style: Theme.of(context).textTheme.headline,));
+          List<Widget> popularBuilds = new List.generate(interestingPopularBuilds.length, (i) => _buildTalentRow(context, interestingPopularBuilds[i]));
+          children.addAll(popularBuilds);
+        } else {
+          children.add(new Text('No Popular Builds for ${hero.name}', style: Theme.of(context).textTheme.headline,));
+        }
       }
       
       return new Column(
@@ -85,21 +91,34 @@ class HeroDetail extends StatelessWidget {
   }
 
   Widget _buildTalentRow(BuildContext context, BuildStatistics build){
-    return new Column(
-      key: new Key(build.hashCode.toString()),
-      children: [
-        new Row(
-          children: <Widget>[
-            new Text('${build.win_rate.toStringAsFixed(2)} Win %'),
-            new Text('${build.total_games_played} Games Played')
-          ],
-        ),
-        new FittedBox(
-          child: new Row(
-            children: new List.generate(build.talents_names.length, (i) => _buildTalent(context, build.talents_names[i]))
+    return new Padding(
+      padding: new EdgeInsets.all(8.0),
+      child: new Column(
+        key: new Key(build.hashCode.toString()),
+        children: [
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Padding(
+                padding: new EdgeInsets.symmetric(horizontal: 4.0),
+                child: new Text('${(build.win_rate * 100).toStringAsFixed(2)} Win %'),
+              ),
+              new Padding(
+                padding: new EdgeInsets.symmetric(horizontal: 4.0),
+                child: new Text('${build.total_games_played} Games Played'),
+              )
+            ],
+          ),
+          new Container(
+            height: 4.0,
+          ),
+          new FittedBox(
+            child: new Row(
+              children: new List.generate(build.talents_names.length, (i) => _buildTalent(context, build.talents_names[i]))
+            )
           )
-        )
-      ],
+        ],
+     )
     );
   }
 
@@ -109,7 +128,8 @@ class HeroDetail extends StatelessWidget {
       key: new Key(talentName),
       children: [
         new Text(
-          talent.sort_order.toString()
+          talent.sort_order.toString(),
+          style: new TextStyle(fontWeight: FontWeight.w600),
         ),
         new Image.asset('assets/images/talents/${talent.icon_file_name}')
       ],
@@ -138,6 +158,9 @@ class HeroDetail extends StatelessWidget {
         child: new ListView(
           children: [
             _buildTitleRow(context),
+            new Container(
+              height: 24.0,
+            ),
             _buildTalentRows(context)
           ],
         ),
