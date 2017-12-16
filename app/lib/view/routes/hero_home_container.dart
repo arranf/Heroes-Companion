@@ -31,7 +31,6 @@ class _ViewModel {
   final bool loading;
   final dynamic favorite;
   final dynamic onTap = (BuildContext context, HeroListItem heroListItem) {
-    debugPrint('Push to detail');
     Navigator.of(context).push(new PageRouteBuilder(
           pageBuilder: (context, a1, a2) => new HeroDetailContainer(
               heroListItem.hero.heroes_companion_hero_id),

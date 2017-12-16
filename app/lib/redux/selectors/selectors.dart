@@ -39,7 +39,7 @@ Optional<WinLossCount> winLossCountByCompanionId(AppState state, int id) {
   try {
     return new Optional.of(state.winRates.current[hero.value.name]);
   } catch (e) {
-    debugPrint("Winrates: ${state.winRates}, isLoading: ${state.isLoading}");
+    debugPrint("No winrates found for {$hero.value.name}");
     return new Optional.absent();
   }
 }
