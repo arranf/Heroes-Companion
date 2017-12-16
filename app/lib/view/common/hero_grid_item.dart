@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 
-class HeroListItem extends StatelessWidget {
+class HeroGridItem extends StatelessWidget {
   final dynamic onTap;
   final Hero hero;
 
-  HeroListItem({
+  HeroGridItem({
     this.onTap,
     @required this.hero,
   });
@@ -16,6 +16,7 @@ class HeroListItem extends StatelessWidget {
     return new GestureDetector(
         onTapUp: (TapUpDetails tap) => this.onTap(context, this),
         child: new Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             new Image.asset('assets/images/heroes/${hero.icon_file_name}'),
