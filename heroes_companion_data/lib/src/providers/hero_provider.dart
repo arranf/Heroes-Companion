@@ -25,15 +25,11 @@ class HeroProvider {
     List<Map> maps = await _database.query(
       hero_table.table_name,
       columns: null,
-      orderBy: "date(${hero_table.column_release_date}) DESC"
+      orderBy: "${hero_table.column_name} ASC"
     );
     
     if (maps.length > 0) {
       List<Hero> heroes = new List.generate(maps.length, (int index ) => new Hero.fromMap(maps[index]));
-      // await heroes.forEach( (hero) async {
-      //    hero.abilities = await DataProvider.abilityProvider.getAbilitiesForHero(hero.hero_id);
-      //    hero.talents = await DataProvider.talentProvider.getTalentsForHero(hero.hero_id);
-      // });
       return heroes; 
     }
     return null;

@@ -2,14 +2,20 @@ import 'dart:async';
 
 import 'package:heroes_companion_data/src/database_client.dart';
 import 'package:heroes_companion_data/src/providers/ability_provider.dart';
+import 'package:heroes_companion_data/src/providers/build_win_rates_provider.dart';
+import 'package:heroes_companion_data/src/providers/game_info_provider.dart';
 import 'package:heroes_companion_data/src/providers/hero_provider.dart';
 import 'package:heroes_companion_data/src/providers/talent_provider.dart';
+import 'package:heroes_companion_data/src/providers/win_rate_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DataProvider {
   static HeroProvider heroProvider;
   static TalentProvider talentProvider;
   static AbilityProvider abilityProvider;
+  static WinRateProvider winRateProvider = new WinRateProvider();
+  static GameInfoProvider gameInfoProvider = new GameInfoProvider();
+  static BuildWinRatesProvider buildWinRatesProvider = new BuildWinRatesProvider();
   static Database _database;
   
   // Singleton
