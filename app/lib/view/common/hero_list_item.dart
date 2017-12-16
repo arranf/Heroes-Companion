@@ -15,33 +15,32 @@ class HeroListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return new GestureDetector(
         onTapUp: (TapUpDetails tap) => this.onTap(context, this),
-        child: new Container(
-          margin: new EdgeInsets.all(8.0),
-          child: new Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              new Container(
-                height: 2.0,
-              ),
-              new Row(
+          child: new Container(
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  new Image.asset('assets/images/heroes/${hero.icon_file_name}'),
+                  new Container(
+                    height: 4.0,
+                  ),
                   new Text(hero.name,
                       style: new TextStyle(
                         fontSize: 18.0,
-                      ))
+                      )),
+                  new Container(
+                    height: 2.0,
+                  ),
+                  new Text(hero.role),
+                  new Expanded(
+                    child: new Container(
+                      margin: new EdgeInsets.only(top: 8.0),
+                      height: 2.0,
+                      width: 18.0,
+                      color: Colors.deepPurpleAccent),
+                  ),
                 ],
               ),
-              new Container(
-                height: 8.0,
-              ),
-              new Text(hero.role),
-              new Container(
-                  margin: new EdgeInsets.symmetric(vertical: 8.0),
-                  height: 2.0,
-                  width: 18.0,
-                  color: Colors.deepPurpleAccent),
-            ],
-          ),
-        ));
+            ),
+          );
   }
 }

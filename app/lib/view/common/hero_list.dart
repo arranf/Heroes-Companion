@@ -16,15 +16,19 @@ class HeroList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> heroChildren = [];
+    this.heroes.forEach((hero){
+      HeroListItem li = new HeroListItem(hero: hero, onTap: this.onTap);
+      heroChildren.add(li.build(context));
+    });
     return new Container(
-      child: new ListView.builder(
+      padding: new EdgeInsets.only(top: 4.0),
+      child: new GridView.extent(
           key: new Key('hero_list'),
-          itemCount: heroes.length,
-          itemBuilder: (BuildContext context, int index) {
-            final hero = heroes[index];
-
-            return new HeroListItem(hero: hero, onTap: this.onTap);
-          }),
-    );
+          children: heroChildren, 
+          primary: false,
+          mainAxisSpacing: 10.0,
+          maxCrossAxisExtent: 200.0,
+    ));
   }
 }
