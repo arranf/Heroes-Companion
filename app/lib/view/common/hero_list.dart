@@ -23,12 +23,12 @@ class HeroList extends StatelessWidget {
     });
     return new Container(
       padding: new EdgeInsets.only(top: 4.0),
-      child: new GridView.extent(
+      child: new GridView.count(
           key: new Key('hero_list'),
           children: heroChildren, 
+          shrinkWrap: true,
           primary: false,
-          mainAxisSpacing: 10.0,
-          maxCrossAxisExtent: 200.0,
+          crossAxisCount: 2,
     ));
   }
 }
