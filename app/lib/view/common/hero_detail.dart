@@ -45,17 +45,20 @@ class HeroDetail extends StatelessWidget {
             ),
           ]
         ),
-        new Column(
-          children: [
-            new Text(
-              winLossCount != null ? '${winLossCount.winPercentange().toStringAsFixed(1)} Win %' : '',
-              style: Theme.of(context).textTheme.headline,
-            ),
-            new Text (
-              winLossCount != null ? '${(winLossCount.wins + winLossCount.losses).toString()} games played' : ''
-            ),
-          ],
-        )
+        new FittedBox(
+          fit: BoxFit.scaleDown,
+          child: new Column(
+            children: [
+              new Text(
+                winLossCount != null ? '${winLossCount.winPercentange().toStringAsFixed(1)} Win %' : ' ',
+                style: Theme.of(context).textTheme.headline,
+              ),
+              new Text (
+                winLossCount != null ? '${(winLossCount.wins + winLossCount.losses).toString()} games played' : ' '
+              ),
+            ],
+          )
+      ),
       ]
     );
   }
