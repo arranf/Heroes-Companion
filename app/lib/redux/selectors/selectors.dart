@@ -31,13 +31,16 @@ BuildInfo currentBuildSelector(AppState state) {
 WinRates winRatesSelector(AppState state) => state.winRates;
 
 Optional<WinLossCount> winLossCountByCompanionId(AppState state, int id) {
+  if (winRatesSelector(state) == null){
+    throw new Exception('Winrates not loaded');
+  }
   Optional<Hero> hero = heroSelectorByCompanionId(state.heroes, id);
   if (hero.isNotPresent) {
     debugPrint('No hero found');
     return new Optional.absent();
   }
   try {
-    return new Optional.of(state.winRates.current[hero.value.name]);
+    return new Optional.of(winRatesSelector(state).current[hero.value.name]);
   } catch (e) {
     debugPrint("No winrates found for {$hero.value.name}");
     return new Optional.absent();
