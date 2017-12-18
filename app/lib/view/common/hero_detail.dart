@@ -75,7 +75,7 @@ class HeroDetail extends StatelessWidget {
     if (buildWinRates != null) {
       List<Widget> children = [];
       if (buildWinRates.winning_builds != null){
-        List<BuildStatistics> interestingWinningBuilds = new List<BuildStatistics>.from(buildWinRates.winning_builds.where((b) => b.talents_names.length == 6));
+        List<BuildStatistics> interestingWinningBuilds = new List<BuildStatistics>.from(buildWinRates.winning_builds.where((b) => b.talents_names.length == 7));
         if (interestingWinningBuilds.length > 0){
           children.add(new Text('Winning Builds', style: Theme.of(context).textTheme.headline,));
           List<Widget> winningBuilds = new List.generate(interestingWinningBuilds.length, (i) => _buildTalentRow(context, interestingWinningBuilds[i]));
@@ -84,7 +84,7 @@ class HeroDetail extends StatelessWidget {
       }
 
       if (buildWinRates.popular_builds != null){
-        List<BuildStatistics> interestingPopularBuilds = new List<BuildStatistics>.from(buildWinRates.popular_builds.where((b) => b.talents_names.length == 6));
+        List<BuildStatistics> interestingPopularBuilds = new List<BuildStatistics>.from(buildWinRates.popular_builds.where((b) => b.talents_names.length == 7));
         if (interestingPopularBuilds.length > 0){
           children.add(new Text('Popular Builds', style: Theme.of(context).textTheme.headline,));
           List<Widget> popularBuilds = new List.generate(interestingPopularBuilds.length, (i) => _buildTalentRow(context, interestingPopularBuilds[i]));
@@ -142,7 +142,10 @@ class HeroDetail extends StatelessWidget {
           talent.sort_order.toString(),
           style: new TextStyle(fontWeight: FontWeight.w600),
         ),
-        new Image.asset('assets/images/talents/${talent.icon_file_name}')
+        new Tooltip(
+          message: 'Level ${talent.level}: ${talent.name}', 
+          child: new Image.asset('assets/images/talents/${talent.icon_file_name}'),
+        ),
       ],
     );
   }
