@@ -32,7 +32,7 @@ WinRates winRatesSelector(AppState state) => state.winRates;
 
 Optional<WinLossCount> winLossCountByCompanionId(AppState state, int id) {
   if (winRatesSelector(state) == null){
-    throw new Exception('Winrates not loaded');
+    return new Optional.absent();
   }
   Optional<Hero> hero = heroSelectorByCompanionId(state.heroes, id);
   if (hero.isNotPresent) {
