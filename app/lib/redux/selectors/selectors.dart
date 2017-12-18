@@ -3,8 +3,7 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:flutter/foundation.dart';
 
-bool isAppLoading(AppState state) =>
-    state.isLoading && state.heroBuildWinRatesLoading;
+bool isAppLoading(AppState state) => state.isLoading && state.heroBuildWinRatesLoading;
 
 bool isLoadingSelector(AppState state) => state.isLoading;
 

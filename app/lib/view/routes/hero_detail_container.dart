@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart' hide Hero;
+import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
@@ -14,9 +17,27 @@ import 'package:redux/redux.dart';
 
 class HeroDetailContainer extends StatelessWidget {
   final int heroesCompanionId;
+  static final platform = const MethodChannel('com.heroescompanion.app/screen');
 
   HeroDetailContainer(this.heroesCompanionId)
       : super(key: Routes.heroDetailKey);
+
+  Future _setScreenNoSleep() async {
+     try {
+      final int result = await platform.invokeMethod('setScreenNoSleep');
+    } on PlatformException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future _setScreenCanSleep() async {
+     try {
+      final int result = await platform.invokeMethod('setScreenCanSleep');
+    } on PlatformException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +51,10 @@ class HeroDetailContainer extends StatelessWidget {
           if (hero.isPresent) {
             getHeroCurrentBuildWinRates(store, hero.value);
           }
+          _setScreenNoSleep();
+        },
+        onDispose: (store) {
+          _setScreenCanSleep();
         },
         ignoreChange: (state) =>
             heroSelectorByCompanionId(state.heroes, heroesCompanionId)
