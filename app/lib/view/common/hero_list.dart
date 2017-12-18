@@ -17,8 +17,7 @@ class HeroList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      // padding: new EdgeInsets.symmetric(horizontal: 8.0),
+    return new Container(   
       child: new ListView.builder(
         key: new Key('hero_list'),
         itemCount: heroes.length,

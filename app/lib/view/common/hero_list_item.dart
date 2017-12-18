@@ -15,43 +15,24 @@ class HeroListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListTile(
-      leading: new CircleAvatar(
-          // backgroundImage: new Image.asset('assets/images/heroes/${hero.icon_file_name}',),
-          backgroundImage: new AssetImage('assets/images/heroes/${hero.icon_file_name}')
+    return new DecoratedBox(
+      position: DecorationPosition.foreground,
+      decoration: new BoxDecoration(
+        border: new Border(
+          bottom: new BorderSide(color: Theme.of(context).dividerColor, width: 0.0),
+        ),
       ),
-      title: new Text(hero.name,
-        style: new TextStyle(
-          fontSize: 18.0,
-        )),
-      subtitle: new Text(hero.role),
-      trailing: hero.is_favorite ? new Icon(Icons.favorite) : null,
-      onTap: () => this.onTap(context, this),
-      onLongPress: () => this.onLongPress(context, this),
+      child:  new ListTile(
+        leading: new Image.asset('assets/images/heroes/${hero.icon_file_name}',),
+        title: new Text(hero.name,
+          style: new TextStyle(
+            fontSize: 18.0,
+          )),
+        subtitle: new Text(hero.role),
+        trailing: hero.is_favorite ? new Icon(Icons.favorite) : null,
+        onTap: () => this.onTap(context, this),
+        onLongPress: () => this.onLongPress(context, this),
+      ),
     );
-    // return new Container(
-    //     height: 72.0,
-    //     child: new GestureDetector(
-    //       onTapUp: (TapUpDetails tap) => this.onTap(context, this),
-    //       child: new Column(
-    //         children: <Widget>[
-    //           new Row(
-    //             children: <Widget>[
-    //               new Image.asset(
-    //                 'assets/images/heroes/${hero.icon_file_name}',
-    //                 width: 56.0,
-    //               ),
-    //               new Text(hero.name,
-    //                   style: new TextStyle(
-    //                     fontSize: 18.0,
-    //                   )),
-    //               new Text(hero.role),
-    //             ],
-    //         ),
-    //         new Divider()
-    //       ],
-    //     ),
-    //   )
-    // );
   }
 }
