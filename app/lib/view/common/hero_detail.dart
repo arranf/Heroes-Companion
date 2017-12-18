@@ -28,38 +28,59 @@ class HeroDetail extends StatelessWidget {
   }
   
   Widget _buildTitleRow(BuildContext context){
-    return new Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        new Image.asset('assets/images/heroes/${hero.icon_file_name}'),
-        new Column (
-           children: [
-            new Text(
-              hero.name,
-              style: Theme.of(context).textTheme.headline
-              
+    return new Container(
+      padding: new EdgeInsets.only(left: 64.0, bottom: 8.0),
+      color: Theme.of(context).primaryColor,
+      child: new Column(
+        children: <Widget>[
+            new Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                new CircleAvatar(
+                  backgroundImage: new AssetImage('assets/images/heroes/${hero.icon_file_name}'),
+                  radius: 45.0,
+                ),
+                new Container(
+                  width: 40.0,
+                ),
+                new Padding(
+                  padding: new EdgeInsets.only(top: 4.0),
+                  child: new Column (
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      new Text(
+                        hero.name,
+                        style: Theme.of(context).textTheme.headline.apply(color: Colors.white)
+                        
+                      ),
+                      new Text(
+                        '${hero.type} ${hero.role}',
+                        style: Theme.of(context).textTheme.subhead.apply(color: Colors.white),
+                      ),
+                    ]
+                  ),
+                ) 
+              ]
             ),
-            new Text(
-              '${hero.type} ${hero.role}',
-              style: Theme.of(context).textTheme.subhead,
-            ),
-          ]
-        ),
-        new FittedBox(
-          fit: BoxFit.scaleDown,
-          child: new Column(
-            children: [
-              new Text(
-                winLossCount != null ? '${winLossCount.winPercentange().toStringAsFixed(1)} Win %' : ' ',
-                style: Theme.of(context).textTheme.headline,
+            new Padding(
+              padding: new EdgeInsets.only(left: 44.0),
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  new Text( 
+                    winLossCount != null ? '${winLossCount.winPercentange().toStringAsFixed(1)} Win %' : ' ', 
+                    style: Theme.of(context).textTheme.headline.apply(color: Colors.white), 
+                  ), 
+                  new Text ( 
+                    winLossCount != null ? '${(winLossCount.wins + winLossCount.losses).toString()} games played' : ' ',
+                    style: Theme.of(context).textTheme.body1.apply(color: Colors.white)
+                  )
+                ]
               ),
-              new Text (
-                winLossCount != null ? '${(winLossCount.wins + winLossCount.losses).toString()} games played' : ' '
-              ),
-            ],
-          )
+            ) 
+          ],
       ),
-      ]
     );
   }
 
@@ -157,7 +178,7 @@ class HeroDetail extends StatelessWidget {
         ],
       ),
       body: new Padding(
-        padding: new EdgeInsets.all(16.0),
+        padding: new EdgeInsets.all(8.0),
         child: new ListView(
           children: [
             _buildTitleRow(context),
