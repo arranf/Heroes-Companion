@@ -31,43 +31,30 @@ class HeroDetail extends StatelessWidget {
     return new Container(
       padding: new EdgeInsets.only(left: 64.0, bottom: 8.0),
       color: Theme.of(context).primaryColor,
-      child: new Column(
+      child: new Row(
         children: <Widget>[
-            new Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                new CircleAvatar(
-                  backgroundImage: new AssetImage('assets/images/heroes/${hero.icon_file_name}'),
-                  radius: 45.0,
-                ),
-                new Container(
-                  width: 40.0,
-                ),
-                new Padding(
-                  padding: new EdgeInsets.only(top: 4.0),
-                  child: new Column (
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      new Text(
-                        hero.name,
-                        style: Theme.of(context).textTheme.headline.apply(color: Colors.white)
-                        
-                      ),
-                      new Text(
-                        '${hero.type} ${hero.role}',
-                        style: Theme.of(context).textTheme.subhead.apply(color: Colors.white),
-                      ),
-                    ]
-                  ),
-                ) 
-              ]
+          new CircleAvatar(
+            backgroundImage: new AssetImage('assets/images/heroes/${hero.icon_file_name}'),
+            radius: 45.0,
             ),
-            new Padding(
-              padding: new EdgeInsets.only(left: 44.0),
+            new Container(
+                  width: 40.0,
+            ),
+            new Padding (
+              padding: new EdgeInsets.only(top: 4.0),
               child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+                children: [
+                  new Text(
+                    hero.name,
+                    style: Theme.of(context).textTheme.headline.apply(color: Colors.white)
+                  ),
+                  new Text(
+                    '${hero.type} ${hero.role}',
+                    style: Theme.of(context).textTheme.subhead.apply(color: Colors.white),
+                  ),
+                  new Container(
+                    height: 20.0,
+                  ),
                   new Text( 
                     winLossCount != null ? '${winLossCount.winPercentange().toStringAsFixed(1)} Win %' : ' ', 
                     style: Theme.of(context).textTheme.headline.apply(color: Colors.white), 
@@ -78,7 +65,7 @@ class HeroDetail extends StatelessWidget {
                   )
                 ]
               ),
-            ) 
+            )
           ],
       ),
     );
