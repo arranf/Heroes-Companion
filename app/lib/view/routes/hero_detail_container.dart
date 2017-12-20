@@ -23,7 +23,7 @@ class HeroDetailContainer extends StatelessWidget {
       : super(key: Routes.heroDetailKey);
 
   Future _setScreenNoSleep() async {
-     try {
+    try {
       final int result = await platform.invokeMethod('setScreenNoSleep');
     } on PlatformException catch (e) {
       debugPrint(e.toString());
@@ -31,13 +31,12 @@ class HeroDetailContainer extends StatelessWidget {
   }
 
   Future _setScreenCanSleep() async {
-     try {
+    try {
       final int result = await platform.invokeMethod('setScreenCanSleep');
     } on PlatformException catch (e) {
       debugPrint(e.toString());
     }
   }
-  
 
   @override
   Widget build(BuildContext context) {
