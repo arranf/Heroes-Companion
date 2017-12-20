@@ -47,7 +47,7 @@ class BuildWinRatesStartLoadingAction {}
 class SetSearchQueryAction {
   final String searchQuery;
 
-  SetSearchQueryAction(this.searchQuery); 
+  SetSearchQueryAction(this.searchQuery);
 }
 
 class ClearSearchQueryAction {}

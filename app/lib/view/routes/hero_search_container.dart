@@ -66,24 +66,30 @@ class _ViewModel {
   final dynamic onSearchType;
   final dynamic onTap;
 
-  _ViewModel({@required this.results, @required this.searchQuery, @required this.onSearchType, this.onTap,});
+  _ViewModel({
+    @required this.results,
+    @required this.searchQuery,
+    @required this.onSearchType,
+    this.onTap,
+  });
 
   factory _ViewModel.from(Store<AppState> store) {
     final dynamic onSearchType = (String query) {
       store.dispatch(new SetSearchQueryAction(query));
     };
 
-    final dynamic onTap = (BuildContext context, HeroListItem item) { 
-      Navigator.of(context).pushReplacement(
-        new PageRouteBuilder(
-          pageBuilder: (context, a1, a2) => new HeroDetailContainer(item.hero.heroes_companion_hero_id)
-        )
-      );
+    final dynamic onTap = (BuildContext context, HeroListItem item) {
+      Navigator.of(context).pushReplacement(new PageRouteBuilder(
+          pageBuilder: (context, a1, a2) =>
+              new HeroDetailContainer(item.hero.heroes_companion_hero_id)));
     };
-      
 
     final results = searchSelector(store.state);
     final searchQuery = searchQuerySelector(store.state);
-    return new _ViewModel(results: results, searchQuery: searchQuery, onSearchType: onSearchType, onTap: onTap);
+    return new _ViewModel(
+        results: results,
+        searchQuery: searchQuery,
+        onSearchType: onSearchType,
+        onTap: onTap);
   }
 }

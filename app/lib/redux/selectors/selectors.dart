@@ -64,16 +64,15 @@ Optional<BuildWinRates> buildWinRatesByCompanionId(AppState state, int id) {
 String searchQuerySelector(AppState state) => state.searchQuery;
 
 List<Hero> searchSelector(AppState state) {
-  
   List<Hero> heroes = heroesSelector(state);
-  if (heroes == null || heroes.isEmpty ){
+  if (heroes == null || heroes.isEmpty) {
     return new List<Hero>();
   }
 
   String query = searchQuerySelector(state).toLowerCase();
 
   return heroes
-    .where((h) => h.name.toLowerCase()
-    .contains(query) || h.role.toLowerCase() == query)
-    .toList();
+      .where((h) =>
+          h.name.toLowerCase().contains(query) || h.role.toLowerCase() == query)
+      .toList();
 }

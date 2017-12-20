@@ -71,10 +71,9 @@ class App extends StatelessWidget {
                 );
               },
               Routes.search: (BuildContext context) {
-                return new StoreBuilder<AppState>(
-                  builder: (context, store){
-                    return new HeroSearch();
-                  });
+                return new StoreBuilder<AppState>(builder: (context, store) {
+                  return new HeroSearch();
+                });
               }
             }),
       );
