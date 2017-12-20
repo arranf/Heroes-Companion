@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/services/build_info_service.dart';
+import 'package:heroes_companion/view/routes/hero_search_container.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
@@ -55,9 +56,10 @@ class App extends StatelessWidget {
         child: new MaterialApp(
             title: appName,
             theme: new ThemeData(
-                primaryColor: Colors.deepPurple, 
-                backgroundColor: Colors.white,
-                textTheme: new Typography(platform: TargetPlatform.android).black,
+              primaryColor: Colors.deepPurple,
+              accentColor: Colors.blue,
+              backgroundColor: Colors.white,
+              textTheme: new Typography(platform: TargetPlatform.android).black,
             ),
             // Named routes only
             routes: {
@@ -67,6 +69,11 @@ class App extends StatelessWidget {
                     return new HomeScreen();
                   },
                 );
+              },
+              Routes.search: (BuildContext context) {
+                return new StoreBuilder<AppState>(builder: (context, store) {
+                  return new HeroSearch();
+                });
               }
             }),
       );

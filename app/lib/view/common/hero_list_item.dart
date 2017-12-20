@@ -19,17 +19,19 @@ class HeroListItem extends StatelessWidget {
       position: DecorationPosition.foreground,
       decoration: new BoxDecoration(
         border: new Border(
-          bottom: new BorderSide(color: Theme.of(context).dividerColor, width: 0.0),
+          bottom:
+              new BorderSide(color: Theme.of(context).dividerColor, width: 0.0),
         ),
       ),
-      child:  new ListTile(
+      child: new ListTile(
         leading: new CircleAvatar(
-          backgroundImage: new AssetImage('assets/images/heroes/${hero.icon_file_name}'),
+          backgroundImage:
+              new AssetImage('assets/images/heroes/${hero.icon_file_name}'),
         ),
         title: new Text(hero.name,
-          style: new TextStyle(
-            fontSize: 18.0,
-          )),
+            style: new TextStyle(
+              fontSize: 18.0,
+            )),
         subtitle: new Text(hero.role),
         trailing: hero.is_favorite ? new Icon(Icons.favorite) : null,
         onTap: () => this.onTap(context, this),

@@ -13,18 +13,21 @@ class HeroList extends StatelessWidget {
     this.heroes, {
     this.onTap,
     this.onLongPress,
-  }) : super(key: new Key('hero_list'));
+  })
+      : super(key: new Key('hero_list'));
 
   @override
   Widget build(BuildContext context) {
-    return new Container(   
-      child: new ListView.builder(
-        key: new Key('hero_list'),
-        itemCount: heroes.length,
-        itemBuilder: (BuildContext context, int index) {
-          return new HeroListItem(hero: heroes[index], onTap: this.onTap, onLongPress: this.onLongPress);
-        },
-      )
-    );
+    return new Container(
+        child: new ListView.builder(
+      key: new Key('hero_list'),
+      itemCount: heroes.length,
+      itemBuilder: (BuildContext context, int index) {
+        return new HeroListItem(
+            hero: heroes[index],
+            onTap: this.onTap,
+            onLongPress: this.onLongPress);
+      },
+    ));
   }
 }

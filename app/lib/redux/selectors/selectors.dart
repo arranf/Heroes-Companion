@@ -3,7 +3,8 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:flutter/foundation.dart';
 
-bool isAppLoading(AppState state) => state.isLoading && state.heroBuildWinRatesLoading;
+bool isAppLoading(AppState state) =>
+    state.isLoading && state.heroBuildWinRatesLoading;
 
 bool isLoadingSelector(AppState state) => state.isLoading;
 
@@ -30,7 +31,7 @@ BuildInfo currentBuildSelector(AppState state) {
 WinRates winRatesSelector(AppState state) => state.winRates;
 
 Optional<WinLossCount> winLossCountByCompanionId(AppState state, int id) {
-  if (winRatesSelector(state) == null){
+  if (winRatesSelector(state) == null) {
     return new Optional.absent();
   }
   Optional<Hero> hero = heroSelectorByCompanionId(state.heroes, id);
@@ -58,4 +59,20 @@ Optional<BuildWinRates> buildWinRatesByCompanionId(AppState state, int id) {
     return new Optional.of(rates[id]);
   }
   return new Optional.absent();
+}
+
+String searchQuerySelector(AppState state) => state.searchQuery;
+
+List<Hero> searchSelector(AppState state) {
+  List<Hero> heroes = heroesSelector(state);
+  if (heroes == null || heroes.isEmpty) {
+    return new List<Hero>();
+  }
+
+  String query = searchQuerySelector(state).toLowerCase();
+
+  return heroes
+      .where((h) =>
+          h.name.toLowerCase().contains(query) || h.role.toLowerCase() == query)
+      .toList();
 }

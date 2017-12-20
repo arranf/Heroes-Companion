@@ -20,7 +20,11 @@ class HeroHome extends StatelessWidget {
     return new StoreConnector<AppState, _ViewModel>(
       converter: _ViewModel.fromStore,
       builder: (context, vm) {
-        return new HeroList(vm.heroes, onTap: vm.onTap, onLongPress: vm.onLongPress,);
+        return new HeroList(
+          vm.heroes,
+          onTap: vm.onTap,
+          onLongPress: vm.onLongPress,
+        );
       },
     );
   }
@@ -41,8 +45,10 @@ class _ViewModel {
 
   static _ViewModel fromStore(Store<AppState> store) {
     final dynamic _favorite = (BuildContext context, HeroListItem item) {
-        item.hero.is_favorite ? unFavorite(store, item.hero) : setFavorite(store, item.hero);
-      };
+      item.hero.is_favorite
+          ? unFavorite(store, item.hero)
+          : setFavorite(store, item.hero);
+    };
     return new _ViewModel(
       heroes: heroesSelector(store.state),
       loading: store.state.isLoading,
