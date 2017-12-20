@@ -10,6 +10,13 @@ class HomeScreen extends StatelessWidget {
     return new Scaffold(
       appBar: new AppBar(title: new Text('Heroes Companion')),
       body: new HeroHome(),
+      floatingActionButton: new FloatingActionButton(
+        child: new IconButton(
+          icon: new Icon(Icons.search), 
+          onPressed: () => Navigator.of(context).pushNamed(Routes.search),
+        ),
+        backgroundColor: Theme.of(context).accentColor,
+      ),
     );
   }
 }

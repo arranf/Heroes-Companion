@@ -10,6 +10,7 @@ class AppState {
   final bool isLoading;
   final bool heroBuildWinRatesLoading;
   final Map<int, BuildWinRates> heroBuildWinRates;
+  final String searchQuery;
 
   AppState({
     this.isLoading = false,
@@ -18,6 +19,7 @@ class AppState {
     this.gameBuilds,
     this.winRates,
     this.heroBuildWinRates,
+    this.searchQuery = '',
   });
 
   factory AppState.loading() =>
@@ -30,6 +32,7 @@ class AppState {
     WinRates winRates,
     bool heroBuildWinRatesLoading,
     Map<int, BuildWinRates> heroBuildWinRates,
+    String searchQuery
   }) {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,
@@ -39,6 +42,7 @@ class AppState {
       heroBuildWinRatesLoading:
           heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
       heroBuildWinRates: heroBuildWinRates ?? this.heroBuildWinRates,
+      searchQuery: searchQuery ?? this.searchQuery
     );
   }
 
@@ -49,7 +53,9 @@ class AppState {
       gameBuilds.hashCode ^
       winRates.hashCode ^
       heroBuildWinRatesLoading.hashCode ^
-      heroBuildWinRates.hashCode;
+      heroBuildWinRates.hashCode ^
+      searchQuery.hashCode;
+
 
   @override
   bool operator ==(Object other) =>
@@ -61,7 +67,8 @@ class AppState {
           gameBuilds == other.gameBuilds &&
           winRates == other.winRates &&
           heroBuildWinRatesLoading == other.heroBuildWinRatesLoading &&
-          heroBuildWinRates == other.heroBuildWinRates;
+          heroBuildWinRates == other.heroBuildWinRates &&
+          searchQuery == other.searchQuery;
 
   @override
   String toString() {

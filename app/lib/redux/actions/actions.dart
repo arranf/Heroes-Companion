@@ -43,3 +43,11 @@ class FetchBuildWinRatesSucceededAction {
 class FetchBuildWinRatesFailedAction {}
 
 class BuildWinRatesStartLoadingAction {}
+
+class SetSearchQueryAction {
+  final String searchQuery;
+
+  SetSearchQueryAction(this.searchQuery); 
+}
+
+class ClearSearchQueryAction {}
