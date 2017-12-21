@@ -75,8 +75,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('Building!');
-    return new StoreConnector<AppState, _ViewModel>(
+    return new StoreBuilder<AppState>(
         onInit: (store) {
           fetchData(store);
           _setScreenNoSleep();
@@ -84,21 +83,14 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
         onDispose: (store) {
           _setScreenCanSleep();
         },
-        ignoreChange: (state) =>
-            heroSelectorByCompanionId(state.heroes, _heroesCompanionId)
-                .isNotPresent,
-        converter: (Store<AppState> store) {
+        builder: (context, store) {
           if (!isAppLoading(store.state)) {
-            debugPrint('Fetching data in convertor');
             fetchData(store);
           }
-          debugPrint('Convertor');
-          return new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
-        },
-        builder: (context, vm) {
+         _ViewModel vm = new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
+          
           void _handleTap() {
             setState(() {
-              debugPrint('set state');
               _isCurrentBuild = !_isCurrentBuild;
               _buildNumber =
                   (_isCurrentBuild ? vm.currentBuild : vm.previousBuild).number;
