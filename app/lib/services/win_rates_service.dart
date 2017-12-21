@@ -9,19 +9,15 @@ void getCurrentWinRates(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
   // TODO Change interface to actually throw an exception in the case we need special handling
   String buildNumber = currentBuildSelector(store.state).number;
-  DataProvider.winRateProvider
-      .getWinRates(buildNumber)
-      .then((winRates) {
+  DataProvider.winRateProvider.getWinRates(buildNumber).then((winRates) {
     store.dispatch(new FetchWinRatesSucceededAction(winRates, buildNumber));
   }).catchError(
-          (Exception e) => store.dispatch(new FetchWinRatesFailedAction()));
+      (Exception e) => store.dispatch(new FetchWinRatesFailedAction()));
 }
 
 void getWinRatesForBuild(Store<AppState> store, String buildNumber) {
   store.dispatch(new StartLoadingAction());
-  DataProvider.winRateProvider
-      .getWinRates(buildNumber)
-      .then((winRates) {
+  DataProvider.winRateProvider.getWinRates(buildNumber).then((winRates) {
     store.dispatch(new FetchWinRatesSucceededAction(winRates, buildNumber));
-  }).catchError( (e) => store.dispatch(new FetchWinRatesFailedAction()));
+  }).catchError((e) => store.dispatch(new FetchWinRatesFailedAction()));
 }

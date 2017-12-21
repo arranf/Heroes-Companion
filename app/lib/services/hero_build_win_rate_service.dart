@@ -20,7 +20,8 @@ void getHeroCurrentBuildWinRates(Store<AppState> store, Hero hero) {
   });
 }
 
-void getHeroBuildWinRates(Store<AppState> store, Hero hero, String buildNumber) {
+void getHeroBuildWinRates(
+    Store<AppState> store, Hero hero, String buildNumber) {
   store.dispatch(new BuildWinRatesStartLoadingAction());
   DataProvider.buildWinRatesProvider
       .getBuildWinRates(buildNumber, hero.name)

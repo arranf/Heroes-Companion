@@ -23,14 +23,14 @@ List<BuildInfo> buildsSelector(AppState state) => state.gameBuilds;
 
 BuildInfo currentBuildSelector(AppState state) {
   if (state.gameBuilds == null && state.gameBuilds.isNotEmpty) {
-    throw new Exception('Build Info hasn''t been loaded');
+    throw new Exception('Build Info hasn' 't been loaded');
   }
   return state.gameBuilds[0];
 }
 
 BuildInfo previousBuildSelector(AppState state) {
   if (state.gameBuilds == null && state.gameBuilds.length < 2) {
-    throw new Exception('Build Info hasn''t been loaded');
+    throw new Exception('Build Info hasn' 't been loaded');
   }
   return state.gameBuilds[1];
 }
@@ -45,7 +45,8 @@ Optional<WinRates> winRatesByBuildNumber(AppState state, String buildNumber) {
   }
 }
 
-Optional<Map<String, WinLossCount>> winLossCountByCompanionId(AppState state, int id) {
+Optional<Map<String, WinLossCount>> winLossCountByCompanionId(
+    AppState state, int id) {
   if (winRatesSelector(state) == null) {
     return new Optional.absent();
   }
@@ -55,20 +56,21 @@ Optional<Map<String, WinLossCount>> winLossCountByCompanionId(AppState state, in
     return new Optional.absent();
   }
 
-  Map<String, WinLossCount> heroWinRatesByBuild = new Map<String, WinLossCount>();
+  Map<String, WinLossCount> heroWinRatesByBuild =
+      new Map<String, WinLossCount>();
   winRatesSelector(state).forEach((key, value) {
-      heroWinRatesByBuild[key] = value.current[hero.value.name];
-    }
-  );
+    heroWinRatesByBuild[key] = value.current[hero.value.name];
+  });
 
-  if (heroWinRatesByBuild.keys.isNotEmpty){
+  if (heroWinRatesByBuild.keys.isNotEmpty) {
     return new Optional.of(heroWinRatesByBuild);
   } else {
     return new Optional.absent();
   }
 }
 
-Optional<WinLossCount> winLossCountByCompanionIdAndBuildNumber(AppState state, int id, String buildNumber) {
+Optional<WinLossCount> winLossCountByCompanionIdAndBuildNumber(
+    AppState state, int id, String buildNumber) {
   if (winRatesSelector(state) == null) {
     return new Optional.absent();
   }
@@ -78,7 +80,9 @@ Optional<WinLossCount> winLossCountByCompanionIdAndBuildNumber(AppState state, i
     return new Optional.absent();
   }
   try {
-    return new Optional.of(winRatesByBuildNumber(state, buildNumber).value.current[hero.value.name]);
+    return new Optional.of(winRatesByBuildNumber(state, buildNumber)
+        .value
+        .current[hero.value.name]);
   } catch (e) {
     debugPrint("No winrates found for {$hero.value.name}");
     return new Optional.absent();
@@ -91,7 +95,8 @@ Map<int, Map<String, BuildWinRates>> buildWinRates(AppState state) {
   return state.heroBuildWinRates;
 }
 
-Optional<Map<String, BuildWinRates>> buildWinRatesByCompanionId(AppState state, int id) {
+Optional<Map<String, BuildWinRates>> buildWinRatesByCompanionId(
+    AppState state, int id) {
   Map<int, Map<String, BuildWinRates>> rates = buildWinRates(state);
   if (rates != null && rates.containsKey(id)) {
     return new Optional.of(rates[id]);
@@ -99,7 +104,8 @@ Optional<Map<String, BuildWinRates>> buildWinRatesByCompanionId(AppState state, 
   return new Optional.absent();
 }
 
-Optional<BuildWinRates> buildWinRatesByCompanionIdAndBuildNumber(AppState state, int id, String buildNumber) {
+Optional<BuildWinRates> buildWinRatesByCompanionIdAndBuildNumber(
+    AppState state, int id, String buildNumber) {
   Map<int, Map<String, BuildWinRates>> rates = buildWinRates(state);
   if (rates == null || !rates.containsKey(id)) {
     return new Optional.absent();
@@ -107,7 +113,7 @@ Optional<BuildWinRates> buildWinRatesByCompanionIdAndBuildNumber(AppState state,
 
   try {
     return new Optional.of(rates[id][buildNumber]);
-  } catch(e) {
+  } catch (e) {
     return new Optional.absent();
   }
 }

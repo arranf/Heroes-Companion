@@ -22,8 +22,8 @@ class HeroDetail extends StatelessWidget {
     this.winLossCount,
     this.buildWinRates,
     this.isCurrentBuild,
-     this.buildNumber, 
-     this.buildSwitch,
+    this.buildNumber,
+    this.buildSwitch,
   })
       : super(key: key);
 
@@ -206,25 +206,20 @@ class HeroDetail extends StatelessWidget {
             ),
           ],
         ),
-        body: 
-        new Column(
+        body: new Column(
           children: <Widget>[
-
             new BuildPrompt(isCurrentBuild, winLossCount, buildSwitch),
-          new Flexible(
-         child: new ListView(
-            children: <Widget>[
-              _buildTitleRow(context),
-              new Container(
-                height: 24.0,
-              ),
-              _buildTalentRows(context)
-            ],
-          )
-        )
+            new Flexible(
+                child: new ListView(
+              children: <Widget>[
+                _buildTitleRow(context),
+                new Container(
+                  height: 24.0,
+                ),
+                _buildTalentRows(context)
+              ],
+            ))
           ],
-        )
-        
-    );
+        ));
   }
 }

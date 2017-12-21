@@ -39,7 +39,8 @@ class FetchBuildWinRatesSucceededAction {
   final BuildWinRates buildWinRates;
   final int heroCompanionId;
 
-  FetchBuildWinRatesSucceededAction(this.buildWinRates, this.heroCompanionId, this.buildNumber);
+  FetchBuildWinRatesSucceededAction(
+      this.buildWinRates, this.heroCompanionId, this.buildNumber);
 }
 
 class FetchBuildWinRatesFailedAction {}

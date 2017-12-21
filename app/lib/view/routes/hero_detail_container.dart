@@ -19,13 +19,16 @@ class HeroDetailContainer extends StatefulWidget {
   final int heroesCompanionId;
 
   @override
-  _HeroDetailContainerState createState() => new _HeroDetailContainerState(heroesCompanionId);
+  _HeroDetailContainerState createState() =>
+      new _HeroDetailContainerState(heroesCompanionId);
 
-  HeroDetailContainer(this.heroesCompanionId) : super(key: Routes.heroDetailKey);
+  HeroDetailContainer(this.heroesCompanionId)
+      : super(key: Routes.heroDetailKey);
 }
 
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
-  static final _platform = const MethodChannel('com.heroescompanion.app/screen');
+  static final _platform =
+      const MethodChannel('com.heroescompanion.app/screen');
   bool _isCurrentBuild = true;
   final int _heroesCompanionId;
   String _buildNumber = '';
@@ -53,13 +56,19 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     if (isAppLoading(store.state)) {
       return;
     }
-    _buildNumber = (_isCurrentBuild ? currentBuildSelector(store.state) : previousBuildSelector(store.state)).number;
+    _buildNumber = (_isCurrentBuild
+            ? currentBuildSelector(store.state)
+            : previousBuildSelector(store.state))
+        .number;
     if (winRatesByBuildNumber(store.state, _buildNumber).isNotPresent) {
       getWinRatesForBuild(store, _buildNumber);
     }
     Optional<Hero> hero = heroSelectorByCompanionId(
         heroesSelector(store.state), _heroesCompanionId);
-    if (hero.isPresent && buildWinRatesByCompanionIdAndBuildNumber(store.state, hero.value.heroes_companion_hero_id, _buildNumber).isNotPresent) {
+    if (hero.isPresent &&
+        buildWinRatesByCompanionIdAndBuildNumber(
+                store.state, hero.value.heroes_companion_hero_id, _buildNumber)
+            .isNotPresent) {
       getHeroBuildWinRates(store, hero.value, _buildNumber);
     }
   }
@@ -79,7 +88,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
             heroSelectorByCompanionId(state.heroes, _heroesCompanionId)
                 .isNotPresent,
         converter: (Store<AppState> store) {
-          if (!isAppLoading(store.state)){
+          if (!isAppLoading(store.state)) {
             debugPrint('Fetching data in convertor');
             fetchData(store);
           }
@@ -91,20 +100,19 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
             setState(() {
               debugPrint('set state');
               _isCurrentBuild = !_isCurrentBuild;
-              _buildNumber = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild).number;
+              _buildNumber =
+                  (_isCurrentBuild ? vm.currentBuild : vm.previousBuild).number;
             });
           }
-          return new HeroDetail(
-            vm.hero,
-            favorite: vm.favorite,
-            winLossCount: vm.winLossCount,
-            buildWinRates: vm.buildWinRates,
-            isCurrentBuild: _isCurrentBuild,
-            buildNumber: _buildNumber,
-            buildSwitch: _handleTap
-          );
-        }
-    );
+
+          return new HeroDetail(vm.hero,
+              favorite: vm.favorite,
+              winLossCount: vm.winLossCount,
+              buildWinRates: vm.buildWinRates,
+              isCurrentBuild: _isCurrentBuild,
+              buildNumber: _buildNumber,
+              buildSwitch: _handleTap);
+        });
   }
 }
 
@@ -131,8 +139,10 @@ class _ViewModel {
 
     final hero = heroSelectorByCompanionId(heroesSelector(store.state), id);
     // TODO Wrap win loss count to have a sensible model in app
-    final winLossCount = winLossCountByCompanionIdAndBuildNumber(store.state, id, buildNumber);
-    final buildWinRates = buildWinRatesByCompanionIdAndBuildNumber(store.state, id, buildNumber);
+    final winLossCount =
+        winLossCountByCompanionIdAndBuildNumber(store.state, id, buildNumber);
+    final buildWinRates =
+        buildWinRatesByCompanionIdAndBuildNumber(store.state, id, buildNumber);
 
     return new _ViewModel(
       hero: hero.value,
