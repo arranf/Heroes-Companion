@@ -16,15 +16,12 @@ class BuildPrompt extends StatelessWidget{
         child: 
         new Container(
           constraints: new BoxConstraints.expand(height: 36.0),
-          color: Theme.of(context).errorColor,
-          child: new Padding(
-            padding: new EdgeInsets.only(left: 24.0),
-            child: new Text(
-              _isCurrentBuild ? 'This build doesn''t have enough recorded data to provide accurate data.' : 'Switch to the current build',
+          color: _isCurrentBuild ? Theme.of(context).errorColor : Theme.of(context).accentColor,
+          child: new Center(
+              child: new Text(
+              _isCurrentBuild ? 'The current patch is too new. Show previous patch data?' : 'Showing previous build data',
               style: Theme.of(context).textTheme.body1,
-            )
-          ),
-            padding: new EdgeInsets.symmetric(horizontal: 8.0),
+          ))
         )
       );
     }

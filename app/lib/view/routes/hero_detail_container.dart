@@ -9,7 +9,6 @@ import 'package:heroes_companion/routes.dart';
 import 'package:heroes_companion/services/hero_build_win_rate_service.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:heroes_companion/services/win_rates_service.dart';
-import 'package:heroes_companion/view/common/build_prompt.dart';
 import 'package:heroes_companion/view/common/hero_detail.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
@@ -67,6 +66,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('Building!');
     return new StoreConnector<AppState, _ViewModel>(
         onInit: (store) {
           fetchData(store);
@@ -83,6 +83,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
             debugPrint('Fetching data in convertor');
             fetchData(store);
           }
+          debugPrint('Convertor');
           return new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
         },
         builder: (context, vm) {
@@ -94,14 +95,14 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
             });
           }
           return new HeroDetail(
-                    vm.hero,
-                    favorite: vm.favorite,
-                    winLossCount: vm.winLossCount,
-                    buildWinRates: vm.buildWinRates,
-                    isCurrentBuild: _isCurrentBuild,
-                    buildNumber: _buildNumber,
-                    buildSwitch: _handleTap
-            );
+            vm.hero,
+            favorite: vm.favorite,
+            winLossCount: vm.winLossCount,
+            buildWinRates: vm.buildWinRates,
+            isCurrentBuild: _isCurrentBuild,
+            buildNumber: _buildNumber,
+            buildSwitch: _handleTap
+          );
         }
     );
   }
