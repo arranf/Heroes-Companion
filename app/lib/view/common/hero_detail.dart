@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/view/common/app_loading_container.dart';
+import 'package:heroes_companion/view/common/build_prompt.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
@@ -7,9 +8,12 @@ import 'package:meta/meta.dart';
 
 class HeroDetail extends StatelessWidget {
   final Hero hero;
+  final bool isCurrentBuild;
   final WinLossCount winLossCount;
   final BuildWinRates buildWinRates;
+  final String buildNumber;
   final dynamic favorite;
+  final dynamic buildSwitch;
 
   HeroDetail(
     this.hero, {
@@ -17,6 +21,9 @@ class HeroDetail extends StatelessWidget {
     @required this.favorite,
     this.winLossCount,
     this.buildWinRates,
+    this.isCurrentBuild,
+    this.buildNumber,
+    this.buildSwitch,
   })
       : super(key: key);
 
@@ -199,17 +206,20 @@ class HeroDetail extends StatelessWidget {
             ),
           ],
         ),
-        body: new Padding(
-          padding: new EdgeInsets.all(8.0),
-          child: new ListView(
-            children: [
-              _buildTitleRow(context),
-              new Container(
-                height: 24.0,
-              ),
-              _buildTalentRows(context)
-            ],
-          ),
+        body: new Column(
+          children: <Widget>[
+            new BuildPrompt(isCurrentBuild, winLossCount, buildSwitch),
+            new Flexible(
+                child: new ListView(
+              children: <Widget>[
+                _buildTitleRow(context),
+                new Container(
+                  height: 24.0,
+                ),
+                _buildTalentRows(context)
+              ],
+            ))
+          ],
         ));
   }
 }

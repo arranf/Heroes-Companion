@@ -13,7 +13,21 @@ void getHeroCurrentBuildWinRates(Store<AppState> store, Hero hero) {
       .getBuildWinRates(buildInfo.number, hero.name)
       .then((buildWinRates) => store.dispatch(
           new FetchBuildWinRatesSucceededAction(
-              buildWinRates, hero.heroes_companion_hero_id)))
+              buildWinRates, hero.heroes_companion_hero_id, buildInfo.number)))
+      .catchError((dynamic e) {
+    debugPrint(e.toString());
+    store.dispatch(new FetchBuildWinRatesFailedAction());
+  });
+}
+
+void getHeroBuildWinRates(
+    Store<AppState> store, Hero hero, String buildNumber) {
+  store.dispatch(new BuildWinRatesStartLoadingAction());
+  DataProvider.buildWinRatesProvider
+      .getBuildWinRates(buildNumber, hero.name)
+      .then((buildWinRates) => store.dispatch(
+          new FetchBuildWinRatesSucceededAction(
+              buildWinRates, hero.heroes_companion_hero_id, buildNumber)))
       .catchError((dynamic e) {
     debugPrint(e.toString());
     store.dispatch(new FetchBuildWinRatesFailedAction());

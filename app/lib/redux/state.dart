@@ -6,10 +6,12 @@ import 'package:hots_dog_api/hots_dog_api.dart';
 class AppState {
   final List<Hero> heroes;
   final List<BuildInfo> gameBuilds;
-  final WinRates winRates;
+  /// BuildNumber => WinRates
+  final Map<String, WinRates> winRates;
   final bool isLoading;
   final bool heroBuildWinRatesLoading;
-  final Map<int, BuildWinRates> heroBuildWinRates;
+  /// heroCompanionId => <BuildNumber, BuildWinRates>
+  final Map<int, Map<String, BuildWinRates>> heroBuildWinRates;
   final String searchQuery;
 
   AppState({
@@ -29,9 +31,9 @@ class AppState {
     bool isLoading,
     Hero hero,
     List<BuildInfo> buildInfo,
-    WinRates winRates,
+    Map<String, WinRates> winRates,
     bool heroBuildWinRatesLoading,
-    Map<int, BuildWinRates> heroBuildWinRates,
+    Map<int, Map<String, BuildWinRates>> heroBuildWinRates,
     String searchQuery
   }) {
     return new AppState(
@@ -39,8 +41,7 @@ class AppState {
       heroes: hero ?? this.heroes,
       gameBuilds: buildInfo ?? this.gameBuilds,
       winRates: winRates ?? this.winRates,
-      heroBuildWinRatesLoading:
-          heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
+      heroBuildWinRatesLoading: heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
       heroBuildWinRates: heroBuildWinRates ?? this.heroBuildWinRates,
       searchQuery: searchQuery ?? this.searchQuery
     );
@@ -55,7 +56,6 @@ class AppState {
       heroBuildWinRatesLoading.hashCode ^
       heroBuildWinRates.hashCode ^
       searchQuery.hashCode;
-
 
   @override
   bool operator ==(Object other) =>
