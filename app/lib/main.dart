@@ -57,7 +57,7 @@ class App extends StatelessWidget {
             title: appName,
             theme: new ThemeData(
               primaryColor: Colors.deepPurple,
-              accentColor: Colors.blue,
+              accentColor: Colors.orangeAccent,
               backgroundColor: Colors.white,
               textTheme: new Typography(platform: TargetPlatform.android).black,
             ),

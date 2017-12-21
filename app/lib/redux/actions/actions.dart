@@ -27,17 +27,19 @@ class FetchBuildInfoFailedAction {}
 
 class FetchWinRatesSucceededAction {
   final WinRates winRates;
+  final String buildNumber;
 
-  FetchWinRatesSucceededAction(this.winRates);
+  FetchWinRatesSucceededAction(this.winRates, this.buildNumber);
 }
 
 class FetchWinRatesFailedAction {}
 
 class FetchBuildWinRatesSucceededAction {
+  final String buildNumber;
   final BuildWinRates buildWinRates;
   final int heroCompanionId;
 
-  FetchBuildWinRatesSucceededAction(this.buildWinRates, this.heroCompanionId);
+  FetchBuildWinRatesSucceededAction(this.buildWinRates, this.heroCompanionId, this.buildNumber);
 }
 
 class FetchBuildWinRatesFailedAction {}
