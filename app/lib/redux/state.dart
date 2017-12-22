@@ -1,3 +1,4 @@
+import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
@@ -13,6 +14,7 @@ class AppState {
   /// heroCompanionId => <BuildNumber, BuildWinRates>
   final Map<int, Map<String, BuildWinRates>> heroBuildWinRates;
   final String searchQuery;
+  final HeroFilter filter;
 
   AppState({
     this.isLoading = false,
@@ -22,6 +24,7 @@ class AppState {
     this.winRates,
     this.heroBuildWinRates,
     this.searchQuery = '',
+    this.filter = HeroFilter.all
   });
 
   factory AppState.loading() =>
@@ -34,7 +37,8 @@ class AppState {
     Map<String, WinRates> winRates,
     bool heroBuildWinRatesLoading,
     Map<int, Map<String, BuildWinRates>> heroBuildWinRates,
-    String searchQuery
+    String searchQuery,
+    HeroFilter filter
   }) {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,
@@ -43,7 +47,8 @@ class AppState {
       winRates: winRates ?? this.winRates,
       heroBuildWinRatesLoading: heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
       heroBuildWinRates: heroBuildWinRates ?? this.heroBuildWinRates,
-      searchQuery: searchQuery ?? this.searchQuery
+      searchQuery: searchQuery ?? this.searchQuery,
+      filter: filter ?? this.filter,
     );
   }
 
@@ -55,7 +60,8 @@ class AppState {
       winRates.hashCode ^
       heroBuildWinRatesLoading.hashCode ^
       heroBuildWinRates.hashCode ^
-      searchQuery.hashCode;
+      searchQuery.hashCode ^
+      filter.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -68,7 +74,8 @@ class AppState {
           winRates == other.winRates &&
           heroBuildWinRatesLoading == other.heroBuildWinRatesLoading &&
           heroBuildWinRates == other.heroBuildWinRates &&
-          searchQuery == other.searchQuery;
+          searchQuery == other.searchQuery &&
+          filter == other.filter;
 
   @override
   String toString() {

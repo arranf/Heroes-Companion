@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/services/build_info_service.dart';
+import 'package:heroes_companion/view/routes/hero_home_container.dart';
 import 'package:heroes_companion/view/routes/hero_search_container.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -13,7 +14,6 @@ import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:heroes_companion/redux/reducers/app_state.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/routes.dart';
-import 'package:heroes_companion/view/home_view.dart';
 import 'package:heroes_companion/view/common/splash.dart';
 
 final String appName = 'Heroes Companion';
@@ -66,7 +66,7 @@ class App extends StatelessWidget {
               Routes.home: (BuildContext context) {
                 return new StoreBuilder<AppState>(
                   builder: (context, store) {
-                    return new HomeScreen();
+                    return new HeroHome();
                   },
                 );
               },

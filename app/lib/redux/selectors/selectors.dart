@@ -1,3 +1,4 @@
+import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
@@ -8,7 +9,28 @@ bool isAppLoading(AppState state) =>
 
 bool isLoadingSelector(AppState state) => state.isLoading;
 
+HeroFilter filterSelector(AppState state) => state.filter;
+
 List<Hero> heroesSelector(AppState state) => state.heroes;
+
+List<Hero> favoriteHeroesSelector(AppState state) => state.heroes.where((Hero h) => h.is_favorite).toList();
+
+List<Hero> ownedHeroesSelector(AppState state) => state.heroes.where((Hero h) => h.is_owned).toList();
+
+List<Hero> heroesbyFilterSelector(AppState state) {
+  switch (filterSelector(state)){
+    case HeroFilter.all:
+      return heroesSelector(state);
+      break;
+    case HeroFilter.owned:
+      return ownedHeroesSelector(state);
+      break;
+    case HeroFilter.favorite:
+      return favoriteHeroesSelector(state);
+    default:
+      return heroesSelector(state);
+  }
+}
 
 Optional<Hero> heroSelectorByCompanionId(List<Hero> heroes, int id) {
   try {

@@ -4,6 +4,7 @@ import 'package:heroes_companion/redux/reducers/build_info.dart';
 import 'package:heroes_companion/redux/reducers/win_rates.dart';
 import 'package:heroes_companion/redux/reducers/heroes_build_win_rates.dart';
 import 'package:heroes_companion/redux/reducers/search_query_reducer.dart';
+import 'package:heroes_companion/redux/reducers/filter_reducer.dart';
 
 import 'package:heroes_companion/redux/reducers/heroes_build_win_rates_loading.dart';
 import 'package:heroes_companion/redux/state.dart';
@@ -19,5 +20,6 @@ AppState appReducer(AppState state, action) {
           heroesBuildWinRatesReducer(state.heroBuildWinRates, action),
       heroBuildWinRatesLoading: heroesBuildWinRatesloadingReducer(
           state.heroBuildWinRatesLoading, action),
-      searchQuery: searchQueryReducer(state.searchQuery, action));
+      searchQuery: searchQueryReducer(state.searchQuery, action),
+      filter: filterReducer(state.filter, action) );
 }

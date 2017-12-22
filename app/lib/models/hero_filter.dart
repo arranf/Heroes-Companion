@@ -1,0 +1,1 @@
+enum HeroFilter { all, favorite, owned }
