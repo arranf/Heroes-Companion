@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/material.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
@@ -27,9 +25,9 @@ class BuildPrompt extends StatelessWidget {
                   : Theme.of(context).accentColor,
               child: new Center(
                   child: new Text(
-                    'Showing previous build data'.toUpperCase(),
+                    'Showing previous patch data'.toUpperCase(),
                   style: Theme.of(context).textTheme.body1.copyWith(
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                   )
                   .apply(fontSizeFactor: 0.9),
               ))));
@@ -38,7 +36,7 @@ class BuildPrompt extends StatelessWidget {
       SchedulerBinding.instance.addPostFrameCallback( (duration) {
         Scaffold.of(context).showSnackBar(
           new SnackBar(
-            content: new Text('Not many games have been played this patch. Would you like to see the builds for the previous patch?'),
+            content: new Text('There''s not much data for this patch. Would you like to see the builds for the previous patch?'),
             duration: new Duration(seconds: 10),
             action: new SnackBarAction(
               onPressed: onTap,
