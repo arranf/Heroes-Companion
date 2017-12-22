@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/view/common/app_loading_container.dart';
 import 'package:heroes_companion/view/common/build_prompt.dart';
+import 'package:heroes_companion/view/common/build_swiper.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
@@ -141,7 +142,7 @@ class HeroDetail extends StatelessWidget {
 
   Widget _buildTalentRow(BuildContext context, BuildStatistics build) {
     return new Padding(
-        padding: new EdgeInsets.all(8.0),
+        padding: new EdgeInsets.all(4.0),
         child: new Column(
           key: new Key(build.hashCode.toString()),
           children: [
@@ -156,16 +157,28 @@ class HeroDetail extends StatelessWidget {
                 new Padding(
                   padding: new EdgeInsets.symmetric(horizontal: 4.0),
                   child: new Text('${build.total_games_played} Games Played'),
+                ),
+                new Padding(
+                  padding: new EdgeInsets.symmetric(horizontal: 4.0),
+                  child: new IconButton(icon: new Icon(Icons.play_circle_filled), onPressed: () {
+                    Navigator.of(context).push(new PageRouteBuilder(
+                      pageBuilder: (context, a1, a2) => new BuildSwiper(hero, build),
+                    ));
+                  })
                 )
               ],
             ),
             new Container(
               height: 4.0,
             ),
-            new FittedBox(
+            new Padding(
+              padding: new EdgeInsets.symmetric(horizontal: 8.0),
+              child: new FittedBox(
                 child: new Row(
-                    children: new List.generate(build.talents_names.length,
-                        (i) => _buildTalent(context, build.talents_names[i]))))
+                  children: new List.generate(build.talents_names.length,
+                    (i) => _buildTalent(context, build.talents_names[i])))
+              ),
+            ),
           ],
         ));
   }
@@ -173,19 +186,10 @@ class HeroDetail extends StatelessWidget {
   Widget _buildTalent(BuildContext context, String talentName) {
     Talent talent =
         hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
-    return new Column(
-      key: new Key(talentName),
-      children: [
-        new Text(
-          talent.sort_order.toString(),
-          style: new TextStyle(fontWeight: FontWeight.w600),
-        ),
-        new Tooltip(
-          message: 'Level ${talent.level}: ${talent.name}',
-          child:
-              new Image.asset('assets/images/talents/${talent.icon_file_name}'),
-        ),
-      ],
+    return new Tooltip(
+      message: 'Level ${talent.level}: ${talent.name}',
+      child:
+          new Image.asset('assets/images/talents/${talent.icon_file_name}'),
     );
   }
 
