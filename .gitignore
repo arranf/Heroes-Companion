@@ -12,3 +12,5 @@ heroes_companion.db
 app/ls\.txt
 
 app/android/key\.properties
+
+app/assets/heroes_companion\.db-journal
