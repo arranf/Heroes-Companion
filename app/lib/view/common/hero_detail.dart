@@ -188,11 +188,7 @@ class HeroDetail extends StatelessWidget {
   Widget _buildTalent(BuildContext context, String talentName) {
     Talent talent =
         hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
-    return new Tooltip(
-      message: 'Level ${talent.level}: ${talent.name}',
-      child:
-          new Image.asset('assets/images/talents/${talent.icon_file_name}'),
-    );
+    return new Image.asset('assets/images/talents/${talent.icon_file_name}');
   }
 
   Widget _buildDetail(BuildContext context) {

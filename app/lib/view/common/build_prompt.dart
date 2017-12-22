@@ -48,8 +48,6 @@ class BuildPrompt extends StatelessWidget {
         );
       });
     }
-    return new Container(
-      height: 0.0,
-    );
+    return new Container();
   }
 }
