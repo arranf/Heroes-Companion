@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/api.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/models/hero.dart';
 import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
@@ -51,6 +53,16 @@ class HeroProvider {
       return new List.generate(maps.length, (int index ) => new Hero.fromMap(maps[index]));
     }
     return null;
+  }
+
+  updateHeroRotations() async {
+    HeroesCompanionData data = await getData();
+    await _database.update(
+      hero_table.table_name,
+      {hero_table.column_last_rotation_date: data.rotationEnd},
+      where: "${hero_table.column_name} IN ?",
+      whereArgs: data.heroes
+    );
   }
 
   Future<int> update(Hero hero) async {
