@@ -4,7 +4,7 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 class TalentCard extends StatelessWidget {
   final Talent talent;
 
-  TalentCard(this.talent);
+  TalentCard(this.talent, {key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

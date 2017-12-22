@@ -23,7 +23,7 @@ class HeroDetailContainer extends StatefulWidget {
       new _HeroDetailContainerState(heroesCompanionId);
 
   HeroDetailContainer(this.heroesCompanionId)
-      : super(key: Routes.heroDetailKey);
+      : super(key: new Key(Routes.heroDetail + '_' + heroesCompanionId.toString()));
 }
 
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
@@ -66,7 +66,9 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
           }
          _ViewModel vm = new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
 
-          return new HeroDetail(vm.hero,
+          return new HeroDetail(
+              vm.hero,
+              key: new Key(vm.hero.short_name),
               favorite: vm.favorite,
               winLossCount: vm.winLossCount,
               buildWinRates: vm.buildWinRates,

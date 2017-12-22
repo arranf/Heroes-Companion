@@ -68,7 +68,10 @@ class _BuildSwiperState extends State<BuildSwiper> with SingleTickerProviderStat
       child: new TabBarView(
         controller: _tabController,
         children: widget.buildWinRates.talents_names.map( (String talentName) {
-          return new TalentCard(widget.hero.talents.firstWhere((Talent t) => t.talent_tree_id == talentName));
+          return new TalentCard(
+            widget.hero.talents.firstWhere((Talent t) => t.talent_tree_id == talentName),
+            key: new Key(talentName)
+          );
         }).toList(),
       ),
     );

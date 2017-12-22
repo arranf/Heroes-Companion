@@ -11,7 +11,9 @@ class BuildPrompt extends StatelessWidget {
     this._isCurrentBuild,
     this.winLossCount,
     this.onTap,
-  );
+    {
+      key,
+    })       : super(key: key);
 
   @override
   Widget build(BuildContext context) {

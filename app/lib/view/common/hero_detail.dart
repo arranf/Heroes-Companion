@@ -26,7 +26,7 @@ class HeroDetail extends StatelessWidget {
     this.buildNumber,
     this.buildSwitch,
   })
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class HeroDetail extends StatelessWidget {
 
   Widget _buildTitleRow(BuildContext context) {
     return new Container(
+      key: new Key(hero.name + '_title_row'),
       padding: new EdgeInsets.only(left: 64.0, bottom: 8.0),
       color: Theme.of(context).primaryColor,
       child: new Row(
@@ -135,16 +136,16 @@ class HeroDetail extends StatelessWidget {
         }
       }
 
-      return new Column(children: children);
+      return new Column(key: new Key(hero.name + '_talent_rows'), children: children);
     }
     return new Container();
   }
 
   Widget _buildTalentRow(BuildContext context, BuildStatistics build) {
     return new Padding(
+        key: new Key('${hero.name}_talent_row_${build.hashCode}'),
         padding: new EdgeInsets.all(4.0),
         child: new Column(
-          key: new Key(build.hashCode.toString()),
           children: [
             new Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -162,7 +163,7 @@ class HeroDetail extends StatelessWidget {
                   padding: new EdgeInsets.symmetric(horizontal: 4.0),
                   child: new IconButton(icon: new Icon(Icons.play_circle_filled), onPressed: () {
                     Navigator.of(context).push(new PageRouteBuilder(
-                      pageBuilder: (context, a1, a2) => new BuildSwiper(hero, build),
+                      pageBuilder: (context, a1, a2) => new BuildSwiper(hero, build, key: new Key('${hero.name}_${build.hashCode}_build_swiper'),),
                     ));
                   })
                 )
@@ -174,6 +175,7 @@ class HeroDetail extends StatelessWidget {
             new Padding(
               padding: new EdgeInsets.symmetric(horizontal: 8.0),
               child: new FittedBox(
+                fit: BoxFit.fitWidth,
                 child: new Row(
                   children: new List.generate(build.talents_names.length,
                     (i) => _buildTalent(context, build.talents_names[i])))
@@ -212,7 +214,7 @@ class HeroDetail extends StatelessWidget {
         ),
         body: new Column(
           children: <Widget>[
-            new BuildPrompt(isCurrentBuild, winLossCount, buildSwitch),
+            new BuildPrompt(isCurrentBuild, winLossCount, buildSwitch, key: new Key('${hero.name}_previous_build_prompt'),),
             _buildTitleRow(context),
             new Flexible(
                 child: new ListView(
