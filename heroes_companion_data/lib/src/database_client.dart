@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
+import 'package:heroes_companion_data/src/database_upgrades.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -14,6 +15,7 @@ class DatabaseClient {
   static HeroProvider heroProvider;
   static DatabaseClient _client = new DatabaseClient._internal();
   static final String databaseName = "heroes_companion.db";
+  static final int databaseVersion = 2;
 
   factory DatabaseClient() {
     return _client;
@@ -32,10 +34,16 @@ class DatabaseClient {
             """);
   }
 
+  _onUpgrade(Database database, int oldVersion, int newVersion) async {
+    // TODO make this cleaner
+    if (oldVersion < 2 && newVersion <= 2){
+      await upgradeTo2(database);
+    }
+  }
+
   Future<Database> start() async {
     String databasePath = await _getDatabasePath(databaseName);
-    // TODO Fetch and store version
-    return await openDatabase(databasePath, version: 1, onCreate: _onCreate);
+    return await openDatabase(databasePath, version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade );
   }
 
   /// @param databaseName The name of the database (e.g. heroes.db)
