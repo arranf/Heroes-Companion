@@ -24,6 +24,7 @@ class DatabaseClient {
   DatabaseClient._internal();
 
   Future _onCreate(Database database, int version) async {
+    // Add our initial set of columns
     await database.execute("""
             ALTER TABLE heroes
             ADD COLUMN IsOwned INTEGER DEFAULT 0
@@ -32,11 +33,15 @@ class DatabaseClient {
             ALTER TABLE heroes
             ADD COLUMN IsFavorite INTEGER DEFAULT 0
             """);
+
+    // Migrations
+    _onUpgrade(database, 0, 2);
   }
 
   _onUpgrade(Database database, int oldVersion, int newVersion) async {
     // TODO make this cleaner
-    if (oldVersion < 2 && newVersion <= 2){
+    if (oldVersion < 2){
+      debugPrint('Upgrading to 2');
       await upgradeTo2(database);
     }
   }

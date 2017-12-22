@@ -1,15 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 
-void getHeroes(Store<AppState> store) {
+getHeroes(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
-  DataProvider.heroProvider
-      .getHeroes()
-      .then((heroes) => store.dispatch(new FetchHeroesSucceededAction(heroes)))
-      .catchError(
-          (Exception e) => store.dispatch(new FetchHeroesFailedAction()));
+  DataProvider.heroProvider.updateHeroRotations()
+  .then((a) => DataProvider.heroProvider.getHeroes())
+  .then((List<Hero> heroes) => store.dispatch(new FetchHeroesSucceededAction(heroes)))
+  .catchError((e) {
+    debugPrint(e.toString());
+      store.dispatch(new FetchHeroesFailedAction());
+  });
 }
 
 void setFavorite(Store<AppState> store, Hero hero) {

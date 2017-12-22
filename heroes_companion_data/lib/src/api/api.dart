@@ -27,6 +27,7 @@ Future<HeroesCompanionData> getData() async {
   if (response.statusCode != 200) {
     return null;
   }
+  // print(response.body);
   dynamic jsonData = JSON.decode(_getUtf8String(response));
-  return new BuildWinRates.fromJson(jsonData);
+  return new HeroesCompanionData.fromJson(jsonData);
 }

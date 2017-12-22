@@ -1,1 +1,1 @@
-enum HeroFilter { all, favorite, owned }
+enum HeroFilter { all, favorite, freeToPlay, owned }

@@ -32,8 +32,12 @@ class Hero {
     DateTime release_date = DateTime.parse(map[table.column_release_date]);
     bool is_owned = map[table.column_is_owned] == 1;
     bool is_favorite = map[table.column_is_favorite] == 1;
-    DateTime last_rotation_date = DateTime.parse(map[table.column_last_rotation_date]);
-    return new Hero(heroes_companion_hero_id, hero_id, name, short_name, attribute_id, hero_icon_file_name, role, type, release_date, is_owned, is_favorite, is_on_rotation: last_rotation_date);
+    DateTime last_rotation_date = map[table.column_last_rotation_date] == null ? new DateTime(1970) : DateTime.parse(map[table.column_last_rotation_date]);
+    return new Hero(heroes_companion_hero_id, hero_id, name, short_name, attribute_id, hero_icon_file_name, role, type, release_date, is_owned, is_favorite, last_rotation_date: last_rotation_date);
+  }
+
+  bool isOnRotation(){
+    return last_rotation_date.compareTo(new DateTime.now()) == 1;
   }
 
   Map toMap() {

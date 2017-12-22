@@ -37,8 +37,9 @@ class HeroProvider {
          hero.talents = await DataProvider.talentProvider.getTalentsForHero(hero.hero_id);
       });
       return heroes; 
+    } else {
+      throw new Exception('No heroes found');
     }
-    return null;
   }
 
   Future<List<Hero>> getFavoriteHeroes() async {
@@ -55,13 +56,15 @@ class HeroProvider {
     return null;
   }
 
-  updateHeroRotations() async {
+  Future updateHeroRotations() async {
     HeroesCompanionData data = await getData();
-    await _database.update(
-      hero_table.table_name,
-      {hero_table.column_last_rotation_date: data.rotationEnd},
-      where: "${hero_table.column_name} IN ?",
-      whereArgs: data.heroes
+    // TODO Validation of data
+    await _database.rawUpdate(
+      '''
+      UPDATE ${hero_table.table_name}
+      SET ${hero_table.column_last_rotation_date} = '${data.rotationEnd.toIso8601String()}'
+      WHERE ${hero_table.column_name} IN (${data.heroes.map((a) => '\'' + a.replaceAll('\'', '\'\'') + '\'') .join(',')})
+      '''
     );
   }
 

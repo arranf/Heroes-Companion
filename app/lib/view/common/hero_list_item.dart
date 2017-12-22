@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:heroes_companion/icons.dart' as HeroesIcons;
 
 class HeroListItem extends StatelessWidget {
   final dynamic onTap;
@@ -33,7 +34,12 @@ class HeroListItem extends StatelessWidget {
               fontSize: 18.0,
             )),
         subtitle: new Text(hero.role),
-        trailing: hero.is_favorite ? new Icon(Icons.favorite) : null,
+        trailing: new Row(
+          children: <Widget>[
+            hero.is_favorite ? new Icon(Icons.favorite) : new Container(),
+            hero.isOnRotation() ? new Icon(HeroesIcons.hexagon, size: 16.0,) : new Container(),
+          ],
+        ),
         onTap: () => this.onTap(context, this),
         onLongPress: () => this.onLongPress(context, this),
       ),
