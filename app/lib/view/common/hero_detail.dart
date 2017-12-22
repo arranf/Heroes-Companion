@@ -209,10 +209,10 @@ class HeroDetail extends StatelessWidget {
         body: new Column(
           children: <Widget>[
             new BuildPrompt(isCurrentBuild, winLossCount, buildSwitch),
+            _buildTitleRow(context),
             new Flexible(
                 child: new ListView(
               children: <Widget>[
-                _buildTitleRow(context),
                 new Container(
                   height: 24.0,
                 ),
