@@ -37,7 +37,7 @@ class HeroListItem extends StatelessWidget {
         trailing: new Row(
           children: <Widget>[
             hero.is_favorite ? new Icon(Icons.favorite) : new Container(),
-            hero.isOnRotation() ? new Icon(HeroesIcons.hexagon, size: 16.0,) : new Container(),
+            hero.isOnRotation() ? new Icon(HeroesIcons.hexagon) : new Container(),
           ],
         ),
         onTap: () => this.onTap(context, this),

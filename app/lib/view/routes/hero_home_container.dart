@@ -49,8 +49,8 @@ class HeroHome extends StatelessWidget {
               title: new Text('Favorite')
             ),
             new BottomNavigationBarItem(
-              icon: new Icon(HeroesIcons.hexagon, size: 16.0,),
-              title: new Text('Free to Play')
+              icon: new Icon(HeroesIcons.hexagon),
+              title: new Text('Free to Play'),  
             ),
           ],
           onTap: (index) => vm.bottomNavTap(index),
