@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   sqflite: any
+  http: "^0.11.3"
   hots_dog_api:
     path: ../../hots_dog_api
   path_provider: "^0.2.2"

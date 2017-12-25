@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:heroes_companion_data/src/database_client.dart';
+import 'package:heroes_companion_data/src/database/database_client.dart';
 import 'package:heroes_companion_data/src/providers/ability_provider.dart';
 import 'package:heroes_companion_data/src/providers/build_win_rates_provider.dart';
 import 'package:heroes_companion_data/src/providers/game_info_provider.dart';

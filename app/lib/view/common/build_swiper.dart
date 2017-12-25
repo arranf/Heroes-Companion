@@ -64,8 +64,10 @@ class _BuildSwiperState extends State<BuildSwiper> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return new Container(
+      key: new Key('${widget.hero.name}_swiper'),
       color: Theme.of(context).primaryColor,
       child: new TabBarView(
+        key: new Key('${widget.hero.name}_swiper_tab_bar_view'),
         controller: _tabController,
         children: widget.buildWinRates.talents_names.map( (String talentName) {
           return new TalentCard(

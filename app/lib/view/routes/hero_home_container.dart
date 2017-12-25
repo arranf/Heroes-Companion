@@ -8,6 +8,8 @@ import 'package:heroes_companion/view/common/hero_list_item.dart';
 import 'package:heroes_companion/view/routes/hero_detail_container.dart';
 import 'package:redux/redux.dart';
 
+import 'package:heroes_companion/icons.dart' as HeroesIcons;
+
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 
 import 'package:heroes_companion/redux/selectors/selectors.dart';
@@ -45,7 +47,11 @@ class HeroHome extends StatelessWidget {
             new BottomNavigationBarItem(
               icon: new Icon(Icons.favorite),
               title: new Text('Favorite')
-            )
+            ),
+            new BottomNavigationBarItem(
+              icon: new Icon(HeroesIcons.hexagon),
+              title: new Text('Free to Play'),  
+            ),
           ],
           onTap: (index) => vm.bottomNavTap(index),
         )

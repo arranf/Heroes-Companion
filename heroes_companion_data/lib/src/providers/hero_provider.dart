@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/api.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/models/hero.dart';
 import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
@@ -35,8 +37,9 @@ class HeroProvider {
          hero.talents = await DataProvider.talentProvider.getTalentsForHero(hero.hero_id);
       });
       return heroes; 
+    } else {
+      throw new Exception('No heroes found');
     }
-    return null;
   }
 
   Future<List<Hero>> getFavoriteHeroes() async {
@@ -51,6 +54,18 @@ class HeroProvider {
       return new List.generate(maps.length, (int index ) => new Hero.fromMap(maps[index]));
     }
     return null;
+  }
+
+  Future updateHeroRotations() async {
+    HeroesCompanionData data = await getData();
+    // TODO Validation of data
+    await _database.rawUpdate(
+      '''
+      UPDATE ${hero_table.table_name}
+      SET ${hero_table.column_last_rotation_date} = '${data.rotationEnd.toIso8601String()}'
+      WHERE ${hero_table.column_name} IN (${data.heroes.map((a) => '\'' + a.replaceAll('\'', '\'\'') + '\'') .join(',')})
+      '''
+    );
   }
 
   Future<int> update(Hero hero) async {
