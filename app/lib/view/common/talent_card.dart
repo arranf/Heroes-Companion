@@ -15,6 +15,7 @@ class TalentCard extends StatelessWidget {
           child: new Padding(
             padding: new EdgeInsets.all(16.0),
             child: new Column(
+              key: new Key(talent.name + '_talent_card' + '_column'),
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 new Row(
