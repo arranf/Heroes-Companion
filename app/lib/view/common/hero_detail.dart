@@ -188,7 +188,32 @@ class HeroDetail extends StatelessWidget {
   Widget _buildTalent(BuildContext context, String talentName) {
     Talent talent =
         hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
-    return new Image.asset('assets/images/talents/${talent.icon_file_name}');
+    return new GestureDetector(
+      onTap: () => showModalBottomSheet<Null>(context: context, builder: (BuildContext context) {
+              return new Container(
+                child: new Container(
+                  child: new Padding(
+                    padding: const EdgeInsets.all(32.0),
+                    child: new Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        new Row(
+                          children: <Widget>[
+                            new Text(talent.name, style: Theme.of(context).textTheme.headline,),
+                            new Image.asset('assets/images/talents/${talent.icon_file_name}')
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        ),
+                        new Container(height: 16.0,),
+                        new Text(talent.description)
+                      ],
+                    )
+                  ),
+                )
+              );
+            }),
+      child: new Image.asset('assets/images/talents/${talent.icon_file_name}'),
+    );
   }
 
   Widget _buildDetail(BuildContext context) {
