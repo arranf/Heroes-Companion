@@ -214,6 +214,7 @@ class _HeroDetailState extends State<HeroDetail>
                   padding: const EdgeInsets.all(32.0),
                   child: new Column(
                     mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       new Row(
                         children: <Widget>[
@@ -237,7 +238,6 @@ class _HeroDetailState extends State<HeroDetail>
       child: new Image.asset(
         'assets/images/talents/${talent.icon_file_name}',
       ),
-      // child: new Placeholder(fallbackHeight: 64.0, fallbackWidth: 64.0,),
     ));
   }
 

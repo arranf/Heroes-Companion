@@ -13,14 +13,17 @@ HeroFilter filterSelector(AppState state) => state.filter;
 
 List<Hero> heroesSelector(AppState state) => state.heroes;
 
-List<Hero> favoriteHeroesSelector(AppState state) => state.heroes.where((Hero h) => h.is_favorite).toList();
+List<Hero> favoriteHeroesSelector(AppState state) =>
+    state.heroes.where((Hero h) => h.is_favorite).toList();
 
-List<Hero> ownedHeroesSelector(AppState state) => state.heroes.where((Hero h) => h.is_owned).toList();
+List<Hero> ownedHeroesSelector(AppState state) =>
+    state.heroes.where((Hero h) => h.is_owned).toList();
 
-List<Hero> freeToPlayHeroesSelector(AppState state) => state.heroes.where((Hero h) => h.isOnRotation()).toList();
+List<Hero> freeToPlayHeroesSelector(AppState state) =>
+    state.heroes.where((Hero h) => h.isOnRotation()).toList();
 
 List<Hero> heroesbyFilterSelector(AppState state) {
-  switch (filterSelector(state)){
+  switch (filterSelector(state)) {
     case HeroFilter.all:
       return heroesSelector(state);
       break;

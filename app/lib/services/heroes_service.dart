@@ -6,12 +6,14 @@ import 'package:redux/redux.dart';
 
 getHeroes(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
-  DataProvider.heroProvider.updateHeroRotations()
-  .then((a) => DataProvider.heroProvider.getHeroes())
-  .then((List<Hero> heroes) => store.dispatch(new FetchHeroesSucceededAction(heroes)))
-  .catchError((e) {
+  DataProvider.heroProvider
+      .updateHeroRotations()
+      .then((a) => DataProvider.heroProvider.getHeroes())
+      .then((List<Hero> heroes) =>
+          store.dispatch(new FetchHeroesSucceededAction(heroes)))
+      .catchError((e) {
     debugPrint(e.toString());
-      store.dispatch(new FetchHeroesFailedAction());
+    store.dispatch(new FetchHeroesFailedAction());
   });
 }
 

@@ -10,9 +10,9 @@ class TalentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Center(
       child: new Padding(
-        padding: new EdgeInsets.all(8.0),
-        child: new Card(
-          child: new Padding(
+          padding: new EdgeInsets.all(8.0),
+          child: new Card(
+              child: new Padding(
             padding: new EdgeInsets.all(16.0),
             child: new Column(
               key: new Key(talent.name + '_talent_card' + '_column'),
@@ -21,8 +21,16 @@ class TalentCard extends StatelessWidget {
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    new Text(talent.name, style: Theme.of(context).textTheme.body2.apply(fontSizeFactor: 2.0),),
-                    new Image.asset('assets/images/talents/${talent.icon_file_name}')
+                    new Text(
+                      talent.name,
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .body2
+                          .apply(fontSizeFactor: 2.0),
+                    ),
+                    new Image.asset(
+                        'assets/images/talents/${talent.icon_file_name}')
                   ],
                 ),
                 new Padding(
@@ -32,9 +40,17 @@ class TalentCard extends StatelessWidget {
                     children: <Widget>[
                       new Padding(
                         padding: new EdgeInsets.only(right: 8.0),
-                        child: new Text('Level ${talent.level}', style: Theme.of(context).textTheme.title),
+                        child: new Text('Level ${talent.level}',
+                            style: Theme.of(context).textTheme.title),
                       ),
-                      new Text('(${talent.sort_order})', style: Theme.of(context).textTheme.body2.apply(fontSizeDelta: 4.0),)
+                      new Text(
+                        '(${talent.sort_order})',
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .body2
+                            .apply(fontSizeDelta: 4.0),
+                      )
                     ],
                   ),
                 ),
@@ -44,9 +60,7 @@ class TalentCard extends StatelessWidget {
                 ),
               ],
             ),
-          )
-        )
-      ),
+          ))),
     );
   }
 }

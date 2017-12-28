@@ -23,7 +23,9 @@ class HeroDetailContainer extends StatefulWidget {
       new _HeroDetailContainerState(heroesCompanionId);
 
   HeroDetailContainer(this.heroesCompanionId)
-      : super(key: new Key(Routes.heroDetail + '_' + heroesCompanionId.toString()));
+      : super(
+            key: new Key(
+                Routes.heroDetail + '_' + heroesCompanionId.toString()));
 }
 
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
@@ -56,36 +58,31 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreBuilder<AppState>(
-        onInit: (store) {
-          fetchData(store);
-        },
-        builder: (context, store) {
-          if (!isAppLoading(store.state)) {
-            fetchData(store);
-          }
-         _ViewModel vm = new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
+    return new StoreBuilder<AppState>(onInit: (store) {
+      fetchData(store);
+    }, builder: (context, store) {
+      if (!isAppLoading(store.state)) {
+        fetchData(store);
+      }
+      _ViewModel vm =
+          new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
 
-          return new HeroDetail(
-              vm.hero,
-              key: new Key(vm.hero.short_name),
-              favorite: vm.favorite,
-              winLossCount: vm.winLossCount,
-              buildWinRates: vm.buildWinRates,
-              isCurrentBuild: _isCurrentBuild,
-              buildNumber: _buildNumber,
-              buildSwitch: () {
-                setState(() {
-                  _isCurrentBuild = !_isCurrentBuild;
-                  _buildNumber = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild).number;
-                });
-              }
-          );
-        }
-    );
+      return new HeroDetail(vm.hero,
+          key: new Key(vm.hero.short_name),
+          favorite: vm.favorite,
+          winLossCount: vm.winLossCount,
+          buildWinRates: vm.buildWinRates,
+          isCurrentBuild: _isCurrentBuild,
+          buildNumber: _buildNumber, buildSwitch: () {
+        setState(() {
+          _isCurrentBuild = !_isCurrentBuild;
+          _buildNumber =
+              (_isCurrentBuild ? vm.currentBuild : vm.previousBuild).number;
+        });
+      });
+    });
   }
 }
-
 
 class _ViewModel {
   final Hero hero;
