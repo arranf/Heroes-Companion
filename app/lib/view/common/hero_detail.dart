@@ -237,7 +237,6 @@ class _HeroDetailState extends State<HeroDetail>
       child: new Image.asset(
         'assets/images/talents/${talent.icon_file_name}',
       ),
-      // child: new Placeholder(fallbackHeight: 64.0, fallbackWidth: 64.0,),
     ));
   }
 
