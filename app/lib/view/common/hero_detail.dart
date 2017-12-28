@@ -214,6 +214,7 @@ class _HeroDetailState extends State<HeroDetail>
                   padding: const EdgeInsets.all(32.0),
                   child: new Column(
                     mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       new Row(
                         children: <Widget>[
