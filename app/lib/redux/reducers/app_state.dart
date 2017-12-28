@@ -21,5 +21,5 @@ AppState appReducer(AppState state, action) {
       heroBuildWinRatesLoading: heroesBuildWinRatesloadingReducer(
           state.heroBuildWinRatesLoading, action),
       searchQuery: searchQueryReducer(state.searchQuery, action),
-      filter: filterReducer(state.filter, action) );
+      filter: filterReducer(state.filter, action));
 }

@@ -25,37 +25,34 @@ class HeroHome extends StatelessWidget {
     return new StoreConnector<AppState, _ViewModel>(
       converter: _ViewModel.fromStore,
       builder: (context, vm) {
-      return new Scaffold(
-        appBar: new AppBar(title: new Text('Heroes Companion')),
-        body: new HeroList(
-          vm.heroes,
-          onTap: vm.onTap,
-          onLongPress: vm.onLongPress,
-        ),
-        floatingActionButton: new FloatingActionButton(
-            child: new Icon(Icons.search),
-            onPressed: () => Navigator.of(context).pushNamed(Routes.search),
-            backgroundColor: Theme.of(context).accentColor,
-          ),
-        bottomNavigationBar: new BottomNavigationBar(
-          currentIndex: vm.currentFilter.index,
-          items: [
-            new BottomNavigationBarItem(
-              icon: new Icon(Icons.all_inclusive),
-              title: new Text('All')
+        return new Scaffold(
+            appBar: new AppBar(title: new Text('Heroes Companion')),
+            body: new HeroList(
+              vm.heroes,
+              onTap: vm.onTap,
+              onLongPress: vm.onLongPress,
             ),
-            new BottomNavigationBarItem(
-              icon: new Icon(Icons.favorite),
-              title: new Text('Favorite')
+            floatingActionButton: new FloatingActionButton(
+              child: new Icon(Icons.search),
+              onPressed: () => Navigator.of(context).pushNamed(Routes.search),
+              backgroundColor: Theme.of(context).accentColor,
             ),
-            new BottomNavigationBarItem(
-              icon: new Icon(HeroesIcons.hexagon),
-              title: new Text('Free to Play'),  
-            ),
-          ],
-          onTap: (index) => vm.bottomNavTap(index),
-        )
-      );
+            bottomNavigationBar: new BottomNavigationBar(
+              currentIndex: vm.currentFilter.index,
+              items: [
+                new BottomNavigationBarItem(
+                    icon: new Icon(Icons.all_inclusive),
+                    title: new Text('All')),
+                new BottomNavigationBarItem(
+                    icon: new Icon(Icons.favorite),
+                    title: new Text('Favorite')),
+                new BottomNavigationBarItem(
+                  icon: new Icon(HeroesIcons.hexagon),
+                  title: new Text('Free to Play'),
+                ),
+              ],
+              onTap: (index) => vm.bottomNavTap(index),
+            ));
       },
     );
   }
@@ -74,7 +71,12 @@ class _ViewModel {
         ));
   };
 
-  _ViewModel({@required this.heroes, @required this.loading, this.onLongPress, this.bottomNavTap, this.currentFilter});
+  _ViewModel(
+      {@required this.heroes,
+      @required this.loading,
+      this.onLongPress,
+      this.bottomNavTap,
+      this.currentFilter});
 
   static _ViewModel fromStore(Store<AppState> store) {
     final dynamic _favorite = (BuildContext context, HeroListItem item) {
@@ -84,16 +86,16 @@ class _ViewModel {
     };
 
     final dynamic _bottomNavTap = (int index) {
-      HeroFilter filter = HeroFilter.values.firstWhere( (v) => v.index == index, orElse: () => HeroFilter.all);
+      HeroFilter filter = HeroFilter.values
+          .firstWhere((v) => v.index == index, orElse: () => HeroFilter.all);
       store.dispatch(new SetFilterAction(filter));
     };
 
     return new _ViewModel(
-      heroes: heroesbyFilterSelector(store.state),
-      loading: store.state.isLoading,
-      onLongPress: _favorite,
-      bottomNavTap: _bottomNavTap,
-      currentFilter: filterSelector(store.state)
-    );
+        heroes: heroesbyFilterSelector(store.state),
+        loading: store.state.isLoading,
+        onLongPress: _favorite,
+        bottomNavTap: _bottomNavTap,
+        currentFilter: filterSelector(store.state));
   }
 }

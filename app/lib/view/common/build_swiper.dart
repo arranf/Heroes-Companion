@@ -12,24 +12,21 @@ class BuildSwiper extends StatefulWidget {
 
   BuildSwiper(
     this.hero,
-    this.buildWinRates,
-    {
+    this.buildWinRates, {
     key,
-    }
-  )
+  })
       : super(key: key);
 
-    
   @override
   State createState() => new _BuildSwiperState();
-
 }
 
-class _BuildSwiperState extends State<BuildSwiper> with SingleTickerProviderStateMixin {
+class _BuildSwiperState extends State<BuildSwiper>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
   static final _platform =
       const MethodChannel('com.heroescompanion.app/screen');
-      
+
   Future _setScreenNoSleep() async {
     try {
       await _platform.invokeMethod('setScreenNoSleep');
@@ -50,8 +47,8 @@ class _BuildSwiperState extends State<BuildSwiper> with SingleTickerProviderStat
   void initState() {
     super.initState();
     _setScreenNoSleep();
-    _tabController =
-        new TabController(vsync: this, length: widget.buildWinRates.talents_names.length);
+    _tabController = new TabController(
+        vsync: this, length: widget.buildWinRates.talents_names.length);
   }
 
   @override
@@ -69,11 +66,11 @@ class _BuildSwiperState extends State<BuildSwiper> with SingleTickerProviderStat
       child: new TabBarView(
         key: new Key('${widget.hero.name}_swiper_tab_bar_view'),
         controller: _tabController,
-        children: widget.buildWinRates.talents_names.map( (String talentName) {
+        children: widget.buildWinRates.talents_names.map((String talentName) {
           return new TalentCard(
-            widget.hero.talents.firstWhere((Talent t) => t.talent_tree_id == talentName),
-            key: new Key(talentName)
-          );
+              widget.hero.talents
+                  .firstWhere((Talent t) => t.talent_tree_id == talentName),
+              key: new Key(talentName));
         }).toList(),
       ),
     );
