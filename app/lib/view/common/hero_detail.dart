@@ -7,7 +7,7 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
 import 'package:meta/meta.dart';
 
-class HeroDetail extends StatefulWidget {
+class HeroDetail extends StatelessWidget {
   final Hero hero;
   final bool isCurrentBuild;
   final WinLossCount winLossCount;
@@ -29,26 +29,6 @@ class HeroDetail extends StatefulWidget {
       : super(key: key);
 
   @override
-  State createState() => new _HeroDetailState();
-}
-
-class _HeroDetailState extends State<HeroDetail>
-    with SingleTickerProviderStateMixin {
-  TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = new TabController(vsync: this, length: 2);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return new AppLoading(builder: (context, loading) {
       return loading ? new LoadingView() : _buildDetail(context);
@@ -57,14 +37,14 @@ class _HeroDetailState extends State<HeroDetail>
 
   Widget _buildTitleRow(BuildContext context) {
     return new Container(
-      key: new Key(widget.hero.name + '_title_row'),
+      key: new Key(hero.name + '_title_row'),
       padding: new EdgeInsets.only(left: 64.0, bottom: 8.0),
       color: Theme.of(context).primaryColor,
       child: new Row(
         children: <Widget>[
           new CircleAvatar(
             backgroundImage: new AssetImage(
-                'assets/images/heroes/${widget.hero.icon_file_name}'),
+                'assets/images/heroes/${hero.icon_file_name}'),
             radius: 45.0,
           ),
           new Container(
@@ -73,14 +53,14 @@ class _HeroDetailState extends State<HeroDetail>
           new Padding(
             padding: new EdgeInsets.only(top: 4.0),
             child: new Column(children: [
-              new Text(widget.hero.name,
+              new Text(hero.name,
                   style: Theme
                       .of(context)
                       .textTheme
                       .headline
                       .apply(color: Colors.white)),
               new Text(
-                '${widget.hero.type} ${widget.hero.role}',
+                '${hero.type} ${hero.role}',
                 style: Theme
                     .of(context)
                     .textTheme
@@ -91,8 +71,8 @@ class _HeroDetailState extends State<HeroDetail>
                 height: 20.0,
               ),
               new Text(
-                widget.winLossCount != null
-                    ? '${widget.winLossCount.winPercentange().toStringAsFixed(1)} Win %'
+                winLossCount != null
+                    ? '${winLossCount.winPercentange().toStringAsFixed(1)} Win %'
                     : ' ',
                 style: Theme
                     .of(context)
@@ -101,8 +81,8 @@ class _HeroDetailState extends State<HeroDetail>
                     .apply(color: Colors.white),
               ),
               new Text(
-                  widget.winLossCount != null
-                      ? '${(widget.winLossCount.wins + widget.winLossCount.losses).toString()} games played'
+                  winLossCount != null
+                      ? '${(winLossCount.wins + winLossCount.losses).toString()} games played'
                       : ' ',
                   style: Theme
                       .of(context)
@@ -117,11 +97,11 @@ class _HeroDetailState extends State<HeroDetail>
   }
 
   Widget _buildTalentRows(BuildContext context) {
-    if (widget.buildWinRates != null) {
+    if (buildWinRates != null) {
       List<Widget> children = [];
-      if (widget.buildWinRates.winning_builds != null) {
+      if (buildWinRates.winning_builds != null) {
         List<BuildStatistics> interestingWinningBuilds =
-            new List<BuildStatistics>.from(widget.buildWinRates.winning_builds
+            new List<BuildStatistics>.from(buildWinRates.winning_builds
                 .where((b) => b.talents_names.length == 7));
         if (interestingWinningBuilds.length > 0) {
           children.add(new ListView(
@@ -132,9 +112,9 @@ class _HeroDetailState extends State<HeroDetail>
         }
       }
 
-      if (widget.buildWinRates.popular_builds != null) {
+      if (buildWinRates.popular_builds != null) {
         List<BuildStatistics> interestingPopularBuilds =
-            new List<BuildStatistics>.from(widget.buildWinRates.popular_builds
+            new List<BuildStatistics>.from(buildWinRates.popular_builds
                 .where((b) => b.talents_names.length == 7));
         if (interestingPopularBuilds.length > 0) {
           children.add(new ListView(
@@ -145,7 +125,7 @@ class _HeroDetailState extends State<HeroDetail>
         }
       }
       return new TabBarView(
-        key: new Key(widget.hero.name + '_talent_rows'),
+        key: new Key(hero.name + '_talent_rows'),
         children: children,
       );
     }
@@ -154,7 +134,7 @@ class _HeroDetailState extends State<HeroDetail>
 
   Widget _buildTalentRow(BuildContext context, BuildStatistics build) {
     return new Padding(
-        key: new Key('${widget.hero.name}_talent_row_${build.hashCode}'),
+        key: new Key('${hero.name}_talent_row_${build.hashCode}'),
         padding: new EdgeInsets.all(4.0),
         child: new Column(
           children: [
@@ -178,10 +158,10 @@ class _HeroDetailState extends State<HeroDetail>
                           Navigator.of(context).push(new PageRouteBuilder(
                                 pageBuilder: (context, a1, a2) =>
                                     new BuildSwiper(
-                                      widget.hero,
+                                      hero,
                                       build,
                                       key: new Key(
-                                          '${widget.hero.name}_${build.hashCode}_build_swiper'),
+                                          '${hero.name}_${build.hashCode}_build_swiper'),
                                     ),
                               ));
                         }))
@@ -203,7 +183,7 @@ class _HeroDetailState extends State<HeroDetail>
 
   Widget _buildTalent(BuildContext context, String talentName) {
     Talent talent =
-        widget.hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
+        hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
     return new Flexible(
         child: new GestureDetector(
       onTap: () => showModalBottomSheet<Null>(
@@ -241,41 +221,59 @@ class _HeroDetailState extends State<HeroDetail>
     ));
   }
 
+  List<Widget> _buildTabs(BuildContext context) {
+    List<Tab> tabs = new List<Tab>();
+     if (buildWinRates != null && buildWinRates.winning_builds != null && buildWinRates.winning_builds.any((b) => b.talents_names.length == 7) ) {
+      tabs.add(new Tab(
+        key: new Key('winning_build_tab'),
+        text: 'Winning Builds',
+      ));
+     }
+
+     if (buildWinRates != null && buildWinRates.popular_builds != null && buildWinRates.popular_builds.any((b) => b.talents_names.length == 7)){
+       tabs.add(new Tab(
+        key: new Key('popular_build_tab'),
+         text: 'Popular Builds',
+       ));
+     }
+
+     return tabs;
+  }
+
   Widget _buildDetail(BuildContext context) {
+    List<Tab> tabs = _buildTabs(context);
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text(widget.hero.name),
+          title: new Text(hero.name),
           actions: [
             new IconButton(
-              tooltip: widget.hero.is_favorite
-                  ? 'Unfavorite ${widget.hero.name}'
-                  : 'Favorite ${widget.hero.name}',
+              tooltip: hero.is_favorite
+                  ? 'Unfavorite ${hero.name}'
+                  : 'Favorite ${hero.name}',
               icon: new Icon(Icons.favorite,
-                  color: widget.hero.is_favorite
+                  color: hero.is_favorite
                       ? Colors.red
                       : Theme.of(context).buttonColor),
-              onPressed: () => widget.favorite(widget.hero),
+              onPressed: () => favorite(hero),
             ),
           ],
         ),
         body: new DefaultTabController(
-            length: 2,
+            key: new Key('tab_controller_${tabs.hashCode}'),
+            length: tabs.length,
+            initialIndex: 0,
             child: new Column(
               children: <Widget>[
                 new BuildPrompt(
-                  widget.isCurrentBuild,
-                  widget.winLossCount,
-                  widget.buildSwitch,
-                  key: new Key('${widget.hero.name}_previous_build_prompt'),
+                  isCurrentBuild,
+                  winLossCount,
+                  buildSwitch,
+                  key: new Key('${hero.name}_previous_build_prompt'),
                 ),
                 _buildTitleRow(context),
                 new TabBar(
-                  tabs: [
-                    new Tab(
-                      text: 'Winning',
-                    ),
-                    new Tab(text: 'Popular')
-                  ],
+                  key: new Key('tab_bar_${tabs.hashCode}'),
+                  tabs: tabs,
                   labelColor: Theme.of(context).textTheme.body2.color,
                 ),
                 new Expanded(

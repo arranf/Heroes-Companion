@@ -21,13 +21,16 @@ class TalentCard extends StatelessWidget {
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    new Text(
-                      talent.name,
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .body2
-                          .apply(fontSizeFactor: 2.0),
+                    new Flexible(
+                      child: new Text(
+                        talent.name,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .body2
+                            .apply(fontSizeFactor: 2.0),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     new Image.asset(
                         'assets/images/talents/${talent.icon_file_name}')

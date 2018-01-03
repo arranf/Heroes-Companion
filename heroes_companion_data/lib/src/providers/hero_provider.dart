@@ -59,11 +59,20 @@ class HeroProvider {
   Future updateHeroRotations() async {
     HeroesCompanionData data = await getData();
     // TODO Validation of data
+    //
+    RegExp regExp = new RegExp(r'[^A-Za-z]+');
+    String commaSeparatedHeroes = data.heroes
+      // Non alphanumeric characters become the empty string
+      .map( (a) { 
+        return '\'' + a.replaceAll(regExp, '').toLowerCase() + '\'';
+      })
+      .join(',');
+
     await _database.rawUpdate(
       '''
       UPDATE ${hero_table.table_name}
       SET ${hero_table.column_last_rotation_date} = '${data.rotationEnd.toIso8601String()}'
-      WHERE ${hero_table.column_name} IN (${data.heroes.map((a) => '\'' + a.replaceAll('\'', '\'\'') + '\'') .join(',')})
+      WHERE ${hero_table.column_short_name} IN (${commaSeparatedHeroes})
       '''
     );
   }
