@@ -17,6 +17,8 @@ class TalentCard extends StatelessWidget {
             child: new Column(
               key: new Key(talent.name + '_talent_card' + '_column'),
               mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +61,7 @@ class TalentCard extends StatelessWidget {
                 ),
                 new Padding(
                   padding: new EdgeInsets.only(top: 16.0),
-                  child: new Text(talent.description),
+                  child: new Text(talent.description, style: Theme.of(context).textTheme.body1.apply(fontSizeFactor: 1.2)),
                 ),
               ],
             ),
