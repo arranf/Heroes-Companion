@@ -4,6 +4,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/routes.dart';
+import 'package:heroes_companion/view/common/empty_favorite_list.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
 import 'package:heroes_companion/view/routes/hero_detail_container.dart';
 import 'package:redux/redux.dart';
@@ -27,13 +28,13 @@ class HeroHome extends StatelessWidget {
       builder: (context, vm) {
         return new Scaffold(
             appBar: new AppBar(title: new Text('Heroes Companion')),
-            body: new HeroList(
+            body: vm.currentFilter != HeroFilter.favorite || !vm.heroes.isEmpty ? new HeroList(
               vm.heroes,
               onTap: vm.onTap,
               onLongPress: vm.onLongPress,
               onRefresh: vm.onRefresh,
               allowRefresh: vm.allowRefresh
-            ),
+            ) : new EmptyFavoriteList(),
             floatingActionButton: new FloatingActionButton(
               child: new Icon(Icons.search),
               onPressed: () => Navigator.of(context).pushNamed(Routes.search),
@@ -102,11 +103,13 @@ class _ViewModel {
 
     bool allowRefresh = false;
     Function onRefresh = () => true;
-    if (filter == HeroFilter.favorite) {
+    if (filter == HeroFilter.freeToPlay) {
       allowRefresh = true;
-      onRefresh = getHeroes(store);
+      onRefresh = () {
+        debugPrint('On Refresh');
+        return getHeroesAsync(store);
+      };
     }
-
 
     return new _ViewModel(
         heroes: heroesbyFilterSelector(store.state),
@@ -116,6 +119,6 @@ class _ViewModel {
         currentFilter: filterSelector(store.state),
         onRefresh: onRefresh,
         allowRefresh: allowRefresh    
-      );
+    );
   }
 }
