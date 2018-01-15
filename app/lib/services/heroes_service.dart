@@ -21,14 +21,14 @@ void getHeroes(Store<AppState> store) {
 
 Future getHeroesAsync(Store<AppState> store) {
   return DataProvider.heroProvider
-    .updateHeroRotations()
-    .then((a) => DataProvider.heroProvider.getHeroes())
-    .then((List<Hero> heroes) =>
+      .updateHeroRotations()
+      .then((a) => DataProvider.heroProvider.getHeroes())
+      .then((List<Hero> heroes) =>
           store.dispatch(new FetchHeroesSucceededAction(heroes)))
-    .catchError((e) {
+      .catchError((e) {
     debugPrint(e.toString());
     store.dispatch(new FetchHeroesFailedAction());
-    });
+  });
 }
 
 void setFavorite(Store<AppState> store, Hero hero) {

@@ -35,8 +35,11 @@ class TalentCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    have_assets ? new Image.asset('assets/images/talents/${talent.icon_file_name}') 
-                      : new Image.network('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
+                    have_assets
+                        ? new Image.asset(
+                            'assets/images/talents/${talent.icon_file_name}')
+                        : new Image.network(
+                            'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
                   ],
                 ),
                 new Padding(
@@ -62,7 +65,12 @@ class TalentCard extends StatelessWidget {
                 ),
                 new Padding(
                   padding: new EdgeInsets.only(top: 16.0),
-                  child: new Text(talent.description, style: Theme.of(context).textTheme.body1.apply(fontSizeFactor: 1.2)),
+                  child: new Text(talent.description,
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .body1
+                          .apply(fontSizeFactor: 1.2)),
                 ),
               ],
             ),

@@ -28,13 +28,14 @@ class HeroHome extends StatelessWidget {
       builder: (context, vm) {
         return new Scaffold(
             appBar: new AppBar(title: new Text('Heroes Companion')),
-            body: vm.currentFilter != HeroFilter.favorite || vm.heroes.isNotEmpty ? new HeroList(
-              vm.heroes,
-              onTap: vm.onTap,
-              onLongPress: vm.onLongPress,
-              onRefresh: vm.onRefresh,
-              allowRefresh: vm.allowRefresh
-            ) : new EmptyFavoriteList(),
+            body:
+                vm.currentFilter != HeroFilter.favorite || vm.heroes.isNotEmpty
+                    ? new HeroList(vm.heroes,
+                        onTap: vm.onTap,
+                        onLongPress: vm.onLongPress,
+                        onRefresh: vm.onRefresh,
+                        allowRefresh: vm.allowRefresh)
+                    : new EmptyFavoriteList(),
             floatingActionButton: new FloatingActionButton(
               child: new Icon(Icons.search),
               onPressed: () => Navigator.of(context).pushNamed(Routes.search),
@@ -83,8 +84,7 @@ class _ViewModel {
       this.bottomNavTap,
       this.currentFilter,
       this.onRefresh,
-      this.allowRefresh = false
-      });
+      this.allowRefresh = false});
 
   static _ViewModel fromStore(Store<AppState> store) {
     final Function _favorite = (BuildContext context, HeroListItem item) {
@@ -118,7 +118,6 @@ class _ViewModel {
         bottomNavTap: _bottomNavTap,
         currentFilter: filterSelector(store.state),
         onRefresh: onRefresh,
-        allowRefresh: allowRefresh    
-    );
+        allowRefresh: allowRefresh);
   }
 }

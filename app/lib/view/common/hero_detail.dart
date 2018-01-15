@@ -43,8 +43,10 @@ class HeroDetail extends StatelessWidget {
       child: new Row(
         children: <Widget>[
           new CircleAvatar(
-            backgroundImage: hero.have_assets ? new AssetImage('assets/images/heroes/${hero.icon_file_name}') 
-              : new NetworkImage('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
+            backgroundImage: hero.have_assets
+                ? new AssetImage('assets/images/heroes/${hero.icon_file_name}')
+                : new NetworkImage(
+                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
             radius: 45.0,
           ),
           new Container(
@@ -109,8 +111,11 @@ class HeroDetail extends StatelessWidget {
             child: new Row(
               children: <Widget>[
                 new CircleAvatar(
-                  backgroundImage:  hero.have_assets ? new AssetImage('assets/images/heroes/${hero.icon_file_name}') 
-              : new NetworkImage('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
+                  backgroundImage: hero.have_assets
+                      ? new AssetImage(
+                          'assets/images/heroes/${hero.icon_file_name}')
+                      : new NetworkImage(
+                          'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
                   radius: 45.0,
                 ),
                 new Padding(
@@ -172,10 +177,10 @@ class HeroDetail extends StatelessWidget {
       BuildContext context, BuildStatistics build, String type) {
     return new Container(
       padding: new EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
-      
-        child: new Card(
+      child: new Card(
         child: new Container(
-          padding: new EdgeInsets.symmetric(horizontal: 16.0).add(new EdgeInsets.only(top: 24.0, bottom: 8.0)),
+          padding: new EdgeInsets.symmetric(horizontal: 16.0)
+              .add(new EdgeInsets.only(top: 24.0, bottom: 8.0)),
           child: new Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -198,24 +203,22 @@ class HeroDetail extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: build.talents_names
                       .map((a) => _buildCardTalent(context, a))
-                      .toList()
-              ),
+                      .toList()),
               new ButtonTheme.bar(
                 child: new ButtonBar(
                   children: <Widget>[
                     new FlatButton(
                       child: const Text('PLAY BUILD'),
                       onPressed: () {
-              Navigator.of(context).push(new PageRouteBuilder(
-          pageBuilder: (context, a1, a2) =>
-              new BuildSwiper(
-                hero,
-                build,
-                key: new Key(
-                    '${hero.name}_${build.hashCode}_build_swiper'),
-              ),
-          ));
-        },
+                        Navigator.of(context).push(new PageRouteBuilder(
+                              pageBuilder: (context, a1, a2) => new BuildSwiper(
+                                    hero,
+                                    build,
+                                    key: new Key(
+                                        '${hero.name}_${build.hashCode}_build_swiper'),
+                                  ),
+                            ));
+                      },
                     )
                   ],
                 ),
@@ -362,9 +365,11 @@ class HeroDetail extends StatelessWidget {
                           talent.name,
                           style: Theme.of(context).textTheme.headline,
                         ),
-                         hero.have_assets ? new Image.asset('assets/images/talents/${talent.icon_file_name}') 
-              : new Image.network('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
-                        
+                        hero.have_assets
+                            ? new Image.asset(
+                                'assets/images/talents/${talent.icon_file_name}')
+                            : new Image.network(
+                                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
@@ -382,10 +387,12 @@ class HeroDetail extends StatelessWidget {
     Talent talent =
         hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
     return new Expanded(
-        child: new GestureDetector(
+      child: new GestureDetector(
         onTap: () => showTalentBottomSheet(context, talent),
-        child: hero.have_assets ? new Image.asset('assets/images/talents/${talent.icon_file_name}') 
-              : new Image.network('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'),
+        child: hero.have_assets
+            ? new Image.asset('assets/images/talents/${talent.icon_file_name}')
+            : new Image.network(
+                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'),
       ),
     );
   }
@@ -394,24 +401,27 @@ class HeroDetail extends StatelessWidget {
     Talent talent =
         hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
     // return new Flexible(
-      // fit: FlexFit.tight,
-       return new GestureDetector(
-      onTap: () => showTalentBottomSheet(context, talent),
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          hero.have_assets ? new Image.asset('assets/images/talents/${talent.icon_file_name}') 
-              : new Image.network('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'),
-          new Container(
-            height: 4.0,
-          ),
-          new Text(
-            talent.name,
-            maxLines: 1,
-          )
-        ],
-      // ),
-    ));
+    // fit: FlexFit.tight,
+    return new GestureDetector(
+        onTap: () => showTalentBottomSheet(context, talent),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            hero.have_assets
+                ? new Image.asset(
+                    'assets/images/talents/${talent.icon_file_name}')
+                : new Image.network(
+                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'),
+            new Container(
+              height: 4.0,
+            ),
+            new Text(
+              talent.name,
+              maxLines: 1,
+            )
+          ],
+          // ),
+        ));
   }
 
   List<Widget> _buildTabs(BuildContext context) {

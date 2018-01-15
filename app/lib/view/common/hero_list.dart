@@ -11,21 +11,15 @@ class HeroList extends StatelessWidget {
   final Function onRefresh;
   final bool allowRefresh;
 
-  HeroList(
-    this.heroes, {
-    this.onTap,
-    this.onLongPress,
-    this.onRefresh,
-    this.allowRefresh = false
-  })
+  HeroList(this.heroes,
+      {this.onTap, this.onLongPress, this.onRefresh, this.allowRefresh = false})
       : super(key: new Key('hero_list'));
-  
+
   Widget _buildRefresh(BuildContext context) {
     return new RefreshIndicator(
         key: new Key('hero_list_refresh'),
         onRefresh: onRefresh,
-        child: _buildList(context)
-    );
+        child: _buildList(context));
   }
 
   Widget _buildList(BuildContext context) {
@@ -39,12 +33,11 @@ class HeroList extends StatelessWidget {
             onLongPress: this.onLongPress);
       },
     );
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Container(
-      child: allowRefresh ? _buildRefresh(context) : _buildList(context)
-    );
+        child: allowRefresh ? _buildRefresh(context) : _buildList(context));
   }
 }

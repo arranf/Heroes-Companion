@@ -26,8 +26,10 @@ class HeroListItem extends StatelessWidget {
       ),
       child: new ListTile(
         leading: new CircleAvatar(
-          backgroundImage:  hero.have_assets ? new AssetImage('assets/images/heroes/${hero.icon_file_name}') 
-              : new NetworkImage('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
+          backgroundImage: hero.have_assets
+              ? new AssetImage('assets/images/heroes/${hero.icon_file_name}')
+              : new NetworkImage(
+                  'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
         ),
         title: new Text(hero.name,
             style: new TextStyle(
