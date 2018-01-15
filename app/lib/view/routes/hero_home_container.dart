@@ -28,7 +28,7 @@ class HeroHome extends StatelessWidget {
       builder: (context, vm) {
         return new Scaffold(
             appBar: new AppBar(title: new Text('Heroes Companion')),
-            body: vm.currentFilter != HeroFilter.favorite || !vm.heroes.isEmpty ? new HeroList(
+            body: vm.currentFilter != HeroFilter.favorite || vm.heroes.isNotEmpty ? new HeroList(
               vm.heroes,
               onTap: vm.onTap,
               onLongPress: vm.onLongPress,

@@ -44,6 +44,12 @@ class Talent {
     return map;
   }
 
+  Map toUpdateMap () {
+    Map map = toMap();
+    map.remove(table.column_id);
+    return map;
+  }
+
   Talent copyWith ({int id, int hero_id, String ability_id, String talent_tree_id, String tool_tip_id, int level, int sort_order, String name, String description, String icon_file_name}){
     return new Talent(
       id = id ?? this.id,

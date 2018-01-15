@@ -43,8 +43,8 @@ class HeroDetail extends StatelessWidget {
       child: new Row(
         children: <Widget>[
           new CircleAvatar(
-            backgroundImage:
-                new AssetImage('assets/images/heroes/${hero.icon_file_name}'),
+            backgroundImage: hero.have_assets ? new AssetImage('assets/images/heroes/${hero.icon_file_name}') 
+              : new NetworkImage('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
             radius: 45.0,
           ),
           new Container(
@@ -109,8 +109,8 @@ class HeroDetail extends StatelessWidget {
             child: new Row(
               children: <Widget>[
                 new CircleAvatar(
-                  backgroundImage: new AssetImage(
-                      'assets/images/heroes/${hero.icon_file_name}'),
+                  backgroundImage:  hero.have_assets ? new AssetImage('assets/images/heroes/${hero.icon_file_name}') 
+              : new NetworkImage('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
                   radius: 45.0,
                 ),
                 new Padding(
@@ -362,8 +362,9 @@ class HeroDetail extends StatelessWidget {
                           talent.name,
                           style: Theme.of(context).textTheme.headline,
                         ),
-                        new Image.asset(
-                            'assets/images/talents/${talent.icon_file_name}')
+                         hero.have_assets ? new Image.asset('assets/images/talents/${talent.icon_file_name}') 
+              : new Image.network('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
+                        
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
@@ -383,10 +384,10 @@ class HeroDetail extends StatelessWidget {
     return new Expanded(
         child: new GestureDetector(
         onTap: () => showTalentBottomSheet(context, talent),
-        child: new Image.asset(
-        'assets/images/talents/${talent.icon_file_name}',
+        child: hero.have_assets ? new Image.asset('assets/images/talents/${talent.icon_file_name}') 
+              : new Image.network('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'),
       ),
-    ));
+    );
   }
 
   Widget _buildCardTalent(BuildContext context, String talentName) {
@@ -399,9 +400,8 @@ class HeroDetail extends StatelessWidget {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Image.asset(
-            'assets/images/talents/${talent.icon_file_name}',
-          ),
+          hero.have_assets ? new Image.asset('assets/images/talents/${talent.icon_file_name}') 
+              : new Image.network('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'),
           new Container(
             height: 4.0,
           ),
