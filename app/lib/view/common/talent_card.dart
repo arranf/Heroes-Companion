@@ -3,8 +3,9 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 
 class TalentCard extends StatelessWidget {
   final Talent talent;
+  final bool have_assets;
 
-  TalentCard(this.talent, {key}) : super(key: key);
+  TalentCard(this.talent, this.have_assets, {key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +35,8 @@ class TalentCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    new Image.asset(
-                        'assets/images/talents/${talent.icon_file_name}')
+                    have_assets ? new Image.asset('assets/images/talents/${talent.icon_file_name}') 
+                      : new Image.network('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
                   ],
                 ),
                 new Padding(

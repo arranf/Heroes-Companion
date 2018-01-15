@@ -70,6 +70,7 @@ class _BuildSwiperState extends State<BuildSwiper>
           return new TalentCard(
               widget.hero.talents
                   .firstWhere((Talent t) => t.talent_tree_id == talentName),
+              widget.hero.have_assets,
               key: new Key(talentName));
         }).toList(),
       ),
