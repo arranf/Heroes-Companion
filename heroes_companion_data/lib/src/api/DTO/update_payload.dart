@@ -22,7 +22,7 @@ class UpdatePayload {
 
     DateTime id = DateTime.parse(map['id']);
     List<Hero> heroes = map['heroes'].map((h) => new Hero.fromMap(h)).toList();
-    List<Talent> talents = map['heroes'].map((t) => new Talent.fromMap(t)).toList();
+    List<Talent> talents = map['talents'].map((t) => new Talent.fromMap(t)).toList();
     List<Ability> abilities = map['abilities'].map((a) => new Ability.fromMap(a)).toList();
     return new UpdatePayload(id, heroes, talents, abilities);
   }

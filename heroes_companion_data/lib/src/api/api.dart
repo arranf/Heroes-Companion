@@ -7,7 +7,7 @@ import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
 import 'package:heroes_companion_data/src/providers/hero_provider.dart';
 import 'package:http/http.dart' as http;
 
-String _baseUrl = 'data.heroescompanion.com/v1';
+String _baseUrl = 'data.heroescompanion.com';
 Utf8Decoder _utf8Decoder = new Utf8Decoder();
 
 Map<String, String> _getHeaders() {
@@ -23,7 +23,7 @@ String _getUtf8String(http.Response response) {
 }
 
 Future<HeroesCompanionData> getRotation() async {
-  Uri uri = new Uri.https(_baseUrl, '/rotation');
+  Uri uri = new Uri.https(_baseUrl, '/v1/rotation');
   http.Response response = await http.get(uri, headers: _getHeaders());
   if (response.statusCode != 200) {
     return null;
@@ -34,7 +34,7 @@ Future<HeroesCompanionData> getRotation() async {
 }
 
 Future<UpdatePayload> getUpdate() async {
-  Uri uri = new Uri.https(_baseUrl, '/update');
+  Uri uri = new Uri.https(_baseUrl, '/v1/update');
   http.Response response = await http.get(uri, headers: _getHeaders());
   if (response.statusCode != 200) {
     return null;
@@ -45,7 +45,7 @@ Future<UpdatePayload> getUpdate() async {
 }
 
 Future<UpdateInfo> getUpdateInfo() async {
-  Uri uri = new Uri.https(_baseUrl, 'update/id');
+  Uri uri = new Uri.https(_baseUrl, '/v1/update/id');
   http.Response response = await http.get(uri, headers: _getHeaders());
   if (response.statusCode != 200) {
     return null;
