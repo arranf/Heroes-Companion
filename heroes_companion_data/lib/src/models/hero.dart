@@ -19,9 +19,24 @@ class Hero {
   DateTime last_rotation_date = new DateTime(1970);
   bool have_assets = false;
 
-  Hero(this.heroes_companion_hero_id, this.hero_id, this.name, this.short_name, this.attribute_id, this.icon_file_name, this.role, this.type, this.release_date, this.is_owned, this.is_favorite, this.have_assets, {this.talents, this.abilities, this.last_rotation_date});
+  Hero(
+      this.heroes_companion_hero_id,
+      this.hero_id,
+      this.name,
+      this.short_name,
+      this.attribute_id,
+      this.icon_file_name,
+      this.role,
+      this.type,
+      this.release_date,
+      this.is_owned,
+      this.is_favorite,
+      this.have_assets,
+      {this.talents,
+      this.abilities,
+      this.last_rotation_date});
 
-  factory Hero.fromMap (Map map) {
+  factory Hero.fromMap(Map map) {
     int heroes_companion_hero_id = map[table.column_heroes_companion_hero_id];
     int hero_id = map[table.column_hero_id];
     String name = map[table.column_name];
@@ -33,12 +48,27 @@ class Hero {
     DateTime release_date = DateTime.parse(map[table.column_release_date]);
     bool is_owned = map[table.column_is_owned] == 1;
     bool is_favorite = map[table.column_is_favorite] == 1;
-    DateTime last_rotation_date = map[table.column_last_rotation_date] == null ? new DateTime(1970) : DateTime.parse(map[table.column_last_rotation_date]);
+    DateTime last_rotation_date = map[table.column_last_rotation_date] == null
+        ? new DateTime(1970)
+        : DateTime.parse(map[table.column_last_rotation_date]);
     bool have_assets = map[table.column_have_assets] == 1;
-    return new Hero(heroes_companion_hero_id, hero_id, name, short_name, attribute_id, hero_icon_file_name, role, type, release_date, is_owned, is_favorite, have_assets, last_rotation_date: last_rotation_date);
+    return new Hero(
+        heroes_companion_hero_id,
+        hero_id,
+        name,
+        short_name,
+        attribute_id,
+        hero_icon_file_name,
+        role,
+        type,
+        release_date,
+        is_owned,
+        is_favorite,
+        have_assets,
+        last_rotation_date: last_rotation_date);
   }
 
-  bool isOnRotation(){
+  bool isOnRotation() {
     return last_rotation_date.compareTo(new DateTime.now()) == 1;
   }
 
@@ -56,12 +86,12 @@ class Hero {
       table.column_is_owned: is_owned == true ? 1 : 0,
       table.column_is_favorite: is_favorite == true ? 1 : 0,
       table.column_last_rotation_date: last_rotation_date.toIso8601String(),
-      table.column_have_assets: have_assets == true? 1 : 0
+      table.column_have_assets: have_assets == true ? 1 : 0
     };
     return map;
   }
 
-  Map toUpdateMap () {
+  Map toUpdateMap() {
     Map map = toMap();
     map.remove(table.column_heroes_companion_hero_id);
     map.remove(table.column_is_owned);
@@ -70,10 +100,26 @@ class Hero {
     map.remove(table.column_have_assets);
     return map;
   }
-  
- Hero copyWith({int heroes_companion_hero_id, int hero_id, String name, String short_name, String attribute_id, String icon_file_name, String role, String type, DateTime release_date, bool is_owned, bool is_favorite, bool have_assets, List<Talent> talents, List<Ability> abilities, DateTime last_rotation_date}) {
+
+  Hero copyWith(
+      {int heroes_companion_hero_id,
+      int hero_id,
+      String name,
+      String short_name,
+      String attribute_id,
+      String icon_file_name,
+      String role,
+      String type,
+      DateTime release_date,
+      bool is_owned,
+      bool is_favorite,
+      bool have_assets,
+      List<Talent> talents,
+      List<Ability> abilities,
+      DateTime last_rotation_date}) {
     return new Hero(
-      heroes_companion_hero_id = heroes_companion_hero_id ?? this.heroes_companion_hero_id,
+      heroes_companion_hero_id =
+          heroes_companion_hero_id ?? this.heroes_companion_hero_id,
       hero_id = hero_id ?? this.hero_id,
       name = name ?? this.name,
       short_name = short_name ?? this.short_name,
@@ -92,7 +138,7 @@ class Hero {
   }
 
   @override
-  String toString(){
+  String toString() {
     return "${name}";
   }
 }

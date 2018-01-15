@@ -12,9 +12,19 @@ class Talent {
   final String description;
   final String icon_file_name;
 
-  Talent(this.id, this.hero_id, this.ability_id, this.talent_tree_id, this.tool_tip_id, this.level, this.sort_order, this.name, this.description, this.icon_file_name);
+  Talent(
+      this.id,
+      this.hero_id,
+      this.ability_id,
+      this.talent_tree_id,
+      this.tool_tip_id,
+      this.level,
+      this.sort_order,
+      this.name,
+      this.description,
+      this.icon_file_name);
 
-  factory Talent.fromMap (Map map){
+  factory Talent.fromMap(Map map) {
     int id = map[table.column_id];
     int hero_id = map[table.column_hero_id];
     String ability_id = map[table.column_ability_id];
@@ -25,7 +35,8 @@ class Talent {
     String name = map[table.column_name];
     String description = map[table.column_description];
     String icon_file_name = map[table.column_icon_file_name];
-    return new Talent(id, hero_id, ability_id, talent_tree_id, tool_tip_id, level, sort_order, name, description, icon_file_name);
+    return new Talent(id, hero_id, ability_id, talent_tree_id, tool_tip_id,
+        level, sort_order, name, description, icon_file_name);
   }
 
   Map toMap() {
@@ -44,13 +55,23 @@ class Talent {
     return map;
   }
 
-  Map toUpdateMap () {
+  Map toUpdateMap() {
     Map map = toMap();
     map.remove(table.column_id);
     return map;
   }
 
-  Talent copyWith ({int id, int hero_id, String ability_id, String talent_tree_id, String tool_tip_id, int level, int sort_order, String name, String description, String icon_file_name}){
+  Talent copyWith(
+      {int id,
+      int hero_id,
+      String ability_id,
+      String talent_tree_id,
+      String tool_tip_id,
+      int level,
+      int sort_order,
+      String name,
+      String description,
+      String icon_file_name}) {
     return new Talent(
       id = id ?? this.id,
       hero_id = hero_id ?? this.hero_id,
@@ -66,8 +87,7 @@ class Talent {
   }
 
   @override
-  String toString(){
+  String toString() {
     return 'Talent ${name}';
   }
 }
-

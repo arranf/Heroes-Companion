@@ -16,10 +16,11 @@ class DataProvider {
   static AbilityProvider abilityProvider;
   static WinRateProvider winRateProvider = new WinRateProvider();
   static GameInfoProvider gameInfoProvider = new GameInfoProvider();
-  static BuildWinRatesProvider buildWinRatesProvider = new BuildWinRatesProvider();
+  static BuildWinRatesProvider buildWinRatesProvider =
+      new BuildWinRatesProvider();
   static UpdateProvider updateProvider;
   static Database _database;
-  
+
   // Singleton
   static final DataProvider _dataProvider = new DataProvider._internal();
 

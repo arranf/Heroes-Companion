@@ -3,14 +3,14 @@ class UpdateInfo {
 
   UpdateInfo(this.id);
 
-  factory UpdateInfo.fromJson(Object json){
-    if (!(json is Map)){
+  factory UpdateInfo.fromJson(Object json) {
+    if (!(json is Map)) {
       throw new Exception('Unexpected JSON format');
     }
-    
+
     Map map = json;
-    if (!(map['id'] is String)){
-       throw new Exception('Unexpected JSON format');
+    if (!(map['id'] is String)) {
+      throw new Exception('Unexpected JSON format');
     }
 
     DateTime id = DateTime.parse(map['id']);
