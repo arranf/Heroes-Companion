@@ -35,7 +35,7 @@ class DatabaseClient {
             """);
 
     // Migrations
-    _onUpgrade(database, 0, 2);
+    _onUpgrade(database, 0, 3);
   }
 
   _onUpgrade(Database database, int oldVersion, int newVersion) async {
@@ -43,6 +43,11 @@ class DatabaseClient {
     if (oldVersion < 2){
       debugPrint('Upgrading to 2');
       await upgradeTo2(database);
+    }
+
+    if (oldVersion < 3) {
+      debugPrint('Upgrading to 3');
+      await upgradeTo3(database);
     }
   }
 
