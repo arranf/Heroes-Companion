@@ -57,6 +57,15 @@ class Hero {
     };
     return map;
   }
+
+  Map toUpdateMap () {
+    Map map = toMap();
+    map.remove(table.column_heroes_companion_hero_id);
+    map.remove(table.column_is_owned);
+    map.remove(table.column_is_favorite);
+    map.remove(table.column_last_rotation_date);
+    return map;
+  }
   
  Hero copyWith({int heroes_companion_hero_id, int hero_id, String name, String short_name, String attribute_id, String icon_file_name, String role, String type, DateTime release_date, bool is_owned, bool is_favorite, List<Talent> talents, List<Ability> abilities, DateTime last_rotation_date}) {
     return new Hero(

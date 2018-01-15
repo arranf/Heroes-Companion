@@ -28,7 +28,7 @@ class Ability {
     return new Ability(id, hero_id, ability_id, character_form, name, description, hotkey, cooldown, mana_cost, trait);
   }
 
-  Map toMap(Map map){
+  Map toMap(){
     Map map = {
       table.column_id: id,
       table.column_hero_id: hero_id,
@@ -41,6 +41,12 @@ class Ability {
       table.column_mana_cost: mana_cost,
       table.column_trait: trait,
     };
+    return map;
+  }
+
+  Map toUpdateMap () {
+    Map map = toMap();
+    map.remove(table.column_id);
     return map;
   }
 

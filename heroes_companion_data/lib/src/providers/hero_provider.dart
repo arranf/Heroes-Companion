@@ -57,7 +57,7 @@ class HeroProvider {
   }
 
   Future updateHeroRotations() async {
-    HeroesCompanionData data = await getData();
+    HeroesCompanionData data = await getRotation();
     // TODO Validation of data
     //
     RegExp regExp = new RegExp(r'[^A-Za-z]+');
