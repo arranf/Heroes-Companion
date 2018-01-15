@@ -38,12 +38,13 @@ class HeroList extends StatelessWidget {
             onTap: this.onTap,
             onLongPress: this.onLongPress);
       },
-    ));
+    );
   } 
 
   @override
   Widget build(BuildContext context) {
     return new Container(
       child: allowRefresh ? _buildRefresh(context) : _buildList(context)
+    );
   }
 }
