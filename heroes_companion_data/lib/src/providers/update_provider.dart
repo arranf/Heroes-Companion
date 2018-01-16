@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
 import 'package:sqflite/sqflite.dart';
@@ -89,7 +88,6 @@ class UpdateProvider {
     });
 
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString(
-        pref_keys.update_id, updatePayload.id.toIso8601String());
+    preferences.setString(pref_keys.update_id, updatePayload.id.toIso8601String());
   }
 }
