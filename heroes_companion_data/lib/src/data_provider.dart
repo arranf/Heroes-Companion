@@ -6,6 +6,7 @@ import 'package:heroes_companion_data/src/providers/build_win_rates_provider.dar
 import 'package:heroes_companion_data/src/providers/game_info_provider.dart';
 import 'package:heroes_companion_data/src/providers/hero_provider.dart';
 import 'package:heroes_companion_data/src/providers/talent_provider.dart';
+import 'package:heroes_companion_data/src/providers/update_provider.dart';
 import 'package:heroes_companion_data/src/providers/win_rate_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -15,9 +16,11 @@ class DataProvider {
   static AbilityProvider abilityProvider;
   static WinRateProvider winRateProvider = new WinRateProvider();
   static GameInfoProvider gameInfoProvider = new GameInfoProvider();
-  static BuildWinRatesProvider buildWinRatesProvider = new BuildWinRatesProvider();
+  static BuildWinRatesProvider buildWinRatesProvider =
+      new BuildWinRatesProvider();
+  static UpdateProvider updateProvider;
   static Database _database;
-  
+
   // Singleton
   static final DataProvider _dataProvider = new DataProvider._internal();
 
@@ -31,5 +34,6 @@ class DataProvider {
     heroProvider = new HeroProvider(_database);
     talentProvider = new TalentProvider(_database);
     abilityProvider = new AbilityProvider(_database);
+    updateProvider = new UpdateProvider(_database);
   }
 }

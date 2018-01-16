@@ -12,9 +12,19 @@ class Ability {
   final String mana_cost;
   final bool trait;
 
-  Ability(this.id, this.hero_id, this.ability_id, this.character_form, this.name, this.description, this.hotkey, this.cooldown, this.mana_cost, this.trait);
+  Ability(
+      this.id,
+      this.hero_id,
+      this.ability_id,
+      this.character_form,
+      this.name,
+      this.description,
+      this.hotkey,
+      this.cooldown,
+      this.mana_cost,
+      this.trait);
 
-  factory Ability.fromMap(Map map){
+  factory Ability.fromMap(Map map) {
     int id = map[table.column_id];
     int hero_id = map[table.column_hero_id];
     String ability_id = map[table.column_ability_id];
@@ -25,10 +35,11 @@ class Ability {
     String cooldown = map[table.column_cooldown];
     String mana_cost = map[table.column_mana_cost];
     bool trait = map[table.column_trait] == 0 ? false : true;
-    return new Ability(id, hero_id, ability_id, character_form, name, description, hotkey, cooldown, mana_cost, trait);
+    return new Ability(id, hero_id, ability_id, character_form, name,
+        description, hotkey, cooldown, mana_cost, trait);
   }
 
-  Map toMap(Map map){
+  Map toMap() {
     Map map = {
       table.column_id: id,
       table.column_hero_id: hero_id,
@@ -44,7 +55,24 @@ class Ability {
     return map;
   }
 
-Ability copyWith ({int id, int hero_id, String ability_id, String character_form, String name, String description, String hotkey, String cooldown, String mana_cost, bool trait, }){
+  Map toUpdateMap() {
+    Map map = toMap();
+    map.remove(table.column_id);
+    return map;
+  }
+
+  Ability copyWith({
+    int id,
+    int hero_id,
+    String ability_id,
+    String character_form,
+    String name,
+    String description,
+    String hotkey,
+    String cooldown,
+    String mana_cost,
+    bool trait,
+  }) {
     return new Ability(
       id = id ?? this.id,
       hero_id = hero_id ?? this.hero_id,

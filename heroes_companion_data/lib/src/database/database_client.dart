@@ -35,20 +35,26 @@ class DatabaseClient {
             """);
 
     // Migrations
-    _onUpgrade(database, 0, 2);
+    _onUpgrade(database, 0, 3);
   }
 
   _onUpgrade(Database database, int oldVersion, int newVersion) async {
     // TODO make this cleaner
-    if (oldVersion < 2){
+    if (oldVersion < 2) {
       debugPrint('Upgrading to 2');
       await upgradeTo2(database);
+    }
+
+    if (oldVersion < 3) {
+      debugPrint('Upgrading to 3');
+      await upgradeTo3(database);
     }
   }
 
   Future<Database> start() async {
     String databasePath = await _getDatabasePath(databaseName);
-    return await openDatabase(databasePath, version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade );
+    return await openDatabase(databasePath,
+        version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
   }
 
   /// @param databaseName The name of the database (e.g. heroes.db)
@@ -64,7 +70,8 @@ class DatabaseClient {
 
     // Copy from asset
     ByteData data = await rootBundle.load(join("assets", databaseName));
-    List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    List<int> bytes =
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     await new File(path).writeAsBytes(bytes);
   }
 
