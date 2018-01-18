@@ -107,7 +107,7 @@ class _ViewModel {
       allowRefresh = true;
       onRefresh = () {
         debugPrint('On Refresh');
-        return getHeroesAsync(store);
+        return getHeroesAsync(store, isForceRefreshRotation: true);
       };
     }
 

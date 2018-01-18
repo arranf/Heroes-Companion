@@ -13,8 +13,6 @@ class LaunchError extends StatelessWidget {
             body: new Column(children: [
              new Container(
                child: new Column(
-                 crossAxisAlignment: CrossAxisAlignment.center,
-                 mainAxisAlignment: MainAxisAlignment.center,
                  children: <Widget>[
                    new Text(appName,
                       style: new TextStyle(
@@ -23,19 +21,27 @@ class LaunchError extends StatelessWidget {
                           color: Colors.white)),
                   new Text(
                     'for Heroes of the Storm',
-                    style: new TextStyle(fontSize: 16.0, color: Colors.white),
+                    style: new TextStyle(fontSize: 16.0),
                   )
                  ],
                ),
              ),
+
+             new Container(
+               height: 60.0,
+             ),
+             new Text('Something Went Wrong', style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),),
              new Text(
                error,
-               style: new TextStyle(color: Colors.white),
              )
-        ], mainAxisAlignment: MainAxisAlignment.spaceAround)),
+        ], 
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        )),
         theme: new ThemeData(
           primarySwatch: Colors.deepPurple,
           scaffoldBackgroundColor: Colors.red,
+          textTheme: new Typography(platform: TargetPlatform.android).white
         ));
   }
 }

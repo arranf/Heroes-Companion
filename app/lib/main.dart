@@ -28,6 +28,8 @@ void main() {
     if (state.isLoading == false &&
         heroesSelector(state) != null &&
         buildsSelector(state) != null) {
+      dynamic thing = heroesSelector(state);
+      dynamic thing2 = buildsSelector(state);
       subscription.cancel();
       runApp(app);
     }
@@ -44,12 +46,11 @@ void main() {
   .then((a) async {
     getHeroes(app.store);
     getBuildInfo(app.store);
-    debugPrint('Try update');
-    tryUpdate(app.store);
   })
+  .then((b) => tryUpdate(app.store))
   .catchError((e) {
-    debugPrint(e);
-    runApp(new LaunchError(appName, e));
+    debugPrint('Got an error');
+    runApp(new LaunchError(appName, e.toString()));
     }
   );
 }
