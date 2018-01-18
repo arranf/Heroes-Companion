@@ -7,11 +7,11 @@ import 'package:redux/redux.dart';
 
 Future tryUpdate(Store<AppState> store) async {
   return new Future.sync(() {
-    return DataProvider.updateProvider.doesNeedUpdate()
-    .then((doesNeedUpdate) {
+    return DataProvider.updateProvider.doesNeedUpdate().then((doesNeedUpdate) {
       if (doesNeedUpdate) {
-      DataProvider.updateProvider.doUpdate()
-      .then((a) => getHeroesAsync(store));
+        DataProvider.updateProvider
+            .doUpdate()
+            .then((a) => getHeroesAsync(store));
       }
     });
   });

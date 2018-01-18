@@ -42,17 +42,17 @@ void main() {
   // Create a dataprovider singleton, start it then when it's ready dispatch an event
   new DataProvider();
   subscription = app.store.onChange.listen(listener);
-  DataProvider.start()
-  .then((a) async {
-    getHeroes(app.store);
-    getBuildInfo(app.store);
-  })
-  .then((b) => tryUpdate(app.store))
-  .catchError((e) {
-    debugPrint('Got an error');
-    runApp(new LaunchError(appName, e.toString()));
-    }
-  );
+  DataProvider
+      .start()
+      .then((a) async {
+        getHeroes(app.store);
+        getBuildInfo(app.store);
+      })
+      .then((b) => tryUpdate(app.store))
+      .catchError((e) {
+        debugPrint('Got an error');
+        runApp(new LaunchError(appName, e.toString()));
+      });
 }
 
 class App extends StatelessWidget {
