@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
+import 'package:heroes_companion_data/src/models/ability.dart';
+import 'package:heroes_companion_data/src/models/hero.dart';
+import 'package:heroes_companion_data/src/models/talent.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/tables/ability_table.dart'
     as ability_table;
@@ -35,7 +38,7 @@ class UpdateProvider {
       UpdatePayload updatePayload = await api.getUpdate();
 
       // Hero Update
-      updatePayload.heroes.forEach((hero) async {
+      updatePayload.heroes.forEach((Hero hero) async {
         List<Map<String, dynamic>> existingHero = await _database.query(
             hero_table.table_name,
             columns: [hero_table.column_heroes_companion_hero_id],
@@ -55,7 +58,7 @@ class UpdateProvider {
       // TODO compare talents to existing hero talents and set a 'last updated' property on the hero if they don't match
 
       // // Talent Update
-      updatePayload.talents.forEach((talent) async {
+      updatePayload.talents.forEach((Talent talent) async {
         List<Map<String, dynamic>> existingTalent = await _database.query(
             talent_table.table_name,
             columns: [talent_table.column_id],
@@ -72,7 +75,7 @@ class UpdateProvider {
       });
 
       // // Ability Update
-      updatePayload.abilities.forEach((ability) async {
+      updatePayload.abilities.forEach((Ability ability) async {
         List<Map<String, dynamic>> existingAbility = await _database.query(
             ability_table.table_name,
             columns: [ability_table.column_id],
@@ -91,6 +94,7 @@ class UpdateProvider {
 
       SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString(pref_keys.update_id, updatePayload.id.toIso8601String());
-    }
-  );
+      }
+    );
+  }
 }
