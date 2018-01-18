@@ -19,9 +19,9 @@ void getHeroes(Store<AppState> store) {
   });
 }
 
-Future getHeroesAsync(Store<AppState> store) {
+Future getHeroesAsync(Store<AppState> store, {bool isForceRefreshRotation = false}) {
   return DataProvider.heroProvider
-      .updateHeroRotations()
+      .updateHeroRotations(isForced: isForceRefreshRotation)
       .then((a) => DataProvider.heroProvider.getHeroes())
       .then((List<Hero> heroes) =>
           store.dispatch(new FetchHeroesSucceededAction(heroes)))

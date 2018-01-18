@@ -64,14 +64,16 @@ class HeroProvider {
     });
   }
 
-  Future updateHeroRotations() {
+  Future updateHeroRotations({isForced = false}) {
     return new Future.sync( () async {
         SharedPreferences preferences = await SharedPreferences.getInstance();
         String unparsedNextRotationDate = (preferences.getString(pref_keys.next_rotation_date) ?? '');
         DateTime nextRotationDate =
             unparsedNextRotationDate == '' ? new DateTime(1970) : DateTime.parse(unparsedNextRotationDate);
         
-        if (!new DateTime.now().isAfter(nextRotationDate)){
+        // is forced or the date is before the next rotation date, this will be skipped
+        if (!isForced && !new DateTime.now().isAfter(nextRotationDate)) {
+          debugPrint('${new DateTime.now().toIso8601String()} is before ${nextRotationDate}');
           return;
         }
 
