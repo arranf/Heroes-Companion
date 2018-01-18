@@ -18,13 +18,15 @@ class UpdateProvider {
   Database _database;
   UpdateProvider(this._database);
 
-  Future<bool> doesNeedUpdate() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    String unparsedId = (preferences.getString(pref_keys.update_id) ?? '');
-    DateTime currentId =
-        unparsedId == '' ? new DateTime(1970) : DateTime.parse(unparsedId);
-    UpdateInfo updateInfo = await api.getUpdateInfo();
-    return updateInfo.id.isAfter(currentId);
+  Future<bool> doesNeedUpdate() {
+    return new Future.sync(() async {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      String unparsedId = (preferences.getString(pref_keys.update_id) ?? '');
+      DateTime currentId =
+          unparsedId == '' ? new DateTime(1970) : DateTime.parse(unparsedId);
+      UpdateInfo updateInfo = await api.getUpdateInfo();
+      return updateInfo.id.isAfter(currentId);
+    });
   }
 
   Future doUpdate() async {
