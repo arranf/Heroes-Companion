@@ -36,7 +36,7 @@ class HeroProvider {
         columns: null, orderBy: "${hero_table.column_name} ASC");
 
       if (maps.length > 0) {
-        List<Hero> heroes = maps.map((h) => new Hero.fromMap(h));
+        List<Hero> heroes = maps.map((h) => new Hero.fromMap(h)).toList();
         await heroes.forEach((hero) async {
           //    hero.abilities = await DataProvider.abilityProvider.getAbilitiesForHero(hero.hero_id);
           hero.talents =
