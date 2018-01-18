@@ -23,11 +23,16 @@ Future getHeroesAsync(Store<AppState> store, {bool isForceRefreshRotation = fals
   return DataProvider.heroProvider
       .updateHeroRotations(isForced: isForceRefreshRotation)
       .then((a) => DataProvider.heroProvider.getHeroes())
-      .then((List<Hero> heroes) =>
-          store.dispatch(new FetchHeroesSucceededAction(heroes)))
+      .then((List<Hero> heroes) {
+         if (heroes != null) {
+          store.dispatch(new FetchHeroesSucceededAction(heroes));
+         } else {
+           store.dispatch(new FetchBuildInfoFailedAction());
+         }
+      })
       .catchError((e) {
-    debugPrint(e.toString());
-    store.dispatch(new FetchHeroesFailedAction());
+        debugPrint(e.toString());
+        store.dispatch(new FetchHeroesFailedAction());
   });
 }
 
