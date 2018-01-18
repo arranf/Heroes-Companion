@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion_data/heroes_companion_data.dart';
@@ -28,7 +29,7 @@ class HeroListItem extends StatelessWidget {
         leading: new CircleAvatar(
           backgroundImage: hero.have_assets
               ? new AssetImage('assets/images/heroes/${hero.icon_file_name}')
-              : new NetworkImage(
+              : new CachedNetworkImageProvider(
                   'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
         ),
         title: new Text(hero.name,

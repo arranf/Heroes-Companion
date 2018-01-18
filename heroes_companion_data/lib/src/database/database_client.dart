@@ -15,7 +15,7 @@ class DatabaseClient {
   static HeroProvider heroProvider;
   static DatabaseClient _client = new DatabaseClient._internal();
   static final String databaseName = "heroes_companion.db";
-  static final int databaseVersion = 2;
+  static final int databaseVersion = 3;
 
   factory DatabaseClient() {
     return _client;
@@ -35,7 +35,7 @@ class DatabaseClient {
             """);
 
     // Migrations
-    _onUpgrade(database, 0, 3);
+    _onUpgrade(database, 0, databaseVersion);
   }
 
   _onUpgrade(Database database, int oldVersion, int newVersion) async {

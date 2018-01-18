@@ -10,18 +10,20 @@ class AbilityProvider {
   Database _database;
   AbilityProvider(this._database);
 
-  Future<List<Ability>> getAbilitiesForHero(int hero_id) async {
-    List<Map> maps = await _database.query(
-      ability_table.table_name,
-      columns: null,
-      where: "${ability_table.column_hero_id} = ?",
-      whereArgs: [hero_id],
-      orderBy: "${ability_table.column_name} ASC",
-    );
-    if (maps.length > 0) {
-      return new List.generate(
-          maps.length, (int i) => new Ability.fromMap(maps[i]));
-    }
-    return null;
+  Future<List<Ability>> getAbilitiesForHero(int hero_id) {
+      return new Future.sync(() async {
+        List<Map> maps = await _database.query(
+        ability_table.table_name,
+        columns: null,
+        where: "${ability_table.column_hero_id} = ?",
+        whereArgs: [hero_id],
+        orderBy: "${ability_table.column_name} ASC",
+      );
+      if (maps.length > 0) {
+        return new List.generate(
+            maps.length, (int i) => new Ability.fromMap(maps[i]));
+      }
+      return null;
+    });
   }
 }
