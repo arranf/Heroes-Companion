@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 
@@ -38,7 +39,7 @@ class TalentCard extends StatelessWidget {
                     have_assets
                         ? new Image.asset(
                             'assets/images/talents/${talent.icon_file_name}')
-                        : new Image.network(
+                        : new CachedNetworkImageProvider(
                             'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
                   ],
                 ),

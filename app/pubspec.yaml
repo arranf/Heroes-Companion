@@ -10,6 +10,7 @@ dependencies:
   heroes_companion_data:
     path: ../heroes_companion_data
   hots_dog_api: "^1.0.1"
+  cached_network_image: "^0.2.1"
   flutter:
     sdk: flutter
 
