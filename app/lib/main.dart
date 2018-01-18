@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/services/build_info_service.dart';
 import 'package:heroes_companion/services/update_service.dart';
+import 'package:heroes_companion/view/common/launch_error.dart';
 import 'package:heroes_companion/view/routes/hero_home_container.dart';
 import 'package:heroes_companion/view/routes/hero_search_container.dart';
 import 'package:redux/redux.dart';
@@ -39,12 +40,18 @@ void main() {
   // Create a dataprovider singleton, start it then when it's ready dispatch an event
   new DataProvider();
   subscription = app.store.onChange.listen(listener);
-  DataProvider.start().then((a) async {
+  DataProvider.start()
+  .then((a) async {
     getHeroes(app.store);
     getBuildInfo(app.store);
     debugPrint('Try update');
-    tryUpdate();
-  }).catchError((e) => (debugPrint(e)));
+    tryUpdate(app.store);
+  })
+  .catchError((e) {
+    debugPrint(e);
+    runApp(new LaunchError(appName, e));
+    }
+  );
 }
 
 class App extends StatelessWidget {
