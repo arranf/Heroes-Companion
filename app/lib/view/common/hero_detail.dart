@@ -390,8 +390,8 @@ class HeroDetail extends StatelessWidget {
         onTap: () => showTalentBottomSheet(context, talent),
         child: hero.have_assets
             ? new Image.asset('assets/images/talents/${talent.icon_file_name}')
-            : new CachedNetworkImageProvider(
-                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'),
+            : new Image(image: new CachedNetworkImageProvider(
+                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
       ),
     );
   }
