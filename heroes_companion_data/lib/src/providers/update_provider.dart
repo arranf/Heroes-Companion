@@ -30,66 +30,67 @@ class UpdateProvider {
   }
 
   Future doUpdate() async {
-    debugPrint('Doing Update!');
-    UpdatePayload updatePayload = await api.getUpdate();
+    return new Future.sync(() async {
+      debugPrint('Doing Update!');
+      UpdatePayload updatePayload = await api.getUpdate();
 
-    // Hero Update
-    updatePayload.heroes.forEach((hero) async {
-      List<Map<String, dynamic>> existingHero = await _database.query(
-          hero_table.table_name,
-          columns: [hero_table.column_heroes_companion_hero_id],
-          where: "${hero_table.column_hero_id} = ?",
-          whereArgs: [hero.hero_id]);
-      if (existingHero.isEmpty) {
-        _database.insert(hero_table.table_name, hero.toUpdateMap());
-      } else {
-        await _database.update(hero_table.table_name, hero.toUpdateMap(),
-            where: "${hero_table.column_heroes_companion_hero_id} = ?",
-            whereArgs: [
-              existingHero.first[hero_table.column_heroes_companion_hero_id]
-            ]);
-      }
-    });
+      // Hero Update
+      updatePayload.heroes.forEach((hero) async {
+        List<Map<String, dynamic>> existingHero = await _database.query(
+            hero_table.table_name,
+            columns: [hero_table.column_heroes_companion_hero_id],
+            where: "${hero_table.column_hero_id} = ?",
+            whereArgs: [hero.hero_id]);
+        if (existingHero.isEmpty) {
+          _database.insert(hero_table.table_name, hero.toUpdateMap());
+        } else {
+          await _database.update(hero_table.table_name, hero.toUpdateMap(),
+              where: "${hero_table.column_heroes_companion_hero_id} = ?",
+              whereArgs: [
+                existingHero.first[hero_table.column_heroes_companion_hero_id]
+              ]);
+        }
+      });
 
-    // // Talent Update
-    updatePayload.talents.forEach((talent) async {
-      if (talent.hero_id == null) {
-        debugPrint("${talent.name} has a null hero_id");
-      }
-      List<Map<String, dynamic>> existingTalent = await _database.query(
-          talent_table.table_name,
-          columns: [talent_table.column_id],
-          where:
-              "${talent_table.column_tool_tip_id} = ? AND ${talent_table.column_hero_id} = ?",
-          whereArgs: [talent.tool_tip_id, talent.hero_id]);
-      if (existingTalent.isEmpty) {
-        _database.insert(talent_table.table_name, talent.toUpdateMap());
-      } else {
-        await _database.update(talent_table.table_name, talent.toUpdateMap(),
-            where: "${talent_table.column_id} = ?",
-            whereArgs: [existingTalent.first[talent_table.column_id]]);
-      }
-    });
+      // TODO compare talents to existing hero talents and set a 'last updated' property on the hero if they don't match
 
-    // // Ability Update
-    updatePayload.abilities.forEach((ability) async {
-      List<Map<String, dynamic>> existingAbility = await _database.query(
-          ability_table.table_name,
-          columns: [ability_table.column_id],
-          where: "${ability_table.column_ability_id} = ?",
-          whereArgs: [ability.ability_id]);
-      if (existingAbility.isEmpty) {
-        _database.insert(ability_table.table_name, ability.toUpdateMap());
-      } else {
-        await _database.update(ability_table.table_name, ability.toUpdateMap(),
-            where: "${ability_table.column_id} = ?",
-            whereArgs: [
-              existingAbility.first[ability_table.column_ability_id]
-            ]);
-      }
-    });
+      // // Talent Update
+      updatePayload.talents.forEach((talent) async {
+        List<Map<String, dynamic>> existingTalent = await _database.query(
+            talent_table.table_name,
+            columns: [talent_table.column_id],
+            where:
+                "${talent_table.column_tool_tip_id} = ? AND ${talent_table.column_hero_id} = ?",
+            whereArgs: [talent.tool_tip_id, talent.hero_id]);
+        if (existingTalent.isEmpty) {
+          _database.insert(talent_table.table_name, talent.toUpdateMap());
+        } else {
+          await _database.update(talent_table.table_name, talent.toUpdateMap(),
+              where: "${talent_table.column_id} = ?",
+              whereArgs: [existingTalent.first[talent_table.column_id]]);
+        }
+      });
 
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString(pref_keys.update_id, updatePayload.id.toIso8601String());
-  }
+      // // Ability Update
+      updatePayload.abilities.forEach((ability) async {
+        List<Map<String, dynamic>> existingAbility = await _database.query(
+            ability_table.table_name,
+            columns: [ability_table.column_id],
+            where: "${ability_table.column_ability_id} = ?",
+            whereArgs: [ability.ability_id]);
+        if (existingAbility.isEmpty) {
+          _database.insert(ability_table.table_name, ability.toUpdateMap());
+        } else {
+          await _database.update(ability_table.table_name, ability.toUpdateMap(),
+              where: "${ability_table.column_id} = ?",
+              whereArgs: [
+                existingAbility.first[ability_table.column_ability_id]
+              ]);
+        }
+      });
+
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString(pref_keys.update_id, updatePayload.id.toIso8601String());
+    }
+  );
 }

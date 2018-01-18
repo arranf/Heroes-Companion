@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
