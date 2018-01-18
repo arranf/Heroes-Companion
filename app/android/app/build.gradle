@@ -27,6 +27,7 @@ android {
     }
 
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true  
         applicationId "com.heroescompanion.app"
         minSdkVersion 16
         targetSdkVersion 27
