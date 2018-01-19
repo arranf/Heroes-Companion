@@ -27,7 +27,7 @@ upgradeTo3(Database database) async {
 upgradeTo4(Database database) async {
   await database.execute(
     '''
-    ALTER ${hero_table.table_name}
+    ALTER TABLE ${hero_table.table_name}
     ADD COLUMN ${hero_table.column_modified_date} DATETIME 
     '''
   );
