@@ -11,8 +11,8 @@ class AbilityProvider {
   AbilityProvider(this._database);
 
   Future<List<Ability>> getAbilitiesForHero(int hero_id) {
-      return new Future.sync(() async {
-        List<Map> maps = await _database.query(
+    return new Future.sync(() async {
+      List<Map> maps = await _database.query(
         ability_table.table_name,
         columns: null,
         where: "${ability_table.column_hero_id} = ?",

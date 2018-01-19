@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
+import 'package:heroes_companion_data/src/data_provider.dart';
 import 'package:heroes_companion_data/src/models/ability.dart';
 import 'package:heroes_companion_data/src/models/hero.dart';
 import 'package:heroes_companion_data/src/models/talent.dart';
@@ -38,14 +40,14 @@ class UpdateProvider {
       UpdatePayload updatePayload = await api.getUpdate();
 
       // Hero Update
-      updatePayload.heroes.forEach((Hero hero) async {
+      await updatePayload.heroes.forEach((Hero hero) async {
         List<Map<String, dynamic>> existingHero = await _database.query(
             hero_table.table_name,
             columns: [hero_table.column_heroes_companion_hero_id],
             where: "${hero_table.column_hero_id} = ?",
             whereArgs: [hero.hero_id]);
         if (existingHero.isEmpty) {
-          _database.insert(hero_table.table_name, hero.toUpdateMap());
+          await _database.insert(hero_table.table_name, hero.toUpdateMap());
         } else {
           await _database.update(hero_table.table_name, hero.toUpdateMap(),
               where: "${hero_table.column_heroes_companion_hero_id} = ?",
@@ -55,10 +57,33 @@ class UpdateProvider {
         }
       });
 
-      // TODO compare talents to existing hero talents and set a 'last updated' property on the hero if they don't match
+      // Group talents by heroes
+      Map<int, List<Talent>> talentsByHeroId =
+          groupBy(updatePayload.talents, (Talent t) => t.hero_id);
+      // get talents for existing hero, if
+      Function equals = const UnorderedIterableEquality().equals;
+      await talentsByHeroId.forEach((int heroId, List<Talent> talents) async {
+        List<Talent> existingTalents =
+            await DataProvider.talentProvider.getTalentsForHero(heroId);
+        if (existingTalents != null &&
+            existingTalents.isNotEmpty &&
+            !equals(talents, existingTalents)) {
+          // Set hero last modified as now amd assume we don't have images
+          // TODO handle talents images on a talent by talent basis
+          await _database.update(
+              hero_table.table_name,
+              {
+                hero_table.column_modified_date:
+                    new DateTime.now().toIso8601String(),
+                hero_table.column_have_assets: 0
+              },
+              where: "${hero_table.column_hero_id} = ?",
+              whereArgs: [heroId]);
+        }
+      });
 
       // // Talent Update
-      updatePayload.talents.forEach((Talent talent) async {
+      await updatePayload.talents.forEach((Talent talent) async {
         List<Map<String, dynamic>> existingTalent = await _database.query(
             talent_table.table_name,
             columns: [talent_table.column_id],
@@ -66,7 +91,7 @@ class UpdateProvider {
                 "${talent_table.column_tool_tip_id} = ? AND ${talent_table.column_hero_id} = ?",
             whereArgs: [talent.tool_tip_id, talent.hero_id]);
         if (existingTalent.isEmpty) {
-          _database.insert(talent_table.table_name, talent.toUpdateMap());
+          await _database.insert(talent_table.table_name, talent.toUpdateMap());
         } else {
           await _database.update(talent_table.table_name, talent.toUpdateMap(),
               where: "${talent_table.column_id} = ?",
@@ -82,9 +107,11 @@ class UpdateProvider {
             where: "${ability_table.column_ability_id} = ?",
             whereArgs: [ability.ability_id]);
         if (existingAbility.isEmpty) {
-          _database.insert(ability_table.table_name, ability.toUpdateMap());
+          await _database.insert(
+              ability_table.table_name, ability.toUpdateMap());
         } else {
-          await _database.update(ability_table.table_name, ability.toUpdateMap(),
+          await _database.update(
+              ability_table.table_name, ability.toUpdateMap(),
               where: "${ability_table.column_id} = ?",
               whereArgs: [
                 existingAbility.first[ability_table.column_ability_id]
@@ -93,8 +120,8 @@ class UpdateProvider {
       });
 
       SharedPreferences preferences = await SharedPreferences.getInstance();
-      preferences.setString(pref_keys.update_id, updatePayload.id.toIso8601String());
-      }
-    );
+      preferences.setString(
+          pref_keys.update_id, updatePayload.id.toIso8601String());
+    });
   }
 }

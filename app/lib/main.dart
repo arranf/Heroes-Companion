@@ -25,39 +25,39 @@ App app;
 void main() {
   // Listens to onChange events and when the initial load is completed the main app is run
   void listener(AppState state) {
-    if (state.isLoading == false &&
+    if (!isAppLoading(state) &&
         heroesSelector(state) != null &&
         buildsSelector(state) != null) {
-      dynamic thing = heroesSelector(state);
-      dynamic thing2 = buildsSelector(state);
       subscription.cancel();
       runApp(app);
     }
   }
 
   // Run the splasscreen, create an instance of app, dispatch and event to load the initial data, and setup a listener to check for completion
-  runApp(new Splash(appName));
   app = new App();
-  // TODO Refactor this
+  runApp(new Splash(appName, app.store));
+
   // Create a dataprovider singleton, start it then when it's ready dispatch an event
   new DataProvider();
   subscription = app.store.onChange.listen(listener);
-  DataProvider
-      .start()
-      .then((a) async {
-        getHeroes(app.store);
-        getBuildInfo(app.store);
-      })
-      .then((b) => tryUpdate(app.store))
-      .catchError((e) {
-        debugPrint('Got an error');
-        runApp(new LaunchError(appName, e.toString()));
-      });
+  DataProvider.start().then((a) async {
+    try {
+      await tryUpdate(app.store);
+    } catch (e) {
+      debugPrint(e);
+    }
+  }).then((b) {
+    getHeroes(app.store);
+    getBuildInfo(app.store);
+  }).catchError((e) {
+    debugPrint('Got an error');
+    runApp(new LaunchError(appName, e.toString()));
+  });
 }
 
 class App extends StatelessWidget {
   final store =
-      new Store<AppState>(appReducer, initialState: new AppState.loading());
+      new Store<AppState>(appReducer, initialState: new AppState.initial());
 
   App();
 

@@ -12,7 +12,7 @@ class TalentProvider {
 
   Future<List<Talent>> getTalentsForHero(int hero_id) {
     return new Future.sync(() async {
-        List<Map> maps = await _database.query(
+      List<Map> maps = await _database.query(
         talent_table.table_name,
         columns: null,
         where: "${talent_table.column_hero_id} = ?",
