@@ -8,9 +8,9 @@ import 'package:redux/redux.dart';
 
 Future tryUpdate(Store<AppState> store) {
   return new Future.sync(() {
-    store.dispatch(new StartUpdatingAction());
     return DataProvider.updateProvider.doesNeedUpdate().then((doesNeedUpdate) {
       if (doesNeedUpdate) {
+        store.dispatch(new StartUpdatingAction());
         return DataProvider.updateProvider
             .doUpdate()
             .then((a) => getHeroesAsync(store))
