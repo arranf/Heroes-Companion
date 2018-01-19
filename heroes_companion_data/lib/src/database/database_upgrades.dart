@@ -23,3 +23,12 @@ upgradeTo3(Database database) async {
     (33,7,68,28,40,59,41,56,35,5,44,3,13,42,22,45,24,11,52,71,26,64,16,49,12,8,6,50,53,29,9,32,55,31,36,66,73,2,18,63,27,57,14,15,30,62,10,34,75,70,25,69,37,54,48,65,67,58,4,60,38,20,51,1,21,46,72,17,39,61,23,43,47,19,74)
     ''');
 }
+
+upgradeTo4(Database database) async {
+  await database.execute(
+    '''
+    ALTER TABLE ${hero_table.table_name}
+    ADD COLUMN ${hero_table.column_modified_date} DATETIME 
+    '''
+  );
+}

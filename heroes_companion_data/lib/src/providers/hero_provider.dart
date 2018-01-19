@@ -73,7 +73,7 @@ class HeroProvider {
         
         // is forced or the date is before the next rotation date, this will be skipped
         if (!isForced && !new DateTime.now().isAfter(nextRotationDate)) {
-          debugPrint('${new DateTime.now().toIso8601String()} is before ${nextRotationDate}');
+          debugPrint('Rotation Updater: ${new DateTime.now()} is before ${nextRotationDate}, not updating');
           return;
         }
 
