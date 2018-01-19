@@ -16,23 +16,41 @@ class Splash extends StatelessWidget {
         child: new MaterialApp(
         home: new Scaffold(
           body: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              new Text(appName, 
-                style: new TextStyle(
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white)
+              new Container(
+                child: new Column(
+                  children: <Widget>[
+                    new Text(appName, 
+                      style: new TextStyle(
+                              fontSize: 32.0,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white)
+                    ),
+                    new Text(
+                      'for Heroes of the Storm',
+                      style: new TextStyle(fontSize: 16.0, color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
-              new Text(
-                'for Heroes of the Storm',
-                style: new TextStyle(fontSize: 16.0, color: Colors.white),
-              ),
-              new StoreConnector<AppState, bool>(
+              new Center(
+                child: new StoreConnector<AppState, bool>(
                 distinct: true,
                 converter: (Store<AppState> store) => isUpdatingSelector(store.state),
-                builder: (BuildContext context, bool isUpdating) => isUpdating ? new CircularProgressIndicator(value: null,) : new Container()
+                builder: (BuildContext context, bool isUpdating) => 
+                    isUpdating ?  new Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                  new CircularProgressIndicator(value: null, backgroundColor: Colors.white, valueColor:  new AlwaysStoppedAnimation<Color>(Colors.amber)),
+                  new Padding(
+                    padding: new EdgeInsets.only(top: 20.0),
+                    child: new Text('Updating $appName', style: new TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w600),)
+                  ),
+                  ],
+                ) : new Container()
+              ),
               )
             ])),
         theme: new ThemeData(
