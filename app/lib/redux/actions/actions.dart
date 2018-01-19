@@ -61,3 +61,7 @@ class SetFilterAction {
 
   SetFilterAction(this.filter);
 }
+
+class StartUpdatingAction {}
+
+class StopUpdatingAction {}

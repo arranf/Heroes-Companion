@@ -11,6 +11,7 @@ class AppState {
   final Map<String, WinRates> winRates;
   final bool isLoading;
   final bool heroBuildWinRatesLoading;
+  final bool isUpdating;
   /// heroCompanionId => <BuildNumber, BuildWinRates>
   final Map<int, Map<String, BuildWinRates>> heroBuildWinRates;
   final String searchQuery;
@@ -19,6 +20,7 @@ class AppState {
   AppState({
     this.isLoading = false,
     this.heroBuildWinRatesLoading = false,
+    this.isUpdating = false,
     this.heroes,
     this.gameBuilds,
     this.winRates,
@@ -27,8 +29,8 @@ class AppState {
     this.filter = HeroFilter.all
   });
 
-  factory AppState.loading() =>
-      new AppState(isLoading: true, heroBuildWinRatesLoading: false);
+  factory AppState.initial() =>
+      new AppState(isLoading: true, heroBuildWinRatesLoading: false, isUpdating: true);
 
   AppState copyWith({
     bool isLoading,
@@ -36,6 +38,7 @@ class AppState {
     List<BuildInfo> buildInfo,
     Map<String, WinRates> winRates,
     bool heroBuildWinRatesLoading,
+    bool isUpdating,
     Map<int, Map<String, BuildWinRates>> heroBuildWinRates,
     String searchQuery,
     HeroFilter filter
@@ -45,6 +48,7 @@ class AppState {
       heroes: hero ?? this.heroes,
       gameBuilds: buildInfo ?? this.gameBuilds,
       winRates: winRates ?? this.winRates,
+      isUpdating: isUpdating ?? this.isUpdating,
       heroBuildWinRatesLoading: heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
       heroBuildWinRates: heroBuildWinRates ?? this.heroBuildWinRates,
       searchQuery: searchQuery ?? this.searchQuery,
@@ -61,6 +65,7 @@ class AppState {
       heroBuildWinRatesLoading.hashCode ^
       heroBuildWinRates.hashCode ^
       searchQuery.hashCode ^
+      isUpdating.hashCode ^
       filter.hashCode;
 
   @override
@@ -75,6 +80,7 @@ class AppState {
           heroBuildWinRatesLoading == other.heroBuildWinRatesLoading &&
           heroBuildWinRates == other.heroBuildWinRates &&
           searchQuery == other.searchQuery &&
+          isUpdating == other.isUpdating &&
           filter == other.filter;
 
   @override
