@@ -25,7 +25,7 @@ App app;
 void main() {
   // Listens to onChange events and when the initial load is completed the main app is run
   void listener(AppState state) {
-    if (state.isLoading == false &&
+    if (!isAppLoading(state) &&
         heroesSelector(state) != null &&
         buildsSelector(state) != null) {
       subscription.cancel();
@@ -42,8 +42,14 @@ void main() {
   subscription = app.store.onChange.listen(listener);
   DataProvider
       .start()
-      .then((b) => tryUpdate(app.store))
-      .then((a) {
+      .then((a) async {
+        try {
+          await tryUpdate(app.store);
+        } catch (e) {
+          debugPrint(e);
+        }
+      })
+      .then((b) {
         getHeroes(app.store);
         getBuildInfo(app.store);
       })
