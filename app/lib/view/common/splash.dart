@@ -12,50 +12,81 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => new StoreProvider(
-        store: store,
-        child: new MaterialApp(
-        home: new Scaffold(
-          body: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              new Container(
-                child: new Column(
-                  children: <Widget>[
-                    new Text(appName, 
-                      style: new TextStyle(
-                              fontSize: 32.0,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white)
-                    ),
-                    new Text(
-                      'for Heroes of the Storm',
-                      style: new TextStyle(fontSize: 16.0, color: Colors.white),
-                    ),
-                  ],
-                ),
-              ),
-              new Center(
-                child: new StoreConnector<AppState, bool>(
+      store: store,
+      child: new MaterialApp(
+          home: new Scaffold(
+            body: new StoreConnector<AppState, bool>(
                 distinct: true,
-                converter: (Store<AppState> store) => isUpdatingSelector(store.state),
-                builder: (BuildContext context, bool isUpdating) => 
-                    isUpdating ?  new Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                  new CircularProgressIndicator(value: null, backgroundColor: Colors.white, valueColor:  new AlwaysStoppedAnimation<Color>(Colors.amber)),
-                  new Padding(
-                    padding: new EdgeInsets.only(top: 20.0),
-                    child: new Text('Updating $appName', style: new TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w600),)
-                  ),
-                  ],
-                ) : new Container()
-              ),
-              )
-            ])),
-        theme: new ThemeData(
-          primarySwatch: Colors.deepPurple,
-          scaffoldBackgroundColor: Colors.deepPurple,
-        ))
-      );
+                converter: (Store<AppState> store) =>
+                    isUpdatingSelector(store.state),
+                builder: (BuildContext context, bool isUpdating) {
+                  return isUpdating
+                      ? _buildRegularSplash(context, appName)
+                      : _buildUpdatingSplash(context, appName);
+                }),
+          ),
+          theme: new ThemeData(
+            primarySwatch: Colors.deepPurple,
+            scaffoldBackgroundColor: Colors.deepPurple,
+          )));
+}
+
+Widget _buildRegularSplash(BuildContext context, String appName) {
+  return new Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        new Text(appName,
+            style: new TextStyle(
+                fontSize: 32.0,
+                fontWeight: FontWeight.w700,
+                color: Colors.white)),
+        new Text(
+          'for Heroes of the Storm',
+          style: new TextStyle(fontSize: 16.0, color: Colors.white),
+        ),
+      ]);
+}
+
+Widget _buildUpdatingSplash(BuildContext context, String appName) {
+  return new Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      new Container(
+        child: new Column(
+          children: <Widget>[
+            new Text(appName,
+                style: new TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white)),
+            new Text(
+              'for Heroes of the Storm',
+              style: new TextStyle(fontSize: 16.0, color: Colors.white),
+            ),
+          ],
+        ),
+      ),
+      new Center(
+          child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          new CircularProgressIndicator(
+              value: null,
+              backgroundColor: Colors.white,
+              valueColor: new AlwaysStoppedAnimation<Color>(Colors.amber)),
+          new Padding(
+              padding: new EdgeInsets.only(top: 20.0),
+              child: new Text(
+                'Updating $appName',
+                style: new TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600),
+              )),
+        ],
+      )),
+    ],
+  );
 }

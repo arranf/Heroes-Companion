@@ -9,16 +9,15 @@ import 'package:redux/redux.dart';
 Future tryUpdate(Store<AppState> store) {
   return new Future.sync(() {
     store.dispatch(new StartUpdatingAction());
-    return DataProvider.updateProvider.doesNeedUpdate()
-      .then((doesNeedUpdate) {
-        if (doesNeedUpdate) {
-          return DataProvider.updateProvider
-              .doUpdate()
-              .then((a) => getHeroesAsync(store))
-              .then((b) => store.dispatch(new StopUpdatingAction()));
-        } else {
-          store.dispatch(new StopUpdatingAction());
-        }
-      });
+    return DataProvider.updateProvider.doesNeedUpdate().then((doesNeedUpdate) {
+      if (doesNeedUpdate) {
+        return DataProvider.updateProvider
+            .doUpdate()
+            .then((a) => getHeroesAsync(store))
+            .then((b) => store.dispatch(new StopUpdatingAction()));
+      } else {
+        store.dispatch(new StopUpdatingAction());
+      }
+    });
   });
 }

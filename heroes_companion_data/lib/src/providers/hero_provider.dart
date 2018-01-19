@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:heroes_companion_data/src/shared_preferences_keys.dart'
     as pref_keys;
@@ -17,12 +16,12 @@ class HeroProvider {
   Database _database;
   HeroProvider(this._database);
 
-  Future<Hero> getHeroByHeroesCompanionId (int id){
+  Future<Hero> getHeroByHeroesCompanionId(int id) {
     return new Future.sync(() async {
       List<Map> maps = await _database.query(hero_table.table_name,
-        columns: null,
-        where: "${hero_table.column_heroes_companion_hero_id} = ?",
-        whereArgs: [id]);
+          columns: null,
+          where: "${hero_table.column_heroes_companion_hero_id} = ?",
+          whereArgs: [id]);
       if (maps.length > 0) {
         return new Hero.fromMap(maps.first);
       }
@@ -33,7 +32,7 @@ class HeroProvider {
   Future<List<Hero>> getHeroes() {
     return new Future.sync(() async {
       List<Map> maps = await _database.query(hero_table.table_name,
-        columns: null, orderBy: "${hero_table.column_name} ASC");
+          columns: null, orderBy: "${hero_table.column_name} ASC");
 
       if (maps.length > 0) {
         List<Hero> heroes = maps.map((h) => new Hero.fromMap(h)).toList();
@@ -52,50 +51,53 @@ class HeroProvider {
   Future<List<Hero>> getFavoriteHeroes() {
     return new Future.sync(() async {
       List<Map> maps = await _database.query(hero_table.table_name,
-        columns: null,
-        orderBy: "date(${hero_table.column_release_date}) DESC",
-        where: "${hero_table.column_is_favorite} = 1");
+          columns: null,
+          orderBy: "date(${hero_table.column_release_date}) DESC",
+          where: "${hero_table.column_is_favorite} = 1");
 
-    if (maps.length > 0) {
-      return new List.generate(
-          maps.length, (int index) => new Hero.fromMap(maps[index]));
-    }
-    return null;
+      if (maps.length > 0) {
+        return new List.generate(
+            maps.length, (int index) => new Hero.fromMap(maps[index]));
+      }
+      return null;
     });
   }
 
   Future updateHeroRotations({isForced = false}) {
-    return new Future.sync( () async {
-        SharedPreferences preferences = await SharedPreferences.getInstance();
-        String unparsedNextRotationDate = (preferences.getString(pref_keys.next_rotation_date) ?? '');
-        DateTime nextRotationDate =
-            unparsedNextRotationDate == '' ? new DateTime(1970) : DateTime.parse(unparsedNextRotationDate);
-        
-        // is forced or the date is before the next rotation date, this will be skipped
-        if (!isForced && !new DateTime.now().isAfter(nextRotationDate)) {
-          debugPrint('Rotation Updater: ${new DateTime.now()} is before ${nextRotationDate}, not updating');
-          return;
-        }
+    return new Future.sync(() async {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      String unparsedNextRotationDate =
+          (preferences.getString(pref_keys.next_rotation_date) ?? '');
+      DateTime nextRotationDate = unparsedNextRotationDate == ''
+          ? new DateTime(1970)
+          : DateTime.parse(unparsedNextRotationDate);
 
-        HeroesCompanionData data = await getRotation();
-        // TODO Validation of data
-        //
-        RegExp regExp = new RegExp(r'[^A-Za-z]+');
-        String commaSeparatedHeroes = data.heroes
-            // Non alphanumeric characters become the empty string
-            .map((a) {
-          return '\'' + a.replaceAll(regExp, '').toLowerCase() + '\'';
-        }).join(',');
+      // is forced or the date is before the next rotation date, this will be skipped
+      if (!isForced && !new DateTime.now().isAfter(nextRotationDate)) {
+        debugPrint(
+            'Rotation Updater: ${new DateTime.now()} is before ${nextRotationDate}, not updating');
+        return;
+      }
 
-        await _database.rawUpdate('''
+      HeroesCompanionData data = await getRotation();
+      // TODO Validation of data
+      //
+      RegExp regExp = new RegExp(r'[^A-Za-z]+');
+      String commaSeparatedHeroes = data.heroes
+          // Non alphanumeric characters become the empty string
+          .map((a) {
+        return '\'' + a.replaceAll(regExp, '').toLowerCase() + '\'';
+      }).join(',');
+
+      await _database.rawUpdate('''
           UPDATE ${hero_table.table_name}
           SET ${hero_table.column_last_rotation_date} = '${data.rotationEnd.toIso8601String()}'
           WHERE ${hero_table.column_short_name} IN (${commaSeparatedHeroes})
           ''');
 
-        preferences.setString(pref_keys.next_rotation_date, data.rotationEnd.toIso8601String());
-      }
-    );    
+      preferences.setString(
+          pref_keys.next_rotation_date, data.rotationEnd.toIso8601String());
+    });
   }
 
   Future<int> update(Hero hero) async {

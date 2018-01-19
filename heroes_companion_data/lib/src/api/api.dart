@@ -49,7 +49,7 @@ Future<UpdatePayload> getUpdate() async {
 
 Future<UpdateInfo> getUpdateInfo() async {
   Uri uri = new Uri.https(_baseUrl, '/v1/update/id');
-  
+
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
     if (response.statusCode != 200) {

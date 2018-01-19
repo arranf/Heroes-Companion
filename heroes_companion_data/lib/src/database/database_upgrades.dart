@@ -16,7 +16,7 @@ upgradeTo3(Database database) async {
 
   await database.execute(
       // Update all heroes except Blaze to be marked as having assets
-    '''
+      '''
     UPDATE ${hero_table.table_name}
     SET ${hero_table.column_have_assets} = 1
     WHERE ${hero_table.column_hero_id} IN 
@@ -25,10 +25,8 @@ upgradeTo3(Database database) async {
 }
 
 upgradeTo4(Database database) async {
-  await database.execute(
-    '''
+  await database.execute('''
     ALTER TABLE ${hero_table.table_name}
     ADD COLUMN ${hero_table.column_modified_date} DATETIME 
-    '''
-  );
+    ''');
 }

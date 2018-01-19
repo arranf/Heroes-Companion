@@ -58,19 +58,28 @@ class UpdateProvider {
       });
 
       // Group talents by heroes
-      Map<int, List<Talent>> talentsByHeroId = groupBy(updatePayload.talents, (Talent t) => t.hero_id);
-      // get talents for existing hero, if 
+      Map<int, List<Talent>> talentsByHeroId =
+          groupBy(updatePayload.talents, (Talent t) => t.hero_id);
+      // get talents for existing hero, if
       Function equals = const UnorderedIterableEquality().equals;
       await talentsByHeroId.forEach((int heroId, List<Talent> talents) async {
-        List<Talent> existingTalents = await DataProvider.talentProvider.getTalentsForHero(heroId);
-        if (existingTalents != null && existingTalents.isNotEmpty && !equals(talents, existingTalents)) {
+        List<Talent> existingTalents =
+            await DataProvider.talentProvider.getTalentsForHero(heroId);
+        if (existingTalents != null &&
+            existingTalents.isNotEmpty &&
+            !equals(talents, existingTalents)) {
           // Set hero last modified as now amd assume we don't have images
           // TODO handle talents images on a talent by talent basis
-         await _database.update(hero_table.table_name,
-            {hero_table.column_modified_date: new DateTime.now().toIso8601String(), hero_table.column_have_assets: 0},
-            where: "${hero_table.column_hero_id} = ?", whereArgs: [heroId]);
+          await _database.update(
+              hero_table.table_name,
+              {
+                hero_table.column_modified_date:
+                    new DateTime.now().toIso8601String(),
+                hero_table.column_have_assets: 0
+              },
+              where: "${hero_table.column_hero_id} = ?",
+              whereArgs: [heroId]);
         }
-        
       });
 
       // // Talent Update
@@ -98,9 +107,11 @@ class UpdateProvider {
             where: "${ability_table.column_ability_id} = ?",
             whereArgs: [ability.ability_id]);
         if (existingAbility.isEmpty) {
-         await _database.insert(ability_table.table_name, ability.toUpdateMap());
+          await _database.insert(
+              ability_table.table_name, ability.toUpdateMap());
         } else {
-          await _database.update(ability_table.table_name, ability.toUpdateMap(),
+          await _database.update(
+              ability_table.table_name, ability.toUpdateMap(),
               where: "${ability_table.column_id} = ?",
               whereArgs: [
                 existingAbility.first[ability_table.column_ability_id]
@@ -108,10 +119,9 @@ class UpdateProvider {
         }
       });
 
-
       SharedPreferences preferences = await SharedPreferences.getInstance();
-      preferences.setString(pref_keys.update_id, updatePayload.id.toIso8601String());
-      }
-    );
+      preferences.setString(
+          pref_keys.update_id, updatePayload.id.toIso8601String());
+    });
   }
 }

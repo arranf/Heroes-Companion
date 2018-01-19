@@ -50,7 +50,7 @@ class DatabaseClient {
       await upgradeTo3(database);
     }
 
-    if (oldVersion < 4 ) {
+    if (oldVersion < 4) {
       debugPrint('Upgrading to 4');
       await upgradeTo4(database);
     }

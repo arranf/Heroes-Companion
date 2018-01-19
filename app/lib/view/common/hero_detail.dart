@@ -44,8 +44,10 @@ class HeroDetail extends StatelessWidget {
       child: new Row(
         children: <Widget>[
           new CircleAvatar(
-            backgroundImage: hero.have_assets ? new AssetImage('assets/images/heroes/${hero.icon_file_name}') : 
-              new CachedNetworkImageProvider('https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
+            backgroundImage: hero.have_assets
+                ? new AssetImage('assets/images/heroes/${hero.icon_file_name}')
+                : new CachedNetworkImageProvider(
+                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
             radius: 45.0,
           ),
           new Container(
@@ -367,8 +369,9 @@ class HeroDetail extends StatelessWidget {
                         hero.have_assets
                             ? new Image.asset(
                                 'assets/images/talents/${talent.icon_file_name}')
-                            : new Image(image: new CachedNetworkImageProvider(
-                                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'))
+                            : new Image(
+                                image: new CachedNetworkImageProvider(
+                                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'))
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
@@ -383,10 +386,9 @@ class HeroDetail extends StatelessWidget {
   }
 
   Widget _buildTalent(BuildContext context, String talentName) {
-    Talent talent =
-        hero.talents.firstWhere((t) => t.talent_tree_id == talentName, orElse: null);
-    if (talent == null)
-    {
+    Talent talent = hero.talents
+        .firstWhere((t) => t.talent_tree_id == talentName, orElse: null);
+    if (talent == null) {
       return new Icon(Icons.account_circle);
     }
     return new Expanded(
@@ -394,8 +396,9 @@ class HeroDetail extends StatelessWidget {
         onTap: () => showTalentBottomSheet(context, talent),
         child: hero.have_assets
             ? new Image.asset('assets/images/talents/${talent.icon_file_name}')
-            : new Image(image: new CachedNetworkImageProvider(
-                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
+            : new Image(
+                image: new CachedNetworkImageProvider(
+                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
       ),
     );
   }
@@ -413,8 +416,9 @@ class HeroDetail extends StatelessWidget {
             hero.have_assets
                 ? new Image.asset(
                     'assets/images/talents/${talent.icon_file_name}')
-                : new Image(image: new CachedNetworkImageProvider(
-                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
+                : new Image(
+                    image: new CachedNetworkImageProvider(
+                        'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
             new Container(
               height: 4.0,
             ),
