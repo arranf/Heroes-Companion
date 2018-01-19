@@ -90,4 +90,29 @@ class Talent {
   String toString() {
     return 'Talent ${name}';
   }
+
+  @override
+  int get hashCode {
+   return this.hero_id.hashCode ^
+    this.ability_id.hashCode ^
+    this.talent_tree_id.hashCode ^
+    this.tool_tip_id.hashCode ^
+    this.level.hashCode ^
+    this.name.hashCode ^
+    this.description.hashCode ^
+    this.icon_file_name.hashCode;
+ }
+
+ @override
+ bool operator == (Object other) =>
+      identical(this, other) || 
+      other is Talent &&
+      this.hero_id == other.hero_id &&
+      this.ability_id == other.ability_id &&
+      this.talent_tree_id == other.talent_tree_id &&
+      this.tool_tip_id == other.tool_tip_id &&
+      this.level == other.level &&
+      this.name == other.name &&
+      this.description == other.description &&
+      this.icon_file_name == other.icon_file_name;
 }

@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
+import 'package:heroes_companion_data/src/data_provider.dart';
 import 'package:heroes_companion_data/src/models/ability.dart';
 import 'package:heroes_companion_data/src/models/hero.dart';
 import 'package:heroes_companion_data/src/models/talent.dart';
@@ -55,7 +57,20 @@ class UpdateProvider {
         }
       });
 
-      // TODO compare talents to existing hero talents and set a 'last updated' property on the hero if they don't match
+      // Group talents by heroes
+      Map<int, List<Talent>> talentsByHeroId = groupBy(updatePayload.talents, (Talent t) => t.hero_id);
+      // get talents for existing hero, if 
+      Function equals = const UnorderedIterableEquality().equals;
+      talentsByHeroId.forEach((int heroId, List<Talent> talents) async {
+        List<Talent> existingTalents = await DataProvider.talentProvider.getTalentsForHero(heroId);
+        if (existingTalents != null && existingTalents.isNotEmpty && !equals(talents, existingTalents)) {
+          // Set hero last modified as now
+          _database.update(hero_table.table_name,
+            {hero_table.column_modified_date: new DateTime.now().toIso8601String()},
+            where: "${hero_table.column_hero_id} = ?", whereArgs: [heroId]);
+        }
+        
+      });
 
       // // Talent Update
       updatePayload.talents.forEach((Talent talent) async {
@@ -91,6 +106,7 @@ class UpdateProvider {
               ]);
         }
       });
+
 
       SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString(pref_keys.update_id, updatePayload.id.toIso8601String());
