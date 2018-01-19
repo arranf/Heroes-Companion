@@ -6,18 +6,19 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:redux/redux.dart';
 
-Future tryUpdate(Store<AppState> store) async {
+Future tryUpdate(Store<AppState> store) {
   return new Future.sync(() {
     store.dispatch(new StartUpdatingAction());
-    return DataProvider.updateProvider.doesNeedUpdate().then((doesNeedUpdate) {
-      if (doesNeedUpdate) {
-        DataProvider.updateProvider
-            .doUpdate()
-            .then((a) => getHeroesAsync(store))
-            .then((b) => store.dispatch(new StopUpdatingAction()));
-      } else {
-        store.dispatch(new StopUpdatingAction());
-      }
-    });
+    return DataProvider.updateProvider.doesNeedUpdate()
+      .then((doesNeedUpdate) {
+        if (doesNeedUpdate) {
+          return DataProvider.updateProvider
+              .doUpdate()
+              .then((a) => getHeroesAsync(store))
+              .then((b) => store.dispatch(new StopUpdatingAction()));
+        } else {
+          store.dispatch(new StopUpdatingAction());
+        }
+      });
   });
 }
