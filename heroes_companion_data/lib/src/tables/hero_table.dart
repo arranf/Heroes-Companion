@@ -13,6 +13,7 @@ final String column_is_owned = "IsOwned";
 final String column_last_rotation_date = "LastFreeRotationDate";
 final String column_have_assets = "HaveAssets";
 final String column_modified_date = "LastModified";
+final String column_sha3_256 = "Sha3256";
 final List<String> columns = [
   column_heroes_companion_hero_id,
   column_hero_id,

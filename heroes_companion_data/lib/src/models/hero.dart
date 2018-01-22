@@ -12,6 +12,7 @@ class Hero {
   final String role;
   final String type;
   final DateTime release_date;
+  final String sha3_256;
   List<Talent> talents;
   List<Ability> abilities;
   bool is_owned = false;
@@ -32,6 +33,7 @@ class Hero {
       this.is_owned,
       this.is_favorite,
       this.have_assets,
+      this.sha3_256,
       {this.talents,
       this.abilities,
       this.last_rotation_date});
@@ -52,6 +54,7 @@ class Hero {
         ? new DateTime(1970)
         : DateTime.parse(map[table.column_last_rotation_date]);
     bool have_assets = map[table.column_have_assets] == 1;
+    String sha3_256 = map[table.column_sha3_256];
     return new Hero(
         heroes_companion_hero_id,
         hero_id,
@@ -65,6 +68,7 @@ class Hero {
         is_owned,
         is_favorite,
         have_assets,
+        sha3_256,
         last_rotation_date: last_rotation_date);
   }
 
@@ -86,7 +90,8 @@ class Hero {
       table.column_is_owned: is_owned == true ? 1 : 0,
       table.column_is_favorite: is_favorite == true ? 1 : 0,
       table.column_last_rotation_date: last_rotation_date.toIso8601String(),
-      table.column_have_assets: have_assets == true ? 1 : 0
+      table.column_have_assets: have_assets == true ? 1 : 0,
+      table.column_sha3_256: sha3_256,
     };
     return map;
   }
@@ -116,7 +121,8 @@ class Hero {
       bool have_assets,
       List<Talent> talents,
       List<Ability> abilities,
-      DateTime last_rotation_date}) {
+      DateTime last_rotation_date,
+      String sha3_256}) {
     return new Hero(
       heroes_companion_hero_id =
           heroes_companion_hero_id ?? this.heroes_companion_hero_id,
@@ -131,6 +137,7 @@ class Hero {
       is_owned = is_owned ?? this.is_owned,
       is_favorite = is_favorite ?? this.is_favorite,
       have_assets = have_assets ?? this.have_assets,
+      sha3_256 = sha3_256 ?? this.sha3_256,
       talents: talents ?? this.talents,
       abilities: abilities ?? this.abilities,
       last_rotation_date: last_rotation_date ?? this.last_rotation_date,
