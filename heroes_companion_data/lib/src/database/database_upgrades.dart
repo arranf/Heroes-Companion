@@ -1,5 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
+import 'package:heroes_companion_data/src/tables/ability_table.dart' as ability_table;
+import 'package:heroes_companion_data/src/tables/talent_table.dart' as talent_table;
 
 upgradeTo2(Database database) async {
   await database.execute('''
@@ -29,4 +31,27 @@ upgradeTo4(Database database) async {
     ALTER TABLE ${hero_table.table_name}
     ADD COLUMN ${hero_table.column_modified_date} DATETIME 
     ''');
+}
+
+upgradeTo5(Database database) async {
+  await database.execute(
+      '''
+      ALTER TABLE ${hero_table.table_name}
+      ADD COLUMN ${hero_table.column_sha3_256} TEXT 
+      '''
+    );
+
+    await database.execute(
+      '''
+      ALTER TABLE ${talent_table.table_name}
+      ADD COLUMN ${talent_table.column_sha3_256} TEXT 
+      '''
+    );
+
+    await database.execute(
+      '''
+      ALTER TABLE ${ability_table.table_name}
+      ADD COLUMN ${ability_table.column_sha3_256} TEXT 
+    '''
+    );
 }

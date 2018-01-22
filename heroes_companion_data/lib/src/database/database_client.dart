@@ -15,7 +15,7 @@ class DatabaseClient {
   static HeroProvider heroProvider;
   static DatabaseClient _client = new DatabaseClient._internal();
   static final String databaseName = "heroes_companion.db";
-  static final int databaseVersion = 4;
+  static final int databaseVersion = 5;
 
   factory DatabaseClient() {
     return _client;
@@ -53,6 +53,11 @@ class DatabaseClient {
     if (oldVersion < 4) {
       debugPrint('Upgrading to 4');
       await upgradeTo4(database);
+    }
+
+    if (oldVersion < 5) {
+      debugPrint('Upgrading to 5');
+      await upgradeTo5(database);
     }
   }
 

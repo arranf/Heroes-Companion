@@ -11,6 +11,7 @@ class Ability {
   final String cooldown;
   final String mana_cost;
   final bool trait;
+  final String sha3_256;
 
   Ability(
       this.id,
@@ -22,7 +23,9 @@ class Ability {
       this.hotkey,
       this.cooldown,
       this.mana_cost,
-      this.trait);
+      this.trait,
+      this.sha3_256,
+      );
 
   factory Ability.fromMap(Map map) {
     int id = map[table.column_id];
@@ -35,8 +38,9 @@ class Ability {
     String cooldown = map[table.column_cooldown];
     String mana_cost = map[table.column_mana_cost];
     bool trait = map[table.column_trait] == 0 ? false : true;
+    String sha3_256 = map[table.column_sha3_256];
     return new Ability(id, hero_id, ability_id, character_form, name,
-        description, hotkey, cooldown, mana_cost, trait);
+        description, hotkey, cooldown, mana_cost, trait, sha3_256);
   }
 
   Map toMap() {
@@ -51,6 +55,7 @@ class Ability {
       table.column_cooldown: cooldown,
       table.column_mana_cost: mana_cost,
       table.column_trait: trait,
+      table.column_sha3_256: sha3_256,
     };
     return map;
   }
@@ -72,6 +77,7 @@ class Ability {
     String cooldown,
     String mana_cost,
     bool trait,
+    String sha3_256,
   }) {
     return new Ability(
       id = id ?? this.id,
@@ -84,6 +90,7 @@ class Ability {
       cooldown = cooldown ?? this.cooldown,
       mana_cost = mana_cost ?? this.mana_cost,
       trait = trait ?? this.trait,
+      sha3_256 = sha3_256 ?? this.sha3_256
     );
   }
 }

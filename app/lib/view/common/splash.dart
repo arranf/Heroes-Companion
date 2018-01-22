@@ -21,8 +21,8 @@ class Splash extends StatelessWidget {
                     isUpdatingSelector(store.state),
                 builder: (BuildContext context, bool isUpdating) {
                   return isUpdating
-                      ? _buildRegularSplash(context, appName)
-                      : _buildUpdatingSplash(context, appName);
+                      ? _buildUpdatingSplash(context, appName)
+                      : _buildRegularSplash(context, appName);
                 }),
           ),
           theme: new ThemeData(
@@ -32,10 +32,11 @@ class Splash extends StatelessWidget {
 }
 
 Widget _buildRegularSplash(BuildContext context, String appName) {
-  return new Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
+  return new Center(
+      child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
         new Text(appName,
             style: new TextStyle(
                 fontSize: 32.0,
@@ -45,7 +46,7 @@ Widget _buildRegularSplash(BuildContext context, String appName) {
           'for Heroes of the Storm',
           style: new TextStyle(fontSize: 16.0, color: Colors.white),
         ),
-      ]);
+      ]));
 }
 
 Widget _buildUpdatingSplash(BuildContext context, String appName) {
@@ -70,7 +71,6 @@ Widget _buildUpdatingSplash(BuildContext context, String appName) {
       ),
       new Center(
           child: new Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           new CircularProgressIndicator(
               value: null,

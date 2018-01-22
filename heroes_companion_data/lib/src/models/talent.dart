@@ -11,6 +11,7 @@ class Talent {
   final String name;
   final String description;
   final String icon_file_name;
+  final String sha3_256;
 
   Talent(
       this.id,
@@ -22,7 +23,8 @@ class Talent {
       this.sort_order,
       this.name,
       this.description,
-      this.icon_file_name);
+      this.icon_file_name,
+      this.sha3_256);
 
   factory Talent.fromMap(Map map) {
     int id = map[table.column_id];
@@ -35,8 +37,9 @@ class Talent {
     String name = map[table.column_name];
     String description = map[table.column_description];
     String icon_file_name = map[table.column_icon_file_name];
+    String sha3_256 = map[table.column_sha3_256];
     return new Talent(id, hero_id, ability_id, talent_tree_id, tool_tip_id,
-        level, sort_order, name, description, icon_file_name);
+        level, sort_order, name, description, icon_file_name, sha3_256);
   }
 
   Map toMap() {
@@ -51,6 +54,7 @@ class Talent {
       table.column_name: name,
       table.column_description: description,
       table.column_icon_file_name: icon_file_name,
+      table.column_sha3_256: sha3_256
     };
     return map;
   }
@@ -71,7 +75,8 @@ class Talent {
       int sort_order,
       String name,
       String description,
-      String icon_file_name}) {
+      String icon_file_name,
+      String sha3_256}) {
     return new Talent(
       id = id ?? this.id,
       hero_id = hero_id ?? this.hero_id,
@@ -83,6 +88,7 @@ class Talent {
       name = name ?? this.name,
       description = description ?? this.description,
       icon_file_name = icon_file_name ?? this.icon_file_name,
+      sha3_256 = sha3_256 ?? this.sha3_256,
     );
   }
 

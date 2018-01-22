@@ -7,11 +7,13 @@ import 'package:hots_dog_api/hots_dog_api.dart';
 class AppState {
   final List<Hero> heroes;
   final List<BuildInfo> gameBuilds;
+
   /// BuildNumber => WinRates
   final Map<String, WinRates> winRates;
   final bool isLoading;
   final bool heroBuildWinRatesLoading;
   final bool isUpdating;
+
   /// heroCompanionId => <BuildNumber, BuildWinRates>
   final Map<int, Map<String, BuildWinRates>> heroBuildWinRates;
   final String searchQuery;
@@ -29,8 +31,8 @@ class AppState {
     this.filter = HeroFilter.all
   });
 
-  factory AppState.initial() =>
-      new AppState(isLoading: true, heroBuildWinRatesLoading: false, isUpdating: true);
+  factory AppState.initial() => new AppState(
+      isLoading: true, heroBuildWinRatesLoading: false, isUpdating: false);
 
   AppState copyWith({
     bool isLoading,

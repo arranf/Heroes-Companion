@@ -9,3 +9,4 @@ final String column_sort_order = "SortOrder";
 final String column_name = "Name";
 final String column_description = "Description";
 final String column_icon_file_name = "IconFileName";
+final String column_sha3_256 = "Sha3256";
