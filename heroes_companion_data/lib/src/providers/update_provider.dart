@@ -39,37 +39,52 @@ class UpdateProvider {
       debugPrint('Doing Update!');
       UpdatePayload updatePayload = await api.getUpdate();
 
-      // Hero Update
-      await updatePayload.heroes.forEach((Hero hero) async {
-        List<Map<String, dynamic>> existingHero = await _database.query(
+      // Hero update
+      await Future.wait(updatePayload.heroes.map((Hero hero) => _updateHero(hero)));
+      
+      // Section: Update a hero's haveassets property if any of its talents have changed
+      // Group talents by heroes
+      Map<int, List<Talent>> talentsByHeroId =
+          groupBy(updatePayload.talents, (Talent t) => t.hero_id);
+      Function equals = const UnorderedIterableEquality().equals;
+      await Future.wait(talentsByHeroId.keys.map((int heroId) => _updateHaveAssets(talentsByHeroId, heroId, equals)));
+
+      await Future.wait(updatePayload.talents.map((Talent talent) => _updateTalent(talent)));
+      await Future.wait(updatePayload.abilities.map((Ability ability) => _updateAbility(ability)));
+
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString(
+          pref_keys.update_id, updatePayload.id.toIso8601String());
+      debugPrint('Update done');
+    });
+  }
+
+  Future _updateHero(Hero hero) async {
+    List<Map<String, dynamic>> existingHero = await _database.query(
             hero_table.table_name,
             columns: [hero_table.column_heroes_companion_hero_id],
             where: "${hero_table.column_hero_id} = ?",
             whereArgs: [hero.hero_id]);
         if (existingHero.isEmpty) {
-          await _database.insert(hero_table.table_name, hero.toUpdateMap());
+          return _database.insert(hero_table.table_name, hero.toUpdateMap());
         } else if (existingHero.first[hero_table.column_sha3_256] != hero.sha3_256) {
-          await _database.update(hero_table.table_name, hero.toUpdateMap(),
+          return _database.update(hero_table.table_name, hero.toUpdateMap(),
               where: "${hero_table.column_heroes_companion_hero_id} = ?",
               whereArgs: [
                 existingHero.first[hero_table.column_heroes_companion_hero_id]
               ]);
         }
-      });
+  }
 
-      // Group talents by heroes
-      Map<int, List<Talent>> talentsByHeroId =
-          groupBy(updatePayload.talents, (Talent t) => t.hero_id);
-      // get talents for existing hero, if
-      Function equals = const UnorderedIterableEquality().equals;
-      await talentsByHeroId.forEach((int heroId, List<Talent> talents) async {
+  Future _updateHaveAssets(Map<int, List<Talent>> talentsByHeroId, int heroId, Function equals) async {
+    List<Talent> talents = talentsByHeroId[heroId];
         List<Talent> existingTalents =
             await DataProvider.talentProvider.getTalentsForHero(heroId);
         if (existingTalents != null &&
             existingTalents.isNotEmpty &&
             !equals(talents.map((t) => t.sha3_256), existingTalents.map((t) =>  t.sha3_256))
             ) {
-          // Set hero last modified as now amd assume we don't have images
+          // Set hero last modified as now andd assume we don't have images
           // TODO handle talents images on a talent by talent basis
           await _database.update(
               hero_table.table_name,
@@ -81,11 +96,10 @@ class UpdateProvider {
               where: "${hero_table.column_hero_id} = ?",
               whereArgs: [heroId]);
         }
-      });
+  }
 
-      // // Talent Update
-      await updatePayload.talents.forEach((Talent talent) async {
-        List<Map<String, dynamic>> existingTalent = await _database.query(
+  Future _updateTalent(Talent talent) async {
+    List<Map<String, dynamic>> existingTalent = await _database.query(
             talent_table.table_name,
             columns: [talent_table.column_id],
             where:
@@ -98,11 +112,10 @@ class UpdateProvider {
               where: "${talent_table.column_id} = ?",
               whereArgs: [existingTalent.first[talent_table.column_id]]);
         }
-      });
+  }
 
-      // // Ability Update
-      updatePayload.abilities.forEach((Ability ability) async {
-        List<Map<String, dynamic>> existingAbility = await _database.query(
+  Future _updateAbility(Ability ability) async {
+    List<Map<String, dynamic>> existingAbility = await _database.query(
             ability_table.table_name,
             columns: [ability_table.column_id],
             where: "${ability_table.column_ability_id} = ?",
@@ -118,11 +131,5 @@ class UpdateProvider {
                 existingAbility.first[ability_table.column_ability_id]
               ]);
         }
-      });
-
-      SharedPreferences preferences = await SharedPreferences.getInstance();
-      preferences.setString(
-          pref_keys.update_id, updatePayload.id.toIso8601String());
-    });
   }
 }
