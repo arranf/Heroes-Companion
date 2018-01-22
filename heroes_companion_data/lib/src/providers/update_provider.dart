@@ -48,7 +48,7 @@ class UpdateProvider {
             whereArgs: [hero.hero_id]);
         if (existingHero.isEmpty) {
           await _database.insert(hero_table.table_name, hero.toUpdateMap());
-        } else {
+        } else if (existingHero.first[hero_table.column_sha3_256] != hero.sha3_256) {
           await _database.update(hero_table.table_name, hero.toUpdateMap(),
               where: "${hero_table.column_heroes_companion_hero_id} = ?",
               whereArgs: [
@@ -67,7 +67,8 @@ class UpdateProvider {
             await DataProvider.talentProvider.getTalentsForHero(heroId);
         if (existingTalents != null &&
             existingTalents.isNotEmpty &&
-            !equals(talents, existingTalents)) {
+            !equals(talents.map((t) => t.sha3_256), existingTalents.map((t) =>  t.sha3_256))
+            ) {
           // Set hero last modified as now amd assume we don't have images
           // TODO handle talents images on a talent by talent basis
           await _database.update(
@@ -92,7 +93,7 @@ class UpdateProvider {
             whereArgs: [talent.tool_tip_id, talent.hero_id]);
         if (existingTalent.isEmpty) {
           await _database.insert(talent_table.table_name, talent.toUpdateMap());
-        } else {
+        } else if (existingTalent.first[talent_table.column_sha3_256] != talent.sha3_256) {
           await _database.update(talent_table.table_name, talent.toUpdateMap(),
               where: "${talent_table.column_id} = ?",
               whereArgs: [existingTalent.first[talent_table.column_id]]);
@@ -109,7 +110,7 @@ class UpdateProvider {
         if (existingAbility.isEmpty) {
           await _database.insert(
               ability_table.table_name, ability.toUpdateMap());
-        } else {
+        } else if (existingAbility.first[ability_table.column_sha3_256] != ability.sha3_256)  {
           await _database.update(
               ability_table.table_name, ability.toUpdateMap(),
               where: "${ability_table.column_id} = ?",
