@@ -37,6 +37,7 @@ class UpdateProvider {
   Future doUpdate() async {
     return new Future.sync(() async {
       debugPrint('Doing Update!');
+      Stopwatch stopwatch = new Stopwatch()..start();
       UpdatePayload updatePayload = await api.getUpdate();
 
       // Hero update
@@ -54,7 +55,8 @@ class UpdateProvider {
 
       SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString(
-          pref_keys.update_id, updatePayload.id.toIso8601String());
+          pref_keys.update_id, updatePayload.id.toIso8601String()); 
+      print('Update executed in ${stopwatch.elapsed}');
       debugPrint('Update done');
     });
   }
