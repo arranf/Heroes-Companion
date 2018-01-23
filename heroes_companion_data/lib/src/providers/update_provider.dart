@@ -36,8 +36,8 @@ class UpdateProvider {
 
   Future doUpdate() async {
     debugPrint('Doing Update!');
-    Stopwatch stopwatch = new Stopwatch()..start();
     UpdatePayload updatePayload = await api.getUpdate();
+    Stopwatch stopwatch = new Stopwatch()..start();
 
     // Hero Update
     List<Map<String, dynamic>> existingHeroes = await _database.query(
@@ -48,6 +48,7 @@ class UpdateProvider {
         .firstWhere((h) => h[hero_table.column_hero_id] == hero.hero_id, orElse: () => {});
     await _updateHero(hero, existingHero);
     }));
+
 
     // Section: Update a hero's have assets property if any of its talents have changed
     // Group talents by heroes
@@ -65,6 +66,7 @@ class UpdateProvider {
         where: "${hero_table.column_hero_id} IN (?)",
         whereArgs: [needAssetUpdate.join(',')]);
 
+    debugPrint('${stopwatch.elapsed} Starting Talent Update');
     // Talent update
     List<Map<String, dynamic>> existingTalents = await _database
         .query(talent_table.table_name, columns: [talent_table.column_id, talent_table.column_hero_id, talent_table.column_tool_tip_id, talent_table.column_sha3_256]);
@@ -74,6 +76,8 @@ class UpdateProvider {
         t[talent_table.column_hero_id] == talent.hero_id, orElse: () => {});
     await _updateTalent(talent, existingTalent);
     }));
+
+    debugPrint('${stopwatch.elapsed} Talent Update Done');
 
     // Ability update
     List<Map<String, dynamic>> abilities = await _database
@@ -87,7 +91,7 @@ class UpdateProvider {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString(
         pref_keys.update_id, updatePayload.id.toIso8601String());
-    print('Update executed in ${stopwatch.elapsed}');
+    debugPrint('${stopwatch.elapsed} elapsed');
     debugPrint('Update done');
   }
 
@@ -125,15 +129,16 @@ class UpdateProvider {
   }
 
   Future _updateTalent(
-      Talent talent, Map<String, dynamic> existingTalent) async {
+    Talent talent, Map<String, dynamic> existingTalent) {
     if (existingTalent == null || !existingTalent.containsKey(talent_table.column_id) || existingTalent[talent_table.column_id] == null) {
-      await _database.insert(talent_table.table_name, talent.toUpdateMap());
+      return _database.insert(talent_table.table_name, talent.toUpdateMap());
     } else if (!existingTalent.containsKey(talent_table.column_sha3_256) || existingTalent[talent_table.column_sha3_256] !=
         talent.sha3_256) {
-      await _database.update(talent_table.table_name, talent.toUpdateMap(),
+      return _database.update(talent_table.table_name, talent.toUpdateMap(),
           where: "${talent_table.column_id} = ?",
           whereArgs: [existingTalent[talent_table.column_id]]);
     }
+    return new Future.value();
   }
 
   Future _updateAbility(
