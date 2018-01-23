@@ -44,13 +44,23 @@ void main() {
     try {
       await tryUpdate(app.store);
     } catch (e) {
-      debugPrint(e);
+      bool isDebug = false; 
+      assert(() => isDebug = true); 
+      if (isDebug) { 
+        throw e; 
+      } 
+      // debugPrint(e);
     }
   }).then((b) {
     getHeroes(app.store);
     getBuildInfo(app.store);
   }).catchError((e) {
     debugPrint('Got an error');
+    bool isDebug = false; 
+    assert(() => isDebug = true); 
+    if (isDebug) { 
+      throw e; 
+    } 
     runApp(new LaunchError(appName, e.toString()));
   });
 }
