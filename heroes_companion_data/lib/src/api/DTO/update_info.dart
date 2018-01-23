@@ -1,8 +1,7 @@
 class UpdateInfo {
   final DateTime id;
-  final String sha;
 
-  UpdateInfo(this.id, this.sha);
+  UpdateInfo(this.id);
 
   factory UpdateInfo.fromJson(Object json) {
     if (!(json is Map)) {
@@ -15,7 +14,6 @@ class UpdateInfo {
     }
 
     DateTime id = DateTime.parse(map['id']);
-    String sha = map['sha'];
-    return new UpdateInfo(id, sha);
+    return new UpdateInfo(id);
   }
 }
