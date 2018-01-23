@@ -14,18 +14,18 @@ class Ability {
   final String sha3_256;
 
   Ability(
-      this.id,
-      this.hero_id,
-      this.ability_id,
-      this.character_form,
-      this.name,
-      this.description,
-      this.hotkey,
-      this.cooldown,
-      this.mana_cost,
-      this.trait,
-      this.sha3_256,
-      );
+    this.id,
+    this.hero_id,
+    this.ability_id,
+    this.character_form,
+    this.name,
+    this.description,
+    this.hotkey,
+    this.cooldown,
+    this.mana_cost,
+    this.trait,
+    this.sha3_256,
+  );
 
   factory Ability.fromMap(Map map) {
     int id = map[table.column_id];
@@ -80,17 +80,16 @@ class Ability {
     String sha3_256,
   }) {
     return new Ability(
-      id = id ?? this.id,
-      hero_id = hero_id ?? this.hero_id,
-      ability_id = ability_id ?? this.ability_id,
-      character_form = character_form ?? this.character_form,
-      name = name ?? this.name,
-      description = description ?? this.description,
-      hotkey = hotkey ?? this.hotkey,
-      cooldown = cooldown ?? this.cooldown,
-      mana_cost = mana_cost ?? this.mana_cost,
-      trait = trait ?? this.trait,
-      sha3_256 = sha3_256 ?? this.sha3_256
-    );
+        id = id ?? this.id,
+        hero_id = hero_id ?? this.hero_id,
+        ability_id = ability_id ?? this.ability_id,
+        character_form = character_form ?? this.character_form,
+        name = name ?? this.name,
+        description = description ?? this.description,
+        hotkey = hotkey ?? this.hotkey,
+        cooldown = cooldown ?? this.cooldown,
+        mana_cost = mana_cost ?? this.mana_cost,
+        trait = trait ?? this.trait,
+        sha3_256 = sha3_256 ?? this.sha3_256);
   }
 }
