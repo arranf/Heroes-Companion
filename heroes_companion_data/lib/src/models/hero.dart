@@ -103,6 +103,7 @@ class Hero {
     map.remove(table.column_is_favorite);
     map.remove(table.column_last_rotation_date);
     map.remove(table.column_have_assets);
+    map[table.column_modified_date] = new DateTime.now().toIso8601String();
     return map;
   }
 
