@@ -54,7 +54,11 @@ class DatabaseClient {
     }
 
     if (oldVersion < 5) {
-      await upgradeTo5(database);
+     try {
+       await upgradeTo5(database);
+     } catch (e) {
+       // Column may already exist
+     }
     }
 
     if (oldVersion < 6) {
