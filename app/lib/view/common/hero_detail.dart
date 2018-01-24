@@ -366,7 +366,7 @@ class HeroDetail extends StatelessWidget {
                           talent.name,
                           style: Theme.of(context).textTheme.headline,
                         ),
-                        hero.have_assets
+                        talent.have_asset
                             ? new Image.asset(
                                 'assets/images/talents/${talent.icon_file_name}')
                             : new Image(
@@ -394,7 +394,7 @@ class HeroDetail extends StatelessWidget {
     return new Expanded(
       child: new GestureDetector(
         onTap: () => showTalentBottomSheet(context, talent),
-        child: hero.have_assets
+        child: talent.have_asset
             ? new Image.asset('assets/images/talents/${talent.icon_file_name}')
             : new Image(
                 image: new CachedNetworkImageProvider(
@@ -413,7 +413,7 @@ class HeroDetail extends StatelessWidget {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            hero.have_assets
+            talent.have_asset
                 ? new Image.asset(
                     'assets/images/talents/${talent.icon_file_name}')
                 : new Image(

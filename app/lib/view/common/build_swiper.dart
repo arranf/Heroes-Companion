@@ -67,11 +67,9 @@ class _BuildSwiperState extends State<BuildSwiper>
         key: new Key('${widget.hero.name}_swiper_tab_bar_view'),
         controller: _tabController,
         children: widget.buildWinRates.talents_names.map((String talentName) {
-          return new TalentCard(
-              widget.hero.talents
-                  .firstWhere((Talent t) => t.talent_tree_id == talentName),
-              widget.hero.have_assets,
-              key: new Key(talentName));
+          Talent talent = widget.hero.talents
+              .firstWhere((Talent t) => t.talent_tree_id == talentName);
+          return new TalentCard(talent, key: new Key(talentName));
         }).toList(),
       ),
     );

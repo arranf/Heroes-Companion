@@ -4,9 +4,8 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 
 class TalentCard extends StatelessWidget {
   final Talent talent;
-  final bool have_assets;
 
-  TalentCard(this.talent, this.have_assets, {key}) : super(key: key);
+  TalentCard(this.talent, {key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,7 @@ class TalentCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    have_assets
+                    talent.have_asset
                         ? new Image.asset(
                             'assets/images/talents/${talent.icon_file_name}')
                         : new Image(
