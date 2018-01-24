@@ -10,3 +10,4 @@ final String column_name = "Name";
 final String column_description = "Description";
 final String column_icon_file_name = "IconFileName";
 final String column_sha3_256 = "Sha3256";
+final String column_have_asset = "HaveAsset";

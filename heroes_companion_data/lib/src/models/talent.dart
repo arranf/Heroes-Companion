@@ -12,6 +12,7 @@ class Talent {
   final String description;
   final String icon_file_name;
   final String sha3_256;
+  final bool have_asset;
 
   Talent(
       this.id,
@@ -24,7 +25,8 @@ class Talent {
       this.name,
       this.description,
       this.icon_file_name,
-      this.sha3_256);
+      this.sha3_256,
+      this.have_asset);
 
   factory Talent.fromMap(Map map) {
     int id = map[table.column_id];
@@ -38,8 +40,20 @@ class Talent {
     String description = map[table.column_description];
     String icon_file_name = map[table.column_icon_file_name];
     String sha3_256 = map[table.column_sha3_256];
-    return new Talent(id, hero_id, ability_id, talent_tree_id, tool_tip_id,
-        level, sort_order, name, description, icon_file_name, sha3_256);
+    bool have_asset = map[table.column_have_asset] == 0 ? false : true;
+    return new Talent(
+        id,
+        hero_id,
+        ability_id,
+        talent_tree_id,
+        tool_tip_id,
+        level,
+        sort_order,
+        name,
+        description,
+        icon_file_name,
+        sha3_256,
+        have_asset);
   }
 
   Map toMap() {
@@ -54,7 +68,8 @@ class Talent {
       table.column_name: name,
       table.column_description: description,
       table.column_icon_file_name: icon_file_name,
-      table.column_sha3_256: sha3_256
+      table.column_sha3_256: sha3_256,
+      table.column_have_asset: have_asset,
     };
     return map;
   }
@@ -62,6 +77,7 @@ class Talent {
   Map toUpdateMap() {
     Map map = toMap();
     map.remove(table.column_id);
+    map.remove(table.column_have_asset);
     return map;
   }
 
@@ -76,7 +92,8 @@ class Talent {
       String name,
       String description,
       String icon_file_name,
-      String sha3_256}) {
+      String sha3_256,
+      bool have_asset}) {
     return new Talent(
       id = id ?? this.id,
       hero_id = hero_id ?? this.hero_id,
@@ -89,6 +106,7 @@ class Talent {
       description = description ?? this.description,
       icon_file_name = icon_file_name ?? this.icon_file_name,
       sha3_256 = sha3_256 ?? this.sha3_256,
+      have_asset = have_asset ?? this.have_asset,
     );
   }
 
