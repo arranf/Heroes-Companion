@@ -67,6 +67,7 @@ class Ability {
   Map toUpdateMap() {
     Map map = toMap();
     map.remove(table.column_id);
+    map.remove(table.column_have_asset);
     return map;
   }
 

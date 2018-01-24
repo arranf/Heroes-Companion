@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
-import 'package:heroes_companion_data/src/data_provider.dart';
 import 'package:heroes_companion_data/src/models/ability.dart';
 import 'package:heroes_companion_data/src/models/hero.dart';
 import 'package:heroes_companion_data/src/models/talent.dart';
@@ -37,7 +35,6 @@ class UpdateProvider {
   Future doUpdate() async {
     debugPrint('Doing Update!');
     UpdatePayload updatePayload = await api.getUpdate();
-    Stopwatch stopwatch = new Stopwatch()..start();
 
     // Hero Update
     List<Map<String, dynamic>> existingHeroes = await _database.query(
@@ -49,35 +46,17 @@ class UpdateProvider {
     return _updateHero(hero, existingHero);
     }));
 
+    // TODO Check if asset has been bundled and mark it as have asset
 
-    // Section: Update a hero's have assets property if any of its talents have changed
-    // Group talents by heroes
-    Map<int, List<Talent>> talentsByHeroId =
-        groupBy(updatePayload.talents, (Talent t) => t.hero_id);
-    Function equals = const UnorderedIterableEquality().equals;
-    List<int> needAssetUpdate = await Future.wait(talentsByHeroId.keys.map(
-        (int heroId) => _findNeedAssetUpdate(talentsByHeroId, heroId, equals)));
-    await _database.update(
-        hero_table.table_name,
-        {
-          hero_table.column_modified_date:  new DateTime.now().toIso8601String(),
-          hero_table.column_have_assets: 0
-        },
-        where: "${hero_table.column_hero_id} IN (?)",
-        whereArgs: [needAssetUpdate.join(',')]);
-
-    debugPrint('${stopwatch.elapsed} Starting Talent Update');
     // Talent update
     List<Map<String, dynamic>> existingTalents = await _database
-        .query(talent_table.table_name, columns: [talent_table.column_id, talent_table.column_hero_id, talent_table.column_tool_tip_id, talent_table.column_sha3_256]);
+        .query(talent_table.table_name, columns: [talent_table.column_id, talent_table.column_hero_id, talent_table.column_tool_tip_id, talent_table.column_sha3_256, talent_table.column_have_asset]);
     await Future.wait(updatePayload.talents.map((Talent talent) async {
     Map<String, dynamic> existingTalent = existingTalents.firstWhere((t) =>
         t[talent_table.column_tool_tip_id] == talent.tool_tip_id &&
         t[talent_table.column_hero_id] == talent.hero_id, orElse: () => {});
     return _updateTalent(talent, existingTalent);
     }));
-
-    debugPrint('${stopwatch.elapsed} Talent Update Done');
 
     // Ability update
     List<Map<String, dynamic>> abilities = await _database
@@ -91,7 +70,6 @@ class UpdateProvider {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString(
         pref_keys.update_id, updatePayload.id.toIso8601String());
-    debugPrint('${stopwatch.elapsed} elapsed');
     debugPrint('Update done');
   }
 
@@ -108,42 +86,31 @@ class UpdateProvider {
     return new Future.value();
   }
 
-  // TODO change this to handle talents images on a talent by talent basis
-  Future<int> _findNeedAssetUpdate(Map<int, List<Talent>> talentsByHeroId,
-      int heroId, Function equals) async {
-    List<Talent> talents = talentsByHeroId[heroId];
-    List<Talent> existingTalents =
-        await DataProvider.talentProvider.getTalentsForHero(heroId);
-    if (existingTalents != null &&
-            existingTalents.isNotEmpty &&
-            // Do SHA comparison
-            (existingTalents.first.sha3_256 != null &&
-                existingTalents.first.sha3_256 != '' &&
-                !equals(talents.map((t) => t.sha3_256),
-                    existingTalents.map((t) => t.sha3_256))) ||
-        // Do regular comparison
-        !equals(talents, existingTalents)) {
-      return heroId;
-    } else {
-      return null;
-    }
-  }
-
-  Future _updateTalent(
-    Talent talent, Map<String, dynamic> existingTalent) {
+  Future _updateTalent(Talent talent, Map<String, dynamic> existingTalent) {
+    // Doesn't exist, insert
     if (existingTalent == null || !existingTalent.containsKey(talent_table.column_id) || existingTalent[talent_table.column_id] == null) {
       return _database.insert(talent_table.table_name, talent.toUpdateMap());
-    } else if (!existingTalent.containsKey(talent_table.column_sha3_256) || existingTalent[talent_table.column_sha3_256] !=
-        talent.sha3_256) {
-      return _database.update(talent_table.table_name, talent.toUpdateMap(),
+    }
+    // Changed and new image needs to be fetched
+    else if (!existingTalent.containsKey(talent_table.column_sha3_256) || existingTalent[talent_table.column_sha3_256] !=
+        talent.sha3_256 && existingTalent[talent_table.column_icon_file_name] != existingTalent[talent_table.column_icon_file_name]) {
+      Map<dynamic, dynamic> updateMap = talent.toUpdateMap();
+      updateMap[talent_table.column_have_asset] = 0;
+      return _database.update(talent_table.table_name, updateMap,
           where: "${talent_table.column_id} = ?",
           whereArgs: [existingTalent[talent_table.column_id]]);
+    } 
+    // Changed, no known new image
+    else if (!existingTalent.containsKey(talent_table.column_sha3_256) || existingTalent[talent_table.column_sha3_256] !=
+        talent.sha3_256 && existingTalent[talent_table.column_icon_file_name] != existingTalent[talent_table.column_icon_file_name]) {
+      return _database.update(talent_table.table_name, talent.toUpdateMap(),
+        where: "${talent_table.column_id} = ?",
+        whereArgs: [existingTalent[talent_table.column_id]]);
     }
     return new Future.value();
   }
 
-  Future _updateAbility(
-      Ability ability, Map<String, dynamic> existingAbility) {
+  Future _updateAbility(Ability ability, Map<String, dynamic> existingAbility) {
     if (existingAbility == null || !existingAbility.containsKey(ability_table.column_id)) {
       return _database.insert(ability_table.table_name, ability.toUpdateMap());
     } else if (!existingAbility.containsKey(ability_table.column_sha3_256) || existingAbility[ability_table.column_sha3_256] !=
