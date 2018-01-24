@@ -57,3 +57,42 @@ upgradeTo5(Database database) async {
     '''
     );
 }
+
+upgradeTo6(Database database) async {
+  // Add columns for abilities and talents having an asset stored on device 
+  await database.execute(
+    '''
+    ALTER TABLE ${ability_table.table_name}
+    ADD COLUMN ${ability_table.column_have_asset} INTEGER DEFAULT 0
+    '''
+  );
+
+  await database.execute(
+    '''
+    ALTER TABLE ${talent_table.table_name}
+    ADD COLUMN ${talent_table.column_have_asset} INTEGER DEFAULT 0
+    '''
+  );
+
+  // Ensure all current heroes, talents, and abilities are marked as being on device
+  await database.execute(
+    '''
+    UPDATE ${ability_table.table_name}
+    SET ${ability_table.column_have_asset} = 1
+    '''
+  );
+
+  await database.execute(
+    '''
+    UPDATE ${talent_table.table_name}
+    SET ${talent_table.column_have_asset}  = 1
+    '''
+  );
+
+  await database.execute(
+    '''
+    UPDATE ${hero_table.table_name}
+    SET ${hero_table.column_have_assets}  = 1
+    '''
+  );
+}

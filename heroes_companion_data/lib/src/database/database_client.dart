@@ -15,7 +15,7 @@ class DatabaseClient {
   static HeroProvider heroProvider;
   static DatabaseClient _client = new DatabaseClient._internal();
   static final String databaseName = "heroes_companion.db";
-  static final int databaseVersion = 5;
+  static final int databaseVersion = 6;
 
   factory DatabaseClient() {
     return _client;
@@ -39,25 +39,27 @@ class DatabaseClient {
   }
 
   _onUpgrade(Database database, int oldVersion, int newVersion) async {
+
+    debugPrint('Upgrading to $newVersion');
     // TODO make this cleaner using a map
     if (oldVersion < 2) {
-      debugPrint('Upgrading to 2');
       await upgradeTo2(database);
     }
 
     if (oldVersion < 3) {
-      debugPrint('Upgrading to 3');
       await upgradeTo3(database);
     }
 
     if (oldVersion < 4) {
-      debugPrint('Upgrading to 4');
       await upgradeTo4(database);
     }
 
     if (oldVersion < 5) {
-      debugPrint('Upgrading to 5');
       await upgradeTo5(database);
+    }
+
+    if (oldVersion < 6) {
+      await upgradeTo6(database);
     }
   }
 

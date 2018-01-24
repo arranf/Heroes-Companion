@@ -10,3 +10,4 @@ final String column_cooldown = "Cooldown";
 final String column_mana_cost = "ManaCost";
 final String column_trait = "Trait";
 final String column_sha3_256 = "Sha3256";
+final String column_have_asset = "HaveAsset";
