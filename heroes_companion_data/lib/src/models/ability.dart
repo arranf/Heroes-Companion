@@ -12,6 +12,7 @@ class Ability {
   final String mana_cost;
   final bool trait;
   final String sha3_256;
+  final bool have_asset;
 
   Ability(
     this.id,
@@ -25,6 +26,7 @@ class Ability {
     this.mana_cost,
     this.trait,
     this.sha3_256,
+    this.have_asset,
   );
 
   factory Ability.fromMap(Map map) {
@@ -39,8 +41,9 @@ class Ability {
     String mana_cost = map[table.column_mana_cost];
     bool trait = map[table.column_trait] == 0 ? false : true;
     String sha3_256 = map[table.column_sha3_256];
+    bool have_asset = map[table.column_have_asset] == 0 ? false : true;
     return new Ability(id, hero_id, ability_id, character_form, name,
-        description, hotkey, cooldown, mana_cost, trait, sha3_256);
+        description, hotkey, cooldown, mana_cost, trait, sha3_256, have_asset);
   }
 
   Map toMap() {
@@ -56,6 +59,7 @@ class Ability {
       table.column_mana_cost: mana_cost,
       table.column_trait: trait,
       table.column_sha3_256: sha3_256,
+      table.column_have_asset: have_asset,
     };
     return map;
   }
@@ -78,18 +82,21 @@ class Ability {
     String mana_cost,
     bool trait,
     String sha3_256,
+    bool have_asset,
   }) {
     return new Ability(
-        id = id ?? this.id,
-        hero_id = hero_id ?? this.hero_id,
-        ability_id = ability_id ?? this.ability_id,
-        character_form = character_form ?? this.character_form,
-        name = name ?? this.name,
-        description = description ?? this.description,
-        hotkey = hotkey ?? this.hotkey,
-        cooldown = cooldown ?? this.cooldown,
-        mana_cost = mana_cost ?? this.mana_cost,
-        trait = trait ?? this.trait,
-        sha3_256 = sha3_256 ?? this.sha3_256);
+      id = id ?? this.id,
+      hero_id = hero_id ?? this.hero_id,
+      ability_id = ability_id ?? this.ability_id,
+      character_form = character_form ?? this.character_form,
+      name = name ?? this.name,
+      description = description ?? this.description,
+      hotkey = hotkey ?? this.hotkey,
+      cooldown = cooldown ?? this.cooldown,
+      mana_cost = mana_cost ?? this.mana_cost,
+      trait = trait ?? this.trait,
+      sha3_256 = sha3_256 ?? this.sha3_256,
+      have_asset = have_asset ?? this.have_asset
+    );
   }
 }
