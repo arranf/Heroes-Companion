@@ -1,7 +1,9 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
-import 'package:heroes_companion_data/src/tables/ability_table.dart' as ability_table;
-import 'package:heroes_companion_data/src/tables/talent_table.dart' as talent_table;
+import 'package:heroes_companion_data/src/tables/ability_table.dart'
+    as ability_table;
+import 'package:heroes_companion_data/src/tables/talent_table.dart'
+    as talent_table;
 
 upgradeTo2(Database database) async {
   await database.execute('''
