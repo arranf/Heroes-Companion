@@ -41,8 +41,19 @@ class Talent {
     String icon_file_name = map[table.column_icon_file_name];
     String sha3_256 = map[table.column_sha3_256];
     bool have_asset = map[table.column_have_asset] == 0 ? false : true;
-    return new Talent(id, hero_id, ability_id, talent_tree_id, tool_tip_id,
-        level, sort_order, name, description, icon_file_name, sha3_256, have_asset);
+    return new Talent(
+        id,
+        hero_id,
+        ability_id,
+        talent_tree_id,
+        tool_tip_id,
+        level,
+        sort_order,
+        name,
+        description,
+        icon_file_name,
+        sha3_256,
+        have_asset);
   }
 
   Map toMap() {

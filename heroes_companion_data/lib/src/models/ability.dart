@@ -86,18 +86,17 @@ class Ability {
     bool have_asset,
   }) {
     return new Ability(
-      id = id ?? this.id,
-      hero_id = hero_id ?? this.hero_id,
-      ability_id = ability_id ?? this.ability_id,
-      character_form = character_form ?? this.character_form,
-      name = name ?? this.name,
-      description = description ?? this.description,
-      hotkey = hotkey ?? this.hotkey,
-      cooldown = cooldown ?? this.cooldown,
-      mana_cost = mana_cost ?? this.mana_cost,
-      trait = trait ?? this.trait,
-      sha3_256 = sha3_256 ?? this.sha3_256,
-      have_asset = have_asset ?? this.have_asset
-    );
+        id = id ?? this.id,
+        hero_id = hero_id ?? this.hero_id,
+        ability_id = ability_id ?? this.ability_id,
+        character_form = character_form ?? this.character_form,
+        name = name ?? this.name,
+        description = description ?? this.description,
+        hotkey = hotkey ?? this.hotkey,
+        cooldown = cooldown ?? this.cooldown,
+        mana_cost = mana_cost ?? this.mana_cost,
+        trait = trait ?? this.trait,
+        sha3_256 = sha3_256 ?? this.sha3_256,
+        have_asset = have_asset ?? this.have_asset);
   }
 }
