@@ -126,9 +126,7 @@ class UpdateProvider {
     }
     // Changed, no known new image
     else if (!existingTalent.containsKey(talent_table.column_sha3_256) ||
-        existingTalent[talent_table.column_sha3_256] != talent.sha3_256 &&
-            existingTalent[talent_table.column_icon_file_name] !=
-                existingTalent[talent_table.column_icon_file_name]) {
+        existingTalent[talent_table.column_sha3_256] != talent.sha3_256) {
       return _database.update(talent_table.table_name, talent.toUpdateMap(),
           where: "${talent_table.column_id} = ?",
           whereArgs: [existingTalent[talent_table.column_id]]);
