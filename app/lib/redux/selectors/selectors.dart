@@ -6,8 +6,7 @@ import 'package:flutter/foundation.dart';
 
 bool isAppLoading(AppState state) =>
     isUpdatingSelector(state) ||
-    heroBuildWinRatesLoadingSelector(state) ||
-    isUpdatingSelector(state);
+    heroBuildWinRatesLoadingSelector(state);
 
 bool isUpdatingSelector(AppState state) => state.isUpdating;
 
