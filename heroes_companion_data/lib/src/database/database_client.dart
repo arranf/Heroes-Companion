@@ -35,7 +35,7 @@ class DatabaseClient {
             """);
 
     // Migrations
-    _onUpgrade(database, 0, databaseVersion);
+    return _onUpgrade(database, 0, databaseVersion);
   }
 
   _onUpgrade(Database database, int oldVersion, int newVersion) async {
@@ -68,8 +68,7 @@ class DatabaseClient {
 
   Future<Database> start() async {
     String databasePath = await _getDatabasePath(databaseName);
-    return await openDatabase(databasePath,
-        version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
+    return await openDatabase(databasePath, version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
   }
 
   /// @param databaseName The name of the database (e.g. heroes.db)
