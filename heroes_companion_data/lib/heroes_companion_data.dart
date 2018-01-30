@@ -6,4 +6,5 @@ export 'src/models/talent.dart';
 
 export 'src/data_provider.dart';
 
+export 'src/shared_preferences_keys.dart';
 export 'src/optional.dart';

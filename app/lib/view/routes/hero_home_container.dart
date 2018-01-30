@@ -17,6 +17,7 @@ import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/view/common/hero_list.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
+import 'package:heroes_companion/global_keys.dart';
 
 class HeroHome extends StatelessWidget {
   HeroHome({Key key}) : super(key: key);
@@ -27,6 +28,7 @@ class HeroHome extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (context, vm) {
         return new Scaffold(
+            key: homeScaffoldKey,
             appBar: new AppBar(title: new Text('Heroes Companion')),
             body:
                 vm.currentFilter != HeroFilter.favorite || vm.heroes.isNotEmpty

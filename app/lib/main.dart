@@ -35,7 +35,7 @@ void main() {
 
   // Run the splasscreen, create an instance of app, dispatch and event to load the initial data, and setup a listener to check for completion
   app = new App();
-  runApp(new Splash(appName, app.store));
+  runApp(new Splash(appName));
 
   // Create a dataprovider singleton, start it then when it's ready dispatch an event
   new DataProvider();
@@ -45,7 +45,7 @@ void main() {
       getHeroes(app.store);
       getBuildInfo(app.store);
     })
-    .then((a) {tryUpdate(app.store); debugPrint('Refresh heroes'); })
+    .then((a) => tryUpdate(app.store))
     .catchError((e) {
       debugPrint('Got an error');
       bool isDebug = false;

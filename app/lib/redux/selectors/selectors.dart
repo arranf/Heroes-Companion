@@ -5,7 +5,7 @@ import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:flutter/foundation.dart';
 
 bool isAppLoading(AppState state) =>
-    isUpdatingSelector(state) ||
+    isLoadingSelector(state) ||
     heroBuildWinRatesLoadingSelector(state);
 
 bool isUpdatingSelector(AppState state) => state.isUpdating;

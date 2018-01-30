@@ -53,7 +53,6 @@ class UpdateProvider {
         _updateHero(hero, existingHero, batch);
       });
 
-
       // TODO Check if asset has been bundled and mark it as have asset
       // Talent update
       List<Map<String, dynamic>> existingTalents =
@@ -72,8 +71,6 @@ class UpdateProvider {
             orElse: () => {});
         _updateTalent(talent, existingTalent, batch);
       });
-
-
 
       // Ability update
       List<Map<String, dynamic>> abilities =
@@ -94,6 +91,7 @@ class UpdateProvider {
       SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString(
           pref_keys.update_id, updatePayload.id.toIso8601String());
+      preferences.setString(pref_keys.update_patch, updatePayload.patch);
       debugPrint('Update done');
     });
   }
