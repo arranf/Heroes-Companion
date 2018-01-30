@@ -161,7 +161,7 @@ List<Hero> searchSelector(AppState state) {
     return new List<Hero>();
   }
 
-  String query = searchQuerySelector(state).toLowerCase();
+  String query = searchQuerySelector(state).toLowerCase().trim();
 
   return heroes
       .where((h) =>
