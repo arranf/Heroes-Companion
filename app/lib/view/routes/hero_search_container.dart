@@ -39,7 +39,6 @@ class HeroSearch extends StatelessWidget {
                       onChanged: (query) => vm.onSearchType(query),
                       autofocus: true,
                       decoration: new InputDecoration(
-                        hideDivider: true,
                         hintText: "Search heroes...",
                         hintStyle: new TextStyle(
                           color: new Color.fromARGB(120, 255, 255, 255),

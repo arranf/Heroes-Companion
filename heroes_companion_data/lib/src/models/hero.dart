@@ -15,10 +15,11 @@ class Hero {
   final String sha3_256;
   List<Talent> talents;
   List<Ability> abilities;
-  bool is_owned = false;
-  bool is_favorite = false;
+  final bool is_owned;
+  final bool is_favorite;
   DateTime last_rotation_date = new DateTime(1970);
   bool have_assets = false;
+  final String additional_search_text;
 
   Hero(
       this.heroes_companion_hero_id,
@@ -34,9 +35,10 @@ class Hero {
       this.is_favorite,
       this.have_assets,
       this.sha3_256,
+      this.additional_search_text,
       {this.talents,
       this.abilities,
-      this.last_rotation_date});
+      this.last_rotation_date, });
 
   factory Hero.fromMap(Map map) {
     int heroes_companion_hero_id = map[table.column_heroes_companion_hero_id];
@@ -55,6 +57,7 @@ class Hero {
         : DateTime.parse(map[table.column_last_rotation_date]);
     bool have_assets = map[table.column_have_assets] == 1;
     String sha3_256 = map[table.column_sha3_256];
+    String additional_search_text = map[table.column_additional_search_text];
     return new Hero(
         heroes_companion_hero_id,
         hero_id,
@@ -69,6 +72,7 @@ class Hero {
         is_favorite,
         have_assets,
         sha3_256,
+        additional_search_text,
         last_rotation_date: last_rotation_date);
   }
 
@@ -92,6 +96,7 @@ class Hero {
       table.column_last_rotation_date: last_rotation_date.toIso8601String(),
       table.column_have_assets: have_assets == true ? 1 : 0,
       table.column_sha3_256: sha3_256,
+      table.column_additional_search_text: additional_search_text,
     };
     return map;
   }
@@ -103,6 +108,8 @@ class Hero {
     map.remove(table.column_is_favorite);
     map.remove(table.column_last_rotation_date);
     map.remove(table.column_have_assets);
+    // We don't need additional search text to be updatable
+    map.remove(table.column_additional_search_text);
     map[table.column_modified_date] = new DateTime.now().toIso8601String();
     return map;
   }
@@ -123,7 +130,9 @@ class Hero {
       List<Talent> talents,
       List<Ability> abilities,
       DateTime last_rotation_date,
-      String sha3_256}) {
+      String sha3_256,
+      String additional_search_text,
+      }) {
     return new Hero(
       heroes_companion_hero_id =
           heroes_companion_hero_id ?? this.heroes_companion_hero_id,
@@ -139,6 +148,7 @@ class Hero {
       is_favorite = is_favorite ?? this.is_favorite,
       have_assets = have_assets ?? this.have_assets,
       sha3_256 = sha3_256 ?? this.sha3_256,
+      additional_search_text = additional_search_text ?? this.additional_search_text,
       talents: talents ?? this.talents,
       abilities: abilities ?? this.abilities,
       last_rotation_date: last_rotation_date ?? this.last_rotation_date,

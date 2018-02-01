@@ -165,6 +165,6 @@ List<Hero> searchSelector(AppState state) {
 
   return heroes
       .where((h) =>
-          h.name.toLowerCase().contains(query) || h.role.toLowerCase() == query)
+          h.name.toLowerCase().contains(query) || h.role.toLowerCase() == query || (h.additional_search_text.toLowerCase().contains(query) && query.length > 2))
       .toList();
 }
