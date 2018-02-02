@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart' hide Hero;
-import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
@@ -77,7 +74,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
         setState(() {
           _isCurrentBuild = !_isCurrentBuild;
           _buildNumber =
-              (_isCurrentBuild ? vm.currentBuild : vm.previousBuild).number;
+              (_isCurrentBuild ? vm.currentBuild : vm.previousBuild).fullVersion;
         });
       });
     });
