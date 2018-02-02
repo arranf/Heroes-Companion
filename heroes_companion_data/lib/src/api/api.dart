@@ -78,8 +78,9 @@ Future<List<PatchData>> getPatchData() async {
       throw new Exception('Unexpected JSON format encounted fetching patch data');
     }
     List<PatchData> patchData = new List();
-    json.forEach((patchInfo) {
-      patchData.add(new PatchData.fromJson(patchInfo))
+    List<Object> jsonArray = json;
+    jsonArray.forEach((patchInfo) {
+      patchData.add(new PatchData.fromJson(patchInfo));
     });
     return patchData;
   } catch (e) {

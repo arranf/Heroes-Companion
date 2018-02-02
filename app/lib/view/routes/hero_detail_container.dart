@@ -42,7 +42,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     _buildNumber = (_isCurrentBuild
             ? currentBuildSelector(store.state)
             : previousBuildSelector(store.state))
-        .number;
+        .fullVersion;
     if (winRatesByBuildNumber(store.state, _buildNumber).isNotPresent) {
       getWinRatesForBuild(store, _buildNumber);
     }

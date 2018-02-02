@@ -8,16 +8,10 @@ class PatchProvider {
   Future<List<Patch>> getPatches() async {
     // TODO Future sync
     print('Getting patches');
-    List<PatchData> patches;
-    try {
-      patches = await api.getPatchData();
-    } catch (e) {
-      throw e;
-    }
+    List<PatchData> patches = await api.getPatchData();
     if (patches == null) {
       throw new Exception('API call to fetch patch data failed');
     }
-    print(patches[0]);
-    return patches.map((pd) => new Patch.from(pd));
+    return patches.map((PatchData pd) => new Patch.from(pd)).toList();
   }
 }
