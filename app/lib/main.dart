@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
-import 'package:heroes_companion/services/build_info_service.dart';
+import 'package:heroes_companion/services/patch_service.dart';
 import 'package:heroes_companion/services/update_service.dart';
 import 'package:heroes_companion/view/common/launch_error.dart';
 import 'package:heroes_companion/view/routes/hero_home_container.dart';
@@ -43,7 +43,7 @@ void main() {
   DataProvider.start()
     .then((b) {
       getHeroes(app.store);
-      getBuildInfo(app.store);
+      getPatches(app.store);
     })
     .then((a) => tryUpdate(app.store))
     .catchError((e) {

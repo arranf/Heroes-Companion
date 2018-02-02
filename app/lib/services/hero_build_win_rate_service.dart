@@ -8,12 +8,12 @@ import 'package:flutter/foundation.dart';
 
 void getHeroCurrentBuildWinRates(Store<AppState> store, Hero hero) {
   store.dispatch(new BuildWinRatesStartLoadingAction());
-  BuildInfo buildInfo = currentBuildSelector(store.state);
+  Patch patch = currentBuildSelector(store.state);
   DataProvider.buildWinRatesProvider
-      .getBuildWinRates(buildInfo.number, hero.name)
+      .getBuildWinRates(patch.fullVersion, hero.name)
       .then((buildWinRates) => store.dispatch(
           new FetchBuildWinRatesSucceededAction(
-              buildWinRates, hero.heroes_companion_hero_id, buildInfo.number)))
+              buildWinRates, hero.heroes_companion_hero_id, patch.fullVersion)))
       .catchError((dynamic e) {
     debugPrint(e.toString());
     store.dispatch(new FetchBuildWinRatesFailedAction());

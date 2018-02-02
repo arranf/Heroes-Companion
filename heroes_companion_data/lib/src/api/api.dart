@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:heroes_companion_data/src/api/DTO/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/patch_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
 import 'package:http/http.dart' as http;
@@ -60,5 +61,28 @@ Future<UpdateInfo> getUpdateInfo() async {
     return new UpdateInfo.fromJson(json);
   } catch (e) {
     throw new Exception('Couldn\'t contact update server');
+  }
+}
+
+Future<List<PatchData>> getPatchData() async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/patches');
+
+  try {
+    http.Response response = await http.get(uri, headers: _getHeaders());
+    if (response.statusCode != 200) {
+      return null;
+    }
+
+    dynamic json = JSON.decode(_getUtf8String(response));
+    if (!(json is List && json[0] is Map)){
+      throw new Exception('Unexpected JSON format encounted fetching patch data');
+    }
+    List<PatchData> patchData = new List();
+    json.forEach((patchInfo) {
+      patchData.add(new PatchData.fromJson(patchInfo))
+    });
+    return patchData;
+  } catch (e) {
+    throw new Exception('Failed to fetch patch data' + e.message);
   }
 }

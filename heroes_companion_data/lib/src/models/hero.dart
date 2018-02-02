@@ -16,7 +16,7 @@ class Hero {
   List<Talent> talents;
   List<Ability> abilities;
   final bool is_owned;
-  final bool is_favorite;
+  bool is_favorite;
   DateTime last_rotation_date = new DateTime(1970);
   bool have_assets = false;
   final String additional_search_text;

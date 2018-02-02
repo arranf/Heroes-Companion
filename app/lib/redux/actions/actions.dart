@@ -1,5 +1,6 @@
 import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/patch_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
 
 class FetchHeroesFailedAction {}
@@ -18,13 +19,13 @@ class UpdateHeroAction {
   UpdateHeroAction(this.hero);
 }
 
-class FetchBuildInfoSucceededAction {
-  final List<BuildInfo> buildInfo;
+class FetchPatchesSucceededAction {
+  final List<Patch> patches;
 
-  FetchBuildInfoSucceededAction(this.buildInfo);
+  FetchPatchesSucceededAction(this.patches);
 }
 
-class FetchBuildInfoFailedAction {}
+class FetchPatchesFailedAction {}
 
 class FetchWinRatesSucceededAction {
   final WinRates winRates;

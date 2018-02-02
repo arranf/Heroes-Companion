@@ -28,7 +28,7 @@ Future getHeroesAsync(Store<AppState> store,
     if (heroes != null) {
       store.dispatch(new FetchHeroesSucceededAction(heroes));
     } else {
-      store.dispatch(new FetchBuildInfoFailedAction());
+      store.dispatch(new FetchHeroesFailedAction());
     }
   }).catchError((e) {
     debugPrint(e.toString());
@@ -37,6 +37,7 @@ Future getHeroesAsync(Store<AppState> store,
 }
 
 void setFavorite(Store<AppState> store, Hero hero) {
+  // TODO make the store immutable
   hero.is_favorite = true;
   DataProvider.heroProvider
       .update(hero)
@@ -44,6 +45,7 @@ void setFavorite(Store<AppState> store, Hero hero) {
 }
 
 void unFavorite(Store<AppState> store, Hero hero) {
+  // TODO make the store immutable
   hero.is_favorite = false;
   DataProvider.heroProvider
       .update(hero)

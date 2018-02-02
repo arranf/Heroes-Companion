@@ -54,20 +54,20 @@ Optional<Hero> heroSelectorByCompanionId(List<Hero> heroes, int id) {
   }
 }
 
-List<BuildInfo> buildsSelector(AppState state) => state.gameBuilds;
+List<Patch> buildsSelector(AppState state) => state.patches;
 
-BuildInfo currentBuildSelector(AppState state) {
-  if (state.gameBuilds == null && state.gameBuilds.isNotEmpty) {
-    throw new Exception('Build Info hasn' 't been loaded');
+Patch currentBuildSelector(AppState state) {
+  if (state.patches == null && state.patches.isNotEmpty) {
+    throw new Exception('Patches haven\'t been loaded');
   }
-  return state.gameBuilds[0];
+  return state.patches[0];
 }
 
-BuildInfo previousBuildSelector(AppState state) {
-  if (state.gameBuilds == null && state.gameBuilds.length < 2) {
-    throw new Exception('Build Info hasn' 't been loaded');
+Patch previousBuildSelector(AppState state) {
+  if (state.patches == null && state.patches.length < 2) {
+    throw new Exception('Patches haven\'t been loaded');
   }
-  return state.gameBuilds[1];
+  return state.patches[1];
 }
 
 Map<String, WinRates> winRatesSelector(AppState state) => state.winRates;
