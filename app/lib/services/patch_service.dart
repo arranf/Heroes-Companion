@@ -9,10 +9,7 @@ void getPatches(Store<AppState> store) {
   // TODO Change interface to actually throw an exception in the case we need special handling
   DataProvider.patchProvider
       .getPatches()
-      .then((patches) {
-          debugPrint(patches[0].toString());
-          store.dispatch(new FetchPatchesSucceededAction(patches));
-      })
+      .then((patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
       .catchError(
           (Exception e) => store.dispatch(new FetchPatchesFailedAction()));
 }
