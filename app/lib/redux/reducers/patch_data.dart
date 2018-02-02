@@ -6,14 +6,15 @@ import 'package:flutter/foundation.dart';
 final patchesReducer = combineTypedReducers<List<Patch>>([
   new ReducerBinding<List<Patch>, FetchPatchesSucceededAction>(
       _setLoadedBuildInfo),
-  new ReducerBinding<List<Patch>, FetchPatchesFailedAction>(
-      _setNoBuildInfo)
+  new ReducerBinding<List<Patch>, FetchPatchesFailedAction>(_setNoBuildInfo)
 ]);
 
-List<Patch> _setLoadedBuildInfo(List<Patch> patches, FetchPatchesSucceededAction action) {
+List<Patch> _setLoadedBuildInfo(
+    List<Patch> patches, FetchPatchesSucceededAction action) {
   return action.patches;
 }
 
-List<Patch> _setNoBuildInfo(List<Patch> patches, FetchPatchesFailedAction action) {
+List<Patch> _setNoBuildInfo(
+    List<Patch> patches, FetchPatchesFailedAction action) {
   return null;
 }

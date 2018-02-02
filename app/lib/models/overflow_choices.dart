@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:heroes_companion_data/heroes_companion_data.dart' as shared_pref_keys;
+import 'package:heroes_companion_data/heroes_companion_data.dart'
+    as shared_pref_keys;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,34 +14,49 @@ class OverflowChoice {
 
   static get values => [About, Feedback];
 
-  static Future handleChoice (OverflowChoice choice, BuildContext context) async {
-    switch(choice) {
+  static Future handleChoice(
+      OverflowChoice choice, BuildContext context) async {
+    switch (choice) {
       case About:
         TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
         tapGestureRecognizer.onTap = () async {
-           const String url = 'https://hots.dog';
-                if (await canLaunch(url)) {
-                  await launch(url);
-                } else {
-                  throw new Exception('Could not launch $url');
-                }
+          const String url = 'https://hots.dog';
+          if (await canLaunch(url)) {
+            await launch(url);
+          } else {
+            throw new Exception('Could not launch $url');
+          }
         };
         SharedPreferences preferences = await SharedPreferences.getInstance();
-        DateTime lastUpdated = DateTime.parse( preferences.getString(shared_pref_keys.update_id));
-        String patchVersion = preferences.getString(shared_pref_keys.update_patch);
-        showAboutDialog(context: context, applicationName: 'Heroes Companion', 
-          children: [
-            new Text('Last Updated ${lastUpdated.toLocal().year}-${lastUpdated.toLocal().month}-${lastUpdated.toLocal().day} ${lastUpdated.toLocal().hour.toString().padLeft(2, '0')}:${lastUpdated.toLocal().minute.toString().padLeft(2, '0')}'),
-            new Text('Current Patch Version $patchVersion'),
-            new RichText(text: new TextSpan(text: 'Powered by data from ', style: new TextStyle().apply(color: Colors.black), children: 
-            [
-              new TextSpan(text: 'hots.dog', style: new TextStyle().apply(color: Colors.blue, decoration: TextDecoration.underline), recognizer: tapGestureRecognizer)
-            ]),)
-          ]
-        );
+        DateTime lastUpdated =
+            DateTime.parse(preferences.getString(shared_pref_keys.update_id));
+        String patchVersion =
+            preferences.getString(shared_pref_keys.update_patch);
+        showAboutDialog(
+            context: context,
+            applicationName: 'Heroes Companion',
+            children: [
+              new Text(
+                  'Last Updated ${lastUpdated.toLocal().year}-${lastUpdated.toLocal().month}-${lastUpdated.toLocal().day} ${lastUpdated.toLocal().hour.toString().padLeft(2, '0')}:${lastUpdated.toLocal().minute.toString().padLeft(2, '0')}'),
+              new Text('Current Patch Version $patchVersion'),
+              new RichText(
+                text: new TextSpan(
+                    text: 'Powered by data from ',
+                    style: new TextStyle().apply(color: Colors.black),
+                    children: [
+                      new TextSpan(
+                          text: 'hots.dog',
+                          style: new TextStyle().apply(
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline),
+                          recognizer: tapGestureRecognizer)
+                    ]),
+              )
+            ]);
         break;
       case Feedback:
-        const String url = 'mailto:feedback@heroescompanion.com?subject=Feedback&body=';
+        const String url =
+            'mailto:feedback@heroescompanion.com?subject=Feedback&body=';
         if (await canLaunch(url)) {
           await launch(url);
         } else {

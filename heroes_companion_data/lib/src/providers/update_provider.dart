@@ -47,7 +47,7 @@ class UpdateProvider {
         hero_table.column_heroes_companion_hero_id
       ]);
       updatePayload.heroes.forEach((Hero hero) {
-         Map<String, dynamic> existingHero = existingHeroes.firstWhere(
+        Map<String, dynamic> existingHero = existingHeroes.firstWhere(
             (h) => h[hero_table.column_hero_id] == hero.hero_id,
             orElse: () => {});
         _updateHero(hero, existingHero, batch);
@@ -111,7 +111,8 @@ class UpdateProvider {
     }
   }
 
-  void _updateTalent(Talent talent, Map<String, dynamic> existingTalent, Batch batch) {
+  void _updateTalent(
+      Talent talent, Map<String, dynamic> existingTalent, Batch batch) {
     // Doesn't exist, insert
     if (existingTalent == null ||
         !existingTalent.containsKey(talent_table.column_id) ||
@@ -138,7 +139,8 @@ class UpdateProvider {
     }
   }
 
-  void _updateAbility(Ability ability, Map<String, dynamic> existingAbility, Batch batch) {
+  void _updateAbility(
+      Ability ability, Map<String, dynamic> existingAbility, Batch batch) {
     if (existingAbility == null ||
         !existingAbility.containsKey(ability_table.column_id)) {
       batch.insert(ability_table.table_name, ability.toUpdateMap());

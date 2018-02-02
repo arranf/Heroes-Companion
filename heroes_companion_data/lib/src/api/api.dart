@@ -74,8 +74,9 @@ Future<List<PatchData>> getPatchData() async {
     }
 
     dynamic json = JSON.decode(_getUtf8String(response));
-    if (!(json is List && json[0] is Map)){
-      throw new Exception('Unexpected JSON format encounted fetching patch data');
+    if (!(json is List && json[0] is Map)) {
+      throw new Exception(
+          'Unexpected JSON format encounted fetching patch data');
     }
     List<PatchData> patchData = new List();
     List<Object> jsonArray = json;

@@ -22,23 +22,24 @@ class Hero {
   final String additional_search_text;
 
   Hero(
-      this.heroes_companion_hero_id,
-      this.hero_id,
-      this.name,
-      this.short_name,
-      this.attribute_id,
-      this.icon_file_name,
-      this.role,
-      this.type,
-      this.release_date,
-      this.is_owned,
-      this.is_favorite,
-      this.have_assets,
-      this.sha3_256,
-      this.additional_search_text,
-      {this.talents,
-      this.abilities,
-      this.last_rotation_date, });
+    this.heroes_companion_hero_id,
+    this.hero_id,
+    this.name,
+    this.short_name,
+    this.attribute_id,
+    this.icon_file_name,
+    this.role,
+    this.type,
+    this.release_date,
+    this.is_owned,
+    this.is_favorite,
+    this.have_assets,
+    this.sha3_256,
+    this.additional_search_text, {
+    this.talents,
+    this.abilities,
+    this.last_rotation_date,
+  });
 
   factory Hero.fromMap(Map map) {
     int heroes_companion_hero_id = map[table.column_heroes_companion_hero_id];
@@ -114,25 +115,25 @@ class Hero {
     return map;
   }
 
-  Hero copyWith(
-      {int heroes_companion_hero_id,
-      int hero_id,
-      String name,
-      String short_name,
-      String attribute_id,
-      String icon_file_name,
-      String role,
-      String type,
-      DateTime release_date,
-      bool is_owned,
-      bool is_favorite,
-      bool have_assets,
-      List<Talent> talents,
-      List<Ability> abilities,
-      DateTime last_rotation_date,
-      String sha3_256,
-      String additional_search_text,
-      }) {
+  Hero copyWith({
+    int heroes_companion_hero_id,
+    int hero_id,
+    String name,
+    String short_name,
+    String attribute_id,
+    String icon_file_name,
+    String role,
+    String type,
+    DateTime release_date,
+    bool is_owned,
+    bool is_favorite,
+    bool have_assets,
+    List<Talent> talents,
+    List<Ability> abilities,
+    DateTime last_rotation_date,
+    String sha3_256,
+    String additional_search_text,
+  }) {
     return new Hero(
       heroes_companion_hero_id =
           heroes_companion_hero_id ?? this.heroes_companion_hero_id,
@@ -148,7 +149,8 @@ class Hero {
       is_favorite = is_favorite ?? this.is_favorite,
       have_assets = have_assets ?? this.have_assets,
       sha3_256 = sha3_256 ?? this.sha3_256,
-      additional_search_text = additional_search_text ?? this.additional_search_text,
+      additional_search_text =
+          additional_search_text ?? this.additional_search_text,
       talents: talents ?? this.talents,
       abilities: abilities ?? this.abilities,
       last_rotation_date: last_rotation_date ?? this.last_rotation_date,

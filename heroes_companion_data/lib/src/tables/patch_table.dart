@@ -8,4 +8,3 @@ final String column_game_version = "GameVersion";
 final String column_full_version = "FullVersion";
 final String column_live_date = "LiveDate";
 final String column_patch_notes_url = "PatchNotesUrl";
-

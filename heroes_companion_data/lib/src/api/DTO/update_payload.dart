@@ -27,7 +27,7 @@ class UpdatePayload {
 
     DateTime id = DateTime.parse(map['id']);
     List<Hero> heroes = map['heroes'].map((h) => new Hero.fromMap(h)).toList();
-    String patch = map.containsKey('patch') ? map['patch'] : ''; 
+    String patch = map.containsKey('patch') ? map['patch'] : '';
     List<Talent> talents =
         map['talents'].map((t) => new Talent.fromMap(t)).toList();
     List<Ability> abilities =

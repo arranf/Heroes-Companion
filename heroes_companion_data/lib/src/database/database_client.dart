@@ -54,11 +54,11 @@ class DatabaseClient {
     }
 
     if (oldVersion < 5) {
-     try {
-       await upgradeTo5(database);
-     } catch (e) {
-       // Column may already exist
-     }
+      try {
+        await upgradeTo5(database);
+      } catch (e) {
+        // Column may already exist
+      }
     }
 
     if (oldVersion < 6) {
@@ -80,7 +80,8 @@ class DatabaseClient {
 
   Future<Database> start() async {
     String databasePath = await _getDatabasePath(databaseName);
-    return await openDatabase(databasePath, version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
+    return await openDatabase(databasePath,
+        version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
   }
 
   /// @param databaseName The name of the database (e.g. heroes.db)

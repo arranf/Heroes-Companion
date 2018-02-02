@@ -23,7 +23,10 @@ import 'package:heroes_companion/global_keys.dart';
 class HeroHome extends StatelessWidget {
   HeroHome({Key key}) : super(key: key);
 
-  final List<OverflowChoice> overflowChoices = [OverflowChoice.About, OverflowChoice.Feedback]; 
+  final List<OverflowChoice> overflowChoices = [
+    OverflowChoice.About,
+    OverflowChoice.Feedback
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,8 @@ class HeroHome extends StatelessWidget {
               title: new Text('Heroes Companion'),
               actions: <Widget>[
                 new PopupMenuButton(
-                  onSelected: (OverflowChoice choice) => OverflowChoice.handleChoice(choice, context), // overflow menu
+                  onSelected: (OverflowChoice choice) => OverflowChoice
+                      .handleChoice(choice, context), // overflow menu
                   itemBuilder: (BuildContext context) {
                     return overflowChoices.map((OverflowChoice choice) {
                       return new PopupMenuItem(

@@ -5,8 +5,7 @@ import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:flutter/foundation.dart';
 
 bool isAppLoading(AppState state) =>
-    isLoadingSelector(state) ||
-    heroBuildWinRatesLoadingSelector(state);
+    isLoadingSelector(state) || heroBuildWinRatesLoadingSelector(state);
 
 bool isUpdatingSelector(AppState state) => state.isUpdating;
 
@@ -165,6 +164,9 @@ List<Hero> searchSelector(AppState state) {
 
   return heroes
       .where((h) =>
-          h.name.toLowerCase().contains(query) || h.role.toLowerCase() == query || (h.additional_search_text.toLowerCase().contains(query) && query.length > 2))
+          h.name.toLowerCase().contains(query) ||
+          h.role.toLowerCase() == query ||
+          (h.additional_search_text.toLowerCase().contains(query) &&
+              query.length > 2))
       .toList();
 }

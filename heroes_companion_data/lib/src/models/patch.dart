@@ -12,10 +12,20 @@ class Patch {
   final DateTime liveDate;
   final String patchNotesUrl;
 
-  Patch(this.patchName, this.officialLink, this.alternateLink, this.patchType, this.gameVersion, this.fullVersion, this.liveDate, this.patchNotesUrl, {this.id});
+  Patch(this.patchName, this.officialLink, this.alternateLink, this.patchType,
+      this.gameVersion, this.fullVersion, this.liveDate, this.patchNotesUrl,
+      {this.id});
 
   factory Patch.from(PatchData patchData) {
-    return new Patch(patchData.patchName, patchData.officialLink, patchData.alternateLink, patchData.patchType, patchData.gameVersion, patchData.fullVersion, patchData.liveDate, patchData.patchNotesUrl);
+    return new Patch(
+        patchData.patchName,
+        patchData.officialLink,
+        patchData.alternateLink,
+        patchData.patchType,
+        patchData.gameVersion,
+        patchData.fullVersion,
+        patchData.liveDate,
+        patchData.patchNotesUrl);
   }
 
   factory Patch.fromMap(Map map) {
@@ -29,7 +39,9 @@ class Patch {
     DateTime liveDate = DateTime.parse(map[table.column_live_date]);
     String patchNotesUrl = map[table.column_patch_notes_url];
 
-    return new Patch(patchName, officialLink, alternateLink, patchType, gameVersion, fullVersion, liveDate, patchNotesUrl, id: id);
+    return new Patch(patchName, officialLink, alternateLink, patchType,
+        gameVersion, fullVersion, liveDate, patchNotesUrl,
+        id: id);
   }
 
   Map toMap() {

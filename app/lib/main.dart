@@ -27,7 +27,7 @@ void main() {
   void listener(AppState state) {
     if (!isAppLoading(state) &&
         heroesSelector(state) != null &&
-        buildsSelector(state) != null && 
+        buildsSelector(state) != null &&
         buildsSelector(state).isNotEmpty) {
       subscription.cancel();
       runApp(app);
@@ -41,24 +41,21 @@ void main() {
   // Create a dataprovider singleton, start it then when it's ready dispatch an event
   new DataProvider();
   subscription = app.store.onChange.listen(listener);
-  DataProvider.start()
-    .then((b) {
-      getHeroes(app.store);
-      getPatches(app.store);
-    })
-    .then((a) {
-      tryUpdate(app.store);
-      updatePatches(app.store);
-    })
-    .catchError((e) {
-      debugPrint('Got an error');
-      bool isDebug = false;
-      assert(() => isDebug = true);
-      if (isDebug) {
-        throw e;
-      }
-      runApp(new LaunchError(appName, e.toString()));
-    });
+  DataProvider.start().then((b) {
+    getHeroes(app.store);
+    getPatches(app.store);
+  }).then((a) {
+    tryUpdate(app.store);
+    updatePatches(app.store);
+  }).catchError((e) {
+    debugPrint('Got an error');
+    bool isDebug = false;
+    assert(() => isDebug = true);
+    if (isDebug) {
+      throw e;
+    }
+    runApp(new LaunchError(appName, e.toString()));
+  });
 }
 
 class App extends StatelessWidget {

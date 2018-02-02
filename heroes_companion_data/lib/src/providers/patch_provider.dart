@@ -12,10 +12,8 @@ class PatchProvider {
 
   Future<List<Patch>> getPatches() async {
     print('Getting patches');
-    List<Map<String, dynamic>> results = await _database.query(
-        table.table_name,
-        columns: null
-    );
+    List<Map<String, dynamic>> results =
+        await _database.query(table.table_name, columns: null);
     print('Got ${results.length} patches');
     return results.map((m) => new Patch.fromMap(m)).toList();
   }
@@ -28,24 +26,23 @@ class PatchProvider {
         throw new Exception('API call to fetch patch data failed');
       }
 
-      List<Map<String, dynamic>> existingPatchData  = await _database.query(
-        table.table_name,
-        columns: [table.column_full_version]
-      );
-      List<String> patchIds = existingPatchData.map((p) => p[table.column_full_version]).toList();
+      List<Map<String, dynamic>> existingPatchData = await _database
+          .query(table.table_name, columns: [table.column_full_version]);
+      List<String> patchIds =
+          existingPatchData.map((p) => p[table.column_full_version]).toList();
 
-      List<Patch> patches = patchDatas.map((PatchData pd) => new Patch.from(pd)).toList();
+      List<Patch> patches =
+          patchDatas.map((PatchData pd) => new Patch.from(pd)).toList();
 
       // Insert unseen patches
       Batch batch = _database.batch();
       patches
-        .where((Patch p) => !patchIds.contains(p.fullVersion))
-        .forEach((p) =>  batch.insert(table.table_name, p.toMap()));
+          .where((Patch p) => !patchIds.contains(p.fullVersion))
+          .forEach((p) => batch.insert(table.table_name, p.toMap()));
       batch.commit();
-      print('Added ${patches.where((Patch p) => !patchIds.contains(p.fullVersion)).length} new patches');
+      print(
+          'Added ${patches.where((Patch p) => !patchIds.contains(p.fullVersion)).length} new patches');
       return patches;
-    });    
+    });
   }
-
-  
 }

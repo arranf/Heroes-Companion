@@ -73,8 +73,8 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
           buildNumber: _buildNumber, buildSwitch: () {
         setState(() {
           _isCurrentBuild = !_isCurrentBuild;
-          _buildNumber =
-              (_isCurrentBuild ? vm.currentBuild : vm.previousBuild).fullVersion;
+          _buildNumber = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild)
+              .fullVersion;
         });
       });
     });

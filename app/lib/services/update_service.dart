@@ -21,7 +21,10 @@ Future tryUpdate(Store<AppState> store) {
             .then((a) => getHeroesAsync(store))
             .then((b) => store.dispatch(new StopUpdatingAction()))
             .then((c) => SharedPreferences.getInstance())
-            .then((preferences) => homeScaffoldKey.currentState?.showSnackBar(new SnackBar(content: new Text('Updated for patch ${preferences.getString(pref_keys.update_patch)}'))));
+            .then((preferences) => homeScaffoldKey.currentState?.showSnackBar(
+                new SnackBar(
+                    content: new Text(
+                        'Updated for patch ${preferences.getString(pref_keys.update_patch)}'))));
       } else {
         store.dispatch(new StopUpdatingAction());
       }
