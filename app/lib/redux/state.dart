@@ -6,7 +6,7 @@ import 'package:hots_dog_api/hots_dog_api.dart';
 @immutable
 class AppState {
   final List<Hero> heroes;
-  final List<BuildInfo> gameBuilds;
+  final List<Patch> patches;
 
   /// BuildNumber => WinRates
   final Map<String, WinRates> winRates;
@@ -24,7 +24,7 @@ class AppState {
     this.heroBuildWinRatesLoading = false,
     this.isUpdating = false,
     this.heroes,
-    this.gameBuilds,
+    this.patches,
     this.winRates,
     this.heroBuildWinRates,
     this.searchQuery = '',
@@ -37,7 +37,7 @@ class AppState {
   AppState copyWith({
     bool isLoading,
     Hero hero,
-    List<BuildInfo> buildInfo,
+    List<Patch> patches,
     Map<String, WinRates> winRates,
     bool heroBuildWinRatesLoading,
     bool isUpdating,
@@ -48,7 +48,7 @@ class AppState {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,
       heroes: hero ?? this.heroes,
-      gameBuilds: buildInfo ?? this.gameBuilds,
+      patches: patches ?? this.patches,
       winRates: winRates ?? this.winRates,
       isUpdating: isUpdating ?? this.isUpdating,
       heroBuildWinRatesLoading: heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
@@ -62,7 +62,7 @@ class AppState {
   int get hashCode =>
       isLoading.hashCode ^
       heroes.hashCode ^
-      gameBuilds.hashCode ^
+      patches.hashCode ^
       winRates.hashCode ^
       heroBuildWinRatesLoading.hashCode ^
       heroBuildWinRates.hashCode ^
@@ -77,7 +77,7 @@ class AppState {
           runtimeType == other.runtimeType &&
           isLoading == other.isLoading &&
           heroes == other.heroes &&
-          gameBuilds == other.gameBuilds &&
+          patches == other.patches &&
           winRates == other.winRates &&
           heroBuildWinRatesLoading == other.heroBuildWinRatesLoading &&
           heroBuildWinRates == other.heroBuildWinRates &&
@@ -87,6 +87,6 @@ class AppState {
 
   @override
   String toString() {
-    return 'AppState{isLoading: $isLoading, heroes: $heroes, buildInfo: $gameBuilds, winRates: $winRates}';
+    return 'AppState{isLoading: $isLoading}';
   }
 }

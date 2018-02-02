@@ -1,6 +1,6 @@
 import 'package:heroes_companion/redux/reducers/is_loading.dart';
 import 'package:heroes_companion/redux/reducers/heroes_reducer.dart';
-import 'package:heroes_companion/redux/reducers/build_info.dart';
+import 'package:heroes_companion/redux/reducers/patch_data.dart';
 import 'package:heroes_companion/redux/reducers/win_rates.dart';
 import 'package:heroes_companion/redux/reducers/heroes_build_win_rates.dart';
 import 'package:heroes_companion/redux/reducers/search_query_reducer.dart';
@@ -15,7 +15,7 @@ AppState appReducer(AppState state, action) {
   return new AppState(
       isLoading: loadingReducer(state.isLoading, action),
       heroes: heroesReducer(state.heroes, action),
-      gameBuilds: buildInfoReducer(state.gameBuilds, action),
+      patches: patchesReducer(state.patches, action),
       winRates: winRatesReducer(state.winRates, action),
       heroBuildWinRates:
           heroesBuildWinRatesReducer(state.heroBuildWinRates, action),

@@ -89,8 +89,8 @@ class _ViewModel {
   final dynamic favorite;
   final WinLossCount winLossCount;
   final BuildWinRates buildWinRates;
-  final BuildInfo currentBuild;
-  final BuildInfo previousBuild;
+  final Patch currentBuild;
+  final Patch previousBuild;
 
   _ViewModel(
       {@required this.hero,

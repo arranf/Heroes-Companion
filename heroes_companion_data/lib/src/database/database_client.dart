@@ -15,7 +15,7 @@ class DatabaseClient {
   static HeroProvider heroProvider;
   static DatabaseClient _client = new DatabaseClient._internal();
   static final String databaseName = "heroes_companion.db";
-  static final int databaseVersion = 6;
+  static final int databaseVersion = 7;
 
   factory DatabaseClient() {
     return _client;
@@ -35,7 +35,7 @@ class DatabaseClient {
             """);
 
     // Migrations
-    _onUpgrade(database, 0, databaseVersion);
+    return _onUpgrade(database, 0, databaseVersion);
   }
 
   _onUpgrade(Database database, int oldVersion, int newVersion) async {
@@ -64,12 +64,15 @@ class DatabaseClient {
     if (oldVersion < 6) {
       await upgradeTo6(database);
     }
+
+    if (oldVersion < 7) {
+      await upgradeTo7(database);
+    }
   }
 
   Future<Database> start() async {
     String databasePath = await _getDatabasePath(databaseName);
-    return await openDatabase(databasePath,
-        version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
+    return await openDatabase(databasePath, version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
   }
 
   /// @param databaseName The name of the database (e.g. heroes.db)

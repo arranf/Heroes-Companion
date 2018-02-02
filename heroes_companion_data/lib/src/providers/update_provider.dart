@@ -32,86 +32,91 @@ class UpdateProvider {
     });
   }
 
-  Future doUpdate() async {
-    debugPrint('Doing Update!');
-    UpdatePayload updatePayload = await api.getUpdate();
+  Future doUpdate() {
+    return new Future.sync(() async {
+      debugPrint('Doing Update!');
+      UpdatePayload updatePayload = await api.getUpdate();
 
-    // Hero Update
-    List<Map<String, dynamic>> existingHeroes =
-        await _database.query(hero_table.table_name, columns: [
-      hero_table.column_hero_id,
-      hero_table.column_sha3_256,
-      hero_table.column_heroes_companion_hero_id
-    ]);
-    await Future.wait(updatePayload.heroes.map((Hero hero) async {
-      Map<String, dynamic> existingHero = existingHeroes.firstWhere(
-          (h) => h[hero_table.column_hero_id] == hero.hero_id,
-          orElse: () => {});
-      return _updateHero(hero, existingHero);
-    }));
+      Batch batch = _database.batch();
 
-    // TODO Check if asset has been bundled and mark it as have asset
+      // Hero Update
+      List<Map<String, dynamic>> existingHeroes =
+          await _database.query(hero_table.table_name, columns: [
+        hero_table.column_hero_id,
+        hero_table.column_sha3_256,
+        hero_table.column_heroes_companion_hero_id
+      ]);
+      updatePayload.heroes.forEach((Hero hero) {
+         Map<String, dynamic> existingHero = existingHeroes.firstWhere(
+            (h) => h[hero_table.column_hero_id] == hero.hero_id,
+            orElse: () => {});
+        _updateHero(hero, existingHero, batch);
+      });
 
-    // Talent update
-    List<Map<String, dynamic>> existingTalents =
-        await _database.query(talent_table.table_name, columns: [
-      talent_table.column_id,
-      talent_table.column_hero_id,
-      talent_table.column_tool_tip_id,
-      talent_table.column_sha3_256,
-      talent_table.column_have_asset
-    ]);
-    await Future.wait(updatePayload.talents.map((Talent talent) async {
-      Map<String, dynamic> existingTalent = existingTalents.firstWhere(
-          (t) =>
-              t[talent_table.column_tool_tip_id] == talent.tool_tip_id &&
-              t[talent_table.column_hero_id] == talent.hero_id,
-          orElse: () => {});
-      return _updateTalent(talent, existingTalent);
-    }));
+      // TODO Check if asset has been bundled and mark it as have asset
+      // Talent update
+      List<Map<String, dynamic>> existingTalents =
+          await _database.query(talent_table.table_name, columns: [
+        talent_table.column_id,
+        talent_table.column_hero_id,
+        talent_table.column_tool_tip_id,
+        talent_table.column_sha3_256,
+        talent_table.column_have_asset
+      ]);
+      updatePayload.talents.forEach((Talent talent) {
+        Map<String, dynamic> existingTalent = existingTalents.firstWhere(
+            (t) =>
+                t[talent_table.column_tool_tip_id] == talent.tool_tip_id &&
+                t[talent_table.column_hero_id] == talent.hero_id,
+            orElse: () => {});
+        _updateTalent(talent, existingTalent, batch);
+      });
 
-    // Ability update
-    List<Map<String, dynamic>> abilities =
-        await _database.query(ability_table.table_name, columns: [
-      ability_table.column_id,
-      ability_table.column_ability_id,
-      ability_table.column_sha3_256
-    ]);
-    await Future.wait(updatePayload.abilities.map((Ability ability) async {
-      Map<String, dynamic> existingAbilities = abilities.firstWhere(
-          (a) => a[ability_table.column_ability_id] == ability.ability_id,
-          orElse: () => {});
-      return _updateAbility(ability, existingAbilities);
-    }));
+      // Ability update
+      List<Map<String, dynamic>> abilities =
+          await _database.query(ability_table.table_name, columns: [
+        ability_table.column_id,
+        ability_table.column_ability_id,
+        ability_table.column_sha3_256
+      ]);
+      updatePayload.abilities.forEach((Ability ability) {
+        Map<String, dynamic> existingAbilities = abilities.firstWhere(
+            (a) => a[ability_table.column_ability_id] == ability.ability_id,
+            orElse: () => {});
+        _updateAbility(ability, existingAbilities, batch);
+      });
 
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString(
-        pref_keys.update_id, updatePayload.id.toIso8601String());
-    debugPrint('Update done');
+      await batch.commit(noResult: false);
+
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString(
+          pref_keys.update_id, updatePayload.id.toIso8601String());
+      preferences.setString(pref_keys.update_patch, updatePayload.patch);
+      debugPrint('Update done');
+    });
   }
 
-  Future _updateHero(Hero hero, Map<String, dynamic> existingHero) {
+  void _updateHero(Hero hero, Map<String, dynamic> existingHero, Batch batch) {
     if (existingHero == null ||
         !existingHero.containsKey(hero_table.column_heroes_companion_hero_id) ||
         existingHero[hero_table.column_heroes_companion_hero_id] == null) {
-      return _database.insert(hero_table.table_name, hero.toUpdateMap());
+      batch.insert(hero_table.table_name, hero.toUpdateMap());
     } else if (!existingHero.containsKey(hero_table.column_sha3_256) ||
         existingHero[hero_table.column_sha3_256] != hero.sha3_256) {
-      return _database.update(hero_table.table_name, hero.toUpdateMap(),
+      batch.update(hero_table.table_name, hero.toUpdateMap(),
           where: "${hero_table.column_heroes_companion_hero_id} = ?",
           whereArgs: [
             existingHero[hero_table.column_heroes_companion_hero_id]
           ]);
     }
-    return new Future.value();
   }
 
-  Future _updateTalent(Talent talent, Map<String, dynamic> existingTalent) {
+  void _updateTalent(Talent talent, Map<String, dynamic> existingTalent, Batch batch) {
     // Doesn't exist, insert
     if (existingTalent == null ||
         !existingTalent.containsKey(talent_table.column_id) ||
         existingTalent[talent_table.column_id] == null) {
-      return _database.insert(talent_table.table_name, talent.toUpdateMap());
+      return batch.insert(talent_table.table_name, talent.toUpdateMap());
     }
     // Changed and new image needs to be fetched
     else if (!existingTalent.containsKey(talent_table.column_sha3_256) ||
@@ -120,32 +125,28 @@ class UpdateProvider {
                 existingTalent[talent_table.column_icon_file_name]) {
       Map<dynamic, dynamic> updateMap = talent.toUpdateMap();
       updateMap[talent_table.column_have_asset] = 0;
-      return _database.update(talent_table.table_name, updateMap,
+      return batch.update(talent_table.table_name, updateMap,
           where: "${talent_table.column_id} = ?",
           whereArgs: [existingTalent[talent_table.column_id]]);
     }
     // Changed, no known new image
     else if (!existingTalent.containsKey(talent_table.column_sha3_256) ||
-        existingTalent[talent_table.column_sha3_256] != talent.sha3_256 &&
-            existingTalent[talent_table.column_icon_file_name] !=
-                existingTalent[talent_table.column_icon_file_name]) {
-      return _database.update(talent_table.table_name, talent.toUpdateMap(),
+        existingTalent[talent_table.column_sha3_256] != talent.sha3_256) {
+      return batch.update(talent_table.table_name, talent.toUpdateMap(),
           where: "${talent_table.column_id} = ?",
           whereArgs: [existingTalent[talent_table.column_id]]);
     }
-    return new Future.value();
   }
 
-  Future _updateAbility(Ability ability, Map<String, dynamic> existingAbility) {
+  void _updateAbility(Ability ability, Map<String, dynamic> existingAbility, Batch batch) {
     if (existingAbility == null ||
         !existingAbility.containsKey(ability_table.column_id)) {
-      return _database.insert(ability_table.table_name, ability.toUpdateMap());
+      batch.insert(ability_table.table_name, ability.toUpdateMap());
     } else if (!existingAbility.containsKey(ability_table.column_sha3_256) ||
         existingAbility[ability_table.column_sha3_256] != ability.sha3_256) {
-      return _database.update(ability_table.table_name, ability.toUpdateMap(),
+      batch.update(ability_table.table_name, ability.toUpdateMap(),
           where: "${ability_table.column_id} = ?",
           whereArgs: [existingAbility[ability_table.column_ability_id]]);
     }
-    return new Future.value();
   }
 }

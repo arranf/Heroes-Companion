@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:heroes_companion_data/src/database/database_client.dart';
 import 'package:heroes_companion_data/src/providers/ability_provider.dart';
 import 'package:heroes_companion_data/src/providers/build_win_rates_provider.dart';
-import 'package:heroes_companion_data/src/providers/game_info_provider.dart';
 import 'package:heroes_companion_data/src/providers/hero_provider.dart';
+import 'package:heroes_companion_data/src/providers/patch_provider.dart';
 import 'package:heroes_companion_data/src/providers/talent_provider.dart';
 import 'package:heroes_companion_data/src/providers/update_provider.dart';
 import 'package:heroes_companion_data/src/providers/win_rate_provider.dart';
@@ -15,7 +15,7 @@ class DataProvider {
   static TalentProvider talentProvider;
   static AbilityProvider abilityProvider;
   static WinRateProvider winRateProvider = new WinRateProvider();
-  static GameInfoProvider gameInfoProvider = new GameInfoProvider();
+  static PatchProvider patchProvider = new PatchProvider();
   static BuildWinRatesProvider buildWinRatesProvider =
       new BuildWinRatesProvider();
   static UpdateProvider updateProvider;

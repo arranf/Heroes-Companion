@@ -36,11 +36,9 @@ class HeroProvider {
 
       if (maps.length > 0) {
         List<Hero> heroes = maps.map((h) => new Hero.fromMap(h)).toList();
-        await heroes.forEach((hero) async {
-          //    hero.abilities = await DataProvider.abilityProvider.getAbilitiesForHero(hero.hero_id);
-          hero.talents =
-              await DataProvider.talentProvider.getTalentsForHero(hero.hero_id);
-        });
+        await Future.wait(heroes.map((Hero hero) async {
+          hero.talents = await DataProvider.talentProvider.getTalentsForHero(hero.hero_id);
+        }));
         return heroes;
       } else {
         throw new Exception('No heroes found');

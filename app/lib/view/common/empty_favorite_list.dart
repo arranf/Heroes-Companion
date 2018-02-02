@@ -13,8 +13,8 @@ class EmptyFavoriteList extends StatelessWidget {
               padding: new EdgeInsets.symmetric(vertical: 20.0),
               child: new Icon(
                 Icons.favorite,
-                size: 50.0,
-                color: Colors.red,
+                size: 130.0,
+                color: Colors.red.shade300,
               ),
             ),
             new Padding(
