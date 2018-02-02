@@ -15,7 +15,7 @@ class DataProvider {
   static TalentProvider talentProvider;
   static AbilityProvider abilityProvider;
   static WinRateProvider winRateProvider = new WinRateProvider();
-  static PatchProvider patchProvider = new PatchProvider();
+  static PatchProvider patchProvider;
   static BuildWinRatesProvider buildWinRatesProvider =
       new BuildWinRatesProvider();
   static UpdateProvider updateProvider;
@@ -35,5 +35,6 @@ class DataProvider {
     talentProvider = new TalentProvider(_database);
     abilityProvider = new AbilityProvider(_database);
     updateProvider = new UpdateProvider(_database);
+    patchProvider = new PatchProvider(_database);
   }
 }

@@ -92,7 +92,31 @@ Future upgradeTo6(Database database) async {
   );
 }
 
-Future upgradeTo7 (Database database) async {
+Future upgradeTo8(Database database) async {
+  await database.execute(
+    '''
+    CREATE TABLE 
+    IF NOT EXISTS patches (
+      Id INTEGER PRIMARY KEY,
+      PatchName TEXT,
+      OfficialLink TEXT,
+      AlternateLink TEXT,
+      PatchType TEXT,
+      GameVersion TEXT NOT NULL UNIQUE,
+      FullVersion TEXT NOT NULL UNIQUE,
+      LiveDate DATETIME,
+      PatchNotesUrl TEXT
+    );
+    '''
+  );
+}
+
+Future upgradeTo9(Database database) async {
+  
+}
+
+Future upgradeTo7(Database database) async {
+
   await database.execute(
     '''
     ALTER TABLE [heroes]	
@@ -627,4 +651,6 @@ Future upgradeTo7 (Database database) async {
     WHERE [heroes].ShortName = 'alarak'
     '''
   );  
+  //endregion
 }
+

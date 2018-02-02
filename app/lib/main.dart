@@ -27,7 +27,8 @@ void main() {
   void listener(AppState state) {
     if (!isAppLoading(state) &&
         heroesSelector(state) != null &&
-        buildsSelector(state) != null) {
+        buildsSelector(state) != null && 
+        buildsSelector(state).isNotEmpty) {
       subscription.cancel();
       runApp(app);
     }
@@ -45,7 +46,10 @@ void main() {
       getHeroes(app.store);
       getPatches(app.store);
     })
-    .then((a) => tryUpdate(app.store))
+    .then((a) {
+      tryUpdate(app.store);
+      updatePatches(app.store);
+    })
     .catchError((e) {
       debugPrint('Got an error');
       bool isDebug = false;

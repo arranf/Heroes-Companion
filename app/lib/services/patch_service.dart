@@ -13,3 +13,12 @@ void getPatches(Store<AppState> store) {
       .catchError(
           (Exception e) => store.dispatch(new FetchPatchesFailedAction()));
 }
+
+void updatePatches(Store<AppState> store) {
+  // TODO Figure out if there needs to be new actions here 
+  DataProvider.patchProvider
+      .fetchPatches()
+      .then((patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
+      .catchError(
+          (Exception e) => store.dispatch(new FetchPatchesFailedAction()));
+}
