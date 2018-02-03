@@ -67,6 +67,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
       return new HeroDetail(vm.hero,
           key: new Key(vm.hero.short_name),
           favorite: vm.favorite,
+          canOfferPreviousBuild: vm.hero.last_modified != null && vm.previousBuild.liveDate.isAfter(vm.hero.last_modified),
           winLossCount: vm.winLossCount,
           buildWinRates: vm.buildWinRates,
           isCurrentBuild: _isCurrentBuild,

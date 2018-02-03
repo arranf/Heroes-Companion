@@ -13,6 +13,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 class HeroDetail extends StatelessWidget {
   final Hero hero;
   final bool isCurrentBuild;
+  final bool canOfferPreviousBuild;
   final WinLossCount winLossCount;
   final BuildWinRates buildWinRates;
   final String buildNumber;
@@ -23,6 +24,7 @@ class HeroDetail extends StatelessWidget {
   HeroDetail(
     this.hero, {
     key,
+    @required this.canOfferPreviousBuild,
     @required this.favorite,
     this.winLossCount,
     this.buildWinRates,
@@ -293,12 +295,12 @@ class HeroDetail extends StatelessWidget {
         initialIndex: 0,
         child: new Column(
           children: <Widget>[
-            new BuildPrompt(
+           canOfferPreviousBuild ? new BuildPrompt(
               isCurrentBuild,
               winLossCount,
               buildSwitch,
               key: new Key('${hero.name}_previous_build_prompt'),
-            ),
+            ) : new Container(),
             _buildPhoneTitleRow(context),
             new Expanded(child: _buildTalentCards(context))
           ],
@@ -308,7 +310,12 @@ class HeroDetail extends StatelessWidget {
   Widget _buildTabletView(BuildContext context) {
     return new Column(
       children: <Widget>[
-        new BuildPrompt(isCurrentBuild, winLossCount, buildSwitch),
+        canOfferPreviousBuild ? new BuildPrompt(
+              isCurrentBuild,
+              winLossCount,
+              buildSwitch,
+              key: new Key('${hero.name}_previous_build_prompt'),
+            ) : new Container(),
         _buildTabletTitleRow(context),
         new Expanded(child: _buildTalentCards(context))
       ],
