@@ -63,14 +63,22 @@ class UpdateProvider {
         talent_table.column_sha3_256,
         talent_table.column_have_asset
       ]);
+
+      Set<int> heroesToMarkToUpdate = new Set();
       updatePayload.talents.forEach((Talent talent) {
         Map<String, dynamic> existingTalent = existingTalents.firstWhere(
             (t) =>
                 t[talent_table.column_tool_tip_id] == talent.tool_tip_id &&
                 t[talent_table.column_hero_id] == talent.hero_id,
             orElse: () => {});
-        _updateTalent(talent, existingTalent, batch);
+        
+        // Collect heroes who have had talents updated
+        int heroId = _updateTalent(talent, existingTalent, batch);
+        heroesToMarkToUpdate.add(heroId);
       });
+
+      // Mark heroes as modified
+      heroesToMarkToUpdate.forEach((int heroId) => _markHeroModified);
 
       // Ability update
       List<Map<String, dynamic>> abilities =
@@ -111,13 +119,14 @@ class UpdateProvider {
     }
   }
 
-  void _updateTalent(
+  int _updateTalent(
       Talent talent, Map<String, dynamic> existingTalent, Batch batch) {
     // Doesn't exist, insert
     if (existingTalent == null ||
         !existingTalent.containsKey(talent_table.column_id) ||
         existingTalent[talent_table.column_id] == null) {
-      return batch.insert(talent_table.table_name, talent.toUpdateMap());
+       batch.insert(talent_table.table_name, talent.toUpdateMap());
+       return talent.hero_id;
     }
     // Changed and new image needs to be fetched
     else if (!existingTalent.containsKey(talent_table.column_sha3_256) ||
@@ -126,17 +135,20 @@ class UpdateProvider {
                 existingTalent[talent_table.column_icon_file_name]) {
       Map<dynamic, dynamic> updateMap = talent.toUpdateMap();
       updateMap[talent_table.column_have_asset] = 0;
-      return batch.update(talent_table.table_name, updateMap,
+      batch.update(talent_table.table_name, updateMap,
           where: "${talent_table.column_id} = ?",
           whereArgs: [existingTalent[talent_table.column_id]]);
+      return talent.hero_id;
     }
     // Changed, no known new image
     else if (!existingTalent.containsKey(talent_table.column_sha3_256) ||
         existingTalent[talent_table.column_sha3_256] != talent.sha3_256) {
-      return batch.update(talent_table.table_name, talent.toUpdateMap(),
+      batch.update(talent_table.table_name, talent.toUpdateMap(),
           where: "${talent_table.column_id} = ?",
           whereArgs: [existingTalent[talent_table.column_id]]);
+      return talent.hero_id;
     }
+    return null;
   }
 
   void _updateAbility(
@@ -150,5 +162,13 @@ class UpdateProvider {
           where: "${ability_table.column_id} = ?",
           whereArgs: [existingAbility[ability_table.column_ability_id]]);
     }
+  }
+
+  void _markHeroModified(int heroId, Batch batch) {
+     batch.update(hero_table.table_name, {hero_table.column_modified_date: new DateTime.now().toIso8601String()},
+          where: "${hero_table.column_hero_id} = ?",
+          whereArgs: [
+            heroId
+          ]);
   }
 }
