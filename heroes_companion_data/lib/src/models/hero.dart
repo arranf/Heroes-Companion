@@ -18,6 +18,7 @@ class Hero {
   final bool is_owned;
   bool is_favorite;
   DateTime last_rotation_date = new DateTime(1970);
+  DateTime last_modified = new DateTime(1970);
   bool have_assets = false;
   final String additional_search_text;
 
@@ -39,6 +40,7 @@ class Hero {
     this.talents,
     this.abilities,
     this.last_rotation_date,
+    this.last_modified,
   });
 
   factory Hero.fromMap(Map map) {
@@ -59,6 +61,7 @@ class Hero {
     bool have_assets = map[table.column_have_assets] == 1;
     String sha3_256 = map[table.column_sha3_256];
     String additional_search_text = map[table.column_additional_search_text];
+    DateTime last_modified = map[table.column_modified_date];
     return new Hero(
         heroes_companion_hero_id,
         hero_id,
@@ -74,7 +77,9 @@ class Hero {
         have_assets,
         sha3_256,
         additional_search_text,
-        last_rotation_date: last_rotation_date);
+        last_rotation_date: last_rotation_date,
+        last_modified: last_modified,
+      );
   }
 
   bool isOnRotation() {
@@ -98,6 +103,7 @@ class Hero {
       table.column_have_assets: have_assets == true ? 1 : 0,
       table.column_sha3_256: sha3_256,
       table.column_additional_search_text: additional_search_text,
+      table.column_modified_date : last_modified,
     };
     return map;
   }
@@ -133,6 +139,7 @@ class Hero {
     DateTime last_rotation_date,
     String sha3_256,
     String additional_search_text,
+    DateTime last_modified,
   }) {
     return new Hero(
       heroes_companion_hero_id =
@@ -154,6 +161,7 @@ class Hero {
       talents: talents ?? this.talents,
       abilities: abilities ?? this.abilities,
       last_rotation_date: last_rotation_date ?? this.last_rotation_date,
+      last_modified: last_modified ?? this.last_modified,
     );
   }
 
