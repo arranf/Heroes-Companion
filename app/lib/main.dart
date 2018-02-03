@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:isolate';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -17,12 +18,49 @@ import 'package:heroes_companion/redux/reducers/app_state.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/routes.dart';
 import 'package:heroes_companion/view/common/splash.dart';
+import 'package:sentry/sentry.dart';
+
+import 'dsn.dart';
+
+final SentryClient _sentry = new SentryClient(dsn: dsn);
+
+/// Reports [error] along with its [stackTrace] to Sentry.io.
+Future<Null> _reportError(dynamic error, dynamic stackTrace) async {
+  print('Caught error: $error');
+  print('Reporting to Sentry.io...');
+
+  final SentryResponse response = await _sentry.captureException(
+    exception: error,
+    stackTrace: stackTrace,
+  );
+
+  if (response.isSuccessful) {
+    print('Success! Event ID: ${response.eventId}');
+  } else {
+    print('Failed to report to Sentry.io: ${response.error}');
+  }
+}
 
 final String appName = 'Heroes Companion';
 StreamSubscription<AppState> subscription;
 App app;
 
-void main() {
+Future main() async {
+  FlutterError.onError = (FlutterErrorDetails details) async {
+    print('FlutterError.onError caught an error');
+    await _reportError(details.exception, details.stack);
+  };
+
+  Isolate.current.addErrorListener(new RawReceivePort((dynamic pair) async {
+    print('Isolate.current.addErrorListener caught an error');
+    await _reportError(
+      (pair as List<String>).first,
+      (pair as List<String>).last,
+    );
+  }).sendPort);
+
+  
+
   // Listens to onChange events and when the initial load is completed the main app is run
   void listener(AppState state) {
     if (!isAppLoading(state) &&
@@ -30,7 +68,12 @@ void main() {
         buildsSelector(state) != null &&
         buildsSelector(state).isNotEmpty) {
       subscription.cancel();
-      runApp(app);
+      runZoned<Future<Null>>(() async {
+        runApp(app);
+      }, onError: (error, stackTrace) async {
+        print('Zone caught an error');
+        await _reportError(error, stackTrace);
+      });
     }
   }
 
@@ -47,7 +90,8 @@ void main() {
   }).then((a) {
     tryUpdate(app.store);
     updatePatches(app.store);
-  }).catchError((e) {
+  }).catchError((Error e) {
+    _reportError(e, e.stackTrace);
     debugPrint('Got an error');
     bool isDebug = false;
     assert(() => isDebug = true);
