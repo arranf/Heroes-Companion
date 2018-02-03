@@ -170,3 +170,10 @@ List<Hero> searchSelector(AppState state) {
               query.length > 2))
       .toList();
 }
+
+String currentPatchUrlForHero(AppState state, Hero hero) {
+// https://heroespatchnotes.com/hero/greymane.html#patch2017-09-05
+   DateTime currentPatchLiveDate = currentBuildSelector(state).liveDate;
+   String currentPatchDate = currentPatchLiveDate.year.toString() + currentPatchLiveDate.month.toString().padLeft(2) + currentPatchLiveDate.day.toString().padLeft(2);
+  return 'heroespatchnotes.com/hero/${hero.short_name}.html#patch$currentPatchDate';
+}

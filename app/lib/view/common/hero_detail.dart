@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide Hero;
+import 'package:heroes_companion/models/overflow_choices.dart';
 import 'package:heroes_companion/view/common/app_loading_container.dart';
 import 'package:heroes_companion/view/common/build_card.dart';
 import 'package:heroes_companion/view/common/build_prompt.dart';
@@ -17,6 +18,7 @@ class HeroDetail extends StatelessWidget {
   final String buildNumber;
   final dynamic favorite;
   final dynamic buildSwitch;
+  final String patchNotesUrl;
 
   HeroDetail(
     this.hero, {
@@ -27,6 +29,7 @@ class HeroDetail extends StatelessWidget {
     this.isCurrentBuild,
     this.buildNumber,
     this.buildSwitch,
+    this.patchNotesUrl
   })
       : super(key: key);
 
@@ -312,6 +315,7 @@ class HeroDetail extends StatelessWidget {
   }
 
   Widget _buildDetail(BuildContext context) {
+    final List<OverflowChoice> overflowChoices = [OverflowChoice.HeroPatchNotes];
     return new Scaffold(
         appBar: new AppBar(
           title: new Text(hero.name),
@@ -326,6 +330,18 @@ class HeroDetail extends StatelessWidget {
                       : Theme.of(context).buttonColor),
               onPressed: () => favorite(hero),
             ),
+            new PopupMenuButton(
+                  onSelected: (OverflowChoice choice) => OverflowChoice
+                      .handleChoice(choice, context, patchNotesUrl: p), // overflow menu
+                  itemBuilder: (BuildContext context) {
+                    return overflowChoices.map((OverflowChoice choice) {
+                      return new PopupMenuItem(
+                        value: choice,
+                        child: new Text(choice.name),
+                      );
+                    }).toList();
+                  },
+                ),
           ],
         ),
         body: MediaQuery.of(context).size.width < 600

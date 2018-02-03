@@ -70,13 +70,15 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
           winLossCount: vm.winLossCount,
           buildWinRates: vm.buildWinRates,
           isCurrentBuild: _isCurrentBuild,
-          buildNumber: _buildNumber, buildSwitch: () {
-        setState(() {
-          _isCurrentBuild = !_isCurrentBuild;
-          _buildNumber = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild)
-              .fullVersion;
+          buildNumber: _buildNumber, 
+          patchNotesUrl: vm.heroPatchNotesUrl,
+          buildSwitch: () {
+            setState(() {
+              _isCurrentBuild = !_isCurrentBuild;
+              _buildNumber = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild)
+                  .fullVersion;
+            });
         });
-      });
     });
   }
 }
@@ -88,6 +90,7 @@ class _ViewModel {
   final BuildWinRates buildWinRates;
   final Patch currentBuild;
   final Patch previousBuild;
+  final String heroPatchNotesUrl;
 
   _ViewModel(
       {@required this.hero,
@@ -95,7 +98,8 @@ class _ViewModel {
       this.winLossCount,
       this.buildWinRates,
       this.currentBuild,
-      this.previousBuild});
+      this.previousBuild,
+      this.heroPatchNotesUrl});
 
   factory _ViewModel.from(Store<AppState> store, int id, String buildNumber) {
     final dynamic _favorite = (Hero hero) {
@@ -103,12 +107,15 @@ class _ViewModel {
     };
 
     final hero = heroSelectorByCompanionId(heroesSelector(store.state), id);
+    if (hero.isNotPresent) {
+      throw new Exception('No hero when optional unwrapped');
+    }
     // TODO Wrap win loss count to have a sensible model in app
     final winLossCount =
         winLossCountByCompanionIdAndBuildNumber(store.state, id, buildNumber);
     final buildWinRates =
         buildWinRatesByCompanionIdAndBuildNumber(store.state, id, buildNumber);
-
+    final String heroPatchNotesUrl = currentPatchUrlForHero(store.state, hero.value);
     return new _ViewModel(
       hero: hero.value,
       favorite: _favorite,
@@ -116,6 +123,7 @@ class _ViewModel {
       buildWinRates: buildWinRates.isPresent ? buildWinRates.value : null,
       currentBuild: currentBuildSelector(store.state),
       previousBuild: previousBuildSelector(store.state),
+      heroPatchNotesUrl: heroPatchNotesUrl,
     );
   }
 }

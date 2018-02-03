@@ -9,13 +9,13 @@ import 'package:url_launcher/url_launcher.dart';
 class OverflowChoice {
   static const About = const OverflowChoice('About');
   static const Feedback = const OverflowChoice('Feedback');
-
+  static const PatchNotes = const OverflowChoice('Read Patch Notes');
+  static const HeroPatchNotes = const OverflowChoice('Hero Patch Notes');
   final String name;
 
-  static get values => [About, Feedback];
+  static get values => [About, Feedback, PatchNotes];
 
-  static Future handleChoice(
-      OverflowChoice choice, BuildContext context) async {
+  static Future handleChoice(OverflowChoice choice, BuildContext context, {String patchNotesUrl}) async {
     switch (choice) {
       case About:
         TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
@@ -57,6 +57,19 @@ class OverflowChoice {
       case Feedback:
         const String url =
             'mailto:feedback@heroescompanion.com?subject=Feedback&body=';
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw new Exception('Could not launch $url');
+        }
+        break;
+      case HeroPatchNotes:
+      case PatchNotes:
+        String url = patchNotesUrl;
+        if (url == null || url.isEmpty){
+          throw new Exception('Could get patch notes URL');
+        }
+        url = 'https://' + url;
         if (await canLaunch(url)) {
           await launch(url);
         } else {

@@ -25,7 +25,8 @@ class HeroHome extends StatelessWidget {
 
   final List<OverflowChoice> overflowChoices = [
     OverflowChoice.About,
-    OverflowChoice.Feedback
+    OverflowChoice.PatchNotes,
+    OverflowChoice.Feedback,
   ];
 
   @override
@@ -40,7 +41,7 @@ class HeroHome extends StatelessWidget {
               actions: <Widget>[
                 new PopupMenuButton(
                   onSelected: (OverflowChoice choice) => OverflowChoice
-                      .handleChoice(choice, context), // overflow menu
+                      .handleChoice(choice, context, patchNotesUrl: vm.patchNotesUrl), // overflow menu
                   itemBuilder: (BuildContext context) {
                     return overflowChoices.map((OverflowChoice choice) {
                       return new PopupMenuItem(
@@ -94,6 +95,7 @@ class _ViewModel {
   final Function bottomNavTap;
   final Function onRefresh;
   final bool allowRefresh;
+  final String patchNotesUrl;
   final Function onTap = (BuildContext context, HeroListItem heroListItem) {
     Navigator.of(context).push(new PageRouteBuilder(
           pageBuilder: (context, a1, a2) => new HeroDetailContainer(
@@ -104,6 +106,7 @@ class _ViewModel {
   _ViewModel(
       {@required this.heroes,
       @required this.loading,
+      this.patchNotesUrl,
       this.onLongPress,
       this.bottomNavTap,
       this.currentFilter,
@@ -125,6 +128,8 @@ class _ViewModel {
 
     HeroFilter filter = filterSelector(store.state);
 
+    String patchNotesUrl = currentBuildSelector(store.state).patchNotesUrl;
+
     bool allowRefresh = false;
     Function onRefresh = () => true;
     if (filter == HeroFilter.freeToPlay) {
@@ -142,6 +147,7 @@ class _ViewModel {
         bottomNavTap: _bottomNavTap,
         currentFilter: filterSelector(store.state),
         onRefresh: onRefresh,
+        patchNotesUrl: patchNotesUrl,
         allowRefresh: allowRefresh);
   }
 }
