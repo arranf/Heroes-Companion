@@ -61,7 +61,8 @@ class Hero {
     bool have_assets = map[table.column_have_assets] == 1;
     String sha3_256 = map[table.column_sha3_256];
     String additional_search_text = map[table.column_additional_search_text];
-    DateTime last_modified = map[table.column_modified_date];
+    String modified = map[table.column_modified_date];
+    DateTime last_modified = modified != null && modified.isNotEmpty ? DateTime.parse(modified) : new DateTime(1970);
     return new Hero(
         heroes_companion_hero_id,
         hero_id,
