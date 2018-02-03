@@ -77,8 +77,13 @@ class UpdateProvider {
         heroesToMarkToUpdate.add(heroId);
       });
 
+
       // Mark heroes as modified
-      heroesToMarkToUpdate.forEach((int heroId) => _markHeroModified);
+      batch.update(hero_table.table_name, 
+          {hero_table.column_modified_date: updatePayload.patch_date.toIso8601String()},
+          where: "${hero_table.column_hero_id} IN (?)",
+          whereArgs: [heroesToMarkToUpdate.where((a) => a != null).join(',')]
+      );
 
       // Ability update
       List<Map<String, dynamic>> abilities =
@@ -87,6 +92,7 @@ class UpdateProvider {
         ability_table.column_ability_id,
         ability_table.column_sha3_256
       ]);
+      
       updatePayload.abilities.forEach((Ability ability) {
         Map<String, dynamic> existingAbilities = abilities.firstWhere(
             (a) => a[ability_table.column_ability_id] == ability.ability_id,
@@ -162,13 +168,5 @@ class UpdateProvider {
           where: "${ability_table.column_id} = ?",
           whereArgs: [existingAbility[ability_table.column_ability_id]]);
     }
-  }
-
-  void _markHeroModified(int heroId, Batch batch) {
-     batch.update(hero_table.table_name, {hero_table.column_modified_date: new DateTime.now().toIso8601String()},
-          where: "${hero_table.column_hero_id} = ?",
-          whereArgs: [
-            heroId
-          ]);
   }
 }
