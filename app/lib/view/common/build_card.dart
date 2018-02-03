@@ -18,27 +18,29 @@ class BuildCard extends StatelessWidget{
   Widget build(BuildContext context) {
     bool isPhone = MediaQuery.of(context).size.width < 600;
 
+    TextStyle style = new TextStyle(fontSize: 16.0, fontWeight: Theme.of(context).textTheme.body1.fontWeight);
     return new Container(
       // Tablets get padding
       padding: !isPhone ? new EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0) : EdgeInsets.zero,
       child: new Card(
         child: new Container(
-          padding: new EdgeInsets.symmetric(horizontal: 16.0)
-              .add(new EdgeInsets.only(top: 24.0, bottom: 8.0)),
+          padding: new EdgeInsets.symmetric(horizontal: 8.0).add(new EdgeInsets.only(top: 16.0, bottom: 8.0)),
           child: new Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Padding(
-                padding: new EdgeInsets.only(bottom: 16.0),
-                child: new Text(
-                    '${(buildStatistics.win_rate * 100).toStringAsFixed(2)} Win %',
-                    style: new TextStyle(
-                        fontSize: 20.0, fontWeight: FontWeight.w600)),
+              new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    new Text(type, style: style.apply(fontWeightDelta: 1),),
+                    new Text(
+                      '${(buildStatistics.win_rate * 100).toStringAsFixed(2)} Win %',
+                      style: style),
+                    new Text('${buildStatistics.total_games_played} Games Played',
+                      style: style),
+                  ],
               ),
-              new Text('${buildStatistics.total_games_played} Games Played',
-                  style: new TextStyle(fontSize: 16.0)),
               new Container(
                 height: 16.0,
               ),
@@ -50,7 +52,8 @@ class BuildCard extends StatelessWidget{
                         Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
                         return isPhone ? _buildPhoneTalent(context, talent) : _buildTabletTalent(context, talent);
                       })
-                      .toList()),
+                      .toList()
+              ),
               new ButtonTheme.bar(
                 child: new ButtonBar(
                   children: <Widget>[
