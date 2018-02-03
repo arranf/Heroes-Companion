@@ -340,7 +340,7 @@ class HeroDetail extends StatelessWidget {
             ),
             new PopupMenuButton(
                   onSelected: (OverflowChoice choice) => OverflowChoice
-                      .handleChoice(choice, context, patchNotesUrl: p), // overflow menu
+                      .handleChoice(choice, context, patchNotesUrl: patchNotesUrl), // overflow menu
                   itemBuilder: (BuildContext context) {
                     return overflowChoices.map((OverflowChoice choice) {
                       return new PopupMenuItem(
