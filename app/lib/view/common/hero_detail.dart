@@ -188,15 +188,15 @@ class HeroDetail extends StatelessWidget {
 
   Widget _buildTalentCards(BuildContext context) {
     if (buildWinRates != null) {
-      List<Widget> children = [];
+      // Map of build to build 'type'
+      Map<BuildStatistics, String> classifiedBuilds = {};
+
       if (buildWinRates.winning_builds != null) {
         List<BuildStatistics> interestingWinningBuilds =
             new List<BuildStatistics>.from(buildWinRates.winning_builds
                 .where((b) => b.talents_names.length == 7));
         if (interestingWinningBuilds.length > 0) {
-          children.addAll(interestingWinningBuilds
-              .map((BuildStatistics b) => new BuildCard(b, 'Winning Build', _playBuild, hero, showTalentBottomSheet))
-              .toList());
+          interestingWinningBuilds.forEach((BuildStatistics build) => classifiedBuilds[build] = 'Winning Build');
         }
       }
 
@@ -205,16 +205,20 @@ class HeroDetail extends StatelessWidget {
             new List<BuildStatistics>.from(buildWinRates.popular_builds
                 .where((b) => b.talents_names.length == 7));
         if (interestingPopularBuilds.length > 0) {
-          children.addAll(interestingPopularBuilds
-              .map((b) => new BuildCard(b, 'Popular Build', _playBuild, hero, showTalentBottomSheet))
-              .toList());
+          interestingPopularBuilds.forEach((BuildStatistics build) => classifiedBuilds[build] = 'Popular Build');
         }
       }
+
+      // Sort builds by games played
+      List<BuildStatistics> builds = classifiedBuilds.keys.toList();
+      builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.total_games_played.compareTo(b.total_games_played));
+      
       return new ListView(
         key: new Key(hero.name + '_talent_rows_tablet'),
-        children: children,
+        children: builds.map((BuildStatistics b) => new BuildCard(b, classifiedBuilds[b], _playBuild, hero, showTalentBottomSheet)).toList()
       );
     }
+    //TODO Return empty state
     return new Container();
   }
 
