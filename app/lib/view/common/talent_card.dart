@@ -35,13 +35,23 @@ class TalentCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    talent.have_asset
-                        ? new Image.asset(
+                    new AnimatedContainer(
+                      width: 64.0,
+                      height: 64.0,
+                      duration: kThemeChangeDuration,
+                      decoration: new BoxDecoration(
+                        color: Colors.grey,
+                        image: new DecorationImage(
+                          image: talent.have_asset
+                        ? new AssetImage(
                             'assets/images/talents/${talent.icon_file_name}')
-                        : new Image(
-                            image: new CachedNetworkImageProvider(
-                                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'))
-                  ],
+                        : new CachedNetworkImageProvider(
+                                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
+                        ),
+                        shape: BoxShape.rectangle,
+                      )
+                    )
+                                      ],
                 ),
                 new Padding(
                   padding: new EdgeInsets.only(top: 16.0),

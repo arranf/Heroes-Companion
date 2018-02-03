@@ -11,13 +11,11 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => new MaterialApp(
-          home: new Scaffold(
-            body:  _buildRegularSplash(context, appName)
-          ),
-          theme: new ThemeData(
-            primarySwatch: Colors.deepPurple,
-            scaffoldBackgroundColor: Colors.deepPurple,
-          ));
+      home: new Scaffold(body: _buildRegularSplash(context, appName)),
+      theme: new ThemeData(
+        primarySwatch: Colors.deepPurple,
+        scaffoldBackgroundColor: Colors.deepPurple,
+      ));
 }
 
 Widget _buildRegularSplash(BuildContext context, String appName) {

@@ -37,7 +37,8 @@ class HeroProvider {
       if (maps.length > 0) {
         List<Hero> heroes = maps.map((h) => new Hero.fromMap(h)).toList();
         await Future.wait(heroes.map((Hero hero) async {
-          hero.talents = await DataProvider.talentProvider.getTalentsForHero(hero.hero_id);
+          hero.talents =
+              await DataProvider.talentProvider.getTalentsForHero(hero.hero_id);
         }));
         return heroes;
       } else {

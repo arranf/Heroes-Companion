@@ -18,27 +18,30 @@ class Hero {
   final bool is_owned;
   bool is_favorite;
   DateTime last_rotation_date = new DateTime(1970);
+  DateTime last_modified = new DateTime(1970);
   bool have_assets = false;
   final String additional_search_text;
 
   Hero(
-      this.heroes_companion_hero_id,
-      this.hero_id,
-      this.name,
-      this.short_name,
-      this.attribute_id,
-      this.icon_file_name,
-      this.role,
-      this.type,
-      this.release_date,
-      this.is_owned,
-      this.is_favorite,
-      this.have_assets,
-      this.sha3_256,
-      this.additional_search_text,
-      {this.talents,
-      this.abilities,
-      this.last_rotation_date, });
+    this.heroes_companion_hero_id,
+    this.hero_id,
+    this.name,
+    this.short_name,
+    this.attribute_id,
+    this.icon_file_name,
+    this.role,
+    this.type,
+    this.release_date,
+    this.is_owned,
+    this.is_favorite,
+    this.have_assets,
+    this.sha3_256,
+    this.additional_search_text, {
+    this.talents,
+    this.abilities,
+    this.last_rotation_date,
+    this.last_modified,
+  });
 
   factory Hero.fromMap(Map map) {
     int heroes_companion_hero_id = map[table.column_heroes_companion_hero_id];
@@ -58,6 +61,7 @@ class Hero {
     bool have_assets = map[table.column_have_assets] == 1;
     String sha3_256 = map[table.column_sha3_256];
     String additional_search_text = map[table.column_additional_search_text];
+    DateTime last_modified = map[table.column_modified_date];
     return new Hero(
         heroes_companion_hero_id,
         hero_id,
@@ -73,7 +77,9 @@ class Hero {
         have_assets,
         sha3_256,
         additional_search_text,
-        last_rotation_date: last_rotation_date);
+        last_rotation_date: last_rotation_date,
+        last_modified: last_modified,
+      );
   }
 
   bool isOnRotation() {
@@ -97,6 +103,7 @@ class Hero {
       table.column_have_assets: have_assets == true ? 1 : 0,
       table.column_sha3_256: sha3_256,
       table.column_additional_search_text: additional_search_text,
+      table.column_modified_date : last_modified,
     };
     return map;
   }
@@ -114,25 +121,26 @@ class Hero {
     return map;
   }
 
-  Hero copyWith(
-      {int heroes_companion_hero_id,
-      int hero_id,
-      String name,
-      String short_name,
-      String attribute_id,
-      String icon_file_name,
-      String role,
-      String type,
-      DateTime release_date,
-      bool is_owned,
-      bool is_favorite,
-      bool have_assets,
-      List<Talent> talents,
-      List<Ability> abilities,
-      DateTime last_rotation_date,
-      String sha3_256,
-      String additional_search_text,
-      }) {
+  Hero copyWith({
+    int heroes_companion_hero_id,
+    int hero_id,
+    String name,
+    String short_name,
+    String attribute_id,
+    String icon_file_name,
+    String role,
+    String type,
+    DateTime release_date,
+    bool is_owned,
+    bool is_favorite,
+    bool have_assets,
+    List<Talent> talents,
+    List<Ability> abilities,
+    DateTime last_rotation_date,
+    String sha3_256,
+    String additional_search_text,
+    DateTime last_modified,
+  }) {
     return new Hero(
       heroes_companion_hero_id =
           heroes_companion_hero_id ?? this.heroes_companion_hero_id,
@@ -148,10 +156,12 @@ class Hero {
       is_favorite = is_favorite ?? this.is_favorite,
       have_assets = have_assets ?? this.have_assets,
       sha3_256 = sha3_256 ?? this.sha3_256,
-      additional_search_text = additional_search_text ?? this.additional_search_text,
+      additional_search_text =
+          additional_search_text ?? this.additional_search_text,
       talents: talents ?? this.talents,
       abilities: abilities ?? this.abilities,
       last_rotation_date: last_rotation_date ?? this.last_rotation_date,
+      last_modified: last_modified ?? this.last_modified,
     );
   }
 

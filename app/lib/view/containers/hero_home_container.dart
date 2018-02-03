@@ -2,11 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/models/hero_filter.dart';
+import 'package:heroes_companion/models/overflow_choices.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/routes.dart';
 import 'package:heroes_companion/view/common/empty_favorite_list.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
-import 'package:heroes_companion/view/routes/hero_detail_container.dart';
+import 'package:heroes_companion/view/containers/hero_detail_container.dart';
 import 'package:redux/redux.dart';
 
 import 'package:heroes_companion/icons.dart' as HeroesIcons;
@@ -22,6 +23,12 @@ import 'package:heroes_companion/global_keys.dart';
 class HeroHome extends StatelessWidget {
   HeroHome({Key key}) : super(key: key);
 
+  final List<OverflowChoice> overflowChoices = [
+    OverflowChoice.About,
+    OverflowChoice.PatchNotes,
+    OverflowChoice.Feedback,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return new StoreConnector<AppState, _ViewModel>(
@@ -29,7 +36,23 @@ class HeroHome extends StatelessWidget {
       builder: (context, vm) {
         return new Scaffold(
             key: homeScaffoldKey,
-            appBar: new AppBar(title: new Text('Heroes Companion')),
+            appBar: new AppBar(
+              title: new Text('Heroes Companion'),
+              actions: <Widget>[
+                new PopupMenuButton(
+                  onSelected: (OverflowChoice choice) => OverflowChoice
+                      .handleChoice(choice, context, patchNotesUrl: vm.patchNotesUrl), // overflow menu
+                  itemBuilder: (BuildContext context) {
+                    return overflowChoices.map((OverflowChoice choice) {
+                      return new PopupMenuItem(
+                        value: choice,
+                        child: new Text(choice.name),
+                      );
+                    }).toList();
+                  },
+                ),
+              ],
+            ),
             body:
                 vm.currentFilter != HeroFilter.favorite || vm.heroes.isNotEmpty
                     ? new HeroList(vm.heroes,
@@ -72,6 +95,7 @@ class _ViewModel {
   final Function bottomNavTap;
   final Function onRefresh;
   final bool allowRefresh;
+  final String patchNotesUrl;
   final Function onTap = (BuildContext context, HeroListItem heroListItem) {
     Navigator.of(context).push(new PageRouteBuilder(
           pageBuilder: (context, a1, a2) => new HeroDetailContainer(
@@ -82,6 +106,7 @@ class _ViewModel {
   _ViewModel(
       {@required this.heroes,
       @required this.loading,
+      this.patchNotesUrl,
       this.onLongPress,
       this.bottomNavTap,
       this.currentFilter,
@@ -103,6 +128,8 @@ class _ViewModel {
 
     HeroFilter filter = filterSelector(store.state);
 
+    String patchNotesUrl = currentBuildSelector(store.state).patchNotesUrl;
+
     bool allowRefresh = false;
     Function onRefresh = () => true;
     if (filter == HeroFilter.freeToPlay) {
@@ -120,6 +147,7 @@ class _ViewModel {
         bottomNavTap: _bottomNavTap,
         currentFilter: filterSelector(store.state),
         onRefresh: onRefresh,
+        patchNotesUrl: patchNotesUrl,
         allowRefresh: allowRefresh);
   }
 }

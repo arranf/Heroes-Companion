@@ -8,7 +8,9 @@ class PatchData {
   final DateTime liveDate;
   final String patchNotesUrl;
 
-  PatchData(this.patchName, this.officialLink, this.patchType, this.gameVersion, this.fullVersion, this.liveDate, this.patchNotesUrl, {this.alternateLink});
+  PatchData(this.patchName, this.officialLink, this.patchType, this.gameVersion,
+      this.fullVersion, this.liveDate, this.patchNotesUrl,
+      {this.alternateLink});
 
   factory PatchData.fromJson(Object json) {
     if (!(json is Map)) {
@@ -22,9 +24,12 @@ class PatchData {
     String fullVersion = map['fullVersion'];
     DateTime liveDate = DateTime.parse(map['liveDate']);
     String patchNotesUrl = map['patchNotesUrl'];
-    if (map.containsKey('alternateLink')){
-      return new PatchData(patchName, officialLink, patchType, gameVersion, fullVersion, liveDate, patchNotesUrl, alternateLink: map['alternateLink']);
+    if (map.containsKey('alternateLink')) {
+      return new PatchData(patchName, officialLink, patchType, gameVersion,
+          fullVersion, liveDate, patchNotesUrl,
+          alternateLink: map['alternateLink']);
     }
-    return new PatchData(patchName, officialLink, patchType, gameVersion, fullVersion, liveDate, patchNotesUrl);
+    return new PatchData(patchName, officialLink, patchType, gameVersion,
+        fullVersion, liveDate, patchNotesUrl);
   }
 }
