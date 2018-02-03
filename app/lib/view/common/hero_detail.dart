@@ -212,8 +212,9 @@ class HeroDetail extends StatelessWidget {
         }
       }
 
+      // Prevent duplicates (builds in popular *and* winning)
+      List<BuildStatistics> builds = classifiedBuilds.keys.toSet().toList();
       // Sort builds by games played
-      List<BuildStatistics> builds = classifiedBuilds.keys.toList();
       builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.total_games_played.compareTo(b.total_games_played));
       
       return new ListView(
