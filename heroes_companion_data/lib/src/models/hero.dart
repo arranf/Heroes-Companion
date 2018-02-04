@@ -104,7 +104,7 @@ class Hero {
       table.column_have_assets: have_assets == true ? 1 : 0,
       table.column_sha3_256: sha3_256,
       table.column_additional_search_text: additional_search_text,
-      table.column_modified_date : last_modified,
+      table.column_modified_date : last_modified == null ? null : last_modified.toIso8601String(),
     };
     return map;
   }
