@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart' hide Hero;
-import 'package:heroes_companion/view/common/build_swiper.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
 

@@ -54,7 +54,7 @@ class HeroHome extends StatelessWidget {
               ],
             ),
             body:
-                vm.currentFilter != HeroFilter.favorite || vm.heroes.isNotEmpty
+                vm.currentFilter != HeroFilter.favorite
                     ? new HeroList(vm.heroes,
                         onTap: vm.onTap,
                         onLongPress: vm.onLongPress,
@@ -92,7 +92,7 @@ class _ViewModel {
   final bool loading;
   final HeroFilter currentFilter;
   final Function onLongPress;
-  final Function bottomNavTap;
+  final dynamic bottomNavTap;
   final Function onRefresh;
   final bool allowRefresh;
   final String patchNotesUrl;
@@ -140,8 +140,14 @@ class _ViewModel {
       };
     }
 
+    List<Hero> heroes = heroesbyFilterSelector(store.state);
+
+    if (heroes == null) {
+      throw new Exception('Heroes selector is null');
+    }
+
     return new _ViewModel(
-        heroes: heroesbyFilterSelector(store.state),
+        heroes: heroes,
         loading: store.state.isLoading,
         onLongPress: _favorite,
         bottomNavTap: _bottomNavTap,

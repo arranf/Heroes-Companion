@@ -16,7 +16,7 @@ bool heroBuildWinRatesLoadingSelector(AppState state) =>
 
 HeroFilter filterSelector(AppState state) => state.filter;
 
-List<Hero> heroesSelector(AppState state) => state.heroes;
+List<Hero> heroesSelector(AppState state) => state.heroes == null ? new List<Hero>() : state.heroes;
 
 List<Hero> favoriteHeroesSelector(AppState state) =>
     state.heroes.where((Hero h) => h.is_favorite).toList();
