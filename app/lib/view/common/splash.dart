@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:heroes_companion/redux/selectors/selectors.dart';
-import 'package:heroes_companion/redux/state.dart';
-import 'package:redux/redux.dart';
 
 class Splash extends StatelessWidget {
   final String appName;
