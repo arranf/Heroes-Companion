@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide Hero;
+import 'package:heroes_companion/models/build_sort.dart';
 import 'package:heroes_companion/models/overflow_choices.dart';
 import 'package:heroes_companion/view/common/app_loading_container.dart';
 import 'package:heroes_companion/view/common/build_card.dart';
@@ -42,6 +43,7 @@ class HeroDetail extends StatefulWidget {
 class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateMixin {
   TabController _tabController;
   List<Tab> _tabs = new List<Tab>();
+  BuildSort buildSort = BuildSort.playrate;
 
   @override
   void initState() {
@@ -241,7 +243,12 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       // Prevent duplicates (builds in popular *and* winning)
       List<BuildStatistics> builds = classifiedBuilds.keys.toSet().toList();
       // Sort builds by games played
-      builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.total_games_played.compareTo(b.total_games_played));
+      if (buildSort == BuildSort.playrate)
+      {
+        builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.total_games_played.compareTo(b.total_games_played));
+      } else {
+        builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.win_rate.compareTo(b.win_rate));
+      }
       
       return new ListView(
         key: new Key(widget.hero.name + '_talent_rows'),
@@ -353,15 +360,31 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
               onPressed: () => widget.favorite(widget.hero),
             ),
             new PopupMenuButton(
-                  onSelected: (OverflowChoice choice) => OverflowChoice
-                      .handleChoice(choice, context, patchNotesUrl: widget.patchNotesUrl), // overflow menu
+                  onSelected: (Object choice) {
+                    if (choice is OverflowChoice) {
+                    OverflowChoice
+                      .handleChoice(choice, context, patchNotesUrl: widget.patchNotesUrl); // overflow menu
+                    } else if (choice is BuildSort) {
+                      BuildSort newBuildSort = choice == BuildSort.playrate ? BuildSort.winrate : BuildSort.playrate;
+                      setState(() {
+                        buildSort = newBuildSort;
+                      });
+                    } else {
+                      throw new Exception('Unknown action');
+                    }
+                  },
                   itemBuilder: (BuildContext context) {
-                    return overflowChoices.map((OverflowChoice choice) {
+                    List<PopupMenuItem> items = overflowChoices.map((OverflowChoice choice) {
                       return new PopupMenuItem(
                         value: choice,
                         child: new Text(choice.name),
                       );
                     }).toList();
+                    items.add(new PopupMenuItem(
+                      value: buildSort,
+                      child: new Text('Sort by ${buildSort == BuildSort.winrate ? 'Popularity' :'Win Rate'}'),
+                    ));
+                    return items;
                   },
                 ),
           ],
