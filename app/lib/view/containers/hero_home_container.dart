@@ -54,13 +54,13 @@ class HeroHome extends StatelessWidget {
               ],
             ),
             body:
-                vm.currentFilter != HeroFilter.favorite
-                    ? new HeroList(vm.heroes,
+            // Favorite list and no favorite heroes
+                vm.currentFilter == HeroFilter.favorite && vm.heroes.isEmpty
+                    ? new EmptyFavoriteList() : new HeroList(vm.heroes,
                         onTap: vm.onTap,
                         onLongPress: vm.onLongPress,
                         onRefresh: vm.onRefresh,
-                        allowRefresh: vm.allowRefresh)
-                    : new EmptyFavoriteList(),
+                        allowRefresh: vm.allowRefresh),
             floatingActionButton: new FloatingActionButton(
               child: new Icon(Icons.search),
               onPressed: () => Navigator.of(context).pushNamed(Routes.search),
