@@ -63,7 +63,6 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
       }
       _ViewModel vm =
           new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
-
       return new HeroDetail(vm.hero,
           key: new Key(vm.hero.short_name),
           favorite: vm.favorite,

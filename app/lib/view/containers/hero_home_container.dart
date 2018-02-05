@@ -92,7 +92,7 @@ class _ViewModel {
   final bool loading;
   final HeroFilter currentFilter;
   final Function onLongPress;
-  final Function bottomNavTap;
+  final dynamic bottomNavTap;
   final Function onRefresh;
   final bool allowRefresh;
   final String patchNotesUrl;

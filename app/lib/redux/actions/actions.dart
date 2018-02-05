@@ -1,6 +1,5 @@
 import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:heroes_companion_data/src/api/DTO/patch_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart';
 
 class FetchHeroesFailedAction {}
