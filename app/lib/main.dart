@@ -85,6 +85,7 @@ Future main() async {
   // Run the splasscreen, create an instance of app, dispatch and event to load the initial data, and setup a listener to check for completion
   app = new App();
   runApp(new Splash(appName));
+  debugPrint('Run Splashscreen');
 
   // Create a dataprovider singleton, start it then when it's ready dispatch an event
   new DataProvider();
