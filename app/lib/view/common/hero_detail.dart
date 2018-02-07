@@ -5,6 +5,7 @@ import 'package:heroes_companion/view/common/app_loading_container.dart';
 import 'package:heroes_companion/view/common/build_card.dart';
 import 'package:heroes_companion/view/common/build_prompt.dart';
 import 'package:heroes_companion/view/common/build_swiper.dart';
+import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
@@ -61,10 +62,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return new AppLoading(builder: (context, loading) {
-      if (loading) {
-        return new LoadingView();
-      }
-      return _buildDetail(context);
+      return _buildDetail(context, loading);
     });
   }
 
@@ -105,7 +103,10 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
               new Container(
                 height: 20.0,
               ),
-              new Text(
+              (widget.winLossCount != null) ? new Container(
+                child: new Column(
+                  children: <Widget>[
+                    new Text(
                 widget.winLossCount != null
                     ? '${widget.winLossCount.winPercentange().toStringAsFixed(1)} Win %'
                     : ' ',
@@ -115,6 +116,8 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                     .headline
                     .apply(color: Colors.white),
               ),
+
+              
               new Text(
                   widget.winLossCount != null
                       ? '${(widget.winLossCount.wins + widget.winLossCount.losses).toString()} games played'
@@ -124,6 +127,9 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                       .textTheme
                       .body1
                       .apply(color: Colors.white))
+                  ],
+                ),
+              ) : new Container(height: 35.0,),
             ]),
           )
         ],
@@ -255,8 +261,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
         children: builds.map((BuildStatistics b) => new BuildCard(b, classifiedBuilds[b], _playBuild, widget.hero, showTalentBottomSheet)).toList()
       );
     }
-    //TODO Return empty state
-    return new Container();
+    return new EmptyState(Icons.error_outline, 'No Data Available', 'No statistical data found for this hero');
   }
 
   void showTalentBottomSheet(BuildContext context, Talent talent) {
@@ -303,7 +308,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
     ));
   }
 
-  Widget _buildPhoneView(BuildContext context) {
+  Widget _buildPhoneView(BuildContext context, bool isLoading) {
     return new Container(
         child: new Column(
           children: <Widget>[
@@ -314,7 +319,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
               key: new Key('${widget.hero.name}_previous_build_prompt'),
             ) : new Container(),
             _buildPhoneTitleRow(context),
-            new Expanded(
+            isLoading ? new Expanded(child: new LoadingView()) : new Expanded(
               child: new TabBarView(
                 controller: _tabController,
                 key: new Key('${widget.hero.name}_tab_view'),
@@ -328,7 +333,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
         ));
   }
 
-  Widget _buildTabletView(BuildContext context) {
+  Widget _buildTabletView(BuildContext context, bool isLoading) {
     return new Column(
       children: <Widget>[
         widget.canOfferPreviousBuild ? new BuildPrompt(
@@ -338,12 +343,12 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
               key: new Key('${widget.hero.name}_previous_build_prompt'),
             ) : new Container(),
         _buildTabletTitleRow(context),
-        new Expanded(child: _buildTalentCards(context))
+        isLoading ? new Expanded(child: new LoadingView()) : new Expanded(child: _buildTalentCards(context))
       ],
     );
   }
 
-  Widget _buildDetail(BuildContext context) {
+  Widget _buildDetail(BuildContext context, bool isLoading) {
     final List<OverflowChoice> overflowChoices = [OverflowChoice.HeroPatchNotes];
     return new Scaffold(
         appBar: new AppBar(
@@ -390,7 +395,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
           ],
         ),
         body: MediaQuery.of(context).size.width < 600
-            ? _buildPhoneView(context)
-            : _buildTabletView(context));
+            ? _buildPhoneView(context, isLoading)
+            : _buildTabletView(context, isLoading));
   }
 }
