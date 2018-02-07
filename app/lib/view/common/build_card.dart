@@ -28,7 +28,7 @@ class BuildCard extends StatelessWidget{
                       });
     } catch (e) {
       new ExceptionService()
-        .reportError('Talent missing in ${buildStatistics.talents_names}', e.stackTrace);
+       .reportError(e);
       return new Container();
     }
 

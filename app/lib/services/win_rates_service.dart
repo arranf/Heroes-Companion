@@ -16,7 +16,7 @@ void getCurrentWinRates(Store<AppState> store) {
       (Error e)
       {
         new ExceptionService()
-        .reportError(e, e.stackTrace);
+        .reportError(e);
        store.dispatch(new FetchWinRatesFailedAction());
       });
 }
@@ -29,7 +29,7 @@ void getWinRatesForBuild(Store<AppState> store, String buildNumber) {
   .catchError((e)
     {
       new ExceptionService()
-        .reportError(e, e.stackTrace);
+      .reportError(e);
       store.dispatch(new FetchWinRatesFailedAction());
     });
 }

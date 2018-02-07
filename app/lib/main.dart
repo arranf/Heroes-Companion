@@ -38,7 +38,7 @@ void main() {
       runZoned<Future<Null>>(() async {
         runApp(app);
       }, onError: (error, stackTrace) async {
-        exceptionService.reportError(error, stackTrace);
+        exceptionService.reportErrorAndStackTrace(error, stackTrace);
         print('Zone caught an error');
       });
     }
@@ -57,11 +57,11 @@ void main() {
   }).then((a) {
     tryUpdate(app.store);
     updatePatches(app.store);
-  }).catchError((Error e) {
+  }).catchError((e) {
     if (ExceptionService.isDebug) {
       throw e;
     } else {
-      exceptionService.reportError(e, e.stackTrace);
+      exceptionService.reportError(e);
       runApp(new LaunchError(appName, e.toString()));
     }
   });

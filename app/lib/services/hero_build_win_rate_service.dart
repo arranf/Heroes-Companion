@@ -16,7 +16,7 @@ void getHeroCurrentBuildWinRates(Store<AppState> store, Hero hero) {
               buildWinRates, hero.heroes_companion_hero_id, patch.fullVersion)))
       .catchError((dynamic e) {
           new ExceptionService()
-          .reportError(e, e.stackTrace);
+          .reportError(e);
       store.dispatch(new FetchBuildWinRatesFailedAction());
   });
 }
@@ -31,7 +31,7 @@ void getHeroBuildWinRates(
               buildWinRates, hero.heroes_companion_hero_id, buildNumber)))
       .catchError((dynamic e) {
         new ExceptionService()
-        .reportError(e, e.stackTrace);
+        .reportError(e);
       store.dispatch(new FetchBuildWinRatesFailedAction());
   });
 }

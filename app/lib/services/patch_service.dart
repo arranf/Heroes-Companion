@@ -14,7 +14,7 @@ void getPatches(Store<AppState> store) {
           (patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
       .catchError((Error e) {
         new ExceptionService()
-            .reportError(e, e.stackTrace);  
+            .reportError(e); 
         store.dispatch(new FetchPatchesFailedAction()); 
       }
     );

@@ -33,7 +33,7 @@ class _BuildSwiperState extends State<BuildSwiper>
       await _platform.invokeMethod('setScreenNoSleep');
     } on PlatformException catch (e) {
         new ExceptionService()
-        .reportError(e, null);
+        .reportError(e);
     }
   }
 
@@ -42,7 +42,7 @@ class _BuildSwiperState extends State<BuildSwiper>
       await _platform.invokeMethod('setScreenCanSleep');
     } on PlatformException catch (e) {
         new ExceptionService()
-        .reportError(e, null);
+        .reportError(e);
     }
   }
 
