@@ -1,0 +1,163 @@
+02-06 19:01:39.427 D/AndroidRuntime( 7938): Calling main entry com.android.commands.content.Content
+,02-06 19:01:39.432 D/AndroidRuntime( 7938): Shutting down VM
+,02-06 19:01:39.984 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 216us total 10.323ms
+,02-06 19:01:40.813 I/EventLogSendingHelper( 4475): Sending log events.
+,02-06 19:01:41.488 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 211us total 10.419ms
+,02-06 19:01:42.988 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 217us total 10.408ms
+,02-06 19:01:44.534 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.142ms total 53.882ms
+,02-06 19:01:46.034 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.507ms total 53.065ms
+,02-06 19:01:46.292 I/zygote64( 4697): Deoptimizing void cqi.onDestroy() due to JIT same target
+,02-06 19:01:47.536 I/zygote64( 4860): Explicit concurrent copying GC freed 15(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.154ms total 50.693ms
+,02-06 19:01:49.041 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.158ms total 51.395ms
+,02-06 19:01:50.539 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.435ms total 44.080ms
+,02-06 19:01:51.187 W/Conscrypt( 4658): Could not set socket write timeout:
+,02-06 19:01:51.191 W/Conscrypt( 4658):    java.lang.reflect.Method.invoke(Native Method)
+,02-06 19:01:51.193 W/Conscrypt( 4658):    com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@11975940:13)
+,02-06 19:01:51.298 W/Conscrypt( 4658): Could not set socket write timeout:
+02-06 19:01:51.299 W/Conscrypt( 4658):    java.lang.reflect.Method.invoke(Native Method)
+02-06 19:01:51.299 W/Conscrypt( 4658):    com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@11975940:13)
+,02-06 19:01:51.513 W/Conscrypt( 4658): Could not set socket write timeout:
+02-06 19:01:51.513 W/Conscrypt( 4658):    java.lang.reflect.Method.invoke(Native Method)
+02-06 19:01:51.513 W/Conscrypt( 4658):    com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@11975940:13)
+,02-06 19:01:51.524 W/Conscrypt( 4658): Could not set socket write timeout:
+02-06 19:01:51.524 W/Conscrypt( 4658):    java.lang.reflect.Method.invoke(Native Method)
+02-06 19:01:51.524 W/Conscrypt( 4658):    com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@11975940:13)
+,02-06 19:01:52.222 I/zygote64( 4860): Explicit concurrent copying GC freed 47(48KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.223ms total 44.567ms
+,02-06 19:01:53.729 I/zygote64( 4860): Explicit concurrent copying GC freed 10(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.146ms total 49.655ms
+,02-06 19:01:55.234 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.152ms total 48.397ms
+,02-06 19:01:55.405 D/WificondControl(14070): Scan result ready event
+,--------- beginning of system
+02-06 19:01:56.073 I/ActivityManager(14070): Killing 7111:com.google.android.ims/u0a5 (adj 906): empty for 4175s
+,02-06 19:01:56.742 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.635ms total 53.595ms
+,02-06 19:01:58.236 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.162ms total 45.716ms
+,02-06 19:01:59.746 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.623ms total 51.931ms
+,02-06 19:02:01.247 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.070ms total 49.358ms
+,02-06 19:02:02.749 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.472ms total 48.139ms
+,02-06 19:02:04.250 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.166ms total 47.678ms
+,02-06 19:02:05.753 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.169ms total 46.939ms
+,02-06 19:02:07.225 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 401us total 16.110ms
+,02-06 19:02:07.956 I/ActivityManager(14070): Start proc 7959:com.android.defcontainer/u0a11 for service com.android.defcontainer/.DefaultContainerService
+,02-06 19:02:08.213 I/PackageManager.DexOptimizer(14070): Running dexopt (dexoptNeeded=1) on: /data/app/vmdl939496929.tmp/base.apk pkg=com.heroescompanion.app isa=arm dexoptFlags=boot_complete,public target-filter=quicken oatDir=/data/app/vmdl939496929.tmp/oat sharedLibraries=null
+,02-06 19:02:08.280 I/dex2oat ( 7975): /system/bin/dex2oat --input-vdex-fd=-1 --output-vdex-fd=17 --compiler-filter=quicken --classpath-dir=/data/app/vmdl939496929.tmp
+,02-06 19:02:08.504 I/dex2oat ( 7975): dex2oat took 225.994ms (214.784ms cpu) (threads: 4) arena alloc=8KB (8704B) java alloc=138KB (141608B) native alloc=1414KB (1448536B) free=3MB (3270056B)
+,02-06 19:02:08.683 D/installd(  714): Applied hard quotas for 11392
+,02-06 19:02:08.687 V/BackupManagerService(14070): restoreAtInstall pkg=com.heroescompanion.app token=75 restoreSet=0
+02-06 19:02:08.687 V/BackupManagerService(14070): Finishing install immediately
+,02-06 19:02:08.692 E/        (  714): Couldn't opendir /data/app/vmdl939496929.tmp: No such file or directory
+02-06 19:02:08.693 E/installd(  714): Failed to delete /data/app/vmdl939496929.tmp: No such file or directory
+,02-06 19:02:08.722 W/BroadcastQueue(14070): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.heroescompanion.app flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+02-06 19:02:08.724 I/InputReader(14070): Reconfiguring input devices.  changes=0x00000010
+02-06 19:02:08.724 D/ImsResolver(14353): maybeAddedImsService, packageName: com.heroescompanion.app
+,02-06 19:02:08.735 W/ActivityManager(14070): Skipping broadcast of Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.heroescompanion.app flg=0x4000010 (has extras) }: user 10 is stopped
+,02-06 19:02:08.760 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 560us total 50.987ms
+,02-06 19:02:08.776 W/Finsky  ( 7524): [2] com.google.android.finsky.application.f.de(891): No account configured on this device.
+,02-06 19:02:08.796 I/ActivityManager(14070): START u0 {flg=0x10000000 cmp=com.heroescompanion.app/.MainActivity} from uid 2000
+,02-06 19:02:08.828 I/Telecom (14070): DefaultDialerCache: Refreshing default dialer for user 0: now com.google.android.dialer: DDC.oR@A4Q
+02-06 19:02:08.829 I/Telecom (14070): DefaultDialerCache: Refreshing default dialer for user 10: now com.google.android.dialer: DDC.oR@A4Q
+,02-06 19:02:08.842 I/ActivityManager(14070): Start proc 7986:com.heroescompanion.app/u0a1392 for activity com.heroescompanion.app/.MainActivity
+,02-06 19:02:08.848 D/CarrierSvcBindHelper(14353): No carrier app for: 0
+02-06 19:02:08.855 D/RegisteredNfcFServicesCache(14750): Service unchanged, not updating
+02-06 19:02:08.855 W/Finsky  ( 7524): [2] com.google.android.finsky.application.f.de(891): No account configured on this device.
+02-06 19:02:08.861 I/Finsky  ( 7524): [2] com.google.android.finsky.wear.WearSupportService.onStartCommand(29): Starting WearSupportService for auto_install
+,02-06 19:02:08.865 I/Finsky  ( 7524): [2] com.google.android.finsky.wear.am.a(78): Connecting to wearable; initiated by: com.google.android.finsky.wear.WearSupportService
+02-06 19:02:08.865 D/CarrierConfigLoader(14353): mHandler: 9 phoneId: 0
+02-06 19:02:08.884 I/Finsky  ( 7524): [2] com.google.android.finsky.wear.WearSupportService.onStartCommand(29): Starting WearSupportService for send_installed_apps
+,02-06 19:02:08.890 I/Finsky  ( 7524): [2] com.google.android.finsky.externalreferrer.e.a(52): Package state data is missing for com.heroescompanion.app
+,02-06 19:02:08.892 W/Finsky  ( 7524): [2] com.google.android.finsky.application.f.de(891): No account configured on this device.
+02-06 19:02:08.894 I/Finsky  ( 7524): [2] com.google.android.finsky.cv.a.i.a(7): Started reading experiment flags from file [SKocQA9EQQFTb-1gQsc5WsjVhGA].
+02-06 19:02:08.895 I/Finsky  ( 7524): [2] com.google.android.finsky.cv.a.i.a(44): Finished reading experiment flags from file [SKocQA9EQQFTb-1gQsc5WsjVhGA].
+,02-06 19:02:08.930 I/MicroDetector( 4475): Keeping mic open: false
+02-06 19:02:08.931 W/Finsky  ( 7524): [2] com.google.android.finsky.application.f.de(891): No account configured on this device.
+02-06 19:02:08.932 I/DeviceStateChecker( 4475): DeviceStateChecker cancelled
+,02-06 19:02:08.935 I/AudioController( 4475): internalShutdown
+,02-06 19:02:08.936 I/MicroRecognitionRunner( 4475): Stopping hotword detection.
+,02-06 19:02:08.941 I/MicroRecognitionRunner( 4475): Detection finished
+,02-06 19:02:08.944 I/WearableService( 4658): Wearable Services not starting - Wear is not available on this device.
+,02-06 19:02:08.944 W/Finsky  ( 7524): [4841] com.google.android.finsky.application.f.de(891): No account configured on this device.
+,02-06 19:02:08.956 I/MicrophoneInputStream( 4475): mic_close  SR : 16000 CC : 16 SO : 1999
+,02-06 19:02:08.959 D/WearableService( 4658): onGetService - Wear is not available on this device.
+02-06 19:02:08.959 W/Finsky  ( 7524): [2] com.google.android.finsky.application.f.de(891): No account configured on this device.
+,02-06 19:02:08.963 I/chatty  ( 7524): uid=10035(u0_a35) com.android.vending identical 1 line
+,02-06 19:02:08.966 W/Finsky  ( 7524): [2] com.google.android.finsky.application.f.de(891): No account configured on this device.
+,02-06 19:02:08.968 E/Finsky  ( 7524): [2] com.google.android.finsky.wear.ap.a(3): onConnectionFailed: ConnectionResult{statusCode=API_UNAVAILABLE, resolution=null, message=null}
+02-06 19:02:08.969 W/Finsky  ( 7524): [2] com.google.android.finsky.wear.bu.run(12): Dropping command=auto_install due to Gms not connected
+02-06 19:02:08.969 I/Finsky  ( 7524): [2] com.google.android.finsky.wear.WearSupportService.b(75): Stopping WearSupportService
+02-06 19:02:08.971 W/Finsky  ( 7524): [2] com.google.android.finsky.wear.bu.run(12): Dropping command=send_installed_apps due to Gms not connected
+,02-06 19:02:08.971 I/Finsky  ( 7524): [2] com.google.android.finsky.wear.WearSupportService.b(75): Stopping WearSupportService
+,02-06 19:02:08.986 I/Finsky  ( 7524): [2] com.google.android.finsky.scheduler.JobSchedulerEngine.a(37): Scheduling job with id: 9000
+,02-06 19:02:08.988 W/BroadcastQueue(14070): Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.heroescompanion.app flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+,02-06 19:02:09.002 I/zygote64( 4697): Deoptimizing java.lang.Object mda.c() due to JIT inline cache
+,02-06 19:02:09.002 I/ActivityManager(14070): Start proc 8006:com.verizon.vzwavs/u0a47 for broadcast com.verizon.vzwavs/.WakeupReceiver
+,02-06 19:02:09.004 D/audio_hw_primary(14014): disable_audio_route: usecase(9) reset and update mixer path: audio-record
+,02-06 19:02:09.012 D/hardware_info(14014): hw_info_append_hw_type : device_name = voice-rec-mic
+02-06 19:02:09.012 D/audio_hw_primary(14014): disable_snd_device: snd_device(72: voice-rec-mic)
+,02-06 19:02:09.017 I/eLock   ( 4860): pkgname_before:com.google.android.apps.nexuslauncher  class:com.heroescompanion.app  isFingerActivityCreated:false   isCalling:false
+,02-06 19:02:09.021 D/sound_trigger_platform(14014): platform_stdev_check_and_update_concurrency: concurrency active 0, tx 0, rx 0, concurrency session_allowed 1
+02-06 19:02:09.022 I/SoundTriggerHwService::Module(14009): onCallbackEvent no clients
+,02-06 19:02:09.031 W/ConfigurationChimeraPro( 4658): Got null configs for com.google.android.gms.appinvite
+,02-06 19:02:09.075 I/FontsPackageChangeOp( 4697): Package com.heroescompanion.app has no metadata
+,02-06 19:02:09.086 W/ConfigurationChimeraPro( 4658): Got null configs for com.google.android.gms.chromesync
+,02-06 19:02:09.087 I/zygote64(14070): Background concurrent copying GC freed 242525(8MB) AllocSpace objects, 16(368KB) LOS objects, 42% free, 21MB/38MB, paused 472us total 384.935ms
+,02-06 19:02:09.093 I/ChromeSync( 4697): [Persistence,AffiliationManager] No affiliation data for android://lYxxDR5O7rYi6FbRwhhWa1PNJoB-fxM3Lv_qSD09OyBT58nYDym246zLGkrbGe2Ks6qoulsDa6wFXe3rINEG9A==@com.heroescompanion.app. Marking affiliation data as stale...
+,02-06 19:02:09.112 I/ChromeSync( 4697): [Persistence,AffiliationManager] Fetching affiliations from the server.
+,02-06 19:02:09.158 D/Wear_Controller( 4697): Received broadcast action=android.intent.action.PACKAGE_ADDED and uri=com.heroescompanion.app
+,02-06 19:02:09.161 V/VZWAVSService( 8006): android.intent.action.PACKAGE_ADDED
+02-06 19:02:09.161 V/VZWAVSService( 8006): com.heroescompanion.app
+,02-06 19:02:09.163 V/VZWAVSService( 8006): 0
+02-06 19:02:09.163 V/VZWAVSService( 8006): s: 
+,02-06 19:02:09.184 I/PeopleContactsSync( 4697): triggerPendingContactsCleanup: no accounts
+,02-06 19:02:09.217 I/Icing   ( 4697): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+,02-06 19:02:09.220 I/Icing   ( 4697): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=32
+,02-06 19:02:09.235 I/Icing   ( 4697): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0, imm upload false
+,02-06 19:02:09.248 I/Icing   ( 4697): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0, imm upload false
+02-06 19:02:09.538 W/Conscrypt( 4697): Could not set socket write timeout:
+02-06 19:02:09.538 W/Conscrypt( 4697):    java.lang.reflect.Method.invoke(Native Method)
+,02-06 19:02:09.538 W/Conscrypt( 4697):    com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@11975940:13)
+,02-06 19:02:09.576 W/Conscrypt( 4697): Could not set socket write timeout:
+02-06 19:02:09.576 W/Conscrypt( 4697):    java.lang.reflect.Method.invoke(Native Method)
+02-06 19:02:09.576 W/Conscrypt( 4697):    com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@11975940:13)
+,02-06 19:02:10.076 I/Adreno  ( 7986): QUALCOMM build                   : 7142022, Ib5823dd10c
+02-06 19:02:10.076 I/Adreno  ( 7986): Build Date                       : 06/23/17
+02-06 19:02:10.076 I/Adreno  ( 7986): OpenGL ES Shader Compiler Version: EV031.18.00.00
+02-06 19:02:10.076 I/Adreno  ( 7986): Local Branch                     : O11A
+02-06 19:02:10.076 I/Adreno  ( 7986): Remote Branch                    : 
+02-06 19:02:10.076 I/Adreno  ( 7986): Remote Branch                    : 
+02-06 19:02:10.076 I/Adreno  ( 7986): Reconstruct Branch               : 
+,02-06 19:02:10.083 I/Adreno  ( 7986): PFP: 0x005ff087, ME: 0x005ff063
+,02-06 19:02:10.115 I/FlutterActivityDelegate( 7986): onResume setting current activity to this
+,02-06 19:02:10.121 D/OpenGLRenderer( 7986): HWUI GL Pipeline
+,02-06 19:02:10.147 I/OpenGLRenderer( 7986): Initialized EGL, version 1.4
+02-06 19:02:10.147 D/OpenGLRenderer( 7986): Swap behavior 2
+,02-06 19:02:10.153 I/flutter ( 7986): Run Splashscreen
+,02-06 19:02:10.213 I/flutter ( 7986): Creating Database at /data/user/0/com.heroescompanion.app/app_flutter/heroes_companion.db
+,02-06 19:02:10.214 I/flutter ( 7986): FileSystemException: Deletion failed, path = '/data/user/0/com.heroescompanion.app/app_flutter/heroes_companion.db' (OS Error: No such file or directory, errno = 2)
+,02-06 19:02:10.215 I/VoiceInputMethodMngr( 4475): #handleFinishInput com.google.android.apps.gsa.staticplugins.ds.o@39b85c8
+02-06 19:02:10.215 I/VoiceInputMethodMngr( 4475): #releaseResources
+,02-06 19:02:10.232 I/zygote64( 4860): Explicit concurrent copying GC freed 307(110KB) AllocSpace objects, 2(40KB) LOS objects, 74% free, 521KB/2MB, paused 219us total 23.040ms
+,02-06 19:02:10.264 I/ActivityManager(14070): Displayed com.heroescompanion.app/.MainActivity: +1s435ms (total +33s950ms)
+,02-06 19:02:10.275 I/Icing   ( 4697): Indexing 999FCF90F15679545E5AEC02903D2663A1FA376E from com.google.android.gms
+,02-06 19:02:10.336 I/Icing   ( 4697): Indexing done 999FCF90F15679545E5AEC02903D2663A1FA376E
+,02-06 19:02:10.338 I/flutter ( 7986): Upgrading to 8
+,02-06 19:02:10.347 E/SQLiteLog( 7986): (1) duplicate column name: Sha3256
+,02-06 19:02:10.408 I/PBSessionCacheImpl( 4475): Deleted sessionId[152618528855] from persistence.
+,02-06 19:02:10.409 I/zygote64( 4475): Deoptimizing void com.google.android.apps.gsa.search.core.service.workcontroller.WorkProxy.doWork(java.lang.Object, boolean) due to JIT inline cache
+,02-06 19:02:10.466 W/SearchService( 4475): Abort, client detached.
+,02-06 19:02:10.554 I/flutter ( 7986): Getting patches
+02-06 19:02:10.555 I/flutter ( 7986): Fetching patches
+,02-06 19:02:10.560 I/flutter ( 7986): Got 0 patches
+,02-06 19:02:11.761 I/zygote64( 4860): Explicit concurrent copying GC freed 70(33KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.282ms total 50.496ms
+,02-06 19:02:12.012 I/flutter ( 7986): Doing Update!
+,02-06 19:02:12.066 I/flutter ( 7986): Added 31 new patches
+,02-06 19:02:13.243 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 777us total 28.482ms
+,02-06 19:02:13.980 I/WearableService( 4658): Wearable Services stopping
+,02-06 19:02:14.761 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.002ms total 42.513ms
+,02-06 19:02:15.518 E/ReloadingLock( 4475): Finalizing LOCKED Token[ipa 2018-02-06 18:18:46.754]
+,02-06 19:02:15.596 I/flutter ( 7986): Update done
+,02-06 19:02:16.269 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.077ms total 46.525ms
+,02-06 19:02:17.749 I/zygote64( 4860): Explicit concurrent copying GC freed 38(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 511us total 24.306ms
+,02-06 19:02:18.243 I/ActivityManager(14070): Killing 7095:com.google.android.apps.messaging:rcs/u0a90 (adj 906): empty for 4197s
+,02-06 19:02:19.269 I/zygote64( 4860): Explicit concurrent copying GC freed 33(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.166ms total 41.260ms
+,02-06 19:02:20.783 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.135ms total 49.939ms
+,02-06 19:02:22.283 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.512ms total 46.334ms
+,02-06 19:02:23.339 E/hw-IPCThreadState(  653): binder thread pool (1 threads) starved for 103 ms
+,02-06 19:02:23.795 I/zygote64( 4860): Explicit concurrent copying GC freed 8(32KB) AllocSpace objects, 0(0B) LOS objects, 74% free, 520KB/2MB, paused 1.226ms total 53.133ms

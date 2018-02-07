@@ -1,0 +1,877 @@
+02-06 19:04:41.562 E/ThermalEngine(  196): TM Id 'SKIN_THERMAL_management_1' Sensor 'xo_therm_pu2' - alarm cleared 1 at 38.0 degC
+,02-06 19:04:41.562 E/ThermalEngine(  196): ACTION: LCD - Setting max LCD brightness to 255
+,02-06 19:04:58.232 D/audio_hw_primary(  186): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+,02-06 19:05:02.422 I/PlayCommon(24533): [644547] PlayEventLogger.uploadEventsImpl: Preparing logs for uploading
+,02-06 19:05:02.422 I/PlayCommon(24533): [644547] PlayEventLogger.uploadEventsImpl: No file ready to send
+,02-06 19:05:04.322 I/PlayCommon(18689): [1702927] PlayEventLogger.uploadEventsImpl: Preparing logs for uploading
+,02-06 19:05:04.322 I/PlayCommon(18689): [1702927] PlayEventLogger.uploadEventsImpl: No file ready to send
+,02-06 19:05:11.622 I/CastDatabase(21863): Saving the database
+,02-06 19:05:11.622 I/SQLiteCastStore(21863): [CastNetworkInfo] saved: 0, skipped: 0, [CastDeviceInfo]: saved 0, skipped 0, Paired Guest Mode DeviceInfo] saved: 0, skipped: 0.
+,02-06 19:05:19.532 E/dalvikvm( 9811): Could not find class 'android.app.NotificationChannel', referenced from method com.google.android.apps.gsa.search.core.preferences.v.b
+,02-06 19:05:19.532 W/dalvikvm( 9811): VFY: unable to resolve check-cast 67 (Landroid/app/NotificationChannel;) in Lcom/google/android/apps/gsa/search/core/preferences/v;
+,02-06 19:05:19.532 D/dalvikvm( 9811): VFY: replacing opcode 0x1f at 0x003d
+,02-06 19:05:19.532 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/app/NotificationChannel;)
+02-06 19:05:19.532 I/dalvikvm( 9811): Could not find method android.app.NotificationManager.createNotificationChannel, referenced from method com.google.android.apps.gsa.sidekick.main.h.aq.createNotificationChannel
+02-06 19:05:19.532 W/dalvikvm( 9811): VFY: unable to resolve virtual method 350: Landroid/app/NotificationManager;.createNotificationChannel (Landroid/app/NotificationChannel;)V
+,02-06 19:05:19.532 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0008
+,02-06 19:05:19.532 I/dalvikvm( 9811): Could not find method android.app.NotificationManager.deleteNotificationChannel, referenced from method com.google.android.apps.gsa.sidekick.main.h.aq.deleteNotificationChannel
+02-06 19:05:19.532 W/dalvikvm( 9811): VFY: unable to resolve virtual method 351: Landroid/app/NotificationManager;.deleteNotificationChannel (Ljava/lang/String;)V
+,02-06 19:05:19.532 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0008
+,02-06 19:05:19.532 I/dalvikvm( 9811): Could not find method android.app.NotificationManager.getNotificationChannels, referenced from method com.google.android.apps.gsa.sidekick.main.h.aq.getNotificationChannels
+,02-06 19:05:19.542 W/dalvikvm( 9811): VFY: unable to resolve virtual method 354: Landroid/app/NotificationManager;.getNotificationChannels ()Ljava/util/List;
+,02-06 19:05:19.542 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0008
+,02-06 19:05:19.582 I/dalvikvm( 9811): Could not find method android.content.pm.PackageManager.getUserBadgedIcon, referenced from method com.google.android.apps.gsa.shared.searchbox.SuggestionUtil.maybeAddUserBadgedIcon
+,02-06 19:05:19.582 W/dalvikvm( 9811): VFY: unable to resolve virtual method 950: Landroid/content/pm/PackageManager;.getUserBadgedIcon (Landroid/graphics/drawable/Drawable;Landroid/os/UserHandle;)Landroid/graphics/drawable/Drawable;
+,02-06 19:05:19.582 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x000f
+,02-06 19:05:19.632 D/dalvikvm( 9811): Trying to load lib /data/app-lib/com.google.android.googlequicksearchbox-2/libcronet.62.0.3202.13.so 0x425aa450
+02-06 19:05:19.632 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.632 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+02-06 19:05:19.632 E/dalvikvm( 9811): Could not find class 'org.chromium.net.k', referenced from method org.chromium.net.NetworkChangeNotifierAutoDetect.<init>
+02-06 19:05:19.632 W/dalvikvm( 9811): VFY: unable to resolve new-instance 15326 (Lorg/chromium/net/k;) in Lorg/chromium/net/NetworkChangeNotifierAutoDetect;
+02-06 19:05:19.632 D/dalvikvm( 9811): VFY: replacing opcode 0x22 at 0x002e
+02-06 19:05:19.632 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.632 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.632 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+02-06 19:05:19.632 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.632 W/dalvikvm( 9811): VFY: unable to find class referenced in signature ([Landroid/net/Network;)
+,02-06 19:05:19.632 W/dalvikvm( 9811): VFY: unable to find class referenced in signature ([Landroid/net/Network;)
+02-06 19:05:19.632 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+02-06 19:05:19.632 I/dalvikvm( 9811): Could not find method android.net.ConnectivityManager.getAllNetworks, referenced from method org.chromium.net.NetworkChangeNotifierAutoDetect.getAllNetworksFiltered
+,02-06 19:05:19.632 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1777: Landroid/net/ConnectivityManager;.getAllNetworks ()[Landroid/net/Network;
+02-06 19:05:19.632 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0003
+,02-06 19:05:19.632 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.632 D/dalvikvm( 9811): Added shared lib /data/app-lib/com.google.android.googlequicksearchbox-2/libcronet.62.0.3202.13.so 0x425aa450
+,02-06 19:05:19.642 I/dalvikvm( 9811): Could not find method android.net.Network.getNetworkHandle, referenced from method org.chromium.net.NetworkChangeNotifierAutoDetect.networkToNetId
+02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1785: Landroid/net/Network;.getNetworkHandle ()J
+02-06 19:05:19.642 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0006
+02-06 19:05:19.642 I/dalvikvm( 9811): Could not find method android.net.Network.toString, referenced from method org.chromium.net.NetworkChangeNotifierAutoDetect.networkToNetId
+02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1787: Landroid/net/Network;.toString ()Ljava/lang/String;
+,02-06 19:05:19.642 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x000b
+,02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature ([Landroid/net/Network;)
+,02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature ([Landroid/net/Network;)
+,02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.642 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.642 I/cr_CronetLibraryLoader( 9811): Cronet version: 62.0.3202.13, arch: armv7l
+,02-06 19:05:19.652 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.652 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.652 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.652 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.652 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.652 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.662 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.662 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.662 W/dalvikvm( 9811): VFY: unable to resolve instance field 49268
+,02-06 19:05:19.662 D/dalvikvm( 9811): VFY: replacing opcode 0x54 at 0x0027
+02-06 19:05:19.662 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.662 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.662 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+02-06 19:05:19.662 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.662 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.672 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+02-06 19:05:19.672 I/dalvikvm( 9811): Could not find method android.net.ConnectivityManager.unregisterNetworkCallback, referenced from method org.chromium.net.NetworkChangeNotifierAutoDetect.unregister
+02-06 19:05:19.672 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1782: Landroid/net/ConnectivityManager;.unregisterNetworkCallback (Landroid/net/ConnectivityManager$NetworkCallback;)V
+,02-06 19:05:19.672 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x001a
+,02-06 19:05:19.672 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.672 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.672 D/dalvikvm( 9811): DexOpt: unable to opt direct call 0xfa90 at 0x30 in Lorg/chromium/net/NetworkChangeNotifierAutoDetect;.<init>
+,02-06 19:05:19.682 D/dalvikvm( 9811): GC_CONCURRENT freed 901K, 8% free 20177K/21704K, paused 2ms+1ms, total 26ms
+,02-06 19:05:19.682 D/dalvikvm( 9811): WAIT_FOR_CONCURRENT_GC blocked 15ms
+,02-06 19:05:19.692 D/dalvikvm( 9811): WAIT_FOR_CONCURRENT_GC blocked 20ms
+02-06 19:05:19.692 D/dalvikvm( 9811): DexOpt: unable to opt direct call 0x0705 at 0x37 in Lorg/chromium/net/NetworkChangeNotifierAutoDetect;.<init>
+02-06 19:05:19.692 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.692 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.692 I/dalvikvm( 9811): DexOpt: unable to optimize instance field ref 0xc075 at 0x31 in Lorg/chromium/net/NetworkChangeNotifierAutoDetect;.register
+,02-06 19:05:19.692 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+02-06 19:05:19.692 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+02-06 19:05:19.692 I/dalvikvm( 9811): DexOpt: unable to optimize instance field ref 0xc074 at 0x36 in Lorg/chromium/net/NetworkChangeNotifierAutoDetect;.register
+,02-06 19:05:19.692 W/dalvikvm( 9811): Unable to resolve superclass of Lorg/chromium/net/k; (311)
+,02-06 19:05:19.702 W/dalvikvm( 9811): Link of class 'Lorg/chromium/net/k;' failed
+,02-06 19:05:19.702 I/dalvikvm( 9811): DexOpt: unable to optimize instance field ref 0xc075 at 0x4d in Lorg/chromium/net/NetworkChangeNotifierAutoDetect;.register
+,02-06 19:05:19.702 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+02-06 19:05:19.702 I/dalvikvm( 9811): Could not find method android.net.Network.getSocketFactory, referenced from method org.chromium.net.j.b
+,02-06 19:05:19.702 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1786: Landroid/net/Network;.getSocketFactory ()Ljavax/net/SocketFactory;
+,02-06 19:05:19.702 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0000
+,02-06 19:05:19.702 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.702 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+02-06 19:05:19.702 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+02-06 19:05:19.702 I/dalvikvm( 9811): Could not find method android.net.ConnectivityManager.getNetworkCapabilities, referenced from method org.chromium.net.j.getNetworkCapabilities
+,02-06 19:05:19.702 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1779: Landroid/net/ConnectivityManager;.getNetworkCapabilities (Landroid/net/Network;)Landroid/net/NetworkCapabilities;
+,02-06 19:05:19.702 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0002
+02-06 19:05:19.702 W/dalvikvm( 9811): VFY: unable to find class referenced in signature (Landroid/net/Network;)
+,02-06 19:05:19.702 I/dalvikvm( 9811): Could not find method android.net.ConnectivityManager.getNetworkInfo, referenced from method org.chromium.net.j.getNetworkInfo
+,02-06 19:05:19.702 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1780: Landroid/net/ConnectivityManager;.getNetworkInfo (Landroid/net/Network;)Landroid/net/NetworkInfo;
+,02-06 19:05:19.702 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0002
+02-06 19:05:19.712 I/dalvikvm( 9811): Could not find method android.net.ConnectivityManager.getNetworkInfo, referenced from method org.chromium.net.j.getNetworkInfo
+02-06 19:05:19.712 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1780: Landroid/net/ConnectivityManager;.getNetworkInfo (Landroid/net/Network;)Landroid/net/NetworkInfo;
+,02-06 19:05:19.712 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x000a
+02-06 19:05:19.712 D/dalvikvm( 9811): DexOpt: couldn't find static field Landroid/os/Build;.SUPPORTED_ABIS
+02-06 19:05:19.712 W/dalvikvm( 9811): VFY: unable to resolve static field 273 (SUPPORTED_ABIS) in Landroid/os/Build;
+,02-06 19:05:19.712 D/dalvikvm( 9811): VFY: replacing opcode 0x62 at 0x003d
+,02-06 19:05:19.712 I/dalvikvm( 9811): Could not find method android.net.ConnectivityManager.getActiveNetwork, referenced from method org.chromium.net.AndroidNetworkLibrary.getDnsServers
+02-06 19:05:19.712 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1775: Landroid/net/ConnectivityManager;.getActiveNetwork ()Landroid/net/Network;
+,02-06 19:05:19.712 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x001a
+02-06 19:05:19.722 I/dalvikvm( 9811): Could not find method android.net.ConnectivityManager.getActiveNetwork, referenced from method org.chromium.net.AndroidNetworkLibrary.getIsCaptivePortal
+,02-06 19:05:19.722 W/dalvikvm( 9811): VFY: unable to resolve virtual method 1775: Landroid/net/ConnectivityManager;.getActiveNetwork ()Landroid/net/Network;
+,02-06 19:05:19.722 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x0017
+02-06 19:05:19.722 I/dalvikvm( 9811): Could not find method android.security.NetworkSecurityPolicy.getInstance, referenced from method org.chromium.net.AndroidNetworkLibrary.isCleartextPermitted
+02-06 19:05:19.722 W/dalvikvm( 9811): VFY: unable to resolve static method 2280: Landroid/security/NetworkSecurityPolicy;.getInstance ()Landroid/security/NetworkSecurityPolicy;
+,02-06 19:05:19.722 D/dalvikvm( 9811): VFY: replacing opcode 0x71 at 0x0006
+,02-06 19:05:19.882 D/dalvikvm( 9811): GC_CONCURRENT freed 813K, 6% free 20478K/21704K, paused 3ms+3ms, total 24ms
+,02-06 19:05:20.052 D/dalvikvm(  769): GC_EXPLICIT freed 4249K, 25% free 37994K/50636K, paused 4ms+10ms, total 97ms
+,02-06 19:05:36.142 D/AndroidRuntime(10370): 
+02-06 19:05:36.142 D/AndroidRuntime(10370): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+,02-06 19:05:36.142 D/AndroidRuntime(10370): CheckJNI is OFF
+,02-06 19:05:36.152 D/dalvikvm(10370): Trying to load lib libjavacore.so 0x0
+,02-06 19:05:36.162 D/dalvikvm(10370): Added shared lib libjavacore.so 0x0
+02-06 19:05:36.162 D/dalvikvm(10370): Trying to load lib libnativehelper.so 0x0
+02-06 19:05:36.162 D/dalvikvm(10370): Added shared lib libnativehelper.so 0x0
+,02-06 19:05:36.162 D/dalvikvm(10370): No JNI_OnLoad found in libnativehelper.so 0x0, skipping init
+,02-06 19:05:36.182 D/dalvikvm(10370): Note: class Landroid/app/ActivityManagerNative; has 179 unimplemented (abstract) methods
+,02-06 19:05:36.302 D/AndroidRuntime(10370): Calling main entry com.android.commands.pm.Pm
+,--------- beginning of /dev/log/system
+02-06 19:05:36.312 I/ActivityManager(  769): Start proc com.android.defcontainer for service com.android.defcontainer/.DefaultContainerService: pid=10381 uid=10004 gids={50004, 1028, 1015, 1023, 2001, 1035}
+,02-06 19:05:36.352 W/ActivityManager(  769): No content provider found for permission revoke: file:///data/local/tmp/app-release-8f8de3b0-0b9a-11e8-af09-c50b80fcbca6.apk
+,02-06 19:05:36.442 W/ActivityManager(  769): No content provider found for permission revoke: file:///data/local/tmp/app-release-8f8de3b0-0b9a-11e8-af09-c50b80fcbca6.apk
+,02-06 19:05:36.442 I/PackageManager(  769): Copying native libraries to /data/app-lib/vmdl249920234
+,02-06 19:05:37.042 D/dalvikvm(  769): GC_CONCURRENT freed 4139K, 23% free 39188K/50636K, paused 4ms+7ms, total 97ms
+02-06 19:05:37.042 D/dalvikvm(  769): WAIT_FOR_CONCURRENT_GC blocked 88ms
+,02-06 19:05:37.042 D/dalvikvm(  769): WAIT_FOR_CONCURRENT_GC blocked 40ms
+,02-06 19:05:37.302 D/dalvikvm(  769): GC_CONCURRENT freed 5570K, 23% free 39251K/50636K, paused 4ms+7ms, total 84ms
+,02-06 19:05:37.302 D/dalvikvm(  769): WAIT_FOR_CONCURRENT_GC blocked 59ms
+,02-06 19:05:37.302 D/dalvikvm(  769): WAIT_FOR_CONCURRENT_GC blocked 63ms
+,02-06 19:05:37.302 D/dalvikvm(  769): WAIT_FOR_CONCURRENT_GC blocked 60ms
+,02-06 19:05:37.852 I/PackageManager(  769): Running dexopt on: com.heroescompanion.app
+,02-06 19:05:37.912 D/dalvikvm(10394): DexOpt: load 9ms, verify+opt 34ms, 544764 bytes
+,02-06 19:05:37.942 I/ActivityManager(  769): Force stopping com.heroescompanion.app appid=11343 user=-1: update pkg
+,02-06 19:05:38.122 I/InputReader(  769): Reconfiguring input devices.  changes=0x00000010
+,02-06 19:05:38.122 I/PackageManager(  769):   Action: "android.intent.action.SENDTO"
+,02-06 19:05:38.122 I/PackageManager(  769):   Category: "android.intent.category.DEFAULT"
+,02-06 19:05:38.122 I/PackageManager(  769):   Scheme: "sms"
+02-06 19:05:38.122 I/PackageManager(  769): Adding preferred activity ComponentInfo{com.google.android.talk/com.google.android.apps.hangouts.phone.BabelHomeActivity} for user 0 :
+,02-06 19:05:38.142 I/ActivityManager(  769): Start proc android.process.acore for broadcast com.android.providers.contacts/.PackageIntentReceiver: pid=10395 uid=10003 gids={50003, 3003, 1028, 1015}
+,02-06 19:05:38.152 D/dalvikvm(24072): GC_FOR_ALLOC freed 140K, 11% free 25119K/27948K, paused 25ms, total 26ms
+,02-06 19:05:38.152 D/BackupManagerService(  769): Received broadcast Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.heroescompanion.app flg=0x4000010 (has extras) }
+,02-06 19:05:38.162 I/PackageManager(  769):   Action: "android.intent.action.SENDTO"
+02-06 19:05:38.162 I/PackageManager(  769):   Category: "android.intent.category.DEFAULT"
+,02-06 19:05:38.162 I/PackageManager(  769):   Scheme: "smsto"
+02-06 19:05:38.162 I/PackageManager(  769): Adding preferred activity ComponentInfo{com.google.android.talk/com.google.android.apps.hangouts.phone.BabelHomeActivity} for user 0 :
+,02-06 19:05:38.182 I/PackageManager(  769):   Action: "android.intent.action.SENDTO"
+,02-06 19:05:38.182 I/PackageManager(  769):   Category: "android.intent.category.DEFAULT"
+,02-06 19:05:38.182 I/PackageManager(  769):   Scheme: "mms"
+02-06 19:05:38.182 I/PackageManager(  769): Adding preferred activity ComponentInfo{com.google.android.talk/com.google.android.apps.hangouts.phone.BabelHomeActivity} for user 0 :
+,02-06 19:05:38.192 V/BackupManagerService(  769): addPackageParticipantsLocked: #1
+,02-06 19:05:38.192 I/PackageManager(  769): Adding preferred activity ComponentInfo{com.google.android.talk/com.google.android.apps.hangouts.phone.BabelHomeActivity} for user 0 :
+02-06 19:05:38.202 I/PackageManager(  769):   Action: "android.intent.action.SENDTO"
+02-06 19:05:38.202 I/PackageManager(  769):   Category: "android.intent.category.DEFAULT"
+02-06 19:05:38.202 I/PackageManager(  769):   Scheme: "mmsto"
+,02-06 19:05:38.222 I/PackageManager(  769):   Action: "android.intent.action.SENDTO"
+02-06 19:05:38.222 I/PackageManager(  769):   Category: "android.intent.category.DEFAULT"
+,02-06 19:05:38.222 I/PackageManager(  769):   Scheme: "sms"
+02-06 19:05:38.222 I/PackageManager(  769): Adding preferred activity ComponentInfo{com.google.android.talk/com.google.android.apps.hangouts.phone.BabelHomeActivity} for user 0 :
+,02-06 19:05:38.232 I/PackageManager(  769):   Action: "android.intent.action.SENDTO"
+02-06 19:05:38.232 I/PackageManager(  769):   Category: "android.intent.category.DEFAULT"
+,02-06 19:05:38.232 I/PackageManager(  769):   Scheme: "smsto"
+02-06 19:05:38.232 I/PackageManager(  769): Adding preferred activity ComponentInfo{com.google.android.talk/com.google.android.apps.hangouts.phone.BabelHomeActivity} for user 0 :
+,02-06 19:05:38.252 I/PackageManager(  769):   Action: "android.intent.action.SENDTO"
+,02-06 19:05:38.252 I/PackageManager(  769):   Category: "android.intent.category.DEFAULT"
+,02-06 19:05:38.252 I/PackageManager(  769):   Scheme: "mms"
+02-06 19:05:38.252 I/PackageManager(  769): Adding preferred activity ComponentInfo{com.google.android.talk/com.google.android.apps.hangouts.phone.BabelHomeActivity} for user 0 :
+,02-06 19:05:38.272 D/dalvikvm(  769): GC_EXPLICIT freed 4780K, 23% free 39413K/50636K, paused 5ms+15ms, total 173ms
+,02-06 19:05:38.272 D/AndroidRuntime(10370): Shutting down VM
+,02-06 19:05:38.282 D/dalvikvm(10370): GC_CONCURRENT freed 95K, 15% free 561K/660K, paused 0ms+0ms, total 1ms
+02-06 19:05:38.282 I/PackageManager(  769):   Action: "android.intent.action.SENDTO"
+02-06 19:05:38.282 I/PackageManager(  769):   Category: "android.intent.category.DEFAULT"
+,02-06 19:05:38.282 I/PackageManager(  769):   Scheme: "mmsto"
+02-06 19:05:38.282 I/PackageManager(  769): Adding preferred activity ComponentInfo{com.google.android.talk/com.google.android.apps.hangouts.phone.BabelHomeActivity} for user 0 :
+,02-06 19:05:38.322 D/dalvikvm(10395): GC_CONCURRENT freed 242K, 2% free 16931K/17208K, paused 2ms+1ms, total 13ms
+,02-06 19:05:38.332 I/ActivityManager(  769): Start proc com.google.android.partnersetup for broadcast com.google.android.partnersetup/.RlzPingBroadcastReceiver: pid=10422 uid=10011 gids={50011, 3003}
+,02-06 19:05:38.372 I/ActivityManager(  769): Start proc com.android.musicfx for broadcast com.android.musicfx/.Compatibility$Receiver: pid=10437 uid=10013 gids={50013, 3003, 3002}
+,02-06 19:05:38.392 W/Finsky  ( 9998): [1] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:38.402 W/Finsky  ( 9998): [1] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:38.402 W/Finsky  ( 9998): [1] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+02-06 19:05:38.402 I/ActivityManager(  769): Delay finish: com.android.vending/com.google.android.finsky.packagemanager.impl.PackageMonitorReceiverImpl$RegisteredReceiver
+,02-06 19:05:38.412 I/Finsky  ( 9998): [1] com.google.android.finsky.externalreferrer.f.run(9): Package state data is missing for com.heroescompanion.app
+,02-06 19:05:38.412 W/Finsky  ( 9998): [1] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:38.412 I/WearableService(22015): Wearable Services not starting - Wear is not available on this device.
+,02-06 19:05:38.412 I/ActivityManager(  769): Resuming delayed broadcast
+02-06 19:05:38.422 D/WearableService(22015): onGetService - Wear is not available on this device.
+02-06 19:05:38.422 E/Finsky  ( 9998): [1] com.google.android.finsky.wear.bk.a(3): onConnectionFailed: ConnectionResult{statusCode=API_UNAVAILABLE, resolution=null, message=null}
+02-06 19:05:38.422 W/Finsky  ( 9998): [1] com.google.android.finsky.wear.al.run(9): Dropping command=auto_install due to Gms not connected
+02-06 19:05:38.422 W/Finsky  ( 9998): [1] com.google.android.finsky.wear.al.run(9): Dropping command=send_installed_apps due to Gms not connected
+,02-06 19:05:38.472 I/dalvikvm(21863): Failed resolving Lbjw; interface 476 'Landroid/content/pm/PackageManager$OnPermissionsChangedListener;'
+,02-06 19:05:38.472 W/dalvikvm(21863): Link of class 'Lbjw;' failed
+02-06 19:05:38.472 I/dalvikvm(21863): Failed resolving Lbjw; interface 476 'Landroid/content/pm/PackageManager$OnPermissionsChangedListener;'
+02-06 19:05:38.472 W/dalvikvm(21863): Link of class 'Lbjw;' failed
+02-06 19:05:38.472 E/dalvikvm(21863): Could not find class 'bjw', referenced from method com.google.android.gms.chimera.GmsModuleInitializer.initializeModuleV0
+02-06 19:05:38.472 W/dalvikvm(21863): VFY: unable to resolve new-instance 1554 (Lbjw;) in Lcom/google/android/gms/chimera/GmsModuleInitializer;
+02-06 19:05:38.472 D/dalvikvm(21863): VFY: replacing opcode 0x22 at 0x003d
+02-06 19:05:38.472 I/dalvikvm(21863): Failed resolving Lbjw; interface 476 'Landroid/content/pm/PackageManager$OnPermissionsChangedListener;'
+,02-06 19:05:38.472 W/dalvikvm(21863): Link of class 'Lbjw;' failed
+02-06 19:05:38.472 I/dalvikvm(21863): Failed resolving Lbjw; interface 476 'Landroid/content/pm/PackageManager$OnPermissionsChangedListener;'
+,02-06 19:05:38.472 W/dalvikvm(21863): Link of class 'Lbjw;' failed
+,02-06 19:05:38.472 D/dalvikvm(21863): DexOpt: unable to opt direct call 0x23a6 at 0x3f in Lcom/google/android/gms/chimera/GmsModuleInitializer;.initializeModuleV0
+,02-06 19:05:38.522 I/dalvikvm(21863): Could not find method android.content.Context.isDeviceProtectedStorage, referenced from method bmv.a
+02-06 19:05:38.522 W/dalvikvm(21863): VFY: unable to resolve virtual method 2444: Landroid/content/Context;.isDeviceProtectedStorage ()Z
+02-06 19:05:38.522 D/dalvikvm(21863): VFY: replacing opcode 0x6e at 0x0006
+,02-06 19:05:38.542 I/dalvikvm(21863): Could not find method android.hardware.display.VirtualDisplay.setSurface, referenced from method cez.a
+,02-06 19:05:38.542 W/dalvikvm(21863): VFY: unable to resolve virtual method 3152: Landroid/hardware/display/VirtualDisplay;.setSurface (Landroid/view/Surface;)V
+02-06 19:05:38.542 D/dalvikvm(21863): VFY: replacing opcode 0x6e at 0x00a2
+,02-06 19:05:38.542 I/dalvikvm(21863): Could not find method android.hardware.display.VirtualDisplay.setSurface, referenced from method cez.a
+,02-06 19:05:38.542 W/dalvikvm(21863): VFY: unable to resolve virtual method 3152: Landroid/hardware/display/VirtualDisplay;.setSurface (Landroid/view/Surface;)V
+,02-06 19:05:38.542 D/dalvikvm(21863): VFY: replacing opcode 0x6e at 0x00dc
+,02-06 19:05:38.562 I/ActivityManager(  769): Start proc com.google.android.apps.plus for broadcast com.google.android.apps.plus/.service.PhotosAppTransitionMonitor: pid=10463 uid=10065 gids={50065, 3003, 1028, 1015}
+,02-06 19:05:38.572 W/ConfigurationChimeraPro(22015): Got null configs for com.google.android.gms.appinvite
+,02-06 19:05:38.582 I/FontsPackageChangeOp(21863): Package com.heroescompanion.app has no metadata
+,02-06 19:05:38.602 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.A
+02-06 19:05:38.602 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+,02-06 19:05:38.602 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.602 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.B
+02-06 19:05:38.602 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+,02-06 19:05:38.602 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.602 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.C
+02-06 19:05:38.612 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+02-06 19:05:38.612 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.612 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.D
+02-06 19:05:38.612 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+,02-06 19:05:38.612 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.612 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.E
+,02-06 19:05:38.622 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+,02-06 19:05:38.622 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.622 D/Wear_Controller(21863): Received broadcast action=android.intent.action.PACKAGE_ADDED and uri=com.heroescompanion.app
+,02-06 19:05:38.632 I/dalvikvm(10463): Could not find method android.media.MediaRouter$RouteInfo.getDeviceType, referenced from method ba.H
+,02-06 19:05:38.632 W/dalvikvm(10463): VFY: unable to resolve virtual method 4191: Landroid/media/MediaRouter$RouteInfo;.getDeviceType ()I
+,02-06 19:05:38.632 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0002
+02-06 19:05:38.632 I/dalvikvm(10463): Could not find method android.content.Context.getSystemService, referenced from method ba.a
+02-06 19:05:38.632 W/dalvikvm(10463): VFY: unable to resolve virtual method 3364: Landroid/content/Context;.getSystemService (Ljava/lang/Class;)Ljava/lang/Object;
+,02-06 19:05:38.632 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0008
+,02-06 19:05:38.632 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/media/AudioAttributes;)
+02-06 19:05:38.632 I/dalvikvm(10463): Could not find method android.media.AudioAttributes.getFlags, referenced from method ba.a
+02-06 19:05:38.632 W/dalvikvm(10463): VFY: unable to resolve virtual method 4143: Landroid/media/AudioAttributes;.getFlags ()I
+,02-06 19:05:38.632 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0003
+,02-06 19:05:38.642 E/dalvikvm(10463): Could not find class 'android.app.Notification$Action$Builder', referenced from method ba.a
+02-06 19:05:38.642 W/dalvikvm(10463): VFY: unable to resolve new-instance 410 (Landroid/app/Notification$Action$Builder;) in Lba;
+,02-06 19:05:38.642 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0000
+,02-06 19:05:38.642 I/dalvikvm(10463): Could not find method android.content.res.Resources.getDrawable, referenced from method ba.a
+02-06 19:05:38.642 W/dalvikvm(10463): VFY: unable to resolve virtual method 3579: Landroid/content/res/Resources;.getDrawable (ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
+02-06 19:05:38.642 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0006
+02-06 19:05:38.642 I/dalvikvm(10463): Could not find method android.app.RemoteInput.getResultsFromIntent, referenced from method ba.a
+02-06 19:05:38.642 W/dalvikvm(10463): VFY: unable to resolve static method 3198: Landroid/app/RemoteInput;.getResultsFromIntent (Landroid/content/Intent;)Landroid/os/Bundle;
+,02-06 19:05:38.642 D/dalvikvm(10463): VFY: replacing opcode 0x71 at 0x0000
+,02-06 19:05:38.652 E/dalvikvm(10463): Could not find class 'android.view.animation.PathInterpolator', referenced from method ba.a
+02-06 19:05:38.652 W/dalvikvm(10463): VFY: unable to resolve new-instance 1006 (Landroid/view/animation/PathInterpolator;) in Lba;
+,02-06 19:05:38.652 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0006
+,02-06 19:05:38.652 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.a
+02-06 19:05:38.652 W/dalvikvm(10463): VFY: unable to resolve new-instance 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+02-06 19:05:38.652 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0000
+,02-06 19:05:38.652 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController', referenced from method ba.a
+02-06 19:05:38.652 W/dalvikvm(10463): VFY: unable to resolve new-instance 641 (Landroid/media/session/MediaController;) in Lba;
+,02-06 19:05:38.652 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0000
+02-06 19:05:38.652 W/dalvikvm(10463): VFY: unable to resolve static field 1855 (CREATOR) in Landroid/media/MediaDescription;
+,02-06 19:05:38.652 D/dalvikvm(10463): VFY: replacing opcode 0x62 at 0x0000
+02-06 19:05:38.652 W/dalvikvm(10463): Unable to resolve superclass of Lmv; (638)
+,02-06 19:05:38.652 W/dalvikvm(10463): Link of class 'Lmv;' failed
+02-06 19:05:38.652 E/dalvikvm(10463): Could not find class 'mv', referenced from method ba.a
+02-06 19:05:38.652 W/dalvikvm(10463): VFY: unable to resolve new-instance 11085 (Lmv;) in Lba;
+,02-06 19:05:38.652 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0000
+02-06 19:05:38.652 I/dalvikvm(10463): Could not find method android.app.AppOpsManager.permissionToOp, referenced from method ba.a
+02-06 19:05:38.652 W/dalvikvm(10463): VFY: unable to resolve static method 3028: Landroid/app/AppOpsManager;.permissionToOp (Ljava/lang/String;)Ljava/lang/String;
+,02-06 19:05:38.652 D/dalvikvm(10463): VFY: replacing opcode 0x71 at 0x0006
+02-06 19:05:38.652 I/dalvikvm(10463): Could not find method android.view.View.getTransitionName, referenced from method ba.a
+,02-06 19:05:38.652 W/dalvikvm(10463): VFY: unable to resolve virtual method 6994: Landroid/view/View;.getTransitionName ()Ljava/lang/String;
+,02-06 19:05:38.652 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0013
+02-06 19:05:38.662 E/dalvikvm(10463): Could not find class 'android.app.Notification$Action$Builder', referenced from method ba.a
+,02-06 19:05:38.662 W/dalvikvm(10463): VFY: unable to resolve new-instance 410 (Landroid/app/Notification$Action$Builder;) in Lba;
+,02-06 19:05:38.662 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0000
+,02-06 19:05:38.662 I/dalvikvm(10463): Could not find method android.view.View.getTransitionName, referenced from method ba.a
+02-06 19:05:38.662 W/dalvikvm(10463): VFY: unable to resolve virtual method 6994: Landroid/view/View;.getTransitionName ()Ljava/lang/String;
+,02-06 19:05:38.662 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0013
+,02-06 19:05:38.662 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.a
+02-06 19:05:38.662 W/dalvikvm(10463): VFY: unable to resolve check-cast 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+,02-06 19:05:38.662 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.662 W/dalvikvm(10463): Unable to resolve superclass of Lhh; (875)
+02-06 19:05:38.662 W/dalvikvm(10463): Link of class 'Lhh;' failed
+02-06 19:05:38.662 E/dalvikvm(10463): Could not find class 'hh', referenced from method ba.a
+,02-06 19:05:38.662 W/dalvikvm(10463): VFY: unable to resolve new-instance 6861 (Lhh;) in Lba;
+02-06 19:05:38.662 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0004
+,02-06 19:05:38.672 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.a
+02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve check-cast 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+,02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.672 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.a
+02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve check-cast 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+,02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.672 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription', referenced from method ba.a
+,02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve check-cast 616 (Landroid/media/MediaDescription;) in Lba;
+,02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.672 W/dalvikvm(10463): Unable to resolve superclass of Lhc; (875)
+,02-06 19:05:38.672 W/dalvikvm(10463): Link of class 'Lhc;' failed
+02-06 19:05:38.672 E/dalvikvm(10463): Could not find class 'hc', referenced from method ba.a
+02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve new-instance 6726 (Lhc;) in Lba;
+,02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x000c
+02-06 19:05:38.672 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.a
+,02-06 19:05:38.672 D/dalvikvm(21863): GC_CONCURRENT freed 1277K, 8% free 22092K/23884K, paused 4ms+18ms, total 83ms
+02-06 19:05:38.672 D/dalvikvm(21863): WAIT_FOR_CONCURRENT_GC blocked 59ms
+,02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve check-cast 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.672 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController', referenced from method ba.a
+02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve check-cast 641 (Landroid/media/session/MediaController;) in Lba;
+,02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.672 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.a
+02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve check-cast 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+,02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.672 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController', referenced from method ba.a
+02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve check-cast 641 (Landroid/media/session/MediaController;) in Lba;
+02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.672 I/dalvikvm(10463): Could not find method android.transition.TransitionSet.getTransitionCount, referenced from method ba.a
+02-06 19:05:38.672 W/dalvikvm(10463): VFY: unable to resolve virtual method 6641: Landroid/transition/TransitionSet;.getTransitionCount ()I
+02-06 19:05:38.672 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x000c
+02-06 19:05:38.682 I/dalvikvm(10463): Could not find method android.view.ViewGroup.isTransitionGroup, referenced from method ba.a
+02-06 19:05:38.682 W/dalvikvm(10463): VFY: unable to resolve virtual method 7174: Landroid/view/ViewGroup;.isTransitionGroup ()Z
+,02-06 19:05:38.682 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x000c
+02-06 19:05:38.682 I/dalvikvm(10463): Could not find method android.view.View.getTransitionName, referenced from method ba.a
+02-06 19:05:38.682 W/dalvikvm(10463): VFY: unable to resolve virtual method 6994: Landroid/view/View;.getTransitionName ()Ljava/lang/String;
+,02-06 19:05:38.682 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0006
+,02-06 19:05:38.682 I/dalvikvm(10463): Could not find method android.transition.Transition.getTargetNames, referenced from method ba.a
+02-06 19:05:38.682 W/dalvikvm(10463): VFY: unable to resolve virtual method 6630: Landroid/transition/Transition;.getTargetNames ()Ljava/util/List;
+,02-06 19:05:38.682 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x000a
+,02-06 19:05:38.682 W/dalvikvm(10463): VFY: unable to find class referenced in signature ([Landroid/app/RemoteInput;)
+02-06 19:05:38.682 E/dalvikvm(10463): Could not find class 'android.app.RemoteInput[]', referenced from method ba.a
+02-06 19:05:38.682 W/dalvikvm(10463): VFY: unable to resolve new-array 14627 ([Landroid/app/RemoteInput;) in Lba;
+,02-06 19:05:38.682 D/dalvikvm(10463): VFY: replacing opcode 0x23 at 0x0005
+02-06 19:05:38.682 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.b
+,02-06 19:05:38.682 W/dalvikvm(10463): VFY: unable to resolve check-cast 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+02-06 19:05:38.682 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.682 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController', referenced from method ba.b
+02-06 19:05:38.682 W/dalvikvm(10463): VFY: unable to resolve check-cast 641 (Landroid/media/session/MediaController;) in Lba;
+02-06 19:05:38.682 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.682 I/dalvikvm(10463): Could not find method android.transition.TransitionSet.getTransitionCount, referenced from method ba.b
+02-06 19:05:38.692 W/dalvikvm(10463): VFY: unable to resolve virtual method 6641: Landroid/transition/TransitionSet;.getTransitionCount ()I
+,02-06 19:05:38.692 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0009
+02-06 19:05:38.692 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.c
+,02-06 19:05:38.692 W/dalvikvm(10463): VFY: unable to resolve check-cast 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+,02-06 19:05:38.692 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.692 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription', referenced from method ba.d
+02-06 19:05:38.692 W/dalvikvm(10463): VFY: unable to resolve check-cast 616 (Landroid/media/MediaDescription;) in Lba;
+,02-06 19:05:38.692 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.692 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription', referenced from method ba.e
+02-06 19:05:38.692 W/dalvikvm(10463): VFY: unable to resolve check-cast 616 (Landroid/media/MediaDescription;) in Lba;
+,02-06 19:05:38.692 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.692 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription', referenced from method ba.f
+02-06 19:05:38.692 W/dalvikvm(10463): VFY: unable to resolve check-cast 616 (Landroid/media/MediaDescription;) in Lba;
+02-06 19:05:38.692 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.692 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription', referenced from method ba.g
+02-06 19:05:38.692 W/dalvikvm(10463): VFY: unable to resolve check-cast 616 (Landroid/media/MediaDescription;) in Lba;
+,02-06 19:05:38.692 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.692 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription', referenced from method ba.h
+02-06 19:05:38.692 W/dalvikvm(10463): VFY: unable to resolve check-cast 616 (Landroid/media/MediaDescription;) in Lba;
+02-06 19:05:38.692 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.702 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription', referenced from method ba.i
+,02-06 19:05:38.702 W/dalvikvm(10463): VFY: unable to resolve check-cast 616 (Landroid/media/MediaDescription;) in Lba;
+,02-06 19:05:38.702 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.702 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription', referenced from method ba.j
+,02-06 19:05:38.702 W/dalvikvm(10463): VFY: unable to resolve check-cast 616 (Landroid/media/MediaDescription;) in Lba;
+02-06 19:05:38.702 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.702 E/dalvikvm(10463): Could not find class 'android.media.MediaDescription$Builder', referenced from method ba.k
+02-06 19:05:38.702 W/dalvikvm(10463): VFY: unable to resolve check-cast 615 (Landroid/media/MediaDescription$Builder;) in Lba;
+,02-06 19:05:38.702 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.712 D/dalvikvm(10463): GC_CONCURRENT freed 327K, 3% free 16756K/17116K, paused 2ms+1ms, total 15ms
+,02-06 19:05:38.712 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController', referenced from method ba.l
+02-06 19:05:38.712 W/dalvikvm(10463): VFY: unable to resolve check-cast 641 (Landroid/media/session/MediaController;) in Lba;
+02-06 19:05:38.712 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.712 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController', referenced from method ba.m
+02-06 19:05:38.712 W/dalvikvm(10463): VFY: unable to resolve check-cast 641 (Landroid/media/session/MediaController;) in Lba;
+02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController', referenced from method ba.n
+02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 641 (Landroid/media/session/MediaController;) in Lba;
+02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController', referenced from method ba.o
+,02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 641 (Landroid/media/session/MediaController;) in Lba;
+02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController$PlaybackInfo', referenced from method ba.p
+,02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 639 (Landroid/media/session/MediaController$PlaybackInfo;) in Lba;
+,02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/media/AudioAttributes;)
+,02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/media/AudioAttributes;)
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController$TransportControls', referenced from method ba.r
+02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 640 (Landroid/media/session/MediaController$TransportControls;) in Lba;
+,02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController$TransportControls', referenced from method ba.s
+02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 640 (Landroid/media/session/MediaController$TransportControls;) in Lba;
+,02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.MediaController$TransportControls', referenced from method ba.t
+02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 640 (Landroid/media/session/MediaController$TransportControls;) in Lba;
+,02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.MediaSession$QueueItem', referenced from method ba.u
+02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 642 (Landroid/media/session/MediaSession$QueueItem;) in Lba;
+,02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.MediaSession$QueueItem', referenced from method ba.v
+,02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 642 (Landroid/media/session/MediaSession$QueueItem;) in Lba;
+02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.w
+02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+,02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.x
+02-06 19:05:38.722 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+,02-06 19:05:38.722 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.722 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.y
+02-06 19:05:38.732 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+,02-06 19:05:38.732 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.732 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState', referenced from method ba.z
+02-06 19:05:38.732 W/dalvikvm(10463): VFY: unable to resolve check-cast 645 (Landroid/media/session/PlaybackState;) in Lba;
+,02-06 19:05:38.732 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c03 at 0x0e in Lba;.a
+02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x1cda at 0x08 in Lba;.a
+,02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x1034 at 0x02 in Lba;.a
+02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x1096 at 0x04 in Lba;.a
+02-06 19:05:38.732 W/dalvikvm(10463): Unable to resolve superclass of Lmv; (638)
+,02-06 19:05:38.732 W/dalvikvm(10463): Link of class 'Lmv;' failed
+02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0xd536 at 0x02 in Lba;.a
+,02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c03 at 0x0e in Lba;.a
+02-06 19:05:38.732 W/dalvikvm(10463): Unable to resolve superclass of Lhh; (875)
+02-06 19:05:38.732 W/dalvikvm(10463): Link of class 'Lhh;' failed
+,02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x8b6c at 0x06 in Lba;.a
+02-06 19:05:38.732 W/dalvikvm(10463): Unable to resolve superclass of Lhc; (875)
+,02-06 19:05:38.732 W/dalvikvm(10463): Link of class 'Lhc;' failed
+,02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x8970 at 0x0e in Lba;.a
+,02-06 19:05:38.732 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c78 at 0x13 in Lba;.a
+02-06 19:05:38.732 E/dalvikvm(10463): Could not find class 'android.app.Notification$Action$Builder', referenced from method bt.a
+02-06 19:05:38.732 W/dalvikvm(10463): VFY: unable to resolve new-instance 410 (Landroid/app/Notification$Action$Builder;) in Lbt;
+,02-06 19:05:38.732 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0000
+,02-06 19:05:38.732 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState$CustomAction', referenced from method bt.a
+02-06 19:05:38.732 W/dalvikvm(10463): VFY: unable to resolve check-cast 644 (Landroid/media/session/PlaybackState$CustomAction;) in Lbt;
+,02-06 19:05:38.732 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.742 E/dalvikvm(10463): Could not find class 'android.app.Notification$Action$Builder', referenced from method bt.a
+02-06 19:05:38.742 W/dalvikvm(10463): VFY: unable to resolve new-instance 410 (Landroid/app/Notification$Action$Builder;) in Lbt;
+,02-06 19:05:38.742 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0000
+,02-06 19:05:38.742 E/dalvikvm(10463): Could not find class 'android.media.MediaMetadata', referenced from method bt.a
+02-06 19:05:38.742 W/dalvikvm(10463): VFY: unable to resolve check-cast 617 (Landroid/media/MediaMetadata;) in Lbt;
+,02-06 19:05:38.742 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.742 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState$CustomAction', referenced from method bt.b
+02-06 19:05:38.742 W/dalvikvm(10463): VFY: unable to resolve check-cast 644 (Landroid/media/session/PlaybackState$CustomAction;) in Lbt;
+,02-06 19:05:38.742 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.742 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState$CustomAction', referenced from method bt.c
+02-06 19:05:38.742 W/dalvikvm(10463): VFY: unable to resolve check-cast 644 (Landroid/media/session/PlaybackState$CustomAction;) in Lbt;
+,02-06 19:05:38.742 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+02-06 19:05:38.742 E/dalvikvm(10463): Could not find class 'android.media.session.PlaybackState$CustomAction', referenced from method bt.d
+02-06 19:05:38.742 W/dalvikvm(10463): VFY: unable to resolve check-cast 644 (Landroid/media/session/PlaybackState$CustomAction;) in Lbt;
+,02-06 19:05:38.742 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x0000
+,02-06 19:05:38.742 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c03 at 0x0e in Lbt;.a
+,02-06 19:05:38.742 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c03 at 0x0e in Lbt;.a
+,02-06 19:05:38.762 D/dalvikvm(21863): GC_EXPLICIT freed 282K, 9% free 21890K/23884K, paused 4ms+4ms, total 87ms
+,02-06 19:05:38.772 I/Icing   (21863): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=36
+,02-06 19:05:38.772 I/Icing   (21863): IndexChimeraService.getServiceInterface callingPackage=com.google.android.gms componentName=AppsCorpus serviceId=32
+,02-06 19:05:38.772 D/AndroidRuntime(10484): 
+02-06 19:05:38.772 D/AndroidRuntime(10484): >>>>>> AndroidRuntime START com.android.internal.os.RuntimeInit <<<<<<
+,02-06 19:05:38.772 D/AndroidRuntime(10484): CheckJNI is OFF
+,02-06 19:05:38.782 D/dalvikvm(10463): GC_CONCURRENT freed 344K, 3% free 16799K/17176K, paused 3ms+1ms, total 16ms
+,02-06 19:05:38.782 D/dalvikvm(10484): Trying to load lib libjavacore.so 0x0
+,02-06 19:05:38.792 D/dalvikvm(10484): Added shared lib libjavacore.so 0x0
+02-06 19:05:38.792 D/dalvikvm(10484): Trying to load lib libnativehelper.so 0x0
+,02-06 19:05:38.792 D/dalvikvm(10484): Added shared lib libnativehelper.so 0x0
+,02-06 19:05:38.792 D/dalvikvm(10484): No JNI_OnLoad found in libnativehelper.so 0x0, skipping init
+,02-06 19:05:38.802 I/Icing   (21863): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0, imm upload false
+,02-06 19:05:38.812 D/dalvikvm(10484): Note: class Landroid/app/ActivityManagerNative; has 179 unimplemented (abstract) methods
+,02-06 19:05:38.812 I/Icing   (21863): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0, imm upload false
+,02-06 19:05:38.882 D/dalvikvm(10463): GC_CONCURRENT freed 270K, 2% free 16918K/17220K, paused 2ms+4ms, total 15ms
+,02-06 19:05:38.902 E/dalvikvm(21863): Could not find class 'android.graphics.drawable.AdaptiveIconDrawable', referenced from method cfg.a
+,02-06 19:05:38.902 W/dalvikvm(21863): VFY: unable to resolve instanceof 555 (Landroid/graphics/drawable/AdaptiveIconDrawable;) in Lcfg;
+,02-06 19:05:38.902 D/dalvikvm(21863): VFY: replacing opcode 0x20 at 0x0107
+,02-06 19:05:38.942 D/AndroidRuntime(10484): Calling main entry com.android.commands.am.Am
+,02-06 19:05:38.952 D/AndroidRuntime(10484): Shutting down VM
+,02-06 19:05:38.952 I/ActivityManager(  769): START u0 {flg=0x10000000 cmp=com.heroescompanion.app/.MainActivity} from pid 10484
+02-06 19:05:38.962 D/dalvikvm(10484): GC_CONCURRENT freed 95K, 15% free 586K/684K, paused 0ms+0ms, total 1ms
+,02-06 19:05:38.962 I/ActivityManager(  769): Start proc com.heroescompanion.app for activity com.heroescompanion.app/.MainActivity: pid=10519 uid=11343 gids={51343, 3003, 1028, 1015}
+,02-06 19:05:38.972 D/dalvikvm(10463): GC_CONCURRENT freed 236K, 2% free 17067K/17336K, paused 2ms+1ms, total 16ms
+,02-06 19:05:39.042 I/eLock   (22410): pkgname_before:com.google.android.googlequicksearchbox  class:com.heroescompanion.app.MainActivity  isFingerActivityCreated:false   isCalling:false
+,02-06 19:05:39.112 D/dalvikvm(10519): Trying to load lib /data/app-lib/com.heroescompanion.app-1/libflutter.so 0x425a3208
+,02-06 19:05:39.112 D/dalvikvm(10519): Added shared lib /data/app-lib/com.heroescompanion.app-1/libflutter.so 0x425a3208
+,02-06 19:05:39.122 I/dalvikvm(10519): Could not find method android.view.Window.setStatusBarColor, referenced from method io.flutter.app.FlutterActivityDelegate.onCreate
+02-06 19:05:39.122 W/dalvikvm(10519): VFY: unable to resolve virtual method 205: Landroid/view/Window;.setStatusBarColor (I)V
+,02-06 19:05:39.122 D/dalvikvm(10519): VFY: replacing opcode 0x6e at 0x0015
+,02-06 19:05:39.142 D/dalvikvm(10463): GC_CONCURRENT freed 197K, 2% free 17259K/17492K, paused 2ms+2ms, total 18ms
+,02-06 19:05:39.212 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.212 I/dalvikvm(10463): Could not find method android.os.health.HealthStats.hasMeasurement, referenced from method ghd.a
+,02-06 19:05:39.212 W/dalvikvm(10463): VFY: unable to resolve virtual method 4706: Landroid/os/health/HealthStats;.hasMeasurement (I)Z
+,02-06 19:05:39.212 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0001
+,02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/TimerStat;)
+02-06 19:05:39.222 I/dalvikvm(10463): Could not find method android.os.health.TimerStat.getCount, referenced from method ghd.a
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to resolve virtual method 4712: Landroid/os/health/TimerStat;.getCount ()I
+02-06 19:05:39.222 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0005
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.222 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.232 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.242 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.242 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.242 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.242 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.242 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.242 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.252 D/dalvikvm(10463): GC_CONCURRENT freed 454K, 3% free 17310K/17800K, paused 2ms+2ms, total 23ms
+,02-06 19:05:39.252 D/dalvikvm(10463): WAIT_FOR_CONCURRENT_GC blocked 15ms
+02-06 19:05:39.252 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.252 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.252 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.262 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.272 I/dalvikvm(10463): Could not find method android.os.PowerManager.isPowerSaveMode, referenced from method ghd.a
+,02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to resolve virtual method 4663: Landroid/os/PowerManager;.isPowerSaveMode ()Z
+,02-06 19:05:39.272 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0019
+,02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.272 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.282 I/dalvikvm(10463): Could not find method android.os.health.HealthStats.hasTimer, referenced from method ghd.b
+,02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to resolve virtual method 4709: Landroid/os/health/HealthStats;.hasTimer (I)Z
+02-06 19:05:39.282 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0001
+,02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/TimerStat;)
+,02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/TimerStat;)
+02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.282 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.292 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.292 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.292 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.302 I/dalvikvm(10463): Could not find method android.os.health.HealthStats.hasTimers, referenced from method ghd.c
+02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to resolve virtual method 4710: Landroid/os/health/HealthStats;.hasTimers (I)Z
+,02-06 19:05:39.302 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0000
+,02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.302 I/dalvikvm(10463): Could not find method android.os.health.HealthStats.hasMeasurements, referenced from method ghd.d
+02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to resolve virtual method 4707: Landroid/os/health/HealthStats;.hasMeasurements (I)Z
+02-06 19:05:39.302 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0003
+,02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+02-06 19:05:39.302 I/dalvikvm(10463): Could not find method android.os.health.HealthStats.hasStats, referenced from method ghd.e
+,02-06 19:05:39.302 W/dalvikvm(10463): VFY: unable to resolve virtual method 4708: Landroid/os/health/HealthStats;.hasStats (I)Z
+,02-06 19:05:39.302 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0000
+,02-06 19:05:39.312 D/dalvikvm(10463): GC_CONCURRENT freed 487K, 3% free 17316K/17852K, paused 2ms+1ms, total 25ms
+,02-06 19:05:39.312 D/dalvikvm(10463): WAIT_FOR_CONCURRENT_GC blocked 6ms
+02-06 19:05:39.312 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.312 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.312 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.312 W/dalvikvm(10463): VFY: unable to find class referenced in signature (Landroid/os/health/HealthStats;)
+,02-06 19:05:39.342 I/dalvikvm(10463): Could not find method android.app.NotificationManager.getNotificationChannel, referenced from method bxa.a
+02-06 19:05:39.342 W/dalvikvm(10463): VFY: unable to resolve virtual method 3166: Landroid/app/NotificationManager;.getNotificationChannel (Ljava/lang/String;)Landroid/app/NotificationChannel;
+,02-06 19:05:39.342 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0030
+,02-06 19:05:39.352 I/dalvikvm(10463): Could not find method android.app.NotificationManager.deleteNotificationChannel, referenced from method bxa.b
+02-06 19:05:39.352 W/dalvikvm(10463): VFY: unable to resolve virtual method 3163: Landroid/app/NotificationManager;.deleteNotificationChannel (Ljava/lang/String;)V
+,02-06 19:05:39.352 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0016
+02-06 19:05:39.352 I/dalvikvm(10463): Could not find method android.app.NotificationManager.deleteNotificationChannelGroup, referenced from method bxa.b
+,02-06 19:05:39.352 W/dalvikvm(10463): VFY: unable to resolve virtual method 3164: Landroid/app/NotificationManager;.deleteNotificationChannelGroup (Ljava/lang/String;)V
+,02-06 19:05:39.352 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0020
+,02-06 19:05:39.352 E/dalvikvm(10463): Could not find class 'android.app.NotificationChannelGroup', referenced from method bxa.f
+02-06 19:05:39.352 W/dalvikvm(10463): VFY: unable to resolve new-instance 419 (Landroid/app/NotificationChannelGroup;) in Lbxa;
+,02-06 19:05:39.352 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x002c
+,02-06 19:05:39.362 I/dalvikvm(10463): Could not find method android.app.NotificationManager.getNotificationChannelGroups, referenced from method bxa.k
+02-06 19:05:39.362 W/dalvikvm(10463): VFY: unable to resolve virtual method 3167: Landroid/app/NotificationManager;.getNotificationChannelGroups ()Ljava/util/List;
+,02-06 19:05:39.362 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x005d
+,02-06 19:05:39.362 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c55 at 0x3d in Lbxa;.f
+02-06 19:05:39.362 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c4f at 0x52 in Lbxa;.f
+,02-06 19:05:39.362 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c4f at 0x7b in Lbxa;.f
+,02-06 19:05:39.362 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0c4f at 0xa0 in Lbxa;.f
+,02-06 19:05:39.402 D/dalvikvm(10463): GC_CONCURRENT freed 364K, 3% free 17444K/17852K, paused 2ms+2ms, total 25ms
+,02-06 19:05:39.452 D/dalvikvm(10463): GC_CONCURRENT freed 266K, 2% free 17602K/17900K, paused 1ms+2ms, total 13ms
+,02-06 19:05:39.452 W/dalvikvm(10463): No implementation found for native Lcom/google/android/libraries/social/jni/crashreporter/NativeCrashHandler;.setup:()V
+02-06 19:05:39.452 D/dalvikvm(10463): Trying to load lib /data/app-lib/com.google.android.apps.plus-2/libcrashreporterer.so 0x425a7770
+,02-06 19:05:39.452 D/dalvikvm(10463): Added shared lib /data/app-lib/com.google.android.apps.plus-2/libcrashreporterer.so 0x425a7770
+,02-06 19:05:39.452 I/dalvikvm(10463): Could not find method android.os.PowerManager.isInteractive, referenced from method ncf.onActivityPaused
+02-06 19:05:39.452 W/dalvikvm(10463): VFY: unable to resolve virtual method 4662: Landroid/os/PowerManager;.isInteractive ()Z
+,02-06 19:05:39.452 D/dalvikvm(10463): VFY: replacing opcode 0x6e at 0x0020
+,02-06 19:05:39.492 D/dalvikvm(23991): GC_EXPLICIT freed 176K, 7% free 17892K/19076K, paused 1ms+2ms, total 16ms
+,02-06 19:05:39.502 E/dalvikvm(10463): Could not find class 'android.graphics.drawable.RippleDrawable', referenced from method kuu.a
+02-06 19:05:39.502 W/dalvikvm(10463): VFY: unable to resolve new-instance 593 (Landroid/graphics/drawable/RippleDrawable;) in Lkuu;
+,02-06 19:05:39.502 D/dalvikvm(10463): VFY: replacing opcode 0x22 at 0x0008
+,02-06 19:05:39.512 E/dalvikvm(10463): Could not find class 'android.content.pm.LauncherApps', referenced from method kuu.j
+,02-06 19:05:39.512 W/dalvikvm(10463): VFY: unable to resolve check-cast 489 (Landroid/content/pm/LauncherApps;) in Lkuu;
+02-06 19:05:39.512 D/dalvikvm(10463): VFY: replacing opcode 0x1f at 0x000e
+,02-06 19:05:39.512 D/dalvikvm(10463): DexOpt: unable to opt direct call 0x0fff at 0x0b in Lkuu;.a
+,02-06 19:05:39.532 I/dalvikvm( 9811): Could not find method android.app.NotificationManager.getNotificationChannel, referenced from method com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher.a
+,02-06 19:05:39.532 W/dalvikvm( 9811): VFY: unable to resolve virtual method 512: Landroid/app/NotificationManager;.getNotificationChannel (Ljava/lang/String;)Landroid/app/NotificationChannel;
+,02-06 19:05:39.532 D/dalvikvm( 9811): VFY: replacing opcode 0x6e at 0x00e0
+,02-06 19:05:39.542 D/dalvikvm( 9811): DexOpt: unable to opt direct call 0x01fb at 0xe9 in Lcom/google/android/apps/gsa/googlequicksearchbox/GelStubAppWatcher;.a
+,02-06 19:05:39.842 I/Icing   (21863): Indexing 472FF1F857E56E23870B1692A8D2EFF98B9D1236 from com.google.android.gms
+,02-06 19:05:39.902 I/Icing   (21863): Indexing done 472FF1F857E56E23870B1692A8D2EFF98B9D1236
+,02-06 19:05:39.912 I/Icing   (21863): IndexChimeraService.getServiceInterface callingPackage=com.google.android.inputmethod.latin componentName=null serviceId=66
+,02-06 19:05:39.942 I/Icing   (21863): Usage reports ok 0, Failed Usage reports 0, indexed 0, rejected 0, imm upload false
+,02-06 19:05:41.052 D/dalvikvm(10519): GC_CONCURRENT freed 290K, 2% free 16921K/17240K, paused 3ms+2ms, total 22ms
+,02-06 19:05:41.052 D/dalvikvm(10519): WAIT_FOR_CONCURRENT_GC blocked 16ms
+,02-06 19:05:41.072 D/dalvikvm(10519): GC_CONCURRENT freed 285K, 2% free 17149K/17464K, paused 0ms+1ms, total 8ms
+,02-06 19:05:41.072 D/dalvikvm(10519): WAIT_FOR_CONCURRENT_GC blocked 5ms
+,02-06 19:05:41.082 D/dalvikvm(10519): GC_CONCURRENT freed 247K, 2% free 17350K/17632K, paused 1ms+0ms, total 9ms
+,02-06 19:05:43.422 I/WearableService(22015): Wearable Services stopping
+,02-06 19:05:48.452 D/dalvikvm(10519): GC_CONCURRENT freed 510K, 4% free 17225K/17768K, paused 2ms+1ms, total 11ms
+,02-06 19:05:48.952 W/ActivityManager(  769): Launch timeout has expired, giving up wake lock!
+,02-06 19:05:48.972 E/WindowManager(  769): Starting window AppWindowToken{42f0e308 token=Token{42e95840 ActivityRecord{42b8b9d8 u0 com.heroescompanion.app/.MainActivity t1663}}} timed out
+,02-06 19:05:53.502 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.502 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.512 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.512 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.522 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.522 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.522 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.532 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.532 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.532 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.542 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.542 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.542 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.542 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.542 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.542 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.552 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.552 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.552 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.552 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.572 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.572 D/dalvikvm( 9998): GC_CONCURRENT freed 640K, 4% free 18776K/19452K, paused 3ms+1ms, total 19ms
+,02-06 19:05:53.572 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.582 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.582 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.582 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.592 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.592 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.592 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.592 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.592 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.602 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.602 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.602 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.602 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.602 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.602 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.602 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.612 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.612 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.612 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.612 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.612 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.612 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.622 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.622 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.622 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.622 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.622 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.622 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.622 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.632 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.632 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.632 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.632 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.632 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.632 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.632 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.642 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.642 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.642 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.642 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.642 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.642 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.642 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.652 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.652 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.652 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.652 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.652 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.652 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.652 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.662 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.662 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.662 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.662 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.662 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.662 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.662 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.672 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.672 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.672 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.672 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.672 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.672 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.672 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.682 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.682 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.682 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.682 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.682 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.682 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.682 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.702 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.702 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.702 D/dalvikvm( 9998): GC_CONCURRENT freed 545K, 4% free 18822K/19452K, paused 3ms+1ms, total 19ms
+,02-06 19:05:53.702 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.712 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.712 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.712 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.712 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.712 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.722 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.722 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.722 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.722 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.722 W/Finsky  ( 9998): [1711924] com.google.android.finsky.application.d.cr(840): No account configured on this device.
+,02-06 19:05:53.732 I/Finsky  ( 9998): [1711924] com.google.android.finsky.k.c.a(23): Completed 0 account content syncs with 0 successful.
+,02-06 19:05:53.732 I/Finsky  ( 9998): [1] com.google.android.finsky.services.e.a(5): Installation state replication succeeded.
+,02-06 19:05:55.852 D/dalvikvm(10519): GC_CONCURRENT freed 427K, 4% free 17184K/17768K, paused 1ms+1ms, total 10ms
+,02-06 19:06:02.892 I/PlayCommon(27565): [1506400] PlayEventLogger.uploadEventsImpl: Preparing logs for uploading
+,02-06 19:06:02.892 I/PlayCommon(27565): [1506400] PlayEventLogger.uploadEventsImpl: No file ready to send
+,02-06 19:06:02.972 D/dalvikvm(10519): GC_CONCURRENT freed 426K, 4% free 17142K/17768K, paused 1ms+1ms, total 10ms
+,02-06 19:06:10.032 D/dalvikvm(10519): GC_CONCURRENT freed 426K, 4% free 17100K/17768K, paused 2ms+1ms, total 10ms
+,02-06 19:06:12.692 I/PlayCommon(14300): [1637030] PlayEventLogger.uploadEventsImpl: Preparing logs for uploading
+,02-06 19:06:12.692 I/PlayCommon(14300): [1637030] PlayEventLogger.uploadEventsImpl: No file ready to send
+,02-06 19:06:12.702 D/dalvikvm(14300): GC_CONCURRENT freed 408K, 3% free 18293K/18736K, paused 1ms+1ms, total 14ms
+,02-06 19:06:17.202 D/dalvikvm(10519): GC_CONCURRENT freed 425K, 4% free 17059K/17752K, paused 2ms+1ms, total 10ms
+,02-06 19:06:21.622 E/ThermalEngine(  196): TM Id 'SKIN_THERMAL_management_1' Sensor 'xo_therm_pu2' - alarm raised 1 at 40.0 degC
+,02-06 19:06:21.622 E/ThermalEngine(  196): ACTION: LCD - Setting max LCD brightness to 229
+,02-06 19:06:22.142 W/dalvikvm(10519): VFY: unable to find class referenced in signature (Landroid/view/WindowInsets;)
+,02-06 19:06:22.142 I/dalvikvm(10519): Could not find method android.view.WindowInsets.getSystemWindowInsetTop, referenced from method io.flutter.view.FlutterView.onApplyWindowInsets
+02-06 19:06:22.142 W/dalvikvm(10519): VFY: unable to resolve virtual method 209: Landroid/view/WindowInsets;.getSystemWindowInsetTop ()I
+,02-06 19:06:22.142 D/dalvikvm(10519): VFY: replacing opcode 0x6e at 0x0003
+02-06 19:06:22.142 I/dalvikvm(10519): Could not find method io.flutter.view.FlutterView.requestUnbufferedDispatch, referenced from method io.flutter.view.FlutterView.onTouchEvent
+02-06 19:06:22.142 W/dalvikvm(10519): VFY: unable to resolve virtual method 981: Lio/flutter/view/FlutterView;.requestUnbufferedDispatch (Landroid/view/MotionEvent;)V
+,02-06 19:06:22.142 D/dalvikvm(10519): VFY: replacing opcode 0x6e at 0x000f
+,02-06 19:06:22.152 I/Adreno-EGL(10519): <qeglDrvAPI_eglInitialize:320>: EGL 1.4 QUALCOMM Build: I0404c4692afb8623f95c43aeb6d5e13ed4b30ddbDate: 11/06/13
+,02-06 19:06:22.172 E/dalvikvm(10519): Could not find class 'android.app.ActivityManager$TaskDescription', referenced from method io.flutter.plugin.platform.PlatformPlugin.setSystemChromeApplicationSwitcherDescription
+02-06 19:06:22.172 W/dalvikvm(10519): VFY: unable to resolve new-instance 11 (Landroid/app/ActivityManager$TaskDescription;) in Lio/flutter/plugin/platform/PlatformPlugin;
+,02-06 19:06:22.172 D/dalvikvm(10519): VFY: replacing opcode 0x22 at 0x0014
+,02-06 19:06:22.172 D/dalvikvm(10519): DexOpt: unable to opt direct call 0x001a at 0x1d in Lio/flutter/plugin/platform/PlatformPlugin;.setSystemChromeApplicationSwitcherDescription
+,02-06 19:06:22.202 I/FlutterActivityDelegate(10519): onResume setting current activity to this
+,02-06 19:06:22.262 D/OpenGLRenderer(10519): Enabling debug mode 0
+,02-06 19:06:22.332 I/flutter (10519): Run Splashscreen
+,02-06 19:06:22.352 D/skia    (10519): [SkFontMgr Android Parser] '/system/etc/fonts.xml' could not be opened
+,02-06 19:06:22.362 D/skia    (10519): [SkFontMgr Android Parser] '/vendor/etc/fallback_fonts.xml' could not be opened
+,02-06 19:06:22.372 D/dalvikvm(10519): GC_CONCURRENT freed 397K, 4% free 17052K/17752K, paused 2ms+1ms, total 13ms
+,02-06 19:06:22.402 I/ActivityManager(  769): Displayed com.heroescompanion.app/.MainActivity: +43s450ms (total +4h44m41s321ms)
+,02-06 19:06:22.452 I/flutter (10519): Creating Database at /data/data/com.heroescompanion.app/app_flutter/heroes_companion.db
+,02-06 19:06:22.452 I/flutter (10519): FileSystemException: Deletion failed, path = '/data/data/com.heroescompanion.app/app_flutter/heroes_companion.db' (OS Error: No such file or directory, errno = 2)
+02-06 19:06:22.462 I/MicroDetector( 9811): Keeping mic open: false
+,02-06 19:06:22.462 I/DeviceStateChecker( 9811): DeviceStateChecker cancelled
+02-06 19:06:22.462 I/AudioController( 9811): internalShutdown
+,02-06 19:06:22.462 I/MicrophoneInputStream( 9811): mic_close com.google.android.apps.gsa.speech.audio.af@428b3b28
+,02-06 19:06:22.462 I/MicroRecognitionRunner( 9811): Stopping hotword detection.
+,02-06 19:06:22.532 I/MicroRecognitionRunner( 9811): Detection finished
+,02-06 19:06:22.572 I/flutter (10519): Upgrading to 8
+,02-06 19:06:22.582 E/SQLiteLog(10519): (1) duplicate column name: Sha3256
+,02-06 19:06:22.912 I/flutter (10519): Getting patches
+,02-06 19:06:22.912 I/flutter (10519): Fetching patches
+,02-06 19:06:22.912 I/flutter (10519): Got 0 patches
+,02-06 19:06:23.492 I/flutter (10519): Doing Update!
+,02-06 19:06:23.532 D/dalvikvm(10519): GC_CONCURRENT freed 295K, 4% free 17140K/17752K, paused 2ms+1ms, total 12ms
+,02-06 19:06:23.622 I/flutter (10519): Added 31 new patches
+,02-06 19:06:23.642 D/dalvikvm(10519): GC_CONCURRENT freed 430K, 4% free 17121K/17752K, paused 2ms+0ms, total 11ms
+,02-06 19:06:23.812 D/dalvikvm(10519): GC_CONCURRENT freed 399K, 3% free 17226K/17752K, paused 2ms+0ms, total 38ms
+,02-06 19:06:23.882 D/dalvikvm(10519): GC_CONCURRENT freed 483K, 4% free 17130K/17752K, paused 2ms+1ms, total 11ms
+,02-06 19:06:23.972 D/dalvikvm(10519): GC_CONCURRENT freed 472K, 4% free 17107K/17752K, paused 0ms+2ms, total 11ms
+,02-06 19:06:24.052 D/dalvikvm(10519): GC_CONCURRENT freed 460K, 4% free 17106K/17752K, paused 1ms+1ms, total 11ms
+,02-06 19:06:24.142 D/dalvikvm(10519): GC_CONCURRENT freed 460K, 4% free 17120K/17752K, paused 0ms+2ms, total 17ms
+,02-06 19:06:24.312 D/dalvikvm(10519): GC_CONCURRENT freed 480K, 4% free 17109K/17752K, paused 2ms+5ms, total 28ms
+,02-06 19:06:24.422 D/dalvikvm(10519): GC_CONCURRENT freed 465K, 4% free 17120K/17752K, paused 1ms+1ms, total 13ms
+,02-06 19:06:24.762 D/dalvikvm(10519): GC_CONCURRENT freed 486K, 4% free 17110K/17752K, paused 2ms+2ms, total 26ms
+,02-06 19:06:24.902 D/dalvikvm(10519): GC_CONCURRENT freed 473K, 4% free 17108K/17752K, paused 1ms+1ms, total 12ms
+,02-06 19:06:24.992 D/dalvikvm(10519): GC_CONCURRENT freed 458K, 4% free 17119K/17752K, paused 1ms+2ms, total 14ms
+,02-06 19:06:25.052 D/dalvikvm(10519): GC_CONCURRENT freed 390K, 4% free 17124K/17752K, paused 1ms+1ms, total 10ms
+,02-06 19:06:25.152 D/dalvikvm(10519): GC_CONCURRENT freed 401K, 4% free 17125K/17752K, paused 2ms+2ms, total 16ms
+,02-06 19:06:25.232 D/dalvikvm(10519): GC_CONCURRENT freed 395K, 4% free 17127K/17752K, paused 1ms+1ms, total 16ms
+,02-06 19:06:25.322 D/dalvikvm(10519): GC_CONCURRENT freed 457K, 4% free 17118K/17752K, paused 1ms+1ms, total 12ms
+,02-06 19:06:25.402 D/dalvikvm(10519): GC_CONCURRENT freed 374K, 4% free 17131K/17752K, paused 2ms+1ms, total 16ms
+,02-06 19:06:25.472 D/dalvikvm(10519): GC_CONCURRENT freed 407K, 4% free 17118K/17752K, paused 1ms+1ms, total 10ms
+,02-06 19:06:25.632 D/dalvikvm(10519): GC_CONCURRENT freed 336K, 3% free 17293K/17752K, paused 1ms+2ms, total 10ms
+,02-06 19:06:25.642 D/dalvikvm(10519): WAIT_FOR_CONCURRENT_GC blocked 4ms
+,02-06 19:06:25.672 D/dalvikvm(10519): GC_CONCURRENT freed 48K, 1% free 17632K/17752K, paused 2ms+1ms, total 12ms
+,02-06 19:06:25.702 E/flutter (10519): [ERROR:flutter/runtime/dart_init.cc(167)] Isolate (290481674) 'flutter_assets:_spawn()' exited with an error
+,02-06 19:06:25.702 E/flutter (10519): [ERROR:topaz/lib/tonic/logging/dart_error.cc(16)] isolate terminated by Isolate.kill
+,02-06 19:06:25.732 D/dalvikvm(10519): GC_CONCURRENT freed 51K, 1% free 18061K/18152K, paused 2ms+1ms, total 20ms
+,02-06 19:06:25.762 D/dalvikvm(10519): GC_CONCURRENT freed 361K, 3% free 18214K/18604K, paused 1ms+2ms, total 15ms
+,02-06 19:06:25.762 D/dalvikvm(10519): WAIT_FOR_CONCURRENT_GC blocked 6ms
+,02-06 19:06:25.792 D/dalvikvm(10519): GC_FOR_ALLOC freed 107K, 3% free 18219K/18604K, paused 12ms, total 12ms
+,02-06 19:06:25.792 I/dalvikvm-heap(10519): Grow heap (frag case) to 18.128MB for 325454-byte allocation
+,02-06 19:06:25.812 D/dalvikvm(10519): GC_FOR_ALLOC freed 0K, 3% free 18537K/18924K, paused 14ms, total 14ms
+,02-06 19:06:25.852 D/dalvikvm(10519): GC_FOR_ALLOC freed 387K, 3% free 18389K/18924K, paused 12ms, total 12ms
+,02-06 19:06:25.852 I/dalvikvm-heap(10519): Grow heap (frag case) to 18.250MB for 278258-byte allocation
+,02-06 19:06:25.872 D/dalvikvm(10519): GC_FOR_ALLOC freed 0K, 3% free 18661K/19196K, paused 13ms, total 13ms
+,02-06 19:06:26.912 D/dalvikvm(10519): GC_CONCURRENT freed 1774K, 10% free 17422K/19252K, paused 2ms+0ms, total 38ms
+,02-06 19:06:27.062 I/flutter (10519): Update done
+,02-06 19:06:27.592 D/dalvikvm(10519): GC_CONCURRENT freed 629K, 11% free 17266K/19252K, paused 4ms+1ms, total 22ms
+,02-06 19:06:27.592 D/dalvikvm(10519): WAIT_FOR_CONCURRENT_GC blocked 4ms
+,02-06 19:06:27.702 D/dalvikvm(10519): GC_CONCURRENT freed 556K, 12% free 17121K/19252K, paused 4ms+1ms, total 13ms
+,02-06 19:06:27.772 D/dalvikvm(10519): GC_CONCURRENT freed 384K, 12% free 17124K/19252K, paused 2ms+1ms, total 11ms
+,02-06 19:06:27.852 D/dalvikvm(10519): GC_CONCURRENT freed 402K, 12% free 17123K/19252K, paused 1ms+1ms, total 9ms
+,02-06 19:06:27.942 D/dalvikvm(10519): GC_CONCURRENT freed 431K, 12% free 17126K/19252K, paused 3ms+1ms, total 19ms
+,02-06 19:06:28.082 D/dalvikvm(10519): GC_CONCURRENT freed 491K, 12% free 17107K/19252K, paused 2ms+2ms, total 19ms
+,02-06 19:06:28.212 D/dalvikvm(10519): GC_CONCURRENT freed 468K, 12% free 17110K/19252K, paused 1ms+1ms, total 10ms
+,02-06 19:06:28.302 D/dalvikvm(10519): GC_CONCURRENT freed 469K, 12% free 17109K/19252K, paused 0ms+1ms, total 11ms
+,02-06 19:06:28.382 D/dalvikvm(10519): GC_CONCURRENT freed 419K, 12% free 17109K/19252K, paused 6ms+0ms, total 15ms
+,02-06 19:06:28.472 D/dalvikvm(10519): GC_CONCURRENT freed 384K, 12% free 17111K/19252K, paused 2ms+1ms, total 12ms
+,02-06 19:06:28.562 D/dalvikvm(10519): GC_CONCURRENT freed 409K, 12% free 17129K/19252K, paused 3ms+2ms, total 21ms
+,02-06 19:06:28.652 D/dalvikvm(10519): GC_CONCURRENT freed 481K, 12% free 17109K/19252K, paused 1ms+1ms, total 9ms
+,02-06 19:06:28.752 D/dalvikvm(10519): GC_CONCURRENT freed 382K, 12% free 17125K/19252K, paused 1ms+2ms, total 15ms
+,02-06 19:06:28.862 D/dalvikvm(10519): GC_CONCURRENT freed 403K, 12% free 17121K/19252K, paused 1ms+1ms, total 10ms
+,02-06 19:06:28.932 D/dalvikvm(10519): GC_CONCURRENT freed 376K, 12% free 17129K/19252K, paused 2ms+1ms, total 10ms
+,02-06 19:06:29.032 D/dalvikvm(10519): GC_CONCURRENT freed 403K, 12% free 17117K/19252K, paused 2ms+1ms, total 11ms
+,02-06 19:06:29.122 D/dalvikvm(10519): GC_CONCURRENT freed 480K, 12% free 17107K/19252K, paused 1ms+1ms, total 10ms
+,02-06 19:06:29.192 D/dalvikvm(10519): GC_CONCURRENT freed 355K, 11% free 17148K/19252K, paused 2ms+1ms, total 11ms
+,02-06 19:06:32.492 I/EventLogSendingHelper( 9811): Sending log events.
+,02-06 19:06:32.652 D/dalvikvm(22015): GC_CONCURRENT freed 1530K, 9% free 21279K/23192K, paused 3ms+3ms, total 37ms
+,02-06 19:06:32.652 D/dalvikvm(22015): WAIT_FOR_CONCURRENT_GC blocked 10ms
