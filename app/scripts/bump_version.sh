@@ -47,4 +47,4 @@ echo "Old Version: $VERSIONNAME"
 echo "New Version: $NEWVERSIONNAME"
 
 message="Do you want to write the new version?"
-yes_or_no "$message" && sed -i 's/\(versionCode\) [0-9]*/\1 '$NEWVERSIONCODE'/; s/\(versionName\) \"[0-9.]*\"/\1 '$NEWVERSIONNAME'/' $GRADLE_FILE
+yes_or_no "$message" && sed -i 's/\(versionCode\) [0-9]*/\1 '$NEWVERSIONCODE'/; s/\(versionName\) \"[0-9.]*\"/\1 '\"$NEWVERSIONNAME\"'/' $GRADLE_FILE
