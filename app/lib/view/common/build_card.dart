@@ -22,7 +22,7 @@ class BuildCard extends StatelessWidget{
 
     try {
       buildStatistics.talents_names
-                      .map((talentName) {
+                      .forEach((talentName) {
                         Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
                         talents.add(talent);
                       });
