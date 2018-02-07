@@ -83,9 +83,12 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
           new Container(
             width: 40.0,
           ),
-          new Padding(
+          new Container(
             padding: new EdgeInsets.only(top: 4.0),
-            child: new Column(children: [
+            height: 125.0,
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
               new Text(widget.hero.name,
                   style: Theme
                       .of(context)
@@ -129,7 +132,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                       .apply(color: Colors.white))
                   ],
                 ),
-              ) : new Container(height: 35.0,),
+              ) : new Container(),
             ]),
           )
         ],
