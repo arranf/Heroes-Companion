@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:sentry/sentry.dart';
-import 'package:sentry/sentry.dart';
 
 import '../dsn.dart';
 
