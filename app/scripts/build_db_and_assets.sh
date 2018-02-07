@@ -13,6 +13,8 @@ ASSETS_DIR=$APP_DIR/assets
 # Get latest version of db and images
 cd $DATA_DIR && ./run.sh
 
+# TODO if images doesn't exist, make it
+
 # Copy assets over
 cp $DATA_DIR/upload/heroes_companion.db $ASSETS_DIR
 cp -r $DATA_DIR/heroes-talents/images/* $ASSETS_DIR/images
