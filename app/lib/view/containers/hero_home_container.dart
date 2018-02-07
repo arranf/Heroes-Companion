@@ -5,7 +5,6 @@ import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion/models/overflow_choices.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/routes.dart';
-import 'package:heroes_companion/view/common/empty_favorite_list.dart';
 import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
 import 'package:heroes_companion/view/containers/hero_detail_container.dart';
@@ -57,7 +56,7 @@ class HeroHome extends StatelessWidget {
             body:
             // Favorite list and no favorite heroes
                 vm.currentFilter == HeroFilter.favorite && vm.heroes.isEmpty
-                    ? new EmptyState(Icons.favorite, 'No Favorites', 'Favorited Heroes Will Appear Here') : new HeroList(vm.heroes,
+                    ? new EmptyState(Icons.favorite, title: 'No Favorites', description: 'Favorited Heroes Will Appear Here') : new HeroList(vm.heroes,
                         onTap: vm.onTap,
                         onLongPress: vm.onLongPress,
                         onRefresh: vm.onRefresh,

@@ -264,7 +264,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
         children: builds.map((BuildStatistics b) => new BuildCard(b, classifiedBuilds[b], _playBuild, widget.hero, showTalentBottomSheet)).toList()
       );
     }
-    return new EmptyState(Icons.error_outline, 'No Data Available', 'No statistical data found for this hero');
+    return new EmptyState(Icons.error_outline, title: 'No Data Available', description: 'No statistical data found for this hero');
   }
 
   void showTalentBottomSheet(BuildContext context, Talent talent) {
