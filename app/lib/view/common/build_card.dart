@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart' hide Hero;
+import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
 
@@ -16,6 +17,20 @@ class BuildCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     bool isPhone = MediaQuery.of(context).size.width < 600;
+
+    List<Talent> talents = [];
+
+    try {
+      buildStatistics.talents_names
+                      .map((talentName) {
+                        Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
+                        talents.add(talent);
+                      });
+    } catch (e) {
+      new ExceptionService()
+        .reportError('Talent missing in ${buildStatistics.talents_names}', e.stackTrace);
+      return new Container();
+    }
 
     TextStyle style = new TextStyle(fontSize: 16.0, fontWeight: Theme.of(context).textTheme.body1.fontWeight);
     return new Container(
@@ -46,12 +61,7 @@ class BuildCard extends StatelessWidget{
               new Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: buildStatistics.talents_names
-                      .map((talentName) {
-                        Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
-                        return isPhone ? _buildPhoneTalent(context, talent) : _buildTabletTalent(context, talent);
-                      })
-                      .toList()
+                  children: talents.map((Talent t) => isPhone ? _buildPhoneTalent(context, t) : _buildTabletTalent(context, t)).toList()
               ),
               new ButtonTheme.bar(
                 child: new ButtonBar(
