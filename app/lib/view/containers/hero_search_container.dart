@@ -4,6 +4,7 @@ import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/routes.dart';
+import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/hero_list.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
 import 'package:heroes_companion/view/containers/hero_detail_container.dart';
@@ -46,7 +47,7 @@ class HeroSearch extends StatelessWidget {
               ),
               body: vm.searchQuery.length > 0
                   ? new HeroList(vm.results, onTap: vm.onTap)
-                  : new Container());
+                  : new EmptyState(Icons.search));
         });
   }
 }

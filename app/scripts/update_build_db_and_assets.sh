@@ -1,3 +1,11 @@
+# Check working directory and exit if bad
+DIR="$(basename $(pwd) )"
+if [ $DIR != 'scripts' ]; then
+    echo "In /$DIR"
+    echo "This must be run from inside the /scripts directory"
+    exit 1
+fi
+
 DATA_DIR=~/projects/hero_data_to_sql
 APP_DIR="$(dirname "$PWD")"
 ASSETS_DIR=$APP_DIR/assets
