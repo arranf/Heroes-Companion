@@ -1,0 +1,105 @@
+02-06 19:22:37.092 I/ActivityManager(  769): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.heroescompanion.app/.MainActivity (has extras)} from pid 14377
+,02-06 19:22:37.102 D/audio_hw_primary(  186): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+,02-06 19:22:37.192 D/dalvikvm(  769): GC_FOR_ALLOC freed 3721K, 26% free 38819K/51968K, paused 84ms, total 84ms
+,02-06 19:22:37.262 I/ActivityManager(  769): Start proc com.heroescompanion.app for activity com.heroescompanion.app/.MainActivity: pid=20251 uid=11345 gids={51345, 3003, 1028, 1015}
+,02-06 19:22:37.292 I/eLock   (12777): pkgname_before:com.google.android.googlequicksearchbox  class:com.heroescompanion.app.MainActivity  isFingerActivityCreated:false   isCalling:false
+,02-06 19:22:37.402 D/dalvikvm(20251): Trying to load lib /data/app-lib/com.heroescompanion.app-1/libflutter.so 0x425a5f38
+,02-06 19:22:37.402 D/dalvikvm(20251): Added shared lib /data/app-lib/com.heroescompanion.app-1/libflutter.so 0x425a5f38
+02-06 19:22:37.412 I/dalvikvm(20251): Could not find method android.view.Window.setStatusBarColor, referenced from method io.flutter.app.FlutterActivityDelegate.onCreate
+,02-06 19:22:37.412 W/dalvikvm(20251): VFY: unable to resolve virtual method 205: Landroid/view/Window;.setStatusBarColor (I)V
+,02-06 19:22:37.412 D/dalvikvm(20251): VFY: replacing opcode 0x6e at 0x0015
+,02-06 19:22:37.462 D/dalvikvm(20251): GC_CONCURRENT freed 255K, 2% free 16956K/17240K, paused 4ms+3ms, total 19ms
+,02-06 19:22:37.462 D/dalvikvm(20251): WAIT_FOR_CONCURRENT_GC blocked 12ms
+,02-06 19:22:37.522 D/dalvikvm(20251): GC_CONCURRENT freed 473K, 3% free 16901K/17404K, paused 4ms+1ms, total 17ms
+,02-06 19:22:37.632 D/dalvikvm(20251): GC_CONCURRENT freed 502K, 4% free 16802K/17404K, paused 2ms+1ms, total 11ms
+,02-06 19:22:39.132 D/dalvikvm(20251): GC_CONCURRENT freed 405K, 4% free 16791K/17404K, paused 2ms+1ms, total 10ms
+,02-06 19:22:39.502 D/dalvikvm(20251): GC_CONCURRENT freed 278K, 3% free 17024K/17404K, paused 1ms+1ms, total 13ms
+,02-06 19:22:39.502 D/dalvikvm(20251): WAIT_FOR_CONCURRENT_GC blocked 10ms
+,02-06 19:22:39.512 D/dalvikvm(20251): GC_CONCURRENT freed 280K, 2% free 17252K/17564K, paused 2ms+0ms, total 10ms
+,02-06 19:22:39.512 D/dalvikvm(20251): WAIT_FOR_CONCURRENT_GC blocked 4ms
+,02-06 19:22:39.922 E/GCM     (12470): Missing checkin config file
+,02-06 19:22:39.922 W/GCM     (12470): GCM FAILED TO INITIALIZE - missing checkin
+,02-06 19:22:39.922 D/FirebaseInstanceId(12777): background sync failed: AUTHENTICATION_FAILED, retry in 640s
+,02-06 19:22:40.952 I/PlayCommon(18941): [1712370] com.google.android.play.a.h.e(248): Preparing logs for uploading
+,02-06 19:22:40.952 W/PlayCommon(18941): [1712370] com.google.android.play.a.h.a(623): No account for auth token provided
+,02-06 19:22:40.952 I/PlayCommon(18941): [1712370] com.google.android.play.a.h.a(470): Connecting to server: https://play.googleapis.com/play/log?format=raw&proto_v2=true
+,02-06 19:22:41.042 I/PlayCommon(18941): [1712370] com.google.android.play.a.h.a(527): Successfully uploaded logs.
+,02-06 19:22:42.112 I/PlayCommon(19043): [1712390] PlayEventLogger.uploadEventsImpl: Preparing logs for uploading
+,02-06 19:22:42.112 I/PlayCommon(19043): [1712390] PlayEventLogger.uploadEventsImpl: No file ready to send
+,02-06 19:22:42.862 D/dalvikvm(20251): GC_CONCURRENT freed 408K, 3% free 17233K/17672K, paused 1ms+1ms, total 10ms
+,02-06 19:22:47.192 E/WindowManager(  769): Starting window AppWindowToken{431a89e8 token=Token{43f08070 ActivityRecord{431fbc88 u0 com.heroescompanion.app/.MainActivity t1671}}} timed out
+,02-06 19:22:47.202 W/ActivityManager(  769): Launch timeout has expired, giving up wake lock!
+,02-06 19:22:47.982 I/InputDispatcher(  769): Dropping event because there is no touchable window at (726, 584).
+,02-06 19:22:49.952 D/dalvikvm(20251): GC_CONCURRENT freed 413K, 3% free 17207K/17672K, paused 2ms+1ms, total 10ms
+,02-06 19:22:56.932 D/dalvikvm(20251): GC_CONCURRENT freed 427K, 3% free 17165K/17672K, paused 2ms+2ms, total 18ms
+,02-06 19:23:03.902 D/dalvikvm(20251): GC_CONCURRENT freed 430K, 4% free 17123K/17672K, paused 1ms+2ms, total 15ms
+,02-06 19:23:10.812 D/dalvikvm(20251): GC_CONCURRENT freed 425K, 4% free 17082K/17648K, paused 2ms+2ms, total 17ms
+,02-06 19:23:17.772 D/dalvikvm(20251): GC_CONCURRENT freed 427K, 4% free 17040K/17648K, paused 1ms+1ms, total 16ms
+,02-06 19:23:19.162 W/dalvikvm(20251): VFY: unable to find class referenced in signature (Landroid/view/WindowInsets;)
+,02-06 19:23:19.162 I/dalvikvm(20251): Could not find method android.view.WindowInsets.getSystemWindowInsetTop, referenced from method io.flutter.view.FlutterView.onApplyWindowInsets
+02-06 19:23:19.162 W/dalvikvm(20251): VFY: unable to resolve virtual method 209: Landroid/view/WindowInsets;.getSystemWindowInsetTop ()I
+,02-06 19:23:19.162 D/dalvikvm(20251): VFY: replacing opcode 0x6e at 0x0003
+02-06 19:23:19.162 I/dalvikvm(20251): Could not find method io.flutter.view.FlutterView.requestUnbufferedDispatch, referenced from method io.flutter.view.FlutterView.onTouchEvent
+,02-06 19:23:19.162 W/dalvikvm(20251): VFY: unable to resolve virtual method 981: Lio/flutter/view/FlutterView;.requestUnbufferedDispatch (Landroid/view/MotionEvent;)V
+,02-06 19:23:19.162 D/dalvikvm(20251): VFY: replacing opcode 0x6e at 0x000f
+,02-06 19:23:19.172 I/Adreno-EGL(20251): <qeglDrvAPI_eglInitialize:320>: EGL 1.4 QUALCOMM Build: I0404c4692afb8623f95c43aeb6d5e13ed4b30ddbDate: 11/06/13
+,02-06 19:23:19.192 E/dalvikvm(20251): Could not find class 'android.app.ActivityManager$TaskDescription', referenced from method io.flutter.plugin.platform.PlatformPlugin.setSystemChromeApplicationSwitcherDescription
+02-06 19:23:19.192 W/dalvikvm(20251): VFY: unable to resolve new-instance 11 (Landroid/app/ActivityManager$TaskDescription;) in Lio/flutter/plugin/platform/PlatformPlugin;
+,02-06 19:23:19.192 D/dalvikvm(20251): VFY: replacing opcode 0x22 at 0x0014
+,02-06 19:23:19.192 D/dalvikvm(20251): DexOpt: unable to opt direct call 0x001a at 0x1d in Lio/flutter/plugin/platform/PlatformPlugin;.setSystemChromeApplicationSwitcherDescription
+,02-06 19:23:19.212 I/FlutterActivityDelegate(20251): onResume setting current activity to this
+,02-06 19:23:19.252 D/OpenGLRenderer(20251): Enabling debug mode 0
+,02-06 19:23:19.352 I/flutter (20251): Run Splashscreen
+,02-06 19:23:19.362 W/IInputConnectionWrapper(14377): showStatusIcon on inactive InputConnection
+,02-06 19:23:19.372 D/skia    (20251): [SkFontMgr Android Parser] '/system/etc/fonts.xml' could not be opened
+,02-06 19:23:19.372 I/ActivityManager(  769): Displayed com.heroescompanion.app/.MainActivity: +42s127ms (total +2m0s879ms)
+,02-06 19:23:19.382 D/skia    (20251): [SkFontMgr Android Parser] '/vendor/etc/fallback_fonts.xml' could not be opened
+,02-06 19:23:19.412 I/flutter (20251): Creating Database at /data/data/com.heroescompanion.app/app_flutter/heroes_companion.db
+,02-06 19:23:19.422 I/flutter (20251): FileSystemException: Deletion failed, path = '/data/data/com.heroescompanion.app/app_flutter/heroes_companion.db' (OS Error: No such file or directory, errno = 2)
+,02-06 19:23:19.632 I/flutter (20251): Upgrading to 8
+,02-06 19:23:19.642 E/SQLiteLog(20251): (1) duplicate column name: Sha3256
+,02-06 19:23:19.862 D/dalvikvm(20251): GC_CONCURRENT freed 368K, 4% free 17071K/17648K, paused 1ms+1ms, total 9ms
+,02-06 19:23:20.022 I/flutter (20251): Getting patches
+,02-06 19:23:20.022 I/flutter (20251): Fetching patches
+,02-06 19:23:20.022 I/flutter (20251): Got 0 patches
+,02-06 19:23:20.562 I/flutter (20251): Doing Update!
+,02-06 19:23:20.632 I/flutter (20251): Added 31 new patches
+,02-06 19:23:20.732 D/dalvikvm(20251): GC_CONCURRENT freed 238K, 3% free 17227K/17648K, paused 1ms+0ms, total 16ms
+,02-06 19:23:20.732 D/dalvikvm(20251): WAIT_FOR_CONCURRENT_GC blocked 9ms
+,02-06 19:23:20.872 D/dalvikvm(20251): GC_CONCURRENT freed 531K, 4% free 17139K/17728K, paused 1ms+1ms, total 10ms
+,02-06 19:23:20.952 D/dalvikvm(20251): GC_CONCURRENT freed 410K, 4% free 17127K/17728K, paused 1ms+1ms, total 9ms
+,02-06 19:23:21.012 D/dalvikvm(20251): GC_CONCURRENT freed 386K, 4% free 17129K/17728K, paused 2ms+1ms, total 9ms
+,02-06 19:23:21.092 D/dalvikvm(20251): GC_CONCURRENT freed 472K, 4% free 17106K/17728K, paused 1ms+0ms, total 9ms
+,02-06 19:23:21.182 D/dalvikvm(20251): GC_CONCURRENT freed 459K, 4% free 17107K/17728K, paused 1ms+1ms, total 10ms
+,02-06 19:23:21.262 D/dalvikvm(20251): GC_CONCURRENT freed 470K, 4% free 17110K/17728K, paused 2ms+1ms, total 12ms
+,02-06 19:23:21.382 D/dalvikvm(20251): GC_CONCURRENT freed 470K, 4% free 17109K/17728K, paused 0ms+1ms, total 9ms
+,02-06 19:23:21.512 D/dalvikvm(20251): GC_CONCURRENT freed 475K, 4% free 17110K/17728K, paused 1ms+1ms, total 14ms
+,02-06 19:23:21.602 D/dalvikvm(20251): GC_CONCURRENT freed 474K, 4% free 17111K/17728K, paused 1ms+1ms, total 19ms
+,02-06 19:23:21.872 D/dalvikvm(20251): GC_CONCURRENT freed 460K, 4% free 17123K/17728K, paused 2ms+0ms, total 10ms
+,02-06 19:23:21.952 D/dalvikvm(20251): GC_CONCURRENT freed 484K, 4% free 17108K/17728K, paused 2ms+0ms, total 10ms
+,02-06 19:23:22.062 D/dalvikvm(20251): GC_CONCURRENT freed 378K, 4% free 17125K/17728K, paused 3ms+1ms, total 19ms
+,02-06 19:23:22.202 D/dalvikvm(20251): GC_CONCURRENT freed 400K, 4% free 17127K/17728K, paused 2ms+1ms, total 16ms
+,02-06 19:23:22.232 E/ThermalEngine(  196): TM Id 'SKIN_THERMAL_management_1' Sensor 'xo_therm_pu2' - alarm raised 1 at 40.0 degC
+,02-06 19:23:22.232 E/ThermalEngine(  196): ACTION: LCD - Setting max LCD brightness to 229
+,02-06 19:23:22.282 D/dalvikvm(20251): GC_CONCURRENT freed 396K, 4% free 17131K/17728K, paused 2ms+1ms, total 17ms
+,02-06 19:23:22.362 D/dalvikvm(20251): GC_CONCURRENT freed 467K, 4% free 17108K/17728K, paused 3ms+1ms, total 18ms
+,02-06 19:23:22.442 D/dalvikvm(20251): GC_CONCURRENT freed 374K, 4% free 17120K/17728K, paused 1ms+1ms, total 10ms
+,02-06 19:23:22.512 D/dalvikvm(20251): GC_CONCURRENT freed 396K, 4% free 17118K/17728K, paused 1ms+0ms, total 10ms
+,02-06 19:23:22.672 D/dalvikvm(20251): GC_CONCURRENT freed 242K, 2% free 17388K/17728K, paused 0ms+2ms, total 10ms
+,02-06 19:23:22.672 D/dalvikvm(20251): WAIT_FOR_CONCURRENT_GC blocked 3ms
+,02-06 19:23:22.712 D/dalvikvm(20251): GC_CONCURRENT freed 39K, 1% free 17839K/17912K, paused 2ms+1ms, total 13ms
+,02-06 19:23:22.762 D/dalvikvm(20251): GC_CONCURRENT freed 221K, 2% free 18129K/18380K, paused 1ms+1ms, total 13ms
+,02-06 19:23:22.762 D/dalvikvm(20251): WAIT_FOR_CONCURRENT_GC blocked 5ms
+,02-06 19:23:22.802 D/dalvikvm(20251): GC_FOR_ALLOC freed 274K, 2% free 18217K/18540K, paused 12ms, total 12ms
+,02-06 19:23:22.802 I/dalvikvm-heap(20251): Grow heap (frag case) to 18.127MB for 325454-byte allocation
+,02-06 19:23:22.822 D/dalvikvm(20251): GC_FOR_ALLOC freed 0K, 2% free 18535K/18860K, paused 13ms, total 13ms
+,02-06 19:23:22.872 D/dalvikvm(20251): GC_CONCURRENT freed 385K, 3% free 18659K/19132K, paused 2ms+2ms, total 16ms
+,02-06 19:23:23.902 D/dalvikvm(20251): GC_CONCURRENT freed 1776K, 10% free 17418K/19296K, paused 2ms+0ms, total 23ms
+,02-06 19:23:24.062 I/flutter (20251): Update done
+,02-06 19:23:24.572 D/dalvikvm(20251): GC_CONCURRENT freed 641K, 11% free 17249K/19296K, paused 2ms+1ms, total 19ms
+,02-06 19:23:24.572 D/dalvikvm(20251): WAIT_FOR_CONCURRENT_GC blocked 7ms
+,02-06 19:23:24.682 D/dalvikvm(20251): GC_CONCURRENT freed 540K, 12% free 17119K/19296K, paused 2ms+1ms, total 13ms
+,02-06 19:23:24.762 D/dalvikvm(20251): GC_CONCURRENT freed 398K, 12% free 17124K/19296K, paused 2ms+1ms, total 11ms
+,02-06 19:23:24.852 D/dalvikvm(20251): GC_CONCURRENT freed 378K, 12% free 17134K/19296K, paused 2ms+1ms, total 15ms
+,02-06 19:23:24.952 D/dalvikvm(20251): GC_CONCURRENT freed 435K, 12% free 17127K/19296K, paused 3ms+1ms, total 13ms
+

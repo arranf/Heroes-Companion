@@ -1,0 +1,36 @@
+02-06 19:19:39.672 I/MicroDetector(12839): Keeping mic open: false
+,02-06 19:19:39.672 I/DeviceStateChecker(12839): DeviceStateChecker cancelled
+,02-06 19:19:39.672 I/AudioController(12839): internalShutdown
+02-06 19:19:39.672 I/MicrophoneInputStream(12839): mic_close com.google.android.apps.gsa.speech.audio.af@425c1968
+,02-06 19:19:39.672 I/MicroRecognitionRunner(12839): Stopping hotword detection.
+,02-06 19:19:39.682 D/audio_hw_primary(  186): select_devices: out_snd_device(2: speaker) in_snd_device(0: )
+,02-06 19:19:39.692 D/dalvikvm(12839): GC_CONCURRENT freed 386K, 7% free 20791K/22348K, paused 3ms+3ms, total 33ms
+,02-06 19:19:39.742 I/MicroRecognitionRunner(12839): Detection finished
+,02-06 19:19:39.752 D/dalvikvm(12470): GC_CONCURRENT freed 1408K, 8% free 21294K/23092K, paused 3ms+14ms, total 49ms
+,02-06 19:19:42.012 I/ActivityManager(  769): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=io.flutter.examples.hello_world/.MainActivity (has extras)} from pid 14377
+,02-06 19:19:42.092 D/dalvikvm(  769): GC_FOR_ALLOC freed 2923K, 23% free 39493K/50636K, paused 65ms, total 65ms
+,02-06 19:19:42.142 I/ActivityManager(  769): Start proc io.flutter.examples.hello_world for activity io.flutter.examples.hello_world/.MainActivity: pid=19760 uid=11344 gids={51344, 3003}
+,02-06 19:19:42.262 D/dalvikvm(19760): Trying to load lib /data/app-lib/io.flutter.examples.hello_world-1/libflutter.so 0x425a4300
+,02-06 19:19:42.262 D/dalvikvm(19760): Added shared lib /data/app-lib/io.flutter.examples.hello_world-1/libflutter.so 0x425a4300
+,02-06 19:19:42.272 I/eLock   (12777): pkgname_before:com.google.android.googlequicksearchbox  class:io.flutter.examples.hello_world.MainActivity  isFingerActivityCreated:false   isCalling:false
+,02-06 19:19:42.302 I/dalvikvm(19760): Could not find method android.view.Window.setStatusBarColor, referenced from method io.flutter.app.FlutterActivityDelegate.onCreate
+02-06 19:19:42.302 W/dalvikvm(19760): VFY: unable to resolve virtual method 154: Landroid/view/Window;.setStatusBarColor (I)V
+,02-06 19:19:42.302 D/dalvikvm(19760): VFY: replacing opcode 0x6e at 0x0015
+,02-06 19:19:42.782 W/dalvikvm(19760): VFY: unable to find class referenced in signature (Landroid/view/WindowInsets;)
+02-06 19:19:42.782 I/dalvikvm(19760): Could not find method android.view.WindowInsets.getSystemWindowInsetTop, referenced from method io.flutter.view.FlutterView.onApplyWindowInsets
+,02-06 19:19:42.782 W/dalvikvm(19760): VFY: unable to resolve virtual method 158: Landroid/view/WindowInsets;.getSystemWindowInsetTop ()I
+,02-06 19:19:42.782 D/dalvikvm(19760): VFY: replacing opcode 0x6e at 0x0003
+,02-06 19:19:42.782 I/dalvikvm(19760): Could not find method io.flutter.view.FlutterView.requestUnbufferedDispatch, referenced from method io.flutter.view.FlutterView.onTouchEvent
+02-06 19:19:42.782 W/dalvikvm(19760): VFY: unable to resolve virtual method 772: Lio/flutter/view/FlutterView;.requestUnbufferedDispatch (Landroid/view/MotionEvent;)V
+,02-06 19:19:42.782 D/dalvikvm(19760): VFY: replacing opcode 0x6e at 0x000f
+,02-06 19:19:42.792 I/Adreno-EGL(19760): <qeglDrvAPI_eglInitialize:320>: EGL 1.4 QUALCOMM Build: I0404c4692afb8623f95c43aeb6d5e13ed4b30ddbDate: 11/06/13
+,02-06 19:19:42.812 E/dalvikvm(19760): Could not find class 'android.app.ActivityManager$TaskDescription', referenced from method io.flutter.plugin.platform.PlatformPlugin.setSystemChromeApplicationSwitcherDescription
+,02-06 19:19:42.812 W/dalvikvm(19760): VFY: unable to resolve new-instance 10 (Landroid/app/ActivityManager$TaskDescription;) in Lio/flutter/plugin/platform/PlatformPlugin;
+,02-06 19:19:42.812 D/dalvikvm(19760): VFY: replacing opcode 0x22 at 0x0014
+,02-06 19:19:42.812 D/dalvikvm(19760): DexOpt: unable to opt direct call 0x0019 at 0x1d in Lio/flutter/plugin/platform/PlatformPlugin;.setSystemChromeApplicationSwitcherDescription
+,02-06 19:19:42.822 I/FlutterActivityDelegate(19760): onResume setting current activity to this
+,02-06 19:19:42.852 D/skia    (19760): [SkFontMgr Android Parser] '/system/etc/fonts.xml' could not be opened
+,02-06 19:19:42.852 D/skia    (19760): [SkFontMgr Android Parser] '/vendor/etc/fallback_fonts.xml' could not be opened
+,02-06 19:19:42.872 D/OpenGLRenderer(19760): Enabling debug mode 0
+,02-06 19:19:42.982 I/ActivityManager(  769): Displayed io.flutter.examples.hello_world/.MainActivity: +846ms
+
