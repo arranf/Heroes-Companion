@@ -1,6 +1,7 @@
 import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
+import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter/foundation.dart';
@@ -14,8 +15,9 @@ void getHeroCurrentBuildWinRates(Store<AppState> store, Hero hero) {
           new FetchBuildWinRatesSucceededAction(
               buildWinRates, hero.heroes_companion_hero_id, patch.fullVersion)))
       .catchError((dynamic e) {
-    debugPrint(e.toString());
-    store.dispatch(new FetchBuildWinRatesFailedAction());
+          new ExceptionService()
+          .reportError(e, e.stackTrace);
+      store.dispatch(new FetchBuildWinRatesFailedAction());
   });
 }
 
@@ -28,7 +30,8 @@ void getHeroBuildWinRates(
           new FetchBuildWinRatesSucceededAction(
               buildWinRates, hero.heroes_companion_hero_id, buildNumber)))
       .catchError((dynamic e) {
-    debugPrint(e.toString());
-    store.dispatch(new FetchBuildWinRatesFailedAction());
+        new ExceptionService()
+        .reportError(e, e.stackTrace);
+      store.dispatch(new FetchBuildWinRatesFailedAction());
   });
 }

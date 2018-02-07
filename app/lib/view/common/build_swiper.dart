@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart' hide Hero;
 import 'package:flutter/services.dart';
+import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion/view/common/talent_card.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
@@ -31,7 +32,8 @@ class _BuildSwiperState extends State<BuildSwiper>
     try {
       await _platform.invokeMethod('setScreenNoSleep');
     } on PlatformException catch (e) {
-      debugPrint(e.toString());
+        new ExceptionService()
+        .reportError(e, null);
     }
   }
 
@@ -39,7 +41,8 @@ class _BuildSwiperState extends State<BuildSwiper>
     try {
       await _platform.invokeMethod('setScreenCanSleep');
     } on PlatformException catch (e) {
-      debugPrint(e.toString());
+        new ExceptionService()
+        .reportError(e, null);
     }
   }
 
