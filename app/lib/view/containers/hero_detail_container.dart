@@ -58,9 +58,6 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     return new StoreBuilder<AppState>(onInit: (store) {
       fetchData(store);
     }, builder: (context, store) {
-      if (!isAppLoading(store.state)) {
-        fetchData(store);
-      }
       _ViewModel vm =
           new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
       return new HeroDetail(vm.hero,
