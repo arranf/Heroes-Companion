@@ -1,3 +1,6 @@
+# if any command fails at any point, quit
+set -e
+
 # Check working directory and exit if bad
 DIR="$(basename $(pwd) )"
 if [ $DIR != 'scripts' ]; then
