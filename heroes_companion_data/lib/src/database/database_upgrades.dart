@@ -93,7 +93,25 @@ Future upgradeTo8(Database database) async {
     ''');
 }
 
-Future upgradeTo9(Database database) async {}
+Future upgradeTo9(Database database) async {
+  await database.execute('''
+    CREATE TABLE IF NOT EXISTS maps (
+	Id INTEGER PRIMARY KEY,
+	Name TEXT NOT NULL,
+	ObjectiveName TEXT,
+	ObjectiveStartPrompt TEXT,
+	ObjectiveFinishPrompt TEXT,
+	ObjectiveStartTime INTEGER,
+	ObjectiveInterval INTEGER
+);
+
+INSERT OR IGNORE INTO maps values (null, 'Battlefield of Eternity', 'The Immortal', 'Capture The Immortal', 'When the Immortal dies', 180, 105);
+INSERT OR IGNORE INTO maps values (null, 'Blackheart''s Bay', 'Chests of Booty', 'Collect treasure from the chests', 'When both chests have been opened', 90, 180);
+INSERT OR IGNORE INTO maps values (null, 'Braxis Holdout', 'The Zerg', 'Capture the Beacons', 'When both Zerg Swarms are defeated', 90, 130);
+INSERT OR IGNORE INTO maps values (null, 'Dragon Shire', 'The Dragon Knight', 'Capture the Shrines', 'When the Dragon Knight is destroyed', 90, 120);
+INSERT OR IGNORE INTO maps values (null, 'Garden of Terror', 'Garden Terror', 'Collect seeds', 'When the garden creatures are destroyed', 180, 200);
+  ''');
+}
 
 Future upgradeTo7(Database database) async {
   await database.execute('''
