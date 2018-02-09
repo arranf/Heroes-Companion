@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/maps_service.dart';
+import 'package:heroes_companion/view/common/app_drawer.dart';
 import 'package:heroes_companion/view/common/map_list.dart';
 import 'package:heroes_companion/view/common/map_timer.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
@@ -19,6 +20,7 @@ class MapsHome extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (context, vm) {
         return new Scaffold(
+          drawer: new AppDrawer(),
           appBar: new AppBar(title: new Text('Maps'),),
           body: new MapList(vm.maps, onTap: vm.onTap),
         );

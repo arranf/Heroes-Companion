@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/models/hero_filter.dart';
@@ -7,6 +6,7 @@ import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/routes.dart';
 import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
+import 'package:heroes_companion/view/common/app_drawer.dart';
 import 'package:heroes_companion/view/containers/hero_detail_container.dart';
 import 'package:redux/redux.dart';
 
@@ -18,7 +18,6 @@ import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/view/common/hero_list.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
-import 'package:heroes_companion/global_keys.dart';
 
 class HeroHome extends StatelessWidget {
   HeroHome({Key key}) : super(key: key);
@@ -35,22 +34,7 @@ class HeroHome extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (context, vm) {
         return new Scaffold(
-            key: homeScaffoldKey,
-            drawer: new Drawer(
-              child: new ListView(
-                children: <Widget>[
-                  new ListTile(
-                    title: new Text(
-                      'Maps'
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      Navigator.of(context).pushNamed(Routes.maps);
-                    },
-                  )
-                ],
-              ),
-            ),
+            drawer: new AppDrawer(),
             appBar: new AppBar(
               title: new Text('Heroes Companion'),
               actions: <Widget>[
