@@ -25,7 +25,7 @@ class MapList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return new MapListItem(
             map: maps[index],
-            onTap: () => this.onTap(maps[index])
+            onTap: this.onTap,
           );
       },
     );

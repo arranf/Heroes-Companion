@@ -6,12 +6,10 @@ import 'package:heroes_companion/icons.dart' as HeroesIcons;
 
 class MapListItem extends StatelessWidget {
   final dynamic onTap;
-  final dynamic onLongPress;
   final PlayableMap map;
 
   MapListItem({
     this.onTap,
-    this.onLongPress,
     @required this.map,
   });
 
@@ -30,8 +28,7 @@ class MapListItem extends StatelessWidget {
             style: new TextStyle(
               fontSize: 18.0,
             )),
-        onTap: () => this.onTap(context, this),
-        onLongPress: () => this.onLongPress(context, this),
+        onTap: () => this.onTap(context, this.map)
       ),
     );
   }
