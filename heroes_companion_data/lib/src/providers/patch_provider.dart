@@ -27,7 +27,7 @@ class PatchProvider {
       }
 
       List<Map<String, dynamic>> existingPatchData = await _database
-          .query(table.table_name, columns: [table.column_full_version]);
+          .query(table.table_name, columns: [table.column_full_version, table.column_patch_name]);
       List<String> patchIds =
           existingPatchData.map((p) => p[table.column_full_version]).toList();
 
@@ -39,6 +39,24 @@ class PatchProvider {
       patches
           .where((Patch p) => !patchIds.contains(p.fullVersion))
           .forEach((p) => batch.insert(table.table_name, p.toMap()));
+
+      List<String> patchIdNeedUpdate =
+      existingPatchData
+        .where((Map p) => p[table.column_patch_name].toString().isEmpty)
+        .map((m) => m[table.column_id])
+        .toList()
+        .where((String id) => patches.contains( (Patch p) => p.fullVersion == id && p.patchName.isNotEmpty ))
+        .toList();
+    
+      patchIdNeedUpdate
+      .forEach((String version) => 
+        batch.update(table.table_name, 
+            patches.firstWhere((Patch p) => p.fullVersion == version).toMap(),
+            where: "${table.column_full_version} = ?",
+            whereArgs: [version]
+        )
+    );   
+    
       batch.commit();
       print(
           'Added ${patches.where((Patch p) => !patchIds.contains(p.fullVersion)).length} new patches');
