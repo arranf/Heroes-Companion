@@ -152,6 +152,8 @@ Optional<BuildWinRates> buildWinRatesByCompanionIdAndBuildNumber(
   }
 }
 
+List<PlayableMap> mapsSelector(AppState state) => state.maps;
+
 String searchQuerySelector(AppState state) => state.searchQuery;
 
 List<Hero> searchSelector(AppState state) {

@@ -10,6 +10,8 @@ final loadingReducer = combineTypedReducers<bool>([
   new ReducerBinding<bool, FetchPatchesFailedAction>(_setLoaded),
   new ReducerBinding<bool, FetchWinRatesSucceededAction>(_setLoaded),
   new ReducerBinding<bool, FetchWinRatesFailedAction>(_setLoaded),
+  new ReducerBinding<bool, FetchMapsSucceededAction>(_setLoaded),
+  new ReducerBinding<bool, FetchMapsFailedAction>(_setLoaded),  
 ]);
 
 bool _setLoaded(bool state, action) {

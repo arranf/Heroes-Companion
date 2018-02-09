@@ -10,6 +10,7 @@ import 'package:heroes_companion/services/update_service.dart';
 import 'package:heroes_companion/view/common/launch_error.dart';
 import 'package:heroes_companion/view/containers/hero_home_container.dart';
 import 'package:heroes_companion/view/containers/hero_search_container.dart';
+import 'package:heroes_companion/view/containers/maps_home_container.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
@@ -97,7 +98,14 @@ class App extends StatelessWidget {
                 return new StoreBuilder<AppState>(builder: (context, store) {
                   return new HeroSearch();
                 });
-              }
+              },
+              Routes.maps: (BuildContext context) {
+                return new StoreBuilder<AppState>(
+                  builder: (context, store) {
+                    return new MapsHome();
+                  },
+                );
+              },
             }),
       );
 }

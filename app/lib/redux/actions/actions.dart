@@ -65,3 +65,11 @@ class SetFilterAction {
 class StartUpdatingAction {}
 
 class StopUpdatingAction {}
+
+class FetchMapsFailedAction {}
+
+class FetchMapsSucceededAction {
+  final List<PlayableMap> maps;
+
+  FetchMapsSucceededAction(this.maps);
+}

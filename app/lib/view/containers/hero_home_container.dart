@@ -36,6 +36,21 @@ class HeroHome extends StatelessWidget {
       builder: (context, vm) {
         return new Scaffold(
             key: homeScaffoldKey,
+            drawer: new Drawer(
+              child: new ListView(
+                children: <Widget>[
+                  new ListTile(
+                    title: new Text(
+                      'Maps'
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed(Routes.maps);
+                    },
+                  )
+                ],
+              ),
+            ),
             appBar: new AppBar(
               title: new Text('Heroes Companion'),
               actions: <Widget>[
