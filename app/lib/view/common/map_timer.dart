@@ -126,9 +126,9 @@ class _MapTimerState extends State<MapTimer> {
 
   Widget _buildSupportingText(BuildContext context) {
     // Display seconds remaining
-    TextStyle style = Theme.of(context).textTheme.title.apply(color: Colors.white, fontSizeFactor: 1.1);
+    TextStyle style = Theme.of(context).textTheme.title.apply(color: Colors.white, fontSizeFactor: 1.1,);
     if (timer != null && timer.isActive) {
-      return new Text('${(timerLength - callCount).toStringAsFixed(0)} Seconds Remaining', style: style,);
+      return new Text('${(timerLength - callCount).toStringAsFixed(0)} Seconds Remaining Until ${widget.map.objective_name}', style: style,);
     } else if (hasGameStarted) {
       return new Text('Press ${widget.map.objective_finish_prompt}', style: style,);
       // When the objective is complete prompt
