@@ -21,6 +21,15 @@ class _MapTimerState extends State<MapTimer> {
   double callCount = 0.0;
   int timerLength = 0;
 
+  @override 
+  void dispose () {
+    if (timer != null) {
+      timer.cancel();
+    }
+    super.dispose();
+  }
+
+
   Timer timer;
   void manageTimer() {
     if (timer == null || !timer.isActive) {
@@ -49,6 +58,10 @@ class _MapTimerState extends State<MapTimer> {
   }
 
   void adjustPercentage(Timer timer) {
+    if (!this.mounted) {
+      timer.cancel();
+      return;
+    }
     double newPercentage = ((callCount / timerLength) * 100);
     setState(() {
       percentageComplete = newPercentage;
