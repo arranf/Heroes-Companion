@@ -11,4 +11,6 @@ fi
 
 find ../assets/ -type f -name "*.png" > ls.txt
 # Replace the start of a line ../ with four spaces and a -
-sed -i -e 's/^..\//    - /' ls.txt 
+cat ls.txt | sed 's/^..\//    - /;s/\/\//\//' > ls2.txt
+rm ls.txt
+mv ls2.txt ls.txt 
