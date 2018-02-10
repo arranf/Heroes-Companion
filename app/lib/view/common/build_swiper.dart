@@ -1,5 +1,7 @@
 import 'dart:async';
 
+
+import 'package:screen/screen.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:flutter/services.dart';
 import 'package:heroes_companion/services/exception_service.dart';
@@ -25,31 +27,11 @@ class BuildSwiper extends StatefulWidget {
 class _BuildSwiperState extends State<BuildSwiper>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  static final _platform =
-      const MethodChannel('com.heroescompanion.app/screen');
-
-  Future _setScreenNoSleep() async {
-    try {
-      await _platform.invokeMethod('setScreenNoSleep');
-    } on PlatformException catch (e) {
-        new ExceptionService()
-        .reportError(e);
-    }
-  }
-
-  Future _setScreenCanSleep() async {
-    try {
-      await _platform.invokeMethod('setScreenCanSleep');
-    } on PlatformException catch (e) {
-        new ExceptionService()
-        .reportError(e);
-    }
-  }
 
   @override
   void initState() {
     super.initState();
-    _setScreenNoSleep();
+    Screen.keepOn(true);
     _tabController = new TabController(
         vsync: this, length: widget.buildWinRates.talents_names.length);
   }
@@ -57,7 +39,7 @@ class _BuildSwiperState extends State<BuildSwiper>
   @override
   void dispose() {
     _tabController.dispose();
-    _setScreenCanSleep();
+    Screen.keepOn(false);
     super.dispose();
   }
 
