@@ -67,9 +67,11 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
   }
 
   Widget _buildPhoneTitleRow(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    int scaleFactor = (mediaQueryData.size.width / 40).floor();
     return new Container(
       key: new Key(widget.hero.name + '_title_row'),
-      padding: new EdgeInsets.only(left: 64.0, bottom: 8.0),
+      padding: new EdgeInsets.only(left: 4.0 * scaleFactor, bottom: 8.0),
       color: Theme.of(context).primaryColor,
       child: new Row(
         children: <Widget>[
@@ -281,16 +283,22 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                   children: <Widget>[
                     new Row(
                       children: <Widget>[
-                        new Text(
+                        new Flexible(
+                          child: new Text(
                           talent.name,
                           style: Theme.of(context).textTheme.headline,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
+                          maxLines: 2,
+                        ),
                         ),
                         talent.have_asset
                             ? new Image.asset(
                                 'assets/images/talents/${talent.icon_file_name}')
                             : new Image(
                                 image: new CachedNetworkImageProvider(
-                                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'))
+                                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
+                        
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
