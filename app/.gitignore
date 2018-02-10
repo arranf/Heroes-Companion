@@ -82,3 +82,5 @@ unlinked_spec.ds
 assets/heroes_companion.db
 assets/images/heroes/
 assets/images/talents/
+ios/Flutter/flutter_assets/assets/talents/
+ios/Flutter/flutter_assets/assets/heroes/
