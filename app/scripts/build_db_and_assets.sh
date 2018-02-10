@@ -6,9 +6,10 @@ if [ $DIR != 'scripts' ]; then
     exit 1
 fi
 
-DATA_DIR=~/projects/hero_data_to_sql
 APP_DIR="$(dirname "$PWD")"
+DATA_DIR=~/Github/hots-json-to-sqlite
 ASSETS_DIR=$APP_DIR/assets
+mkdir -p  $APP_DIR/assets/images
 
 # Get latest version of db and images
 cd $DATA_DIR && ./run.sh
