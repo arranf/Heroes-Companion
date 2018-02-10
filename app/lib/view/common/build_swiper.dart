@@ -82,7 +82,14 @@ class _BuildSwiperState extends State<BuildSwiper>
             new Padding(
               padding: new EdgeInsets.only(top: statusBarHeight),
               child: new Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+                  new IconButton(
+                    icon: new Icon(Icons.close),
+                    color: Colors.white,
+                    onPressed: () => Navigator.pop(context),
+                    tooltip: 'Go back',
+                  ),
                   new IconButton(
                     icon: new Icon(Icons.first_page),
                     color: Colors.white,
