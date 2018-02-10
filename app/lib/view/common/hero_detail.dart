@@ -292,12 +292,16 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                           maxLines: 2,
                         ),
                         ),
-                        talent.have_asset
+                        new Padding(
+                          padding: new EdgeInsets.only(left: 8.0),
+                          child: talent.have_asset
                             ? new Image.asset(
                                 'assets/images/talents/${talent.icon_file_name}')
                             : new Image(
                                 image: new CachedNetworkImageProvider(
                                     'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
+                        ),
+                        
                         
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
