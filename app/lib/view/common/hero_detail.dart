@@ -258,6 +258,12 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       } else {
         builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.win_rate.compareTo(b.win_rate));
       }
+
+
+      // Show empty state if there are no builds
+      if (builds.isEmpty) {
+        return new EmptyState(Icons.error_outline, title: 'No Data Available', description: 'No statistical data found for this hero');
+      }
       
       return new ListView(
         key: new Key(widget.hero.name + '_talent_rows'),
