@@ -234,7 +234,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       if (widget.buildWinRates.winning_builds != null) {
         List<BuildStatistics> interestingWinningBuilds =
             new List<BuildStatistics>.from(widget.buildWinRates.winning_builds
-                .where((b) => b.talents_names.length == 7));
+                .where((b) => b.talents_names.length == 7 && b.win_rate > 0.0));
         if (interestingWinningBuilds.length > 0) {
           interestingWinningBuilds.forEach((BuildStatistics build) => classifiedBuilds[build] = 'Winning Build');
         }
@@ -243,7 +243,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       if (widget.buildWinRates.popular_builds != null) {
         List<BuildStatistics> interestingPopularBuilds =
             new List<BuildStatistics>.from(widget.buildWinRates.popular_builds
-                .where((b) => b.talents_names.length == 7));
+                .where((b) => b.talents_names.length == 7 && b.win_rate > 0.0));
         if (interestingPopularBuilds.length > 0) {
           interestingPopularBuilds.forEach((BuildStatistics build) => classifiedBuilds[build] = 'Popular Build');
         }
