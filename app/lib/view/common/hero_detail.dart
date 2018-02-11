@@ -71,7 +71,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
     int scaleFactor = (mediaQueryData.size.width / 40).floor();
     return new Container(
       key: new Key(widget.hero.name + '_title_row'),
-      padding: new EdgeInsets.only(left: 4.0 * scaleFactor, bottom: 8.0),
+      padding: new EdgeInsets.symmetric(horizontal: 4.0 * scaleFactor).add(new EdgeInsets.only(bottom: 8.0)),
       color: Theme.of(context).primaryColor,
       child: new Row(
         children: <Widget>[
