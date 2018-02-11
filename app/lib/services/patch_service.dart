@@ -29,7 +29,7 @@ void updatePatches(Store<AppState> store) {
       .catchError((Error e) 
       {
         new ExceptionService()
-        .reportError(e, e.stackTrace);
+        .reportError(e);
         store.dispatch(new FetchPatchesFailedAction());
       }); 
 }

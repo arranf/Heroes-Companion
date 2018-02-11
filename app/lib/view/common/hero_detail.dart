@@ -21,7 +21,8 @@ class HeroDetail extends StatefulWidget {
   final String buildNumber;
   final dynamic favorite;
   final dynamic buildSwitch;
-  final String patchNotesUrl;
+  final Patch patch;
+  final String heroPatchNotesUrl;
 
   HeroDetail(
     this.hero, {
@@ -33,7 +34,8 @@ class HeroDetail extends StatefulWidget {
     this.isCurrentBuild,
     this.buildNumber,
     this.buildSwitch,
-    this.patchNotesUrl
+    this.patch,
+    this.heroPatchNotesUrl
   })
       : super(key: key);
 
@@ -321,9 +323,9 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
     return new Container(
         child: new Column(
           children: <Widget>[
-           widget.canOfferPreviousBuild ? new BuildPrompt(
+            !widget.isCurrentBuild  ? new BuildPrompt(
               widget.isCurrentBuild,
-              widget.winLossCount,
+              widget.patch.patchName,
               widget.buildSwitch,
               key: new Key('${widget.hero.name}_previous_build_prompt'),
             ) : new Container(),
@@ -347,7 +349,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       children: <Widget>[
         widget.canOfferPreviousBuild ? new BuildPrompt(
               widget.isCurrentBuild,
-              widget.winLossCount,
+              widget.patch.patchName,
               widget.buildSwitch,
               key: new Key('${widget.hero.name}_previous_build_prompt'),
             ) : new Container(),
@@ -377,12 +379,14 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                   onSelected: (Object choice) {
                     if (choice is OverflowChoice) {
                     OverflowChoice
-                      .handleChoice(choice, context, patchNotesUrl: widget.patchNotesUrl); // overflow menu
+                      .handleChoice(choice, context, patchNotesUrl: widget.heroPatchNotesUrl); // overflow menu
                     } else if (choice is BuildSort) {
                       BuildSort newBuildSort = choice == BuildSort.playrate ? BuildSort.winrate : BuildSort.playrate;
                       setState(() {
                         buildSort = newBuildSort;
                       });
+                    } else if (choice == 'Switch Build') {
+                      widget.buildSwitch();
                     } else {
                       throw new Exception('Unknown action');
                     }
@@ -398,6 +402,12 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                       value: buildSort,
                       child: new Text('Sort by ${buildSort == BuildSort.winrate ? 'Popularity' :'Win Rate'}'),
                     ));
+                    if (widget.canOfferPreviousBuild) {
+                      items.add(new PopupMenuItem(
+                        value: 'Switch Build',
+                        child: new Text( widget.isCurrentBuild ? 'See Previous Patch Data' : 'See Current Patch Data'),
+                      ));
+                    }
                     return items;
                   },
                 ),
