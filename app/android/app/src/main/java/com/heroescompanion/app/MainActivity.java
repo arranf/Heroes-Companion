@@ -19,6 +19,7 @@ import io.flutter.view.FlutterView;
 public class MainActivity extends FlutterActivity {
   private static final String CHANNEL = "com.heroescompanion.app/screen";
 
+  // TODO remove unnecessary method channel
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
