@@ -21,7 +21,8 @@ class HeroDetail extends StatefulWidget {
   final String buildNumber;
   final dynamic favorite;
   final dynamic buildSwitch;
-  final String patchNotesUrl;
+  final Patch patch;
+  final String heroPatchNotesUrl;
 
   HeroDetail(
     this.hero, {
@@ -33,7 +34,8 @@ class HeroDetail extends StatefulWidget {
     this.isCurrentBuild,
     this.buildNumber,
     this.buildSwitch,
-    this.patchNotesUrl
+    this.patch,
+    this.heroPatchNotesUrl
   })
       : super(key: key);
 
@@ -236,7 +238,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       if (widget.buildWinRates.winning_builds != null) {
         List<BuildStatistics> interestingWinningBuilds =
             new List<BuildStatistics>.from(widget.buildWinRates.winning_builds
-                .where((b) => b.talents_names.length == 7));
+                .where((b) => b.talents_names.length == 7 && b.win_rate > 0.0));
         if (interestingWinningBuilds.length > 0) {
           interestingWinningBuilds.forEach((BuildStatistics build) => classifiedBuilds[build] = 'Winning Build');
         }
@@ -245,7 +247,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       if (widget.buildWinRates.popular_builds != null) {
         List<BuildStatistics> interestingPopularBuilds =
             new List<BuildStatistics>.from(widget.buildWinRates.popular_builds
-                .where((b) => b.talents_names.length == 7));
+                .where((b) => b.talents_names.length == 7 && b.win_rate > 0.0));
         if (interestingPopularBuilds.length > 0) {
           interestingPopularBuilds.forEach((BuildStatistics build) => classifiedBuilds[build] = 'Popular Build');
         }
@@ -259,6 +261,12 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
         builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.total_games_played.compareTo(b.total_games_played));
       } else {
         builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.win_rate.compareTo(b.win_rate));
+      }
+
+
+      // Show empty state if there are no builds
+      if (builds.isEmpty) {
+        return new EmptyState(Icons.error_outline, title: 'No Data Available', description: 'No statistical data found for this hero');
       }
       
       return new ListView(
@@ -327,9 +335,9 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
     return new Container(
         child: new Column(
           children: <Widget>[
-           widget.canOfferPreviousBuild ? new BuildPrompt(
+            !widget.isCurrentBuild  ? new BuildPrompt(
               widget.isCurrentBuild,
-              widget.winLossCount,
+              widget.patch.patchName,
               widget.buildSwitch,
               key: new Key('${widget.hero.name}_previous_build_prompt'),
             ) : new Container(),
@@ -353,7 +361,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       children: <Widget>[
         widget.canOfferPreviousBuild ? new BuildPrompt(
               widget.isCurrentBuild,
-              widget.winLossCount,
+              widget.patch.patchName,
               widget.buildSwitch,
               key: new Key('${widget.hero.name}_previous_build_prompt'),
             ) : new Container(),
@@ -383,12 +391,14 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                   onSelected: (Object choice) {
                     if (choice is OverflowChoice) {
                     OverflowChoice
-                      .handleChoice(choice, context, patchNotesUrl: widget.patchNotesUrl); // overflow menu
+                      .handleChoice(choice, context, patchNotesUrl: widget.heroPatchNotesUrl); // overflow menu
                     } else if (choice is BuildSort) {
                       BuildSort newBuildSort = choice == BuildSort.playrate ? BuildSort.winrate : BuildSort.playrate;
                       setState(() {
                         buildSort = newBuildSort;
                       });
+                    } else if (choice == 'Switch Build') {
+                      widget.buildSwitch();
                     } else {
                       throw new Exception('Unknown action');
                     }
@@ -404,6 +414,12 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                       value: buildSort,
                       child: new Text('Sort by ${buildSort == BuildSort.winrate ? 'Popularity' :'Win Rate'}'),
                     ));
+                    if (widget.canOfferPreviousBuild) {
+                      items.add(new PopupMenuItem(
+                        value: 'Switch Build',
+                        child: new Text( widget.isCurrentBuild ? 'See Previous Patch Data' : 'See Current Patch Data'),
+                      ));
+                    }
                     return items;
                   },
                 ),
