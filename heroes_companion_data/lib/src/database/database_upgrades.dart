@@ -1,11 +1,14 @@
 import 'dart:async';
 
+import 'package:heroes_companion_data/src/models/playable_map.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
 import 'package:heroes_companion_data/src/tables/ability_table.dart'
     as ability_table;
 import 'package:heroes_companion_data/src/tables/talent_table.dart'
     as talent_table;
+
+import 'package:heroes_companion_data/src/tables/map_table.dart' as map_table;
 
 import 'package:flutter/foundation.dart';
 
@@ -94,24 +97,42 @@ Future upgradeTo8(Database database) async {
 }
 
 Future upgradeTo9(Database database) async {
-  await database.execute('''
-    CREATE TABLE IF NOT EXISTS maps (
+  await database.execute(
+  '''
+  CREATE TABLE IF NOT EXISTS ${map_table.table_name} (
 	Id INTEGER PRIMARY KEY,
-	Name TEXT NOT NULL,
+	Name TEXT NOT NULL UNIQUE,
 	ObjectiveName TEXT,
 	ObjectiveStartPrompt TEXT,
 	ObjectiveFinishPrompt TEXT,
 	ObjectiveStartTime INTEGER,
 	ObjectiveInterval INTEGER
-);
+  );
+  '''
+  );
 
-INSERT OR IGNORE INTO maps values (null, 'Battlefield of Eternity', 'The Immortal', 'Capture The Immortal', 'When the Immortal dies', 180, 105);
-INSERT OR IGNORE INTO maps values (null, 'Blackheart''s Bay', 'Chests of Booty', 'Collect treasure from the chests', 'When both chests have been opened', 90, 180);
-INSERT OR IGNORE INTO maps values (null, 'Braxis Holdout', 'The Zerg', 'Capture the Beacons', 'When both Zerg Swarms are defeated', 90, 130);
-INSERT OR IGNORE INTO maps values (null, 'Dragon Shire', 'The Dragon Knight', 'Capture the Shrines', 'When the Dragon Knight is destroyed', 90, 120);
-INSERT OR IGNORE INTO maps values (null, 'Garden of Terror', 'Garden Terror', 'Collect seeds', 'When the garden creatures are destroyed', 180, 200);
-  ''');
+  final List<PlayableMap> maps = [
+    new PlayableMap(1, 'Battlefield of Eternity', 'The Immortal', 'Capture The Immortal', 'when the Immortal dies', 180, 105),
+    new PlayableMap(2, 'Blackheart\'s Bay', 'The Doubloon Chests', 'Collect treaure from the chests', 'when both chests have been destroyed', 90,180),
+    new PlayableMap(3, 'Braxis Holdout', 'The Bracons', 'Capture the beacons', 'when both Zerg Swarms have been defeated', 90, 130),
+    new PlayableMap(4, 'Dragon Shire', 'The Shrines', 'Capture the shrines', 'when the Dragon Knight is defeated', 90, 120),
+    new PlayableMap(5, 'Garden of Terror', 'Night Time', 'Collect seeds', 'when the garden creatures are defeated', 180, 200),
+    new PlayableMap(6, 'Haunted Mines', 'The Mines', 'Collect the skulls from the mines','when the Golem is defeated', 180, 120),
+    new PlayableMap(7, 'Infernal Shrines', 'The Shrine', 'Activate the shrine and slay the Guardians', 'when the Punisher is defeated', 180, 115),
+    new PlayableMap(8, 'Sky Temple', 'The Temples', 'Capture the temples', 'when the temples are exhausted', 180, 120),
+    new PlayableMap(9, 'Tomb of the Spider Queen', 'The Webeavers', 'Turn in gems', 'After the webweavers are destroyed', 30, 15),
+    new PlayableMap(10, 'Tower of Doom', 'The Altars', 'Capture the altars', 'After all the altars have been captured', 180, 110),
+    new PlayableMap(11, 'Volskaya', 'The Protector', 'Capture the objectives', 'When the The Protector has been destroyed', 140, 170),
+    new PlayableMap(12, 'Warhead Junction', 'The Warheads', 'Collect the warheads', 'When all the warheads have been collected', 180, 175),
+  ];
+  Batch batch = database.batch();
+
+  for (PlayableMap map in maps) {
+      batch.insert(map_table.table_name, map.toMap());
+  }
+  await batch.commit(exclusive: true, noResult: true);
 }
+
 
 Future upgradeTo7(Database database) async {
   await database.execute('''

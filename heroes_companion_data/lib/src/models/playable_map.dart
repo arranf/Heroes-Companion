@@ -23,6 +23,19 @@ class PlayableMap {
     return new PlayableMap(id, name, objective_name, objective_start_prompt, objective_finish_prompt, objective_start_time, objective_interval);
   }
 
+  Map toMap() {
+    Map map = new Map();
+    map[table.column_id] = id;
+    map[table.column_name] = name;
+    map[table.column_objective_name] = objective_name;
+    map[table.column_objective_finish_prompt] = objective_finish_prompt;
+    map[table.column_objective_start_prompt] = objective_start_prompt;
+    map[table.column_objective_start_time] = objective_start_time;
+    map[table.column_objective_interval] = objective_interval;
+
+    return map;
+  }
+
   @override
   String toString() {
     return 'Map $name';
