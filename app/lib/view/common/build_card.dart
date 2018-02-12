@@ -32,7 +32,7 @@ class BuildCard extends StatelessWidget{
       return new Container();
     }
 
-    TextStyle style = new TextStyle(fontSize: 16.0, fontWeight: Theme.of(context).textTheme.body1.fontWeight);
+    TextStyle style = Theme.of(context).textTheme.body1;
     return new Container(
       // Tablets get padding
       padding: !isPhone ? new EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0) : EdgeInsets.zero,

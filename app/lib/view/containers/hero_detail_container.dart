@@ -55,9 +55,9 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreBuilder<AppState>(onInit: (store) {
+    return new StoreBuilder<AppState>(
+    builder: (context, store) {
       fetchData(store);
-    }, builder: (context, store) {
       _ViewModel vm =
           new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
       return new HeroDetail(vm.hero,
@@ -68,8 +68,10 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
           buildWinRates: vm.buildWinRates,
           isCurrentBuild: _isCurrentBuild,
           buildNumber: _buildNumber, 
-          patchNotesUrl: vm.heroPatchNotesUrl,
+          heroPatchNotesUrl: vm.heroPatchNotesUrl,
+          patch: (_isCurrentBuild ? vm.currentBuild : vm.previousBuild),
           buildSwitch: () {
+            print(vm.previousBuild.fullVersion);
             setState(() {
               _isCurrentBuild = !_isCurrentBuild;
               _buildNumber = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild)

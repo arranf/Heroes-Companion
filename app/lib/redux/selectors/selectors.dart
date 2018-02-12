@@ -66,6 +66,8 @@ Patch previousBuildSelector(AppState state) {
   if (state.patches == null && state.patches.length < 2) {
     throw new Exception('Patches haven\'t been loaded');
   }
+  // TODO Fetch finish dates from hots.dog and find the most recent one to last two weeks or more.
+  // Patch currentPatch = currentBuildSelector(state);
   return state.patches[1];
 }
 
