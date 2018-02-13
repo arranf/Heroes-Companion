@@ -1030,6 +1030,18 @@ flutter:
     - assets/images/heroes/kaelthas.png
     - assets/images/heroes/artanis.png
     - assets/images/heroes/sylvanas.png
+    - assets/images/maps/legendary-event-1.png
+    - assets/images/maps/legendary-event-3-tomb.png
+    - assets/images/maps/legendary-event-1-boe.png
+    - assets/images/maps/legendary-event-2-dragon-shire.png
+    - assets/images/maps/legendary-event-2-garden.png
+    - assets/images/maps/legendary-event-3.png
+    - assets/images/maps/legendary-event-2-blackhearts-bay.png
+    - assets/images/maps/objective-volskaya-2.png
+    - assets/images/maps/legendary-event-2.png
+    - assets/images/maps/legendary-event-3-sky-temple.png
+    - assets/images/maps/call_down.png
+    - assets/images/maps/zerg_waves.png
     # END IMAGES HERE
 
   # An image asset can refer to one or more resolution-specific "variants", see

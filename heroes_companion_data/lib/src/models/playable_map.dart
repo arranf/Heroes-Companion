@@ -8,8 +8,9 @@ class PlayableMap {
   final String objective_finish_prompt;
   final int objective_start_time;
   final int objective_interval;
+  final String map_icon_filename;
 
-  PlayableMap(this.id, this.name, this.objective_name, this.objective_start_prompt, this.objective_finish_prompt, this.objective_start_time, this.objective_interval);
+  PlayableMap(this.id, this.name, this.objective_name, this.objective_start_prompt, this.objective_finish_prompt, this.objective_start_time, this.objective_interval, this.map_icon_filename);
 
   factory PlayableMap.fromMap(Map map) {
     int id = map[table.column_id];
@@ -19,8 +20,9 @@ class PlayableMap {
     String objective_finish_prompt = map[table.column_objective_finish_prompt];
     int objective_start_time = map[table.column_objective_start_time];
     int objective_interval = map[table.column_objective_interval];
+    String map_icon_filename = map[table.column_map_icon_file_name];
 
-    return new PlayableMap(id, name, objective_name, objective_start_prompt, objective_finish_prompt, objective_start_time, objective_interval);
+    return new PlayableMap(id, name, objective_name, objective_start_prompt, objective_finish_prompt, objective_start_time, objective_interval, map_icon_filename);
   }
 
   Map toMap() {
@@ -32,6 +34,7 @@ class PlayableMap {
     map[table.column_objective_start_prompt] = objective_start_prompt;
     map[table.column_objective_start_time] = objective_start_time;
     map[table.column_objective_interval] = objective_interval;
+    map[table.column_map_icon_file_name] = map_icon_filename;
 
     return map;
   }
