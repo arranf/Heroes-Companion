@@ -9,7 +9,12 @@ class AppDrawer extends StatelessWidget {
                 children: <Widget>[
                   new DrawerHeader(
                     decoration: new BoxDecoration(
-                      color: Theme.of(context).primaryColor
+                      image: new DecorationImage(
+                        image: new AssetImage('assets/images/maiev_1280x1024.jpg'),
+                        fit: BoxFit.cover,
+                        colorFilter: new ColorFilter.mode(Colors.black45, BlendMode.darken),
+                        // colorFilter: new ColorFilter.mode(Colors.black, BlendMode.darken)
+                      )
                     ),
                     child: new Column(
                       mainAxisAlignment: MainAxisAlignment.end,
