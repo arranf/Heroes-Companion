@@ -65,7 +65,7 @@ Future<UpdateInfo> getUpdateInfo() async {
 }
 
 Future<List<PatchData>> getPatchData() async {
-  Uri uri = new Uri.https(_baseUrl, '/v1/patches');
+  Uri uri = new Uri.https(_baseUrl, '/v2/patches');
 
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
