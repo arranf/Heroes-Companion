@@ -18,7 +18,6 @@ class HeroDetail extends StatefulWidget {
   final bool canOfferPreviousBuild;
   final HeroWinRate heroWinRate;
   final BuildWinRates buildWinRates;
-  final String buildNumber;
   final dynamic favorite;
   final dynamic buildSwitch;
   final Patch patch;
@@ -32,7 +31,6 @@ class HeroDetail extends StatefulWidget {
     this.heroWinRate,
     this.buildWinRates,
     this.isCurrentBuild,
-    this.buildNumber,
     this.buildSwitch,
     this.patch,
     this.heroPatchNotesUrl
