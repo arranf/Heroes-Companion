@@ -59,16 +59,19 @@ Patch currentBuildSelector(AppState state) {
   if (state.patches == null && state.patches.isNotEmpty) {
     throw new Exception('Patches haven\'t been loaded');
   }
-  return state.patches[0];
+  return state.patches.firstWhere((Patch p) => p.hotsDogId != '');
 }
 
 Patch previousBuildSelector(AppState state) {
   if (state.patches == null && state.patches.length < 2) {
     throw new Exception('Patches haven\'t been loaded');
   }
-  // TODO Fetch finish dates from hots.dog and find the most recent one to last two weeks or more.
-  // Patch currentPatch = currentBuildSelector(state);
-  return state.patches[1];
+
+  int currentIndex = state.patches.indexOf(currentBuildSelector(state));
+  if (currentIndex+1 == state.patches.length) {
+    throw new Exception('Error getting previous build');
+  }
+  return state.patches[currentIndex+1];
 }
 
 Map<String, List<HeroWinRate>> winRatesSelector(AppState state) => state.winRates;
