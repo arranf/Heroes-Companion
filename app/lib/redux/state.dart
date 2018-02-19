@@ -15,7 +15,7 @@ class AppState {
   final bool heroBuildWinRatesLoading;
   final bool isUpdating;
 
-  /// heroCompanionId => <BuildNumber, BuildWinRates>
+  /// heroId => <BuildNumber, BuildWinRates>
   final Map<int, Map<String, BuildWinRates>> heroBuildWinRates;
   final String searchQuery;
   final HeroFilter filter;

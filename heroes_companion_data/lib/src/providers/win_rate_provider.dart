@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'package:heroes_companion_data/src/data_provider.dart';
 import 'package:heroes_companion_data/src/models/hero_win_rate.dart';
+import 'package:heroes_companion_data/src/models/patch.dart';
 import 'package:hots_dog_api/hots_dog_api.dart' as api;
 import 'package:hots_dog_api/hots_dog_api.dart';
 
 class WinRateProvider {
-  Future<List<HeroWinRate>> getWinRates(String buildNumber) async {
-    api.WinRates hotsDogWinRates = await api.getWinRates(buildNumber);
+  Future<List<HeroWinRate>> getWinRates(Patch patch) async {
+    api.WinRates hotsDogWinRates = await api.getWinRates(patch.hotsDogId);
     List<Future> futures =  new List();
     hotsDogWinRates.current.forEach((String heroName, WinLossCount winLossCount) {
       futures.add(_getHeroIdForName(winLossCount, heroName));

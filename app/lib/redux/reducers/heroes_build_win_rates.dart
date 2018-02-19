@@ -16,9 +16,9 @@ Map<int, Map<String, BuildWinRates>> _succeed(
   Map<int, Map<String, BuildWinRates>> newWinRates =
       new Map<int, Map<String, BuildWinRates>>.from(
           winRates ?? new Map<int, Map<String, BuildWinRates>>());
-  newWinRates[action.heroCompanionId] = new Map<String, BuildWinRates>.from(
-      newWinRates[action.heroCompanionId] ?? new Map<String, BuildWinRates>());
-  newWinRates[action.heroCompanionId][action.buildNumber] =
+  newWinRates[action.heroId] = new Map<String, BuildWinRates>.from(
+      newWinRates[action.heroId] ?? new Map<String, BuildWinRates>());
+  newWinRates[action.heroId][action.buildNumber] =
       action.buildWinRates;
   return newWinRates;
 }

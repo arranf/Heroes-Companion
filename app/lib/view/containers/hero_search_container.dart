@@ -73,7 +73,7 @@ class _ViewModel {
     final dynamic onTap = (BuildContext context, HeroListItem item) {
       Navigator.of(context).pushReplacement(new PageRouteBuilder(
           pageBuilder: (context, a1, a2) =>
-              new HeroDetailContainer(item.hero.heroes_companion_hero_id)));
+              new HeroDetailContainer(item.hero.hero_id)));
     };
 
     final results = searchSelector(store.state);

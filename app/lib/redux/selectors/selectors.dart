@@ -44,15 +44,6 @@ List<Hero> heroesbyFilterSelector(AppState state) {
   }
 }
 
-Optional<Hero> heroSelectorByCompanionId(List<Hero> heroes, int id) {
-  try {
-    return new Optional.of(
-        heroes.firstWhere((h) => h.heroes_companion_hero_id == id));
-  } catch (e) {
-    return new Optional.absent();
-  }
-}
-
 Optional<Hero> heroSelectorByHeroId(List<Hero> heroes, int id) {
   try {
     return new Optional.of(
@@ -96,7 +87,7 @@ Optional<Map<String, HeroWinRate>> heroWinRateByHeroId(
   if (winRatesSelector(state) == null) {
     return new Optional.absent();
   }
-  Optional<Hero> hero = heroSelectorByCompanionId(state.heroes, id);
+  Optional<Hero> hero = heroSelectorByHeroId(state.heroes, id);
   if (hero.isNotPresent) {
     debugPrint('No hero found');
     return new Optional.absent();
@@ -142,7 +133,7 @@ Map<int, Map<String, BuildWinRates>> buildWinRates(AppState state) {
   return state.heroBuildWinRates;
 }
 
-Optional<Map<String, BuildWinRates>> buildWinRatesByCompanionId(
+Optional<Map<String, BuildWinRates>> buildWinRatesByHeroId(
     AppState state, int id) {
   Map<int, Map<String, BuildWinRates>> rates = buildWinRates(state);
   if (rates != null && rates.containsKey(id)) {
@@ -151,7 +142,7 @@ Optional<Map<String, BuildWinRates>> buildWinRatesByCompanionId(
   return new Optional.absent();
 }
 
-Optional<BuildWinRates> buildWinRatesByCompanionIdAndBuildNumber(
+Optional<BuildWinRates> buildWinRatesByHeroIdAndBuildNumber(
     AppState state, int id, String buildNumber) {
   Map<int, Map<String, BuildWinRates>> rates = buildWinRates(state);
   if (rates == null || !rates.containsKey(id)) {
