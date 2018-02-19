@@ -27,7 +27,7 @@ class FetchPatchesSucceededAction {
 class FetchPatchesFailedAction {}
 
 class FetchWinRatesSucceededAction {
-  final WinRates winRates;
+  final List<HeroWinRate> winRates;
   final String buildNumber;
 
   FetchWinRatesSucceededAction(this.winRates, this.buildNumber);

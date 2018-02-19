@@ -29,6 +29,32 @@ class HeroProvider {
     });
   }
 
+  Future<Hero> getHeroByHeroId(int id) {
+    return new Future.sync(() async {
+      List<Map> maps = await _database.query(hero_table.table_name,
+          columns: null,
+          where: "${hero_table.column_hero_id} = ?",
+          whereArgs: [id]);
+      if (maps.length > 0) {
+        return new Hero.fromMap(maps.first);
+      }
+      return null;
+    });
+  }
+
+  Future<int> getHeroIdByName(String heroName) {
+    return new Future.sync(() async {
+      List<Map> maps = await _database.query(hero_table.table_name,
+          columns: [hero_table.column_hero_id],
+          where: "${hero_table.column_name} = ?",
+          whereArgs: [heroName]);
+      if (maps.length > 0) {
+        return maps.first[hero_table.column_hero_id];
+      }
+      return null;
+    });
+  }
+
   Future<List<Hero>> getHeroes() {
     return new Future.sync(() async {
       List<Map> maps = await _database.query(hero_table.table_name,

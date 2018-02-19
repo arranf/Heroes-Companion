@@ -13,16 +13,16 @@ import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
 class HeroDetailContainer extends StatefulWidget {
-  final int heroesCompanionId;
+  final int heroId;
 
   @override
   _HeroDetailContainerState createState() =>
-      new _HeroDetailContainerState(heroesCompanionId);
+      new _HeroDetailContainerState(heroId);
 
-  HeroDetailContainer(this.heroesCompanionId)
+  HeroDetailContainer(this.heroId)
       : super(
             key: new Key(
-                Routes.heroDetail + '_' + heroesCompanionId.toString()));
+                Routes.heroDetail + '_' + heroId.toString()));
 }
 
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
@@ -64,7 +64,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
           key: new Key(vm.hero.short_name),
           favorite: vm.favorite,
           canOfferPreviousBuild: vm.hero.last_modified != null && vm.previousBuild.liveDate.isAfter(vm.hero.last_modified),
-          winLossCount: vm.winLossCount,
+          heroWinRate: vm.heroWinRate,
           buildWinRates: vm.buildWinRates,
           isCurrentBuild: _isCurrentBuild,
           buildNumber: _buildNumber, 
@@ -85,7 +85,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
 class _ViewModel {
   final Hero hero;
   final dynamic favorite;
-  final WinLossCount winLossCount;
+  final HeroWinRate heroWinRate;
   final BuildWinRates buildWinRates;
   final Patch currentBuild;
   final Patch previousBuild;
@@ -94,7 +94,7 @@ class _ViewModel {
   _ViewModel(
       {@required this.hero,
       @required this.favorite,
-      this.winLossCount,
+      this.heroWinRate,
       this.buildWinRates,
       this.currentBuild,
       this.previousBuild,
@@ -109,16 +109,15 @@ class _ViewModel {
     if (hero.isNotPresent) {
       throw new Exception('No hero when optional unwrapped');
     }
-    // TODO Wrap win loss count to have a sensible model in app
-    final winLossCount =
-        winLossCountByCompanionIdAndBuildNumber(store.state, id, buildNumber);
+    
+    final heroWinRate = heroWinRateByHeroIdAndBuildNumber(store.state, id, buildNumber);
     final buildWinRates =
         buildWinRatesByCompanionIdAndBuildNumber(store.state, id, buildNumber);
     final String heroPatchNotesUrl = currentPatchUrlForHero(store.state, hero.value);
     return new _ViewModel(
       hero: hero.value,
       favorite: _favorite,
-      winLossCount: winLossCount.isPresent ? winLossCount.value : null,
+      heroWinRate: heroWinRate.isPresent ? heroWinRate.value : null,
       buildWinRates: buildWinRates.isPresent ? buildWinRates.value : null,
       currentBuild: currentBuildSelector(store.state),
       previousBuild: previousBuildSelector(store.state),

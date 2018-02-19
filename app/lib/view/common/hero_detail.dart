@@ -16,7 +16,7 @@ class HeroDetail extends StatefulWidget {
   final Hero hero;
   final bool isCurrentBuild;
   final bool canOfferPreviousBuild;
-  final WinLossCount winLossCount;
+  final HeroWinRate heroWinRate;
   final BuildWinRates buildWinRates;
   final String buildNumber;
   final dynamic favorite;
@@ -29,7 +29,7 @@ class HeroDetail extends StatefulWidget {
     key,
     @required this.canOfferPreviousBuild,
     @required this.favorite,
-    this.winLossCount,
+    this.heroWinRate,
     this.buildWinRates,
     this.isCurrentBuild,
     this.buildNumber,
@@ -110,12 +110,12 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
               new Container(
                 height: 20.0,
               ),
-              (widget.winLossCount != null) ? new Container(
+              (widget.heroWinRate != null) ? new Container(
                 child: new Column(
                   children: <Widget>[
                     new Text(
-                widget.winLossCount != null
-                    ? '${widget.winLossCount.winPercentange().toStringAsFixed(1)} Win %'
+                widget.heroWinRate != null
+                    ? '${widget.heroWinRate.winPercentage.toStringAsFixed(1)} Win %'
                     : ' ',
                 style: Theme
                     .of(context)
@@ -126,8 +126,8 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
 
               
               new Text(
-                  widget.winLossCount != null
-                      ? '${(widget.winLossCount.wins + widget.winLossCount.losses).toString()} games played'
+                  widget.heroWinRate != null
+                      ? '${(widget.heroWinRate.gamesPlayed).toString()} games played'
                       : ' ',
                   style: Theme
                       .of(context)
@@ -193,8 +193,8 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
             child: new Column(
               children: <Widget>[
                 new Text(
-                  widget.winLossCount != null
-                      ? '${widget.winLossCount.winPercentange().toStringAsFixed(1)} Win %'
+                  widget.heroWinRate != null
+                      ? '${widget.heroWinRate.winPercentage.toStringAsFixed(1)} Win %'
                       : ' ',
                   style: Theme
                       .of(context)
@@ -203,8 +203,8 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                       .apply(color: Colors.white),
                 ),
                 new Text(
-                    widget.winLossCount != null
-                        ? '${(widget.winLossCount.wins + widget.winLossCount.losses).toString()} games played'
+                    widget.heroWinRate != null
+                        ? '${(widget.heroWinRate.gamesPlayed).toString()} games played'
                         : ' ',
                     style: Theme
                         .of(context)

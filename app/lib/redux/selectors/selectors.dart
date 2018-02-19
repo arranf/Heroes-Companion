@@ -53,6 +53,15 @@ Optional<Hero> heroSelectorByCompanionId(List<Hero> heroes, int id) {
   }
 }
 
+Optional<Hero> heroSelectorByHeroId(List<Hero> heroes, int id) {
+  try {
+    return new Optional.of(
+        heroes.firstWhere((h) => h.hero_id == id));
+  } catch (e) {
+    return new Optional.absent();
+  }
+}
+
 List<Patch> buildsSelector(AppState state) => state.patches;
 
 Patch currentBuildSelector(AppState state) {
@@ -71,9 +80,9 @@ Patch previousBuildSelector(AppState state) {
   return state.patches[1];
 }
 
-Map<String, WinRates> winRatesSelector(AppState state) => state.winRates;
+Map<String, List<HeroWinRate>> winRatesSelector(AppState state) => state.winRates;
 
-Optional<WinRates> winRatesByBuildNumber(AppState state, String buildNumber) {
+Optional<List<HeroWinRate>> winRatesByBuildNumber(AppState state, String buildNumber) {
   try {
     return new Optional.of(winRatesSelector(state)[buildNumber]);
   } catch (e) {
@@ -81,7 +90,8 @@ Optional<WinRates> winRatesByBuildNumber(AppState state, String buildNumber) {
   }
 }
 
-Optional<Map<String, WinLossCount>> winLossCountByCompanionId(
+/// A map of build number to HeroWinRate
+Optional<Map<String, HeroWinRate>> heroWinRateByHeroId(
     AppState state, int id) {
   if (winRatesSelector(state) == null) {
     return new Optional.absent();
@@ -92,10 +102,10 @@ Optional<Map<String, WinLossCount>> winLossCountByCompanionId(
     return new Optional.absent();
   }
 
-  Map<String, WinLossCount> heroWinRatesByBuild =
-      new Map<String, WinLossCount>();
-  winRatesSelector(state).forEach((key, value) {
-    heroWinRatesByBuild[key] = value.current[hero.value.name];
+  Map<String, HeroWinRate> heroWinRatesByBuild =
+      new Map<String, HeroWinRate>();
+  winRatesSelector(state).forEach((String buildNumber, List<HeroWinRate> winRates) {
+    heroWinRatesByBuild[buildNumber] = winRates.firstWhere((w) => w.heroId == hero.value.hero_id);
   });
 
   if (heroWinRatesByBuild.keys.isNotEmpty) {
@@ -105,12 +115,13 @@ Optional<Map<String, WinLossCount>> winLossCountByCompanionId(
   }
 }
 
-Optional<WinLossCount> winLossCountByCompanionIdAndBuildNumber(
+
+Optional<HeroWinRate> heroWinRateByHeroIdAndBuildNumber(
     AppState state, int id, String buildNumber) {
   if (winRatesSelector(state) == null) {
     return new Optional.absent();
   }
-  Optional<Hero> hero = heroSelectorByCompanionId(state.heroes, id);
+  Optional<Hero> hero = heroSelectorByHeroId(state.heroes, id);
   if (hero.isNotPresent) {
     debugPrint('No hero found');
     return new Optional.absent();
@@ -118,7 +129,7 @@ Optional<WinLossCount> winLossCountByCompanionIdAndBuildNumber(
   try {
     return new Optional.of(winRatesByBuildNumber(state, buildNumber)
         .value
-        .current[hero.value.name]);
+        .firstWhere((w) => w.heroId == id ));
   } catch (e) {
     debugPrint("No winrates found for {$hero.value.name}");
     return new Optional.absent();

@@ -98,7 +98,7 @@ class _ViewModel {
   final Function onTap = (BuildContext context, HeroListItem heroListItem) {
     Navigator.of(context).push(new PageRouteBuilder(
           pageBuilder: (context, a1, a2) => new HeroDetailContainer(
-              heroListItem.hero.heroes_companion_hero_id),
+              heroListItem.hero.hero_id),
         ));
   };
 

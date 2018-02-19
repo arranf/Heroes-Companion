@@ -10,7 +10,7 @@ class AppState {
   final List<PlayableMap> maps;
 
   /// BuildNumber => WinRates
-  final Map<String, WinRates> winRates;
+  final Map<String, List<HeroWinRate>> winRates;
   final bool isLoading;
   final bool heroBuildWinRatesLoading;
   final bool isUpdating;
@@ -40,7 +40,7 @@ class AppState {
     bool isLoading,
     List<Hero> heroes,
     List<Patch> patches,
-    Map<String, WinRates> winRates,
+    Map<String, List<HeroWinRate>> winRates,
     bool heroBuildWinRatesLoading,
     bool isUpdating,
     Map<int, Map<String, BuildWinRates>> heroBuildWinRates,
