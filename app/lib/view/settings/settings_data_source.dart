@@ -1,50 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:heroes_companion/redux/selectors/selectors.dart';
+import 'package:heroes_companion/redux/state.dart';
+import 'package:heroes_companion/services/settings_service.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-class SettingsDataSource extends StatefulWidget {
-  _SettingsDataSourceState createState() => new _SettingsDataSourceState();
-}
+import 'package:redux/redux.dart';
 
-class _SettingsDataSourceState extends State<SettingsDataSource> {
-  DataSource _dataSource = DataSource.HotsDog;
-  Settings _settings;
 
-  @override
-  void initState() {
-    super.initState();
-    DataProvider.settingsProvider.readSettings()
-    .then((Settings settings) {
-      setState(() {
-        _settings = settings;
-        _dataSource = settings.dataSource;
-      });
-    });
-  }
-
+class SettingsDataSource extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return new StoreConnector<AppState, _ViewModel>(
+      converter: (Store<AppState> store) => new _ViewModel.from(store),
+        builder: (context, vm) {
+        dynamic onChanged = (DataSource value) => vm.updateDataSource(value);
+          return new Scaffold(
+            appBar: new AppBar(
+              title: const Text('Data Source')
+            ),
+            body: new Column(
+            children: <Widget>[
+              new RadioListTile<DataSource>(
+                title: new Text(DataSource.HotsDog.name),
+                value: DataSource.HotsDog,
+                groupValue: vm.dataSource,
+                onChanged: onChanged,
+              ),
+              new RadioListTile<DataSource>(
+                title: new Text(DataSource.HotsLogs.name),
+                value: DataSource.HotsLogs,
+                groupValue: vm.dataSource,
+                onChanged: onChanged,
+              ),
+            ],
+          )
+        );
+      });
+  }
+}
 
-    dynamic onChanged = (DataSource value) { Settings settings = _settings.copyWith(dataSource: value); DataProvider.settingsProvider.writeSettings(settings); setState(() { _settings = settings; _dataSource = settings.dataSource; }); };
+class _ViewModel {
+  final DataSource dataSource;
+  final dynamic updateDataSource;
 
-    return new Scaffold(
-      appBar: new AppBar(
-        title: const Text('Data Source')
-      ),
-      body: new Column(
-      children: <Widget>[
-        new RadioListTile<DataSource>(
-          title: new Text(DataSource.HotsDog.name),
-          value: DataSource.HotsDog,
-          groupValue: _dataSource,
-          onChanged: onChanged,
-        ),
-        new RadioListTile<DataSource>(
-          title: new Text(DataSource.HotsLogs.name),
-          value: DataSource.HotsLogs,
-          groupValue: _dataSource,
-          onChanged: onChanged,
-        ),
-      ],
-    )
+  _ViewModel({this.dataSource, this.updateDataSource});
+
+  factory _ViewModel.from(Store<AppState> store){
+
+    final dynamic updateDataSource = (DataSource dataSource) {
+      Settings settings = settingsSelector(store.state);
+      updateSettings(store, settings.copyWith(dataSource: dataSource));
+    };
+
+    return new _ViewModel(
+        dataSource: dataSourceSelector(store.state),
+        updateDataSource: updateDataSource
     );
   }
 }

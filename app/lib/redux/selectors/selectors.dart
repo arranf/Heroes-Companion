@@ -186,3 +186,11 @@ String currentPatchUrlForHero(AppState state, Hero hero) {
    String currentPatchDate = currentPatchLiveDate.year.toString() + currentPatchLiveDate.month.toString().padLeft(2) + currentPatchLiveDate.day.toString().padLeft(2);
   return 'heroespatchnotes.com/hero/${hero.short_name}.html#patch$currentPatchDate';
 }
+
+Settings settingsSelector(AppState state) {
+  return state.settings;
+}
+
+DataSource dataSourceSelector(AppState state) {
+  return settingsSelector(state).dataSource;
+}
