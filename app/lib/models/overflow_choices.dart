@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:heroes_companion_data/heroes_companion_data.dart'
-    as shared_pref_keys;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OverflowChoice {
@@ -18,6 +16,7 @@ class OverflowChoice {
   static Future handleChoice(OverflowChoice choice, BuildContext context, {String patchNotesUrl}) async {
     switch (choice) {
       case About:
+        Settings settings = await DataProvider.settingsProvider.readSettings();
         TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
         tapGestureRecognizer.onTap = () async {
           const String url = 'https://hots.dog';
@@ -27,18 +26,14 @@ class OverflowChoice {
             throw new Exception('Could not launch $url');
           }
         };
-        SharedPreferences preferences = await SharedPreferences.getInstance();
-        DateTime lastUpdated =
-            DateTime.parse(preferences.getString(shared_pref_keys.update_id));
-        String patchVersion =
-            preferences.getString(shared_pref_keys.update_patch);
+        DateTime lastUpdated = settings.currentUpdateOriginTime;
         showAboutDialog(
             context: context,
             applicationName: 'Heroes Companion',
             children: [
               new Text(
                   'Last Updated ${lastUpdated.toLocal().year}-${lastUpdated.toLocal().month}-${lastUpdated.toLocal().day} ${lastUpdated.toLocal().hour.toString().padLeft(2, '0')}:${lastUpdated.toLocal().minute.toString().padLeft(2, '0')}'),
-              new Text('Current Patch Version $patchVersion'),
+              new Text('Current Patch Version ${settings.updatePatch}'),
               new RichText(
                 text: new TextSpan(
                     text: 'Powered by data from ',

@@ -14,7 +14,7 @@ import 'package:heroes_companion/view/containers/maps_home_container.dart';
 import 'package:heroes_companion/view/settings/settings.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:heroes_companion_data/heroes_companion_data.dart' hide Settings;
 
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:heroes_companion/redux/reducers/app_state.dart';
