@@ -24,8 +24,7 @@ class HeroHome extends StatelessWidget {
 
   final List<OverflowChoice> overflowChoices = [
     OverflowChoice.About,
-    OverflowChoice.PatchNotes,
-    OverflowChoice.Feedback,
+    OverflowChoice.PatchNotes
   ];
 
   @override
