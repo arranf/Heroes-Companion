@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:heroes_companion_data/src/api/DTO/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/patch_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
@@ -22,7 +22,7 @@ String _getUtf8String(http.Response response) {
   return _utf8Decoder.convert(response.bodyBytes);
 }
 
-Future<HeroesCompanionData> getRotation() async {
+Future<RotationData> getRotation() async {
   Uri uri = new Uri.https(_baseUrl, '/v1/rotation');
   http.Response response = await http.get(uri, headers: _getHeaders());
   if (response.statusCode != 200) {
@@ -30,7 +30,7 @@ Future<HeroesCompanionData> getRotation() async {
   }
 
   dynamic jsonData = JSON.decode(_getUtf8String(response));
-  return new HeroesCompanionData.fromJson(jsonData);
+  return new RotationData.fromJson(jsonData);
 }
 
 Future<UpdatePayload> getUpdate() async {

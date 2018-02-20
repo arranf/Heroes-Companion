@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:heroes_companion_data/src/api/DTO/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
 import 'package:heroes_companion_data/src/api/api.dart';
 import 'package:heroes_companion_data/src/models/settings.dart';
 import 'package:sqflite/sqflite.dart';
@@ -96,7 +96,7 @@ class HeroProvider {
         return;
       }
 
-      HeroesCompanionData data = await getRotation();
+      RotationData data = await getRotation();
       // TODO Validation of data
       //
       RegExp regExp = new RegExp(r'[^A-Za-z]+');
