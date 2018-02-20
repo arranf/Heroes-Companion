@@ -1,6 +1,5 @@
 import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
 
 class FetchHeroesFailedAction {}
 
@@ -35,18 +34,17 @@ class FetchWinRatesSucceededAction {
 
 class FetchWinRatesFailedAction {}
 
-class FetchBuildWinRatesSucceededAction {
+class FetchStatisticalHeroBuildSucceededAction {
   final String buildNumber;
-  final BuildWinRates buildWinRates;
+  final List<StatisticalHeroBuild> statisticalBuilds;
   final int heroId;
 
-  FetchBuildWinRatesSucceededAction(
-      this.buildWinRates, this.heroId, this.buildNumber);
+  FetchStatisticalHeroBuildSucceededAction(this.statisticalBuilds, this.heroId, this.buildNumber);
 }
 
-class FetchBuildWinRatesFailedAction {}
+class FetchStatisticalHeroBuildFailedAction {}
 
-class BuildWinRatesStartLoadingAction {}
+class StatisticalHeroBuildStartLoadingAction {}
 
 class SetSearchQueryAction {
   final String searchQuery;

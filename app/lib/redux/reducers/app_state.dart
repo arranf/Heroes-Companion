@@ -19,10 +19,10 @@ AppState appReducer(AppState state, action) {
       heroes: heroesReducer(state.heroes, action),
       patches: patchesReducer(state.patches, action),
       winRates: winRatesReducer(state.winRates, action),
-      heroBuildWinRates:
-          heroesBuildWinRatesReducer(state.heroBuildWinRates, action),
-      heroBuildWinRatesLoading: heroesBuildWinRatesloadingReducer(
-          state.heroBuildWinRatesLoading, action),
+      heroStatisticalBuildsByPatchNumber:
+          heroesStatisticalBuildsReducer(state.heroStatisticalBuildsByPatchNumber, action),
+      staticialBuildsLoading: heroStatisticialBuildsLoadingReducer(
+          state.staticialBuildsLoading, action),
       searchQuery: searchQueryReducer(state.searchQuery, action),
       isUpdating: isUpdatingloadingReducer(state.isUpdating, action),
       filter: filterReducer(state.filter, action),

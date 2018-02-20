@@ -19,8 +19,7 @@ class DataProvider {
   static WinRateProvider winRateProvider = new WinRateProvider();
   static SettingsProvider settingsProvider = new SettingsProvider();
   static PatchProvider patchProvider;
-  static BuildWinRatesProvider buildWinRatesProvider =
-      new BuildWinRatesProvider();
+  static BuildProvider buildProvider = new BuildProvider();
   static UpdateProvider updateProvider;
   static MapProvider mapProvider;
   static Database _database;

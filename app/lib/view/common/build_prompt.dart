@@ -1,4 +1,3 @@
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/material.dart';
 
 class BuildPrompt extends StatelessWidget {

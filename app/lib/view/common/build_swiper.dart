@@ -1,21 +1,15 @@
-import 'dart:async';
-
-
 import 'package:screen/screen.dart';
 import 'package:flutter/material.dart' hide Hero;
-import 'package:flutter/services.dart';
-import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion/view/common/talent_card.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
 
 class BuildSwiper extends StatefulWidget {
   final Hero hero;
-  final BuildStatistics buildWinRates;
+  final HeroBuild build;
 
   BuildSwiper(
     this.hero,
-    this.buildWinRates, {
+    this.build, {
     key,
   })
       : super(key: key);
@@ -33,7 +27,7 @@ class _BuildSwiperState extends State<BuildSwiper>
     super.initState();
     Screen.keepOn(true);
     _tabController = new TabController(
-        vsync: this, length: widget.buildWinRates.talents_names.length);
+        vsync: this, length: widget.build.talentNames.length);
   }
 
   @override
@@ -86,7 +80,7 @@ class _BuildSwiperState extends State<BuildSwiper>
                 key: new Key('${widget.hero.name}_swiper_tab_bar_view'),
                 controller: _tabController,
                 children:
-                    widget.buildWinRates.talents_names.map((String talentName) {
+                    widget.build.talentNames.map((String talentName) {
                   Talent talent = widget.hero.talents
                       .firstWhere((Talent t) => t.talent_tree_id == talentName);
                   return new TalentCard(talent, key: new Key(talentName));

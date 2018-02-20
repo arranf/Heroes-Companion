@@ -8,7 +8,6 @@ import 'package:heroes_companion/view/common/build_swiper.dart';
 import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
 import 'package:meta/meta.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -17,7 +16,7 @@ class HeroDetail extends StatefulWidget {
   final bool isCurrentBuild;
   final bool canOfferPreviousBuild;
   final HeroWinRate heroWinRate;
-  final BuildWinRates buildWinRates;
+  final List<StatisticalHeroBuild> statisticalBuilds;
   final dynamic favorite;
   final dynamic buildSwitch;
   final Patch patch;
@@ -29,7 +28,7 @@ class HeroDetail extends StatefulWidget {
     @required this.canOfferPreviousBuild,
     @required this.favorite,
     this.heroWinRate,
-    this.buildWinRates,
+    this.statisticalBuilds,
     this.isCurrentBuild,
     this.buildSwitch,
     this.patch,
@@ -217,11 +216,11 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
     );
   }
 
-  void _playBuild(BuildContext context, BuildStatistics buildStatistics) {
+  void _playBuild(BuildContext context, StatisticalHeroBuild statisticalBuild) {
     Navigator.of(context).push(new PageRouteBuilder(
                               pageBuilder: (context, a1, a2) => new BuildSwiper(
                                     widget.hero,
-                                    buildStatistics,
+                                    statisticalBuild.build,
                                     key: new Key(
                                         '${widget.hero.name}_${build.hashCode}_build_swiper'),
                                   ),
@@ -229,47 +228,24 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
   }
 
   Widget _buildTalentCards(BuildContext context) {
-    if (widget.buildWinRates != null) {
-      // Map of build to build 'type'
-      Map<BuildStatistics, String> classifiedBuilds = {};
-
-      if (widget.buildWinRates.winning_builds != null) {
-        List<BuildStatistics> interestingWinningBuilds =
-            new List<BuildStatistics>.from(widget.buildWinRates.winning_builds
-                .where((b) => b.talents_names.length == 7 && b.win_rate > 0.0));
-        if (interestingWinningBuilds.length > 0) {
-          interestingWinningBuilds.forEach((BuildStatistics build) => classifiedBuilds[build] = 'Winning Build');
-        }
-      }
-
-      if (widget.buildWinRates.popular_builds != null) {
-        List<BuildStatistics> interestingPopularBuilds =
-            new List<BuildStatistics>.from(widget.buildWinRates.popular_builds
-                .where((b) => b.talents_names.length == 7 && b.win_rate > 0.0));
-        if (interestingPopularBuilds.length > 0) {
-          interestingPopularBuilds.forEach((BuildStatistics build) => classifiedBuilds[build] = 'Popular Build');
-        }
-      }
+    if (widget.statisticalBuilds != null && widget.statisticalBuilds.isNotEmpty) {
 
       // Prevent duplicates (builds in popular *and* winning)
-      List<BuildStatistics> builds = classifiedBuilds.keys.toSet().toList();
+      List<StatisticalHeroBuild> builds = widget.statisticalBuilds
+        .where((StatisticalHeroBuild b) => b.build.talentNames.length == 7 && b.winRate > 0.0)
+        .toSet()
+        .toList();
       // Sort builds by games played
       if (buildSort == BuildSort.playrate)
       {
-        builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.total_games_played.compareTo(b.total_games_played));
+        builds.sort((StatisticalHeroBuild a, StatisticalHeroBuild b) => -1 * a.gamesPlayed.compareTo(b.gamesPlayed));
       } else {
-        builds.sort((BuildStatistics a, BuildStatistics b) => -1 * a.win_rate.compareTo(b.win_rate));
-      }
-
-
-      // Show empty state if there are no builds
-      if (builds.isEmpty) {
-        return new EmptyState(Icons.error_outline, title: 'No Data Available', description: 'No statistical data found for this hero');
+        builds.sort((StatisticalHeroBuild a, StatisticalHeroBuild b) => -1 * a.winRate.compareTo(b.winRate));
       }
       
       return new ListView(
         key: new Key(widget.hero.name + '_talent_rows'),
-        children: builds.map((BuildStatistics b) => new BuildCard(b, classifiedBuilds[b], _playBuild, widget.hero, showTalentBottomSheet)).toList()
+        children: builds.map((StatisticalHeroBuild b) => new BuildCard(b, b.label, _playBuild, widget.hero, showTalentBottomSheet)).toList()
       );
     }
     return new EmptyState(Icons.error_outline, title: 'No Data Available', description: 'No statistical data found for this hero');

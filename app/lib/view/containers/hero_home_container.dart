@@ -102,8 +102,9 @@ class _ViewModel {
   };
 
   _ViewModel(
-      {@required this.heroes,
-      @required this.loading,
+      {
+      this.heroes,
+      this.loading,
       this.patchNotesUrl,
       this.onLongPress,
       this.bottomNavTap,

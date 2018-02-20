@@ -1,8 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:heroes_companion/icons.dart' as HeroesIcons;
 
 class MapListItem extends StatelessWidget {
   final dynamic onTap;

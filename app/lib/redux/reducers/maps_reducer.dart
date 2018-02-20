@@ -1,7 +1,6 @@
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
-import 'package:flutter/foundation.dart';
 
 final mapsReducer = combineTypedReducers<List<PlayableMap>>([
   new ReducerBinding<List<PlayableMap>, FetchMapsSucceededAction>(
