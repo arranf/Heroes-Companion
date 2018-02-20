@@ -24,8 +24,7 @@ class HeroHome extends StatelessWidget {
 
   final List<OverflowChoice> overflowChoices = [
     OverflowChoice.About,
-    OverflowChoice.PatchNotes,
-    OverflowChoice.Feedback,
+    OverflowChoice.PatchNotes
   ];
 
   @override
@@ -98,7 +97,7 @@ class _ViewModel {
   final Function onTap = (BuildContext context, HeroListItem heroListItem) {
     Navigator.of(context).push(new PageRouteBuilder(
           pageBuilder: (context, a1, a2) => new HeroDetailContainer(
-              heroListItem.hero.heroes_companion_hero_id),
+              heroListItem.hero.hero_id),
         ));
   };
 

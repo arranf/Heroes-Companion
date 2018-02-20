@@ -27,7 +27,7 @@ class FetchPatchesSucceededAction {
 class FetchPatchesFailedAction {}
 
 class FetchWinRatesSucceededAction {
-  final WinRates winRates;
+  final List<HeroWinRate> winRates;
   final String buildNumber;
 
   FetchWinRatesSucceededAction(this.winRates, this.buildNumber);
@@ -38,10 +38,10 @@ class FetchWinRatesFailedAction {}
 class FetchBuildWinRatesSucceededAction {
   final String buildNumber;
   final BuildWinRates buildWinRates;
-  final int heroCompanionId;
+  final int heroId;
 
   FetchBuildWinRatesSucceededAction(
-      this.buildWinRates, this.heroCompanionId, this.buildNumber);
+      this.buildWinRates, this.heroId, this.buildNumber);
 }
 
 class FetchBuildWinRatesFailedAction {}
@@ -73,3 +73,11 @@ class FetchMapsSucceededAction {
 
   FetchMapsSucceededAction(this.maps);
 }
+
+class UpdateSettingsAction {
+  final Settings settings;
+
+  UpdateSettingsAction(this.settings);
+}
+
+

@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:heroes_companion_data/src/api/DTO/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/hots_log_winrate.dart';
+import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/patch_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
@@ -22,7 +23,7 @@ String _getUtf8String(http.Response response) {
   return _utf8Decoder.convert(response.bodyBytes);
 }
 
-Future<HeroesCompanionData> getRotation() async {
+Future<RotationData> getRotation() async {
   Uri uri = new Uri.https(_baseUrl, '/v1/rotation');
   http.Response response = await http.get(uri, headers: _getHeaders());
   if (response.statusCode != 200) {
@@ -30,7 +31,7 @@ Future<HeroesCompanionData> getRotation() async {
   }
 
   dynamic jsonData = JSON.decode(_getUtf8String(response));
-  return new HeroesCompanionData.fromJson(jsonData);
+  return new RotationData.fromJson(jsonData);
 }
 
 Future<UpdatePayload> getUpdate() async {
@@ -65,7 +66,7 @@ Future<UpdateInfo> getUpdateInfo() async {
 }
 
 Future<List<PatchData>> getPatchData() async {
-  Uri uri = new Uri.https(_baseUrl, '/v1/patches');
+  Uri uri = new Uri.https(_baseUrl, '/v2/patches');
 
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
@@ -86,5 +87,30 @@ Future<List<PatchData>> getPatchData() async {
     return patchData;
   } catch (e) {
     throw new Exception('Failed to fetch patch data' + e.message);
+  }
+}
+
+Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs');
+
+  try {
+    http.Response response = await http.get(uri, headers: _getHeaders());
+    if (response.statusCode != 200) {
+      return null;
+    }
+
+    dynamic json = JSON.decode(_getUtf8String(response));
+    if (!(json is List && json[0] is Map)) {
+      throw new Exception(
+          'Unexpected JSON format encounted fetching patch data');
+    }
+    List<HotsLogsWinrate> winRates = new List();
+    List<Object> jsonArray = json;
+    jsonArray.forEach((patchInfo) {
+      winRates.add(new HotsLogsWinrate.fromJson(patchInfo));
+    });
+    return winRates;
+  } catch (e) {
+    throw new Exception('Failed to fetch hots log winrates' + e.message);
   }
 }

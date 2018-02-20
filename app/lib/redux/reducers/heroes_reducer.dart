@@ -20,7 +20,7 @@ List<Hero> _setNoHeroes(List<Hero> hero, FetchHeroesFailedAction action) {
 List<Hero> _updateHero(List<Hero> heroes, UpdateHeroAction action) {
   return heroes
       .map((Hero hero) =>
-          hero.heroes_companion_hero_id == action.hero.heroes_companion_hero_id
+          hero.hero_id == action.hero.hero_id
               ? action.hero
               : hero)
       .toList();

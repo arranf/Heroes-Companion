@@ -11,9 +11,10 @@ class Patch {
   final String fullVersion;
   final DateTime liveDate;
   final String patchNotesUrl;
+  final String hotsDogId;
 
   Patch(this.patchName, this.officialLink, this.alternateLink, this.patchType,
-      this.gameVersion, this.fullVersion, this.liveDate, this.patchNotesUrl,
+      this.gameVersion, this.fullVersion, this.liveDate, this.patchNotesUrl, this.hotsDogId,
       {this.id});
 
   factory Patch.from(PatchData patchData) {
@@ -25,7 +26,8 @@ class Patch {
         patchData.gameVersion,
         patchData.fullVersion,
         patchData.liveDate,
-        patchData.patchNotesUrl);
+        patchData.patchNotesUrl,
+        patchData.hotsDogId);
   }
 
   factory Patch.fromMap(Map map) {
@@ -40,7 +42,7 @@ class Patch {
     String patchNotesUrl = map[table.column_patch_notes_url];
 
     return new Patch(patchName, officialLink, alternateLink, patchType,
-        gameVersion, fullVersion, liveDate, patchNotesUrl,
+        gameVersion, fullVersion, liveDate, patchNotesUrl, table.column_hots_dog_id,
         id: id);
   }
 
@@ -55,6 +57,7 @@ class Patch {
       table.column_full_version: fullVersion,
       table.column_live_date: liveDate.toIso8601String(),
       table.column_patch_notes_url: patchNotesUrl,
+      table.column_hots_dog_id: hotsDogId,
     };
     return map;
   }

@@ -10,10 +10,10 @@ void getHeroCurrentBuildWinRates(Store<AppState> store, Hero hero) {
   store.dispatch(new BuildWinRatesStartLoadingAction());
   Patch patch = currentBuildSelector(store.state);
   DataProvider.buildWinRatesProvider
-      .getBuildWinRates(patch.fullVersion, hero.name)
+      .getBuildWinRates(patch.hotsDogId, hero.name)
       .then((buildWinRates) => store.dispatch(
           new FetchBuildWinRatesSucceededAction(
-              buildWinRates, hero.heroes_companion_hero_id, patch.fullVersion)))
+              buildWinRates, hero.hero_id, patch.fullVersion)))
       .catchError((dynamic e) {
           new ExceptionService()
           .reportError(e);
@@ -22,13 +22,13 @@ void getHeroCurrentBuildWinRates(Store<AppState> store, Hero hero) {
 }
 
 void getHeroBuildWinRates(
-    Store<AppState> store, Hero hero, String buildNumber) {
+    Store<AppState> store, Hero hero, Patch patch) {
   store.dispatch(new BuildWinRatesStartLoadingAction());
   DataProvider.buildWinRatesProvider
-      .getBuildWinRates(buildNumber, hero.name)
+      .getBuildWinRates(patch.hotsDogId, hero.name)
       .then((buildWinRates) => store.dispatch(
           new FetchBuildWinRatesSucceededAction(
-              buildWinRates, hero.heroes_companion_hero_id, buildNumber)))
+              buildWinRates, hero.hero_id, patch.fullVersion)))
       .catchError((dynamic e) {
         new ExceptionService()
         .reportError(e);

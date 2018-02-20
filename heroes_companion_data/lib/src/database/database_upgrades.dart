@@ -10,6 +10,8 @@ import 'package:heroes_companion_data/src/tables/talent_table.dart'
 
 import 'package:heroes_companion_data/src/tables/map_table.dart' as map_table;
 
+import 'package:heroes_companion_data/src/tables/patch_table.dart' as patch_table;
+
 import 'package:flutter/foundation.dart';
 
 Future upgradeTo2(Database database) async {
@@ -132,6 +134,21 @@ Future upgradeTo9(Database database) async {
       batch.insert(map_table.table_name, map.toMap());
   }
   await batch.commit(exclusive: true, noResult: true);
+}
+
+Future upgradeTo10 (Database database) async {
+  await database.execute(
+    '''
+    DELETE FROM ${patch_table.table_name};
+    '''
+  );
+
+  await database.execute(
+    '''
+    ALTER TABLE ${patch_table.table_name}
+    ADD COLUMN ${patch_table.column_hots_dog_id} TEXT
+    '''
+  );
 }
 
 

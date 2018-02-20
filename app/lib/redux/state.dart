@@ -10,15 +10,17 @@ class AppState {
   final List<PlayableMap> maps;
 
   /// BuildNumber => WinRates
-  final Map<String, WinRates> winRates;
+  final Map<String, List<HeroWinRate>> winRates;
   final bool isLoading;
   final bool heroBuildWinRatesLoading;
   final bool isUpdating;
 
-  /// heroCompanionId => <BuildNumber, BuildWinRates>
+  /// heroId => <BuildNumber, BuildWinRates>
   final Map<int, Map<String, BuildWinRates>> heroBuildWinRates;
   final String searchQuery;
   final HeroFilter filter;
+
+  final Settings settings;
 
   AppState({
     this.maps,
@@ -30,7 +32,8 @@ class AppState {
     this.winRates,
     this.heroBuildWinRates,
     this.searchQuery = '',
-    this.filter = HeroFilter.all
+    this.filter = HeroFilter.all,
+    this.settings
   });
 
   factory AppState.initial() => new AppState(
@@ -40,13 +43,14 @@ class AppState {
     bool isLoading,
     List<Hero> heroes,
     List<Patch> patches,
-    Map<String, WinRates> winRates,
+    Map<String, List<HeroWinRate>> winRates,
     bool heroBuildWinRatesLoading,
     bool isUpdating,
     Map<int, Map<String, BuildWinRates>> heroBuildWinRates,
     String searchQuery,
     HeroFilter filter,
     List<PlayableMap> maps,
+    Settings settings,
   }) {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,
@@ -59,6 +63,7 @@ class AppState {
       searchQuery: searchQuery ?? this.searchQuery,
       filter: filter ?? this.filter,
       maps: maps ?? this.filter,
+      settings: settings ?? this.settings,
     );
   }
 

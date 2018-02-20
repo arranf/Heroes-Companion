@@ -1,3 +1,4 @@
-final String update_id = "UPDATE_ID";
-final String next_rotation_date = "NEXT_ROTATION_DATE";
-final String update_patch = "UPDATE_PATCH";
+const String update_id = "UPDATE_ID";
+const String update_patch = "UPDATE_PATCH";
+const String next_rotation_date = "NEXT_ROTATION_DATE";
+const String data_source = "DATA_SOURCE";

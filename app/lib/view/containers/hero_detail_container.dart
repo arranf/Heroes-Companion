@@ -13,43 +13,39 @@ import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
 class HeroDetailContainer extends StatefulWidget {
-  final int heroesCompanionId;
+  final int heroId;
 
   @override
   _HeroDetailContainerState createState() =>
-      new _HeroDetailContainerState(heroesCompanionId);
+      new _HeroDetailContainerState();
 
-  HeroDetailContainer(this.heroesCompanionId)
+  HeroDetailContainer(this.heroId)
       : super(
             key: new Key(
-                Routes.heroDetail + '_' + heroesCompanionId.toString()));
+                Routes.heroDetail + '_' + heroId.toString()));
 }
 
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
   bool _isCurrentBuild = true;
-  final int _heroesCompanionId;
-  String _buildNumber = '';
-
-  _HeroDetailContainerState(this._heroesCompanionId);
+  Patch _build;
 
   void fetchData(Store<dynamic> store) {
     if (isAppLoading(store.state)) {
       return;
     }
-    _buildNumber = (_isCurrentBuild
+    _build = (_isCurrentBuild
             ? currentBuildSelector(store.state)
-            : previousBuildSelector(store.state))
-        .fullVersion;
-    if (winRatesByBuildNumber(store.state, _buildNumber).isNotPresent) {
-      getWinRatesForBuild(store, _buildNumber);
+            : previousBuildSelector(store.state));
+    if (winRatesByBuildNumber(store.state, _build.fullVersion).isNotPresent) {
+      getWinRatesForBuild(store, _build);
     }
-    Optional<Hero> hero = heroSelectorByCompanionId(
-        heroesSelector(store.state), _heroesCompanionId);
+    Optional<Hero> hero = heroSelectorByHeroId(
+        heroesSelector(store.state), widget.heroId);
     if (hero.isPresent &&
-        buildWinRatesByCompanionIdAndBuildNumber(
-                store.state, hero.value.heroes_companion_hero_id, _buildNumber)
+        buildWinRatesByHeroIdAndBuildNumber(
+                store.state, hero.value.hero_id, _build.fullVersion)
             .isNotPresent) {
-      getHeroBuildWinRates(store, hero.value, _buildNumber);
+      getHeroBuildWinRates(store, hero.value, _build);
     }
   }
 
@@ -59,23 +55,20 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     builder: (context, store) {
       fetchData(store);
       _ViewModel vm =
-          new _ViewModel.from(store, _heroesCompanionId, _buildNumber);
+          new _ViewModel.from(store, widget.heroId, _build);
       return new HeroDetail(vm.hero,
           key: new Key(vm.hero.short_name),
           favorite: vm.favorite,
           canOfferPreviousBuild: vm.hero.last_modified != null && vm.previousBuild.liveDate.isAfter(vm.hero.last_modified),
-          winLossCount: vm.winLossCount,
+          heroWinRate: vm.heroWinRate,
           buildWinRates: vm.buildWinRates,
           isCurrentBuild: _isCurrentBuild,
-          buildNumber: _buildNumber, 
           heroPatchNotesUrl: vm.heroPatchNotesUrl,
           patch: (_isCurrentBuild ? vm.currentBuild : vm.previousBuild),
           buildSwitch: () {
-            print(vm.previousBuild.fullVersion);
             setState(() {
               _isCurrentBuild = !_isCurrentBuild;
-              _buildNumber = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild)
-                  .fullVersion;
+              _build = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild);
             });
         });
     });
@@ -85,7 +78,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
 class _ViewModel {
   final Hero hero;
   final dynamic favorite;
-  final WinLossCount winLossCount;
+  final HeroWinRate heroWinRate;
   final BuildWinRates buildWinRates;
   final Patch currentBuild;
   final Patch previousBuild;
@@ -94,31 +87,30 @@ class _ViewModel {
   _ViewModel(
       {@required this.hero,
       @required this.favorite,
-      this.winLossCount,
+      this.heroWinRate,
       this.buildWinRates,
       this.currentBuild,
       this.previousBuild,
       this.heroPatchNotesUrl});
 
-  factory _ViewModel.from(Store<AppState> store, int id, String buildNumber) {
+  factory _ViewModel.from(Store<AppState> store, int id, Patch build) {
     final dynamic _favorite = (Hero hero) {
       hero.is_favorite ? unFavorite(store, hero) : setFavorite(store, hero);
     };
 
-    final hero = heroSelectorByCompanionId(heroesSelector(store.state), id);
+    final hero = heroSelectorByHeroId(heroesSelector(store.state), id);
     if (hero.isNotPresent) {
       throw new Exception('No hero when optional unwrapped');
     }
-    // TODO Wrap win loss count to have a sensible model in app
-    final winLossCount =
-        winLossCountByCompanionIdAndBuildNumber(store.state, id, buildNumber);
+    
+    final heroWinRate = heroWinRateByHeroIdAndBuildNumber(store.state, id, build.fullVersion);
     final buildWinRates =
-        buildWinRatesByCompanionIdAndBuildNumber(store.state, id, buildNumber);
+        buildWinRatesByHeroIdAndBuildNumber(store.state, id, build.fullVersion);
     final String heroPatchNotesUrl = currentPatchUrlForHero(store.state, hero.value);
     return new _ViewModel(
       hero: hero.value,
       favorite: _favorite,
-      winLossCount: winLossCount.isPresent ? winLossCount.value : null,
+      heroWinRate: heroWinRate.isPresent ? heroWinRate.value : null,
       buildWinRates: buildWinRates.isPresent ? buildWinRates.value : null,
       currentBuild: currentBuildSelector(store.state),
       previousBuild: previousBuildSelector(store.state),

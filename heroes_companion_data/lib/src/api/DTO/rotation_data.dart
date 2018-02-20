@@ -1,10 +1,10 @@
-class HeroesCompanionData {
+class RotationData {
   final DateTime rotationEnd;
   final List<String> heroes;
 
-  HeroesCompanionData(this.rotationEnd, this.heroes);
+  RotationData(this.rotationEnd, this.heroes);
 
-  factory HeroesCompanionData.fromJson(Object json) {
+  factory RotationData.fromJson(Object json) {
     if (!(json is Map)) {
       throw new Exception('Unexpected JSON format');
     }
@@ -18,6 +18,6 @@ class HeroesCompanionData {
         .where((hero) => hero['isFreeToPlay'])
         .map((hero) => hero['name'])
         .toList();
-    return new HeroesCompanionData(rotationEnd, heroes);
+    return new RotationData(rotationEnd, heroes);
   }
 }
