@@ -7,6 +7,7 @@ import 'package:heroes_companion/redux/reducers/search_query_reducer.dart';
 import 'package:heroes_companion/redux/reducers/is_updating.dart';
 import 'package:heroes_companion/redux/reducers/filter_reducer.dart';
 import 'package:heroes_companion/redux/reducers/maps_reducer.dart';
+import 'package:heroes_companion/redux/reducers/settings_reducer.dart';
 
 import 'package:heroes_companion/redux/reducers/heroes_build_win_rates_loading.dart';
 import 'package:heroes_companion/redux/state.dart';
@@ -25,6 +26,7 @@ AppState appReducer(AppState state, action) {
       searchQuery: searchQueryReducer(state.searchQuery, action),
       isUpdating: isUpdatingloadingReducer(state.isUpdating, action),
       filter: filterReducer(state.filter, action),
-      maps: mapsReducer(state.maps, action)
+      maps: mapsReducer(state.maps, action),
+      settings: settingsReducer(state.settings, action),
     );
 }

@@ -55,6 +55,11 @@ class SettingsProvider {
       preferences.setString(pref_keys.update_patch, settings.updatePatch);
     }
 
+    if (_settings.dataSource != settings.dataSource) {
+      preferences.setString(pref_keys.data_source, settings.dataSource.name);
+      print('Wrote data source');
+    }
+
     _settings = settings;
   }
 }

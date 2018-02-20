@@ -1,6 +1,6 @@
 class DataSource {
   static const String _hotsDog = 'hots.dog';
-  static const String _hotsLogs = 'hotslogs';
+  static const String _hotsLogs = 'hotslogs.com';
   static const HotsDog = const DataSource(_hotsDog);
   static const HotsLogs = const DataSource(_hotsLogs);
   final String name;

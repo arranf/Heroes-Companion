@@ -8,6 +8,7 @@ class Routes {
   static const search = '/search';
   static final searchKey = new Key(search);
   static final maps = '/maps';
-  static final settings = '/settings';
   static final mapsKey = new Key(maps);
+  static final settings = '/settings';
+  static final settingsDataSource = '/settings/data_source';
 }

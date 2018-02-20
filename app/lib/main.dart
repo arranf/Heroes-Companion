@@ -12,6 +12,7 @@ import 'package:heroes_companion/view/containers/hero_home_container.dart';
 import 'package:heroes_companion/view/containers/hero_search_container.dart';
 import 'package:heroes_companion/view/containers/maps_home_container.dart';
 import 'package:heroes_companion/view/settings/settings.dart';
+import 'package:heroes_companion/view/settings/settings_data_source.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart' hide Settings;
@@ -107,9 +108,8 @@ class App extends StatelessWidget {
                   },
                 );
               },
-              Routes.settings: (BuildContext context) {
-                return new Settings();
-              }
+              Routes.settings: (BuildContext context) => new Settings(),
+              Routes.settingsDataSource: (BuildContext context) => new SettingsDataSource(),
             }),
       );
 }

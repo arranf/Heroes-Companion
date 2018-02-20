@@ -8,11 +8,12 @@ class Settings {
 
   Settings(this.currentUpdateOriginTime, this.nextRotationDate, this.updatePatch, this.dataSource);
 
-  Settings copyWith({DateTime currentUpdateOriginTime, DateTime nextRotationDate, String updatePatch}) {
-    return new Settings(currentUpdateOriginTime ?? this.currentUpdateOriginTime, 
-    nextRotationDate ?? this.nextRotationDate, 
-    updatePatch ?? this.updatePatch,
-    dataSource ?? this.dataSource,
+  Settings copyWith({DateTime currentUpdateOriginTime, DateTime nextRotationDate, String updatePatch, DataSource dataSource}) {
+    return new Settings(
+      currentUpdateOriginTime ?? this.currentUpdateOriginTime, 
+      nextRotationDate ?? this.nextRotationDate, 
+      updatePatch ?? this.updatePatch,
+      dataSource ?? this.dataSource,
     );
   }
 }

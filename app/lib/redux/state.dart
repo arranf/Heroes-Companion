@@ -20,6 +20,8 @@ class AppState {
   final String searchQuery;
   final HeroFilter filter;
 
+  final Settings settings;
+
   AppState({
     this.maps,
     this.isLoading = false,
@@ -30,7 +32,8 @@ class AppState {
     this.winRates,
     this.heroBuildWinRates,
     this.searchQuery = '',
-    this.filter = HeroFilter.all
+    this.filter = HeroFilter.all,
+    this.settings
   });
 
   factory AppState.initial() => new AppState(
@@ -47,6 +50,7 @@ class AppState {
     String searchQuery,
     HeroFilter filter,
     List<PlayableMap> maps,
+    Settings settings,
   }) {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,
@@ -59,6 +63,7 @@ class AppState {
       searchQuery: searchQuery ?? this.searchQuery,
       filter: filter ?? this.filter,
       maps: maps ?? this.filter,
+      settings: settings ?? this.settings,
     );
   }
 

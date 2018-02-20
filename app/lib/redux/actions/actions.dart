@@ -73,3 +73,11 @@ class FetchMapsSucceededAction {
 
   FetchMapsSucceededAction(this.maps);
 }
+
+class UpdateSettingsAction {
+  final Settings settings;
+
+  UpdateSettingsAction(this.settings);
+}
+
+

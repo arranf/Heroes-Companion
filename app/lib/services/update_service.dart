@@ -8,8 +8,6 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:redux/redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:heroes_companion_data/heroes_companion_data.dart'
-    as pref_keys;
 
 Future tryUpdate(Store<AppState> store) {
   return new Future.sync(() {
