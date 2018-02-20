@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:heroes_companion_data/src/api/DTO/hots_log_winrate.dart';
 import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/patch_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
@@ -86,5 +87,30 @@ Future<List<PatchData>> getPatchData() async {
     return patchData;
   } catch (e) {
     throw new Exception('Failed to fetch patch data' + e.message);
+  }
+}
+
+Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs');
+
+  try {
+    http.Response response = await http.get(uri, headers: _getHeaders());
+    if (response.statusCode != 200) {
+      return null;
+    }
+
+    dynamic json = JSON.decode(_getUtf8String(response));
+    if (!(json is List && json[0] is Map)) {
+      throw new Exception(
+          'Unexpected JSON format encounted fetching patch data');
+    }
+    List<HotsLogsWinrate> winRates = new List();
+    List<Object> jsonArray = json;
+    jsonArray.forEach((patchInfo) {
+      winRates.add(new HotsLogsWinrate.fromJson(patchInfo));
+    });
+    return winRates;
+  } catch (e) {
+    throw new Exception('Failed to fetch hots log winrates' + e.message);
   }
 }

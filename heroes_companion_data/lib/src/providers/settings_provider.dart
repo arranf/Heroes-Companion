@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:heroes_companion_data/src/models/data_source.dart';
 import 'package:heroes_companion_data/src/models/settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:heroes_companion_data/src/shared_preferences_keys.dart'
@@ -28,7 +29,9 @@ class SettingsProvider {
     DateTime rotationDate = unparsedRotationDate.isEmpty ? new DateTime(1970)
           : DateTime.parse(unparsedRotationDate);
 
-    _settings = new Settings(currentUpdateOriginTime, rotationDate, updatePatchVersion);
+    DataSource dataSource = DataSource.fromString(preferences.getString(pref_keys.data_source));
+
+    _settings = new Settings(currentUpdateOriginTime, rotationDate, updatePatchVersion, dataSource);
 
     return _settings;
   }

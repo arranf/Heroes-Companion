@@ -7,6 +7,7 @@ export 'src/models/playable_map.dart';
 export 'src/models/patch.dart';
 export 'src/models/settings.dart';
 export 'src/models/hero_win_rate.dart';
+export 'src/models/data_source.dart';
 
 export 'src/data_provider.dart';
 
