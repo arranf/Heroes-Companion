@@ -25,7 +25,7 @@ class BuildProvider {
       if (hotslogsBuilds == null) {
         throw new Exception('API call to fetch hotslogs builds failed');
       }
-      return hotslogsBuilds.map((b) => new StatisticalHeroBuild.fromHotsLogBuild(b, heroId));
+      return hotslogsBuilds.map((b) => new StatisticalHeroBuild.fromHotsLogBuild(b, heroId)).toList();
     });
   }
 
