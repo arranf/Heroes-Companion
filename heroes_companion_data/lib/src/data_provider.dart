@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:heroes_companion_data/src/database/database_client.dart';
 import 'package:heroes_companion_data/src/providers/ability_provider.dart';
-import 'package:heroes_companion_data/src/providers/build_win_rates_provider.dart';
+import 'package:heroes_companion_data/src/providers/builds_provider.dart';
 import 'package:heroes_companion_data/src/providers/hero_provider.dart';
 import 'package:heroes_companion_data/src/providers/map_provider.dart';
 import 'package:heroes_companion_data/src/providers/patch_provider.dart';
@@ -19,8 +19,7 @@ class DataProvider {
   static WinRateProvider winRateProvider = new WinRateProvider();
   static SettingsProvider settingsProvider = new SettingsProvider();
   static PatchProvider patchProvider;
-  static BuildWinRatesProvider buildWinRatesProvider =
-      new BuildWinRatesProvider();
+  static BuildProvider buildProvider = new BuildProvider();
   static UpdateProvider updateProvider;
   static MapProvider mapProvider;
   static Database _database;

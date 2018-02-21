@@ -1,7 +1,6 @@
 import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
 
 @immutable
 class AppState {
@@ -12,11 +11,11 @@ class AppState {
   /// BuildNumber => WinRates
   final Map<String, List<HeroWinRate>> winRates;
   final bool isLoading;
-  final bool heroBuildWinRatesLoading;
+  final bool staticialBuildsLoading;
   final bool isUpdating;
 
-  /// heroId => <BuildNumber, BuildWinRates>
-  final Map<int, Map<String, BuildWinRates>> heroBuildWinRates;
+  /// heroId => <BuildNumber, StatisticalHeroBuild>
+  final Map<int, Map<String, List<StatisticalHeroBuild>>> heroStatisticalBuildsByPatchNumber;
   final String searchQuery;
   final HeroFilter filter;
 
@@ -25,28 +24,28 @@ class AppState {
   AppState({
     this.maps,
     this.isLoading = false,
-    this.heroBuildWinRatesLoading = false,
+    this.staticialBuildsLoading = false,
     this.isUpdating = false,
     this.heroes,
     this.patches,
     this.winRates,
-    this.heroBuildWinRates,
+    this.heroStatisticalBuildsByPatchNumber,
     this.searchQuery = '',
     this.filter = HeroFilter.all,
     this.settings
   });
 
   factory AppState.initial() => new AppState(
-      isLoading: true, heroBuildWinRatesLoading: false, isUpdating: false);
+      isLoading: true, staticialBuildsLoading: false, isUpdating: false);
 
   AppState copyWith({
     bool isLoading,
     List<Hero> heroes,
     List<Patch> patches,
     Map<String, List<HeroWinRate>> winRates,
-    bool heroBuildWinRatesLoading,
+    bool staticialBuildsLoading,
     bool isUpdating,
-    Map<int, Map<String, BuildWinRates>> heroBuildWinRates,
+    Map<int, Map<String, List<StatisticalHeroBuild>>> statisticalBuilds,
     String searchQuery,
     HeroFilter filter,
     List<PlayableMap> maps,
@@ -58,8 +57,8 @@ class AppState {
       patches: patches ?? this.patches,
       winRates: winRates ?? this.winRates,
       isUpdating: isUpdating ?? this.isUpdating,
-      heroBuildWinRatesLoading: heroBuildWinRatesLoading ?? this.heroBuildWinRatesLoading,
-      heroBuildWinRates: heroBuildWinRates ?? this.heroBuildWinRates,
+      staticialBuildsLoading: staticialBuildsLoading ?? this.staticialBuildsLoading,
+      heroStatisticalBuildsByPatchNumber: statisticalBuilds ?? this.heroStatisticalBuildsByPatchNumber,
       searchQuery: searchQuery ?? this.searchQuery,
       filter: filter ?? this.filter,
       maps: maps ?? this.filter,
@@ -75,8 +74,8 @@ class AppState {
       heroes.hashCode ^
       patches.hashCode ^
       winRates.hashCode ^
-      heroBuildWinRatesLoading.hashCode ^
-      heroBuildWinRates.hashCode ^
+      staticialBuildsLoading.hashCode ^
+      heroStatisticalBuildsByPatchNumber.hashCode ^
       searchQuery.hashCode ^
       isUpdating.hashCode ^
       filter.hashCode ^
@@ -96,10 +95,10 @@ class AppState {
 
           // TODO USE COLLECTION EQUALITY SEE hots_dog_api
           winRates == other.winRates &&
-          heroBuildWinRatesLoading == other.heroBuildWinRatesLoading &&
+          staticialBuildsLoading == other.staticialBuildsLoading &&
 
           // TODO USE COLLECTION EQUALITY SEE hots_dog_api
-          heroBuildWinRates == other.heroBuildWinRates &&
+          heroStatisticalBuildsByPatchNumber == other.heroStatisticalBuildsByPatchNumber &&
           searchQuery == other.searchQuery &&
           isUpdating == other.isUpdating &&
           filter == other.filter;

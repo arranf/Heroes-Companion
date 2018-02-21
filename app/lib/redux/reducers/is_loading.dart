@@ -1,6 +1,5 @@
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
-import 'package:flutter/foundation.dart';
 
 final loadingReducer = combineTypedReducers<bool>([
   new ReducerBinding<bool, StartLoadingAction>(_setNotLoaded),

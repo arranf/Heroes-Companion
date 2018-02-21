@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:isolate';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -110,7 +109,7 @@ class App extends StatelessWidget {
                   },
                 );
               },
-              Routes.settings: (BuildContext context) => new Settings(),
+              Routes.settings: (BuildContext context) => new StoreBuilder<AppState>(builder: (context, store) => new Settings()),
               Routes.settingsDataSource: (BuildContext context) => new StoreBuilder<AppState>(builder: (context, store) => new SettingsDataSource()),
             }),
       );

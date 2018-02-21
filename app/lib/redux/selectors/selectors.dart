@@ -1,18 +1,17 @@
 import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:flutter/foundation.dart';
 
 bool isAppLoading(AppState state) =>
-    isLoadingSelector(state) || heroBuildWinRatesLoadingSelector(state);
+    isLoadingSelector(state) || heroStatisticalHeroBuildLoadingSelector(state);
 
 bool isUpdatingSelector(AppState state) => state.isUpdating;
 
 bool isLoadingSelector(AppState state) => state.isLoading;
 
-bool heroBuildWinRatesLoadingSelector(AppState state) =>
-    state.heroBuildWinRatesLoading;
+bool heroStatisticalHeroBuildLoadingSelector(AppState state) =>
+    state.staticialBuildsLoading;
 
 HeroFilter filterSelector(AppState state) => state.filter;
 
@@ -130,24 +129,24 @@ Optional<HeroWinRate> heroWinRateByHeroIdAndBuildNumber(
   }
 }
 
-bool buildWinRatesLoading(AppState state) => state.heroBuildWinRatesLoading;
+bool statisticalHeroBuildLoading(AppState state) => state.staticialBuildsLoading;
 
-Map<int, Map<String, BuildWinRates>> buildWinRates(AppState state) {
-  return state.heroBuildWinRates;
+Map<int, Map<String, List<StatisticalHeroBuild>>> statisticalHeroBuilds(AppState state) {
+  return state.heroStatisticalBuildsByPatchNumber;
 }
 
-Optional<Map<String, BuildWinRates>> buildWinRatesByHeroId(
+Optional<Map<String, List<StatisticalHeroBuild>>> statisticalBuildsByHeroId(
     AppState state, int id) {
-  Map<int, Map<String, BuildWinRates>> rates = buildWinRates(state);
+  Map<int, Map<String, List<StatisticalHeroBuild>>> rates = statisticalHeroBuilds(state);
   if (rates != null && rates.containsKey(id)) {
     return new Optional.of(rates[id]);
   }
   return new Optional.absent();
 }
 
-Optional<BuildWinRates> buildWinRatesByHeroIdAndBuildNumber(
+Optional<List<StatisticalHeroBuild>> statisticalBuildsByHeroIdAndBuildNumber(
     AppState state, int id, String buildNumber) {
-  Map<int, Map<String, BuildWinRates>> rates = buildWinRates(state);
+  Map<int, Map<String, List<StatisticalHeroBuild>>> rates = statisticalHeroBuilds(state);
   if (rates == null || !rates.containsKey(id)) {
     return new Optional.absent();
   }

@@ -7,7 +7,6 @@ dependencies:
   redux: "^2.1.1"
   flutter_redux: "^0.3.4"
   http: "^0.11.3+14"
-  hots_dog_api: "^1.0.7"
   cached_network_image: "^0.2.1"
   url_launcher: "^2.0.1"
   sentry: "^0.0.6"

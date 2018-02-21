@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:heroes_companion_data/src/api/DTO/hots_log_builds.dart';
 import 'package:heroes_companion_data/src/api/DTO/hots_log_winrate.dart';
 import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/patch_data.dart';
@@ -106,11 +107,36 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
     }
     List<HotsLogsWinrate> winRates = new List();
     List<Object> jsonArray = json;
-    jsonArray.forEach((patchInfo) {
-      winRates.add(new HotsLogsWinrate.fromJson(patchInfo));
+    jsonArray.forEach((winRate) {
+      winRates.add(new HotsLogsWinrate.fromJson(winRate));
     });
     return winRates;
   } catch (e) {
     throw new Exception('Failed to fetch hots log winrates' + e.message);
+  }
+}
+
+Future<List<HotsLogBuild>> getHotsLogBuilds(String heroName) async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs/${heroName}');
+
+  try {
+    http.Response response = await http.get(uri, headers: _getHeaders());
+    if (response.statusCode != 200) {
+      return null;
+    }
+
+    dynamic json = JSON.decode(_getUtf8String(response));
+    if (!(json is List && json[0] is Map)) {
+      throw new Exception(
+          'Unexpected JSON format encounted fetching patch data');
+    }
+    List<HotsLogBuild> builds = new List();
+    List<Object> jsonArray = json;
+    jsonArray.forEach((build) {
+      builds.add(new HotsLogBuild.fromJson(build));
+    });
+    return builds;
+  } catch (e) {
+    throw new Exception('Failed to fetch hots log builds' + e.message);
   }
 }

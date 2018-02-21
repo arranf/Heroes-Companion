@@ -3,12 +3,11 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/routes.dart';
-import 'package:heroes_companion/services/hero_build_win_rate_service.dart';
+import 'package:heroes_companion/services/statistical_build_service.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:heroes_companion/services/win_rates_service.dart';
 import 'package:heroes_companion/view/common/hero_detail.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
 import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
@@ -42,10 +41,10 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     Optional<Hero> hero = heroSelectorByHeroId(
         heroesSelector(store.state), widget.heroId);
     if (hero.isPresent &&
-        buildWinRatesByHeroIdAndBuildNumber(
+        statisticalBuildsByHeroIdAndBuildNumber(
                 store.state, hero.value.hero_id, _build.fullVersion)
             .isNotPresent) {
-      getHeroBuildWinRates(store, hero.value, _build);
+      getStatisticalBuilds(store, hero.value, _build);
     }
   }
 
@@ -61,7 +60,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
           favorite: vm.favorite,
           canOfferPreviousBuild: vm.hero.last_modified != null && vm.previousBuild.liveDate.isAfter(vm.hero.last_modified),
           heroWinRate: vm.heroWinRate,
-          buildWinRates: vm.buildWinRates,
+          statisticalBuilds: vm.buildWinRates,
           isCurrentBuild: _isCurrentBuild,
           heroPatchNotesUrl: vm.heroPatchNotesUrl,
           patch: (_isCurrentBuild ? vm.currentBuild : vm.previousBuild),
@@ -79,7 +78,7 @@ class _ViewModel {
   final Hero hero;
   final dynamic favorite;
   final HeroWinRate heroWinRate;
-  final BuildWinRates buildWinRates;
+  final List<StatisticalHeroBuild> buildWinRates;
   final Patch currentBuild;
   final Patch previousBuild;
   final String heroPatchNotesUrl;
@@ -104,8 +103,8 @@ class _ViewModel {
     }
     
     final heroWinRate = heroWinRateByHeroIdAndBuildNumber(store.state, id, build.fullVersion);
-    final buildWinRates =
-        buildWinRatesByHeroIdAndBuildNumber(store.state, id, build.fullVersion);
+    final Optional<List<StatisticalHeroBuild>> buildWinRates =
+        statisticalBuildsByHeroIdAndBuildNumber(store.state, id, build.fullVersion);
     final String heroPatchNotesUrl = currentPatchUrlForHero(store.state, hero.value);
     return new _ViewModel(
       hero: hero.value,
