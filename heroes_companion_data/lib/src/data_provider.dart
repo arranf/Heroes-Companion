@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:heroes_companion_data/src/database/database_client.dart';
 import 'package:heroes_companion_data/src/providers/ability_provider.dart';
-import 'package:heroes_companion_data/src/providers/build_win_rates_provider.dart';
+import 'package:heroes_companion_data/src/providers/builds_provider.dart';
 import 'package:heroes_companion_data/src/providers/hero_provider.dart';
 import 'package:heroes_companion_data/src/providers/map_provider.dart';
 import 'package:heroes_companion_data/src/providers/patch_provider.dart';
