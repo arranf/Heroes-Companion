@@ -20,6 +20,6 @@ class StatisticalHeroBuild {
 
   factory StatisticalHeroBuild.fromHotsLogBuild(HotsLogBuild hotsLogBuild, int heroId) {
     HeroBuild build = new HeroBuild(heroId, hotsLogBuild.talentNames);
-    return new StatisticalHeroBuild(build: build, gamesPlayed: hotsLogBuild.gamesPlayed, winRate: hotsLogBuild.winPercentage); 
+    return new StatisticalHeroBuild(build: build, gamesPlayed: hotsLogBuild.gamesPlayed, winRate: hotsLogBuild.winPercentage / 100); 
   }
 }

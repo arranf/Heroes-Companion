@@ -10,8 +10,24 @@ class BuildCard extends StatelessWidget{
   final Hero hero;
   final dynamic showTalentBottomSheet;
 
-  BuildCard(this.statisticalBuild, this.type, this._onPressed, this.hero, this.showTalentBottomSheet);
+  BuildCard(this.statisticalBuild, this._onPressed, this.hero, this.showTalentBottomSheet, {this.type,} );
 
+  List<Widget> buildCardTopText(BuildContext context)
+ {
+
+  TextStyle style = Theme.of(context).textTheme.body1;
+   List<Widget> widgets = [];
+   if (type != null) {
+     widgets.add(new Text(type, style: style.apply(fontWeightDelta: 1),));
+   }
+   widgets.add(new Text(
+                      '${(statisticalBuild.winRate * 100).toStringAsFixed(2)} Win %',
+                      style: style));
+  widgets.add(new Text('${statisticalBuild.gamesPlayed} Games Played',
+                      style: style));
+                    return widgets;
+                    
+ }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +38,7 @@ class BuildCard extends StatelessWidget{
     try {
       statisticalBuild.build.talentNames
                       .forEach((talentName) {
-                        Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
+                        Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName || t.name == talentName);
                         talents.add(talent);
                       });
     } catch (e) {
@@ -30,8 +46,6 @@ class BuildCard extends StatelessWidget{
        .reportError(e);
       return new Container();
     }
-
-    TextStyle style = Theme.of(context).textTheme.body1;
     return new Container(
       // Tablets get padding
       padding: !isPhone ? new EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0) : EdgeInsets.zero,
@@ -45,14 +59,7 @@ class BuildCard extends StatelessWidget{
             children: <Widget>[
               new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    new Text(type, style: style.apply(fontWeightDelta: 1),),
-                    new Text(
-                      '${(statisticalBuild.winRate * 100).toStringAsFixed(2)} Win %',
-                      style: style),
-                    new Text('${statisticalBuild.gamesPlayed} Games Played',
-                      style: style),
-                  ],
+                  children: buildCardTopText(context),
               ),
               new Container(
                 height: 16.0,

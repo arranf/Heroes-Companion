@@ -6,7 +6,8 @@ final winRatesReducer = combineTypedReducers<Map<String, List<HeroWinRate>>>([
   new ReducerBinding<Map<String, List<HeroWinRate>>, FetchWinRatesSucceededAction>(
       _setWinRatesSucceeded),
   new ReducerBinding<Map<String, List<HeroWinRate>>, FetchWinRatesFailedAction>(
-      _setWinRatesFailed)
+      _setWinRatesFailed),
+  new ReducerBinding<Map<String, List<HeroWinRate>>, DataSourceChangedAction>(_clearWinRates),
 ]);
 
 Map<String, List<HeroWinRate>> _setWinRatesSucceeded(
@@ -20,4 +21,8 @@ Map<String, List<HeroWinRate>> _setWinRatesSucceeded(
 Map<String, List<HeroWinRate>> _setWinRatesFailed(
     Map<String, List<HeroWinRate>> winRates, FetchWinRatesFailedAction action) {
   return winRates;
+}
+
+Map<String, List<HeroWinRate>> _clearWinRates(Map<String, List<HeroWinRate>> winRates, DataSourceChangedAction action) {
+  return new Map<String, List<HeroWinRate>>();
 }

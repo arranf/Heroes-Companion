@@ -78,4 +78,5 @@ class UpdateSettingsAction {
   UpdateSettingsAction(this.settings);
 }
 
+class DataSourceChangedAction{}
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/settings_service.dart';
@@ -50,6 +51,7 @@ class _ViewModel {
     final dynamic updateDataSource = (DataSource dataSource) {
       Settings settings = settingsSelector(store.state);
       updateSettings(store, settings.copyWith(dataSource: dataSource));
+      store.dispatch(new DataSourceChangedAction());
     };
 
     return new _ViewModel(

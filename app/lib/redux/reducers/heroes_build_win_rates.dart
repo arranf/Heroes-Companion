@@ -7,7 +7,9 @@ final heroesStatisticalBuildsReducer =
   new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
       FetchStatisticalHeroBuildSucceededAction>(_succeed),
   new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
-      FetchStatisticalHeroBuildFailedAction>(_fail)
+      FetchStatisticalHeroBuildFailedAction>(_fail),
+    new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
+    DataSourceChangedAction>(_clear)
 ]);
 
 Map<int, Map<String, List<StatisticalHeroBuild>>> _succeed(
@@ -27,4 +29,10 @@ Map<int, Map<String, List<StatisticalHeroBuild>>> _fail(
     Map<int, Map<String, List<StatisticalHeroBuild>>> winRates,
     FetchStatisticalHeroBuildFailedAction action) {
   return winRates;
+}
+
+Map<int, Map<String, List<StatisticalHeroBuild>>> _clear(
+    Map<int, Map<String, List<StatisticalHeroBuild>>> winRates,
+    DataSourceChangedAction action) {
+  return new Map<int, Map<String, List<StatisticalHeroBuild>>>();
 }

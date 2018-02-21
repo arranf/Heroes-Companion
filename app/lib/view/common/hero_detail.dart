@@ -245,7 +245,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
       
       return new ListView(
         key: new Key(widget.hero.name + '_talent_rows'),
-        children: builds.map((StatisticalHeroBuild b) => new BuildCard(b, b.label, _playBuild, widget.hero, showTalentBottomSheet)).toList()
+        children: builds.map((StatisticalHeroBuild b) => new BuildCard(b,  _playBuild, widget.hero, showTalentBottomSheet, type: b.label,)).toList()
       );
     }
     return new EmptyState(Icons.error_outline, title: 'No Data Available', description: 'No statistical data found for this hero');
