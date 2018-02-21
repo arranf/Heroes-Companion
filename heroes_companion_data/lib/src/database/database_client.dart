@@ -15,7 +15,7 @@ class DatabaseClient {
   static HeroProvider heroProvider;
   static DatabaseClient _client = new DatabaseClient._internal();
   static final String databaseName = "heroes_companion.db";
-  static final int databaseVersion = 8;
+  static final int databaseVersion = 10;
 
   factory DatabaseClient() {
     return _client;
@@ -75,6 +75,18 @@ class DatabaseClient {
       } catch (e) {
         // Column may already exist
       }
+    }
+
+    if (oldVersion < 9) {
+      try {
+        await upgradeTo9(database);
+      } catch (e) {
+        // Table may already exist
+      }
+    }
+
+    if (oldVersion < 10) {
+      await upgradeTo10(database);
     }
   }
 

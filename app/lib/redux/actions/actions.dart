@@ -1,6 +1,5 @@
 import 'package:heroes_companion/models/hero_filter.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:hots_dog_api/hots_dog_api.dart';
 
 class FetchHeroesFailedAction {}
 
@@ -27,7 +26,7 @@ class FetchPatchesSucceededAction {
 class FetchPatchesFailedAction {}
 
 class FetchWinRatesSucceededAction {
-  final WinRates winRates;
+  final List<HeroWinRate> winRates;
   final String buildNumber;
 
   FetchWinRatesSucceededAction(this.winRates, this.buildNumber);
@@ -35,18 +34,17 @@ class FetchWinRatesSucceededAction {
 
 class FetchWinRatesFailedAction {}
 
-class FetchBuildWinRatesSucceededAction {
+class FetchStatisticalHeroBuildSucceededAction {
   final String buildNumber;
-  final BuildWinRates buildWinRates;
-  final int heroCompanionId;
+  final List<StatisticalHeroBuild> statisticalBuilds;
+  final int heroId;
 
-  FetchBuildWinRatesSucceededAction(
-      this.buildWinRates, this.heroCompanionId, this.buildNumber);
+  FetchStatisticalHeroBuildSucceededAction(this.statisticalBuilds, this.heroId, this.buildNumber);
 }
 
-class FetchBuildWinRatesFailedAction {}
+class FetchStatisticalHeroBuildFailedAction {}
 
-class BuildWinRatesStartLoadingAction {}
+class StatisticalHeroBuildStartLoadingAction {}
 
 class SetSearchQueryAction {
   final String searchQuery;
@@ -65,3 +63,20 @@ class SetFilterAction {
 class StartUpdatingAction {}
 
 class StopUpdatingAction {}
+
+class FetchMapsFailedAction {}
+
+class FetchMapsSucceededAction {
+  final List<PlayableMap> maps;
+
+  FetchMapsSucceededAction(this.maps);
+}
+
+class UpdateSettingsAction {
+  final Settings settings;
+
+  UpdateSettingsAction(this.settings);
+}
+
+class DataSourceChangedAction{}
+

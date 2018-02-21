@@ -1,11 +1,16 @@
 import 'dart:async';
 
+import 'package:heroes_companion_data/src/models/playable_map.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
 import 'package:heroes_companion_data/src/tables/ability_table.dart'
     as ability_table;
 import 'package:heroes_companion_data/src/tables/talent_table.dart'
     as talent_table;
+
+import 'package:heroes_companion_data/src/tables/map_table.dart' as map_table;
+
+import 'package:heroes_companion_data/src/tables/patch_table.dart' as patch_table;
 
 import 'package:flutter/foundation.dart';
 
@@ -93,7 +98,59 @@ Future upgradeTo8(Database database) async {
     ''');
 }
 
-Future upgradeTo9(Database database) async {}
+Future upgradeTo9(Database database) async {
+  await database.execute(
+  '''
+  CREATE TABLE IF NOT EXISTS ${map_table.table_name} (
+	Id INTEGER PRIMARY KEY,
+	Name TEXT NOT NULL UNIQUE,
+	ObjectiveName TEXT,
+	ObjectiveStartPrompt TEXT,
+	ObjectiveFinishPrompt TEXT,
+	ObjectiveStartTime INTEGER,
+	ObjectiveInterval INTEGER,
+  MapIconFileName TEXT
+  );
+  '''
+  );
+
+  final List<PlayableMap> maps = [
+    new PlayableMap(1, 'Battlefield of Eternity', 'The Immortal', 'Capture The Immortal', 'when the Immortal dies', 180, 105, 'legendary-event-1-boe.png'),
+    new PlayableMap(2, 'Blackheart\'s Bay', 'The Doubloon Chests', 'Collect treaure from the chests', 'when both chests have been destroyed', 90,180, 'legendary-event-2-blackhearts-bay.png'),
+    new PlayableMap(3, 'Braxis Holdout', 'The Beacons', 'Capture the beacons', 'when both Zerg Swarms have been defeated', 90, 130, 'zerg_waves.png'),
+    new PlayableMap(4, 'Dragon Shire', 'The Shrines', 'Capture the shrines', 'when the Dragon Knight is defeated', 90, 120, 'legendary-event-2-dragon-shire.png'),
+    new PlayableMap(5, 'Garden of Terror', 'Night Time', 'Collect seeds', 'when the garden shamblers are defeated', 180, 200, 'legendary-event-2-garden.png'),
+    new PlayableMap(6, 'Haunted Mines', 'The Mines', 'Collect the skulls from the mines','when the Golem is defeated', 180, 120, 'legendary-event-1.png'),
+    new PlayableMap(7, 'Infernal Shrines', 'The Shrine', 'Activate the shrine and slay the Guardians', 'when the Punisher is defeated', 180, 115, 'legendary-event-2.png'),
+    new PlayableMap(8, 'Sky Temple', 'The Temples', 'Capture the temples', 'when the temples are exhausted', 180, 120, 'legendary-event-3-sky-temple.png'),
+    new PlayableMap(9, 'Tomb of the Spider Queen', 'The Webeavers', 'Turn in gems', 'After the webweavers are destroyed', 30, 15, 'legendary-event-3-tomb.png'),
+    new PlayableMap(10, 'Tower of Doom', 'The Altars', 'Capture the altars', 'After all the altars have been captured', 180, 110, 'legendary-event-3.png'),
+    new PlayableMap(11, 'Volskaya', 'The Protector', 'Capture the objectives', 'When the The Protector has been destroyed', 140, 170, 'objective-volskaya-2.png'),
+    new PlayableMap(12, 'Warhead Junction', 'The Warheads', 'Collect the warheads', 'When all the warheads have been collected', 180, 175, 'call_down.png'),
+  ];
+  Batch batch = database.batch();
+
+  for (PlayableMap map in maps) {
+      batch.insert(map_table.table_name, map.toMap());
+  }
+  await batch.commit(exclusive: true, noResult: true);
+}
+
+Future upgradeTo10 (Database database) async {
+  await database.execute(
+    '''
+    DELETE FROM ${patch_table.table_name};
+    '''
+  );
+
+  await database.execute(
+    '''
+    ALTER TABLE ${patch_table.table_name}
+    ADD COLUMN ${patch_table.column_hots_dog_id} TEXT
+    '''
+  );
+}
+
 
 Future upgradeTo7(Database database) async {
   await database.execute('''

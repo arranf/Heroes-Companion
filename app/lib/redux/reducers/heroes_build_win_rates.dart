@@ -1,30 +1,38 @@
-import 'package:hots_dog_api/hots_dog_api.dart';
+import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
-final heroesBuildWinRatesReducer =
-    combineTypedReducers<Map<int, Map<String, BuildWinRates>>>([
-  new ReducerBinding<Map<int, Map<String, BuildWinRates>>,
-      FetchBuildWinRatesSucceededAction>(_succeed),
-  new ReducerBinding<Map<int, Map<String, BuildWinRates>>,
-      FetchBuildWinRatesFailedAction>(_fail)
+final heroesStatisticalBuildsReducer =
+    combineTypedReducers<Map<int, Map<String, List<StatisticalHeroBuild>>>>([
+  new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
+      FetchStatisticalHeroBuildSucceededAction>(_succeed),
+  new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
+      FetchStatisticalHeroBuildFailedAction>(_fail),
+    new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
+    DataSourceChangedAction>(_clear)
 ]);
 
-Map<int, Map<String, BuildWinRates>> _succeed(
-    Map<int, Map<String, BuildWinRates>> winRates,
-    FetchBuildWinRatesSucceededAction action) {
-  Map<int, Map<String, BuildWinRates>> newWinRates =
-      new Map<int, Map<String, BuildWinRates>>.from(
-          winRates ?? new Map<int, Map<String, BuildWinRates>>());
-  newWinRates[action.heroCompanionId] = new Map<String, BuildWinRates>.from(
-      newWinRates[action.heroCompanionId] ?? new Map<String, BuildWinRates>());
-  newWinRates[action.heroCompanionId][action.buildNumber] =
-      action.buildWinRates;
+Map<int, Map<String, List<StatisticalHeroBuild>>> _succeed(
+    Map<int, Map<String, List<StatisticalHeroBuild>>> winRates,
+    FetchStatisticalHeroBuildSucceededAction action) {
+  Map<int, Map<String, List<StatisticalHeroBuild>>> newWinRates =
+      new Map<int, Map<String, List<StatisticalHeroBuild>>>.from(
+          winRates ?? new Map<int, Map<String, List<StatisticalHeroBuild>>>());
+  newWinRates[action.heroId] = new Map<String, List<StatisticalHeroBuild>>.from(
+      newWinRates[action.heroId] ?? new Map<String, StatisticalHeroBuild>());
+  newWinRates[action.heroId][action.buildNumber] =
+      action.statisticalBuilds;
   return newWinRates;
 }
 
-Map<int, Map<String, BuildWinRates>> _fail(
-    Map<int, Map<String, BuildWinRates>> winRates,
-    FetchBuildWinRatesFailedAction action) {
+Map<int, Map<String, List<StatisticalHeroBuild>>> _fail(
+    Map<int, Map<String, List<StatisticalHeroBuild>>> winRates,
+    FetchStatisticalHeroBuildFailedAction action) {
   return winRates;
+}
+
+Map<int, Map<String, List<StatisticalHeroBuild>>> _clear(
+    Map<int, Map<String, List<StatisticalHeroBuild>>> winRates,
+    DataSourceChangedAction action) {
+  return new Map<int, Map<String, List<StatisticalHeroBuild>>>();
 }

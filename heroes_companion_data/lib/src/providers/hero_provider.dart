@@ -1,13 +1,10 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:heroes_companion_data/src/shared_preferences_keys.dart'
-    as pref_keys;
-
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:heroes_companion_data/src/api/DTO/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
 import 'package:heroes_companion_data/src/api/api.dart';
+import 'package:heroes_companion_data/src/models/settings.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/models/hero.dart';
 import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
@@ -24,6 +21,32 @@ class HeroProvider {
           whereArgs: [id]);
       if (maps.length > 0) {
         return new Hero.fromMap(maps.first);
+      }
+      return null;
+    });
+  }
+
+  Future<Hero> getHeroByHeroId(int id) {
+    return new Future.sync(() async {
+      List<Map> maps = await _database.query(hero_table.table_name,
+          columns: null,
+          where: "${hero_table.column_hero_id} = ?",
+          whereArgs: [id]);
+      if (maps.length > 0) {
+        return new Hero.fromMap(maps.first);
+      }
+      return null;
+    });
+  }
+
+  Future<int> getHeroIdByName(String heroName) {
+    return new Future.sync(() async {
+      List<Map> maps = await _database.query(hero_table.table_name,
+          columns: [hero_table.column_hero_id],
+          where: "${hero_table.column_name} = ?",
+          whereArgs: [heroName]);
+      if (maps.length > 0) {
+        return maps.first[hero_table.column_hero_id];
       }
       return null;
     });
@@ -64,21 +87,16 @@ class HeroProvider {
 
   Future updateHeroRotations({isForced = false}) {
     return new Future.sync(() async {
-      SharedPreferences preferences = await SharedPreferences.getInstance();
-      String unparsedNextRotationDate =
-          (preferences.getString(pref_keys.next_rotation_date) ?? '');
-      DateTime nextRotationDate = unparsedNextRotationDate == ''
-          ? new DateTime(1970)
-          : DateTime.parse(unparsedNextRotationDate);
+      Settings settings = await DataProvider.settingsProvider.readSettings();
 
       // is forced or the date is before the next rotation date, this will be skipped
-      if (!isForced && !new DateTime.now().isAfter(nextRotationDate)) {
+      if (!isForced && !new DateTime.now().isAfter(settings.nextRotationDate)) {
         debugPrint(
-            'Rotation Updater: ${new DateTime.now()} is before ${nextRotationDate}, not updating');
+            'Rotation Updater: ${new DateTime.now()} is before ${settings.nextRotationDate}, not updating');
         return;
       }
 
-      HeroesCompanionData data = await getRotation();
+      RotationData data = await getRotation();
       // TODO Validation of data
       //
       RegExp regExp = new RegExp(r'[^A-Za-z]+');
@@ -93,9 +111,8 @@ class HeroProvider {
           SET ${hero_table.column_last_rotation_date} = '${data.rotationEnd.toIso8601String()}'
           WHERE ${hero_table.column_short_name} IN (${commaSeparatedHeroes})
           ''');
-
-      preferences.setString(
-          pref_keys.next_rotation_date, data.rotationEnd.toIso8601String());
+      settings.copyWith(nextRotationDate: data.rotationEnd);
+      DataProvider.settingsProvider.writeSettings(settings);
     });
   }
 

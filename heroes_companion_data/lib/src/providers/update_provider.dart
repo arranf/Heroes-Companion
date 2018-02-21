@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
+import 'package:heroes_companion_data/src/data_provider.dart';
 import 'package:heroes_companion_data/src/models/ability.dart';
 import 'package:heroes_companion_data/src/models/hero.dart';
+import 'package:heroes_companion_data/src/models/settings.dart';
 import 'package:heroes_companion_data/src/models/talent.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:heroes_companion_data/src/tables/ability_table.dart'
@@ -13,9 +15,6 @@ import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
 import 'package:heroes_companion_data/src/tables/talent_table.dart'
     as talent_table;
 import 'package:heroes_companion_data/src/api/api.dart' as api;
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:heroes_companion_data/src/shared_preferences_keys.dart'
-    as pref_keys;
 
 class UpdateProvider {
   Database _database;
@@ -23,12 +22,9 @@ class UpdateProvider {
 
   Future<bool> doesNeedUpdate() {
     return new Future.sync(() async {
-      SharedPreferences preferences = await SharedPreferences.getInstance();
-      String unparsedId = (preferences.getString(pref_keys.update_id) ?? '');
-      DateTime currentId =
-          unparsedId == '' ? new DateTime(1970) : DateTime.parse(unparsedId);
+      Settings settings = await DataProvider.settingsProvider.readSettings();
       UpdateInfo updateInfo = await api.getUpdateInfo();
-      return updateInfo.id.isAfter(currentId);
+      return updateInfo.id.isAfter(settings.currentUpdateOriginTime);
     });
   }
 
@@ -102,10 +98,8 @@ class UpdateProvider {
 
       await batch.commit(noResult: false);
 
-      SharedPreferences preferences = await SharedPreferences.getInstance();
-      preferences.setString(
-          pref_keys.update_id, updatePayload.id.toIso8601String());
-      preferences.setString(pref_keys.update_patch, updatePayload.patch);
+      Settings settings = await DataProvider.settingsProvider.readSettings();
+      DataProvider.settingsProvider.writeSettings(settings.copyWith(currentUpdateOriginTime: updatePayload.id, updatePatch: updatePayload.patch));
       debugPrint('Update done');
     });
   }

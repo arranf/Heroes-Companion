@@ -2,17 +2,32 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
-import 'package:hots_dog_api/hots_dog_api.dart' hide Talent;
 
 class BuildCard extends StatelessWidget{
-  final BuildStatistics buildStatistics;
+  final StatisticalHeroBuild statisticalBuild;
   final String type;
   final dynamic _onPressed;
   final Hero hero;
   final dynamic showTalentBottomSheet;
 
-  BuildCard(this.buildStatistics, this.type, this._onPressed, this.hero, this.showTalentBottomSheet);
+  BuildCard(this.statisticalBuild, this._onPressed, this.hero, this.showTalentBottomSheet, {this.type,} );
 
+  List<Widget> buildCardTopText(BuildContext context)
+ {
+
+  TextStyle style = Theme.of(context).textTheme.body1;
+   List<Widget> widgets = [];
+   if (type != null) {
+     widgets.add(new Text(type, style: style.apply(fontWeightDelta: 1),));
+   }
+   widgets.add(new Text(
+                      '${(statisticalBuild.winRate * 100).toStringAsFixed(2)} Win %',
+                      style: style));
+  widgets.add(new Text('${statisticalBuild.gamesPlayed} Games Played',
+                      style: style));
+                    return widgets;
+                    
+ }
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +36,9 @@ class BuildCard extends StatelessWidget{
     List<Talent> talents = [];
 
     try {
-      buildStatistics.talents_names
+      statisticalBuild.build.talentNames
                       .forEach((talentName) {
-                        Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName);
+                        Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName || t.name == talentName);
                         talents.add(talent);
                       });
     } catch (e) {
@@ -31,8 +46,6 @@ class BuildCard extends StatelessWidget{
        .reportError(e);
       return new Container();
     }
-
-    TextStyle style = Theme.of(context).textTheme.body1;
     return new Container(
       // Tablets get padding
       padding: !isPhone ? new EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0) : EdgeInsets.zero,
@@ -46,14 +59,7 @@ class BuildCard extends StatelessWidget{
             children: <Widget>[
               new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    new Text(type, style: style.apply(fontWeightDelta: 1),),
-                    new Text(
-                      '${(buildStatistics.win_rate * 100).toStringAsFixed(2)} Win %',
-                      style: style),
-                    new Text('${buildStatistics.total_games_played} Games Played',
-                      style: style),
-                  ],
+                  children: buildCardTopText(context),
               ),
               new Container(
                 height: 16.0,
@@ -68,7 +74,7 @@ class BuildCard extends StatelessWidget{
                   children: <Widget>[
                     new FlatButton(
                       child: const Text('PLAY BUILD'),
-                      onPressed: () => _onPressed(context, buildStatistics),
+                      onPressed: () => _onPressed(context, statisticalBuild),
                     )
                   ],
                 ),

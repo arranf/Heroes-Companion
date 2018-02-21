@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/models/hero_filter.dart';
@@ -7,6 +6,7 @@ import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/routes.dart';
 import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
+import 'package:heroes_companion/view/common/app_drawer.dart';
 import 'package:heroes_companion/view/containers/hero_detail_container.dart';
 import 'package:redux/redux.dart';
 
@@ -18,15 +18,13 @@ import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/view/common/hero_list.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
-import 'package:heroes_companion/global_keys.dart';
 
 class HeroHome extends StatelessWidget {
   HeroHome({Key key}) : super(key: key);
 
   final List<OverflowChoice> overflowChoices = [
     OverflowChoice.About,
-    OverflowChoice.PatchNotes,
-    OverflowChoice.Feedback,
+    OverflowChoice.PatchNotes
   ];
 
   @override
@@ -35,7 +33,7 @@ class HeroHome extends StatelessWidget {
       converter: _ViewModel.fromStore,
       builder: (context, vm) {
         return new Scaffold(
-            key: homeScaffoldKey,
+            drawer: new AppDrawer(),
             appBar: new AppBar(
               title: new Text('Heroes Companion'),
               actions: <Widget>[
@@ -99,13 +97,14 @@ class _ViewModel {
   final Function onTap = (BuildContext context, HeroListItem heroListItem) {
     Navigator.of(context).push(new PageRouteBuilder(
           pageBuilder: (context, a1, a2) => new HeroDetailContainer(
-              heroListItem.hero.heroes_companion_hero_id),
+              heroListItem.hero.hero_id),
         ));
   };
 
   _ViewModel(
-      {@required this.heroes,
-      @required this.loading,
+      {
+      this.heroes,
+      this.loading,
       this.patchNotesUrl,
       this.onLongPress,
       this.bottomNavTap,

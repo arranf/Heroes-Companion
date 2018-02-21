@@ -7,7 +7,7 @@ if [ $DIR != 'scripts' ]; then
 fi
 
 APP_DIR="$(dirname "$PWD")"
-DATA_DIR=~/Github/hots-json-to-sqlite
+DATA_DIR=~/projects/hots-json-to-sqlite
 ASSETS_DIR=$APP_DIR/assets
 mkdir -p  $APP_DIR/assets/images
 

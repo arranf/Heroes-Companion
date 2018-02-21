@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:heroes_companion_data/src/database/database_client.dart';
 import 'package:heroes_companion_data/src/providers/ability_provider.dart';
-import 'package:heroes_companion_data/src/providers/build_win_rates_provider.dart';
+import 'package:heroes_companion_data/src/providers/builds_provider.dart';
 import 'package:heroes_companion_data/src/providers/hero_provider.dart';
+import 'package:heroes_companion_data/src/providers/map_provider.dart';
 import 'package:heroes_companion_data/src/providers/patch_provider.dart';
+import 'package:heroes_companion_data/src/providers/settings_provider.dart';
 import 'package:heroes_companion_data/src/providers/talent_provider.dart';
 import 'package:heroes_companion_data/src/providers/update_provider.dart';
 import 'package:heroes_companion_data/src/providers/win_rate_provider.dart';
@@ -15,10 +17,11 @@ class DataProvider {
   static TalentProvider talentProvider;
   static AbilityProvider abilityProvider;
   static WinRateProvider winRateProvider = new WinRateProvider();
+  static SettingsProvider settingsProvider = new SettingsProvider();
   static PatchProvider patchProvider;
-  static BuildWinRatesProvider buildWinRatesProvider =
-      new BuildWinRatesProvider();
+  static BuildProvider buildProvider = new BuildProvider();
   static UpdateProvider updateProvider;
+  static MapProvider mapProvider;
   static Database _database;
 
   // Singleton
@@ -36,5 +39,6 @@ class DataProvider {
     abilityProvider = new AbilityProvider(_database);
     updateProvider = new UpdateProvider(_database);
     patchProvider = new PatchProvider(_database);
+    mapProvider = new MapProvider(_database);
   }
 }

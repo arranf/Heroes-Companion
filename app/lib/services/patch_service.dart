@@ -3,7 +3,6 @@ import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
-import 'package:flutter/foundation.dart';
 
 void getPatches(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
