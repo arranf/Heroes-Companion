@@ -58,7 +58,11 @@ Patch currentBuildSelector(AppState state) {
   if (state.patches == null && state.patches.isNotEmpty) {
     throw new Exception('Patches haven\'t been loaded');
   }
-  return state.patches.firstWhere((Patch p) => p.hotsDogId != '');
+  Patch currentPatch = state.patches.firstWhere((Patch p) => p.hotsDogId != '');
+  if (currentPatch == null) {
+    throw new Exception('Unable to fetch current patch');
+  }
+  return currentPatch;
 }
 
 Patch previousBuildSelector(AppState state) {
@@ -67,7 +71,7 @@ Patch previousBuildSelector(AppState state) {
   }
 
   int currentIndex = state.patches.indexOf(currentBuildSelector(state));
-  if (currentIndex+1 == state.patches.length) {
+  if (currentIndex+1 == state.patches.length - 1) {
     throw new Exception('Error getting previous build');
   }
   return state.patches[currentIndex+1];
@@ -187,9 +191,16 @@ String currentPatchUrlForHero(AppState state, Hero hero) {
 }
 
 Settings settingsSelector(AppState state) {
+  if (state.settings == null) {
+    throw new Exception('Settings not fetched');
+  }
   return state.settings;
 }
 
 DataSource dataSourceSelector(AppState state) {
+  Settings settings = settingsSelector(state);
+  if (settings.dataSource == null) {
+    new Exception('Settings has no saved datsource');
+  }
   return settingsSelector(state).dataSource;
 }

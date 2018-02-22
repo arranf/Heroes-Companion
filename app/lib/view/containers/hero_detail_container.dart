@@ -28,13 +28,17 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
   bool _isCurrentBuild = true;
   Patch _build;
 
-  void fetchData(Store<dynamic> store) {
+  Patch getCorrectBuild(Store<AppState> store) {
+    return _isCurrentBuild
+            ? currentBuildSelector(store.state)
+            : previousBuildSelector(store.state);
+  }
+
+  void fetchData(Store<AppState> store) {
     if (isAppLoading(store.state)) {
       return;
     }
-    _build = (_isCurrentBuild
-            ? currentBuildSelector(store.state)
-            : previousBuildSelector(store.state));
+    _build = getCorrectBuild(store);
     if (winRatesByBuildNumber(store.state, _build.fullVersion).isNotPresent) {
       getWinRatesForBuild(store, _build);
     }
@@ -54,7 +58,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     builder: (context, store) {
       fetchData(store);
       _ViewModel vm =
-          new _ViewModel.from(store, widget.heroId, _build);
+          new _ViewModel.from(store, widget.heroId, _build ?? getCorrectBuild(store));
       return new HeroDetail(vm.hero,
           key: new Key(vm.hero.short_name),
           favorite: vm.favorite,
