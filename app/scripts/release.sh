@@ -15,7 +15,9 @@ fi
 
 # Check working directory and exit if bad
 DIR="$(basename $(pwd) )"
-if [ $DIR != 'scripts' ]; then
+if [ $DIR != 'scripts' ] && [ $DIR == 'app' ]; then
+    cd ./scripts
+elif [ $DIR !== 'scripts' ]; then
     echo "In /$DIR"
     echo "This must be run from inside the /scripts directory"
     exit 1
