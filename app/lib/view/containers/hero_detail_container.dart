@@ -25,6 +25,7 @@ class HeroDetailContainer extends StatefulWidget {
 }
 
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
+  bool _isCurrentBuildDirty = false;
   bool _isCurrentBuild = true;
   Patch _build;
 
@@ -35,19 +36,28 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
   }
 
   void fetchData(Store<AppState> store) {
+    // Ensure if we're missing data we still show something
+    if (!_isCurrentBuildDirty){
+      Patch currentPatch = currentBuildSelector(store.state);
+      if (currentPatch != null){
+        _isCurrentBuild = currentPatch.liveDate.difference(new DateTime.now()).inDays > 3;
+        _isCurrentBuildDirty = true;
+      }
+    }
+
+    // If we're loading don't requery
     if (isAppLoading(store.state)) {
       return;
     }
+
     _build = getCorrectBuild(store);
     if (winRatesByBuildNumber(store.state, _build.fullVersion).isNotPresent) {
       getWinRatesForBuild(store, _build);
     }
+
     Optional<Hero> hero = heroSelectorByHeroId(
         heroesSelector(store.state), widget.heroId);
-    if (hero.isPresent &&
-        statisticalBuildsByHeroIdAndBuildNumber(
-                store.state, hero.value.hero_id, _build.fullVersion)
-            .isNotPresent) {
+    if (hero.isPresent && statisticalBuildsByHeroIdAndBuildNumber(store.state, hero.value.hero_id, _build.fullVersion).isNotPresent) {
       getStatisticalBuilds(store, hero.value, _build);
     }
   }
