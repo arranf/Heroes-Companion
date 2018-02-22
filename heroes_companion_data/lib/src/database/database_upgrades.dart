@@ -151,6 +151,23 @@ Future upgradeTo10 (Database database) async {
   );
 }
 
+Future markAllAbilitiesTalentsOnDevice(Database database) async {
+  await database.execute('''
+    UPDATE ${ability_table.table_name}
+    SET ${ability_table.column_have_asset} = 1
+    ''');
+
+  await database.execute('''
+    UPDATE ${talent_table.table_name}
+    SET ${talent_table.column_have_asset}  = 1
+    ''');
+
+  await database.execute('''
+    UPDATE ${hero_table.table_name}
+    SET ${hero_table.column_have_assets}  = 1
+    ''');
+}
+
 
 Future upgradeTo7(Database database) async {
   await database.execute('''
