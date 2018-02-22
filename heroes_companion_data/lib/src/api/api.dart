@@ -101,7 +101,7 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
     }
 
     dynamic json = JSON.decode(_getUtf8String(response));
-    if (!(json is List && json[0] is Map)) {
+    if (!(json is List && (json.isEmpty ||  json[0] is Map))) {
       throw new Exception(
           'Unexpected JSON format encounted fetching patch data');
     }
@@ -126,12 +126,13 @@ Future<List<HotsLogBuild>> getHotsLogBuilds(String heroName) async {
     }
 
     dynamic json = JSON.decode(_getUtf8String(response));
-    if (!(json is List && json[0] is Map)) {
+    // is a list which is empty or contains maps
+    if (!(json is List && (json.isEmpty ||  json[0] is Map))) {
       throw new Exception(
           'Unexpected JSON format encounted fetching patch data');
     }
     List<HotsLogBuild> builds = new List();
-    List<Object> jsonArray = json;
+    List<Map> jsonArray = json;
     jsonArray.forEach((build) {
       builds.add(new HotsLogBuild.fromJson(build));
     });
