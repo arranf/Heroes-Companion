@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/hots_log_builds.dart';
 import 'package:heroes_companion_data/src/api/DTO/hots_log_winrate.dart';
 import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
@@ -116,8 +117,8 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
   }
 }
 
-Future<List<HotsLogBuild>> getHotsLogBuilds(String heroName) async {
-  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs/${heroName}');
+Future<List<HotsLogBuild>> getHotsLogBuilds(Patch patch, String heroName) async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs/${heroName}', {'patch': patch.fullVersion});
 
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
