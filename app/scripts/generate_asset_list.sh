@@ -9,7 +9,9 @@ if [ $DIR != 'scripts' ]; then
     exit 1
 fi
 
-find ../assets/ -type f -name "*.png" > ls.txt
+#https://unix.stackexchange.com/questions/15308/how-to-use-find-command-to-search-for-multiple-extensions
+find ../assets/ -type f \( -iname \*.jpg -o -iname \*.png \) > ls.txt
+
 # Replace the start of a line ../ with four spaces and a -
 cat ls.txt | sed 's/^..\//    - /;s/\/\//\//' > ls2.txt
 rm ls.txt
