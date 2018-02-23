@@ -14,7 +14,7 @@ class WinRateProvider {
     if (settings.dataSource == DataSource.HotsDog) {
       return _hotsDogGetWinRates(patch);
     } else {
-      return _hotsLogsGetWinRates();
+      return _hotsLogsGetWinRates(patch);
     }
   }
 
@@ -28,8 +28,8 @@ class WinRateProvider {
     return new HeroWinRate(heroId, hotsLogsWinrate.winPercentage, hotsLogsWinrate.gamesPlayed);
   }
 
-  Future<List<HeroWinRate>> _hotsLogsGetWinRates() async {
-   List<HotsLogsWinrate> winRates = await getHotsLogWinRates();
+  Future<List<HeroWinRate>> _hotsLogsGetWinRates(Patch patch) async {
+   List<HotsLogsWinrate> winRates = await getHotsLogWinRates(patch);
 
    if (winRates == null) {
       throw new Exception('API call to fetch hots log winrates failed');

@@ -92,8 +92,8 @@ Future<List<PatchData>> getPatchData() async {
   }
 }
 
-Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
-  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs');
+Future<List<HotsLogsWinrate>> getHotsLogWinRates(Patch patch) async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs', {'patch': patch.fullVersion});
 
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
