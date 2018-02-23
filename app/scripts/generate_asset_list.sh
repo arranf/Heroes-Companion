@@ -1,3 +1,5 @@
+# requires GNU sed not the BSD shipped with MAC OS
+
 # if any command fails at any point, quit
 set -e
 
