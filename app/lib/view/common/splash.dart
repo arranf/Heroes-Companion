@@ -15,9 +15,16 @@ class _SplashState extends State<Splash> {
   bool _error = false;
   Timer _timer;
 
-  @override initState() {
+  @override 
+  void initState() {
     super.initState();
    _timer = new Timer(new Duration(seconds: 12), () => _setError());
+  }
+
+  @override 
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
@@ -32,6 +39,7 @@ class _SplashState extends State<Splash> {
     setState(() {
       _error = true;
     });
+    _timer.cancel();
   }
 
   Widget _buildErrorSplash(BuildContext context, String appName) {
