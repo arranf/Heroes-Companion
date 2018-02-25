@@ -11,7 +11,7 @@ void getPatches(Store<AppState> store) {
       .getPatches()
       .then(
           (patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
-      .catchError((Error e) {
+      .catchError((e) {
         new ExceptionService()
             .reportError(e); 
         store.dispatch(new FetchPatchesFailedAction()); 
@@ -25,7 +25,7 @@ void updatePatches(Store<AppState> store) {
       .fetchPatches()
       .then(
           (patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
-      .catchError((Error e) 
+      .catchError((e) 
       {
         new ExceptionService()
         .reportError(e);

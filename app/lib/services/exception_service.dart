@@ -27,7 +27,7 @@ class ExceptionService {
   }
 
 
-    /// Reports [error] along with its [stackTrace] to Sentry.io.
+    /// Reports [error] (either an [Exception] or an [Error]) to Sentry.io.
   Future<Null> reportError(dynamic error) async {
     if (!isDebug) {
       print('Caught error: $error');
