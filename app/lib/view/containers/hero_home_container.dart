@@ -127,7 +127,7 @@ class _ViewModel {
 
     HeroFilter filter = filterSelector(store.state);
 
-    String patchNotesUrl = currentBuildSelector(store.state).patchNotesUrl;
+    String patchNotesUrl = currentPatchSelector(store.state).patchNotesUrl;
 
     bool allowRefresh = false;
     Function onRefresh = () => true;

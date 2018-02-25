@@ -31,16 +31,16 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
 
   Patch getCorrectBuild(Store<AppState> store) {
     return _isCurrentBuild
-            ? currentBuildSelector(store.state)
-            : previousBuildSelector(store.state);
+            ? currentPatchSelector(store.state)
+            : previousPatchSelector(store.state);
   }
 
   void fetchData(Store<AppState> store) {
     // Ensure if we're missing data we still show something
     if (!_isCurrentBuildDirty){
-      Patch currentPatch = currentBuildSelector(store.state);
+      Patch currentPatch = currentPatchSelector(store.state);
       if (currentPatch != null){
-        _isCurrentBuild = currentPatch.liveDate.difference(new DateTime.now()).inDays > 3;
+        _isCurrentBuild = currentPatch.liveDate.difference(new DateTime.now()).inDays > -3;
         _isCurrentBuildDirty = true;
       }
     }
@@ -125,8 +125,8 @@ class _ViewModel {
       favorite: _favorite,
       heroWinRate: heroWinRate.isPresent ? heroWinRate.value : null,
       buildWinRates: buildWinRates.isPresent ? buildWinRates.value : null,
-      currentBuild: currentBuildSelector(store.state),
-      previousBuild: previousBuildSelector(store.state),
+      currentBuild: currentPatchSelector(store.state),
+      previousBuild: previousPatchSelector(store.state),
       heroPatchNotesUrl: heroPatchNotesUrl,
     );
   }
