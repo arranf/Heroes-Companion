@@ -10,7 +10,7 @@ import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
 import 'package:http/http.dart' as http;
 
-String _baseUrl = 'data.heroescompanion.com';
+String _baseUrl = 'cdn.heroescompanion.com';
 Utf8Decoder _utf8Decoder = new Utf8Decoder();
 
 Map<String, String> _getHeaders() {
