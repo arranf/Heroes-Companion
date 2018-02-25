@@ -40,7 +40,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     if (!_isCurrentBuildDirty){
       Patch currentPatch = currentPatchSelector(store.state);
       if (currentPatch != null){
-        _isCurrentBuild = currentPatch.liveDate.difference(new DateTime.now()).inDays > -3;
+        _isCurrentBuild = currentPatch.liveDate.difference(new DateTime.now()).inDays >= -3;
         _isCurrentBuildDirty = true;
       }
     }
