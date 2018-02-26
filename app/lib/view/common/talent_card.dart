@@ -46,7 +46,7 @@ class TalentCard extends StatelessWidget {
                         ? new AssetImage(
                             'assets/images/talents/${talent.icon_file_name}')
                         : new CachedNetworkImageProvider(
-                                'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')
+                                'https://images.heroescompanion.com/talents/${talent.icon_file_name}')
                         ),
                         shape: BoxShape.rectangle,
                       )
