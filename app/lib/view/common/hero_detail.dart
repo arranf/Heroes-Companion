@@ -78,7 +78,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
             backgroundImage: widget.hero.have_assets
                 ? new AssetImage('assets/images/heroes/${widget.hero.icon_file_name}')
                 : new CachedNetworkImageProvider(
-                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${widget.hero.icon_file_name}'),
+                    'https://images.heroescompanion.com/heroes/${widget.hero.icon_file_name}'),
             radius: 45.0,
           ),
           new Container(
@@ -158,7 +158,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                       ? new AssetImage(
                           'assets/images/heroes/${widget.hero.icon_file_name}')
                       : new CachedNetworkImageProvider(
-                          'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${widget.hero.icon_file_name}'),
+                          'https://images.heroescompanion.com/images/heroes/${widget.hero.icon_file_name}'),
                   radius: 45.0,
                 ),
                 new Padding(
@@ -281,7 +281,7 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                                 'assets/images/talents/${talent.icon_file_name}')
                             : new Image(
                                 image: new CachedNetworkImageProvider(
-                                    'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
+                                    'https://images.heroescompanion.com/talents/${talent.icon_file_name}')),
                         ),
                         
                         

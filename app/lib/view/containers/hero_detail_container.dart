@@ -25,27 +25,46 @@ class HeroDetailContainer extends StatefulWidget {
 }
 
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
+  bool _isCurrentBuildDirty = false;
   bool _isCurrentBuild = true;
   Patch _build;
+  int _nextCanAttemptFetchExponent = 1;
+  DateTime _nextCanAttemptFetch = new DateTime.now();
 
-  void fetchData(Store<dynamic> store) {
-    if (isAppLoading(store.state)) {
+  Patch getCorrectBuild(Store<AppState> store) {
+    return _isCurrentBuild
+            ? currentPatchSelector(store.state)
+            : previousPatchSelector(store.state);
+  }
+
+  void fetchData(Store<AppState> store) {
+    // Ensure if we're missing data we still show something
+    if (!_isCurrentBuildDirty){
+      Patch currentPatch = currentPatchSelector(store.state);
+      if (currentPatch != null) {
+        int differenceInDays = currentPatch.liveDate.difference(new DateTime.now()).inDays;
+        _isCurrentBuild = (differenceInDays * -1) > 3;
+        _isCurrentBuildDirty = true;
+      }
+    }
+
+    // If we're loading don't requery
+    if (isAppLoading(store.state) || _nextCanAttemptFetch.isAfter(new DateTime.now()) ){
       return;
     }
-    _build = (_isCurrentBuild
-            ? currentBuildSelector(store.state)
-            : previousBuildSelector(store.state));
+
+    _build = getCorrectBuild(store);
     if (winRatesByBuildNumber(store.state, _build.fullVersion).isNotPresent) {
       getWinRatesForBuild(store, _build);
     }
+
     Optional<Hero> hero = heroSelectorByHeroId(
         heroesSelector(store.state), widget.heroId);
-    if (hero.isPresent &&
-        statisticalBuildsByHeroIdAndBuildNumber(
-                store.state, hero.value.hero_id, _build.fullVersion)
-            .isNotPresent) {
+    if (hero.isPresent && statisticalBuildsByHeroIdAndBuildNumber(store.state, hero.value.hero_id, _build.fullVersion).isNotPresent) {
       getStatisticalBuilds(store, hero.value, _build);
     }
+    _nextCanAttemptFetch = new DateTime.now().add(new Duration(seconds: 2 ^ _nextCanAttemptFetchExponent));
+    _nextCanAttemptFetchExponent++;
   }
 
   @override
@@ -54,7 +73,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     builder: (context, store) {
       fetchData(store);
       _ViewModel vm =
-          new _ViewModel.from(store, widget.heroId, _build);
+          new _ViewModel.from(store, widget.heroId, _build ?? getCorrectBuild(store));
       return new HeroDetail(vm.hero,
           key: new Key(vm.hero.short_name),
           favorite: vm.favorite,
@@ -111,8 +130,8 @@ class _ViewModel {
       favorite: _favorite,
       heroWinRate: heroWinRate.isPresent ? heroWinRate.value : null,
       buildWinRates: buildWinRates.isPresent ? buildWinRates.value : null,
-      currentBuild: currentBuildSelector(store.state),
-      previousBuild: previousBuildSelector(store.state),
+      currentBuild: currentPatchSelector(store.state),
+      previousBuild: previousPatchSelector(store.state),
       heroPatchNotesUrl: heroPatchNotesUrl,
     );
   }

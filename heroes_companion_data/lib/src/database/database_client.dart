@@ -15,7 +15,7 @@ class DatabaseClient {
   static HeroProvider heroProvider;
   static DatabaseClient _client = new DatabaseClient._internal();
   static final String databaseName = "heroes_companion.db";
-  static final int databaseVersion = 10;
+  static final int databaseVersion = 12;
 
   factory DatabaseClient() {
     return _client;
@@ -87,6 +87,15 @@ class DatabaseClient {
 
     if (oldVersion < 10) {
       await upgradeTo10(database);
+    }
+
+    if (oldVersion < 11) {
+      // migration 11
+      await markAllAbilitiesTalentsOnDevice(database);
+    }
+
+    if (oldVersion < 12) {
+      await upgradeTo12(database);
     }
   }
 

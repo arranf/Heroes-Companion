@@ -82,7 +82,7 @@ class _BuildSwiperState extends State<BuildSwiper>
                 children:
                     widget.build.talentNames.map((String talentName) {
                   Talent talent = widget.hero.talents
-                      .firstWhere((Talent t) => t.talent_tree_id == talentName);
+                      .firstWhere((Talent t) => t.talent_tree_id == talentName || t.name == talentName);
                   return new TalentCard(talent, key: new Key(talentName));
                 }).toList(),
               ),

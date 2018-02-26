@@ -35,14 +35,13 @@ void main() {
   void listener(AppState state) {
     if (!isAppLoading(state) &&
         heroesSelector(state) != null &&
-        buildsSelector(state) != null &&
-        buildsSelector(state).isNotEmpty) {
+        patchesSelector(state) != null &&
+        patchesSelector(state).isNotEmpty) {
       subscription.cancel();
       runZoned<Future<Null>>(() async {
         runApp(app);
       }, onError: (error, stackTrace) async {
         exceptionService.reportErrorAndStackTrace(error, stackTrace);
-        print('Zone caught an error');
       });
     }
   }

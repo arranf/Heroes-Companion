@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:heroes_companion_data/src/api/DTO/hots_log_builds.dart';
 import 'package:heroes_companion_data/src/api/DTO/hots_log_winrate.dart';
 import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
@@ -9,7 +10,7 @@ import 'package:heroes_companion_data/src/api/DTO/update_info.dart';
 import 'package:heroes_companion_data/src/api/DTO/update_payload.dart';
 import 'package:http/http.dart' as http;
 
-String _baseUrl = 'data.heroescompanion.com';
+String _baseUrl = 'cdn.heroescompanion.com';
 Utf8Decoder _utf8Decoder = new Utf8Decoder();
 
 Map<String, String> _getHeaders() {
@@ -91,8 +92,8 @@ Future<List<PatchData>> getPatchData() async {
   }
 }
 
-Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
-  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs');
+Future<List<HotsLogsWinrate>> getHotsLogWinRates(Patch patch) async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs', {'patch': patch.fullVersion});
 
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
@@ -101,7 +102,7 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
     }
 
     dynamic json = JSON.decode(_getUtf8String(response));
-    if (!(json is List && json[0] is Map)) {
+    if (!(json is List && (json.isEmpty ||  json[0] is Map))) {
       throw new Exception(
           'Unexpected JSON format encounted fetching patch data');
     }
@@ -116,8 +117,8 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates() async {
   }
 }
 
-Future<List<HotsLogBuild>> getHotsLogBuilds(String heroName) async {
-  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs/${heroName}');
+Future<List<HotsLogBuild>> getHotsLogBuilds(Patch patch, String heroName) async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs/${heroName}', {'patch': patch.fullVersion});
 
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
@@ -126,12 +127,13 @@ Future<List<HotsLogBuild>> getHotsLogBuilds(String heroName) async {
     }
 
     dynamic json = JSON.decode(_getUtf8String(response));
-    if (!(json is List && json[0] is Map)) {
+    // is a list which is empty or contains maps
+    if (!(json is List && (json.isEmpty ||  json[0] is Map))) {
       throw new Exception(
           'Unexpected JSON format encounted fetching patch data');
     }
     List<HotsLogBuild> builds = new List();
-    List<Object> jsonArray = json;
+    List<Map> jsonArray = json;
     jsonArray.forEach((build) {
       builds.add(new HotsLogBuild.fromJson(build));
     });

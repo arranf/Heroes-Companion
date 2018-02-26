@@ -52,22 +52,26 @@ Optional<Hero> heroSelectorByHeroId(List<Hero> heroes, int id) {
   }
 }
 
-List<Patch> buildsSelector(AppState state) => state.patches;
+List<Patch> patchesSelector(AppState state) => state.patches;
 
-Patch currentBuildSelector(AppState state) {
+Patch currentPatchSelector(AppState state) {
   if (state.patches == null && state.patches.isNotEmpty) {
     throw new Exception('Patches haven\'t been loaded');
   }
-  return state.patches.firstWhere((Patch p) => p.hotsDogId != '');
+  Patch currentPatch = state.patches.firstWhere((Patch p) => p.hotsDogId != '');
+  if (currentPatch == null) {
+    throw new Exception('Unable to fetch current patch');
+  }
+  return currentPatch;
 }
 
-Patch previousBuildSelector(AppState state) {
+Patch previousPatchSelector(AppState state) {
   if (state.patches == null && state.patches.length < 2) {
     throw new Exception('Patches haven\'t been loaded');
   }
 
-  int currentIndex = state.patches.indexOf(currentBuildSelector(state));
-  if (currentIndex+1 == state.patches.length) {
+  int currentIndex = state.patches.indexOf(currentPatchSelector(state));
+  if (currentIndex+1 == state.patches.length - 1) {
     throw new Exception('Error getting previous build');
   }
   return state.patches[currentIndex+1];
@@ -180,16 +184,23 @@ List<Hero> searchSelector(AppState state) {
 }
 
 String currentPatchUrlForHero(AppState state, Hero hero) {
-// https://heroespatchnotes.com/hero/greymane.html#patch2017-09-05
-   DateTime currentPatchLiveDate = currentBuildSelector(state).liveDate;
-   String currentPatchDate = currentPatchLiveDate.year.toString() + currentPatchLiveDate.month.toString().padLeft(2) + currentPatchLiveDate.day.toString().padLeft(2);
+  // https://heroespatchnotes.com/hero/greymane.html#patch2017-09-05
+  DateTime currentPatchLiveDate = currentPatchSelector(state).liveDate;
+  String currentPatchDate = '${currentPatchLiveDate.year}-${currentPatchLiveDate.month.toString().padLeft(2, '0')}-${currentPatchLiveDate.day.toString().padLeft(2, '0')}';
   return 'heroespatchnotes.com/hero/${hero.short_name}.html#patch$currentPatchDate';
 }
 
 Settings settingsSelector(AppState state) {
+  if (state.settings == null) {
+    throw new Exception('Settings not fetched');
+  }
   return state.settings;
 }
 
 DataSource dataSourceSelector(AppState state) {
+  Settings settings = settingsSelector(state);
+  if (settings.dataSource == null) {
+    new Exception('Settings has no saved datsource');
+  }
   return settingsSelector(state).dataSource;
 }

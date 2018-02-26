@@ -6,7 +6,7 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 
 void getCurrentPatchStatisticalBuilds(Store<AppState> store, Hero hero) {
-    Patch patch = currentBuildSelector(store.state);
+    Patch patch = currentPatchSelector(store.state);
     getStatisticalBuilds(store, hero, patch);
 }
 

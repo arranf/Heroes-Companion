@@ -14,14 +14,14 @@ class BuildProvider {
     if (settings.dataSource == DataSource.HotsDog) {
       return _getHotsDogStatisticalBuilds(patch, heroName, heroId);
     } else if (settings.dataSource == DataSource.HotsLogs) {
-      return _getHotsLogsStatisticalBuilds(heroName, heroId);
+      return _getHotsLogsStatisticalBuilds(patch, heroName, heroId);
     }
     return null;
   }
 
-  Future<List<StatisticalHeroBuild>> _getHotsLogsStatisticalBuilds(String heroName, int heroId) {
+  Future<List<StatisticalHeroBuild>> _getHotsLogsStatisticalBuilds(Patch patch, String heroName, int heroId) {
     return new Future.sync(() async {
-      List<HotsLogBuild> hotslogsBuilds = await getHotsLogBuilds(heroName);
+      List<HotsLogBuild> hotslogsBuilds = await getHotsLogBuilds(patch, heroName);
       if (hotslogsBuilds == null) {
         throw new Exception('API call to fetch hotslogs builds failed');
       }

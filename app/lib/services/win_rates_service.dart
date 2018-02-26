@@ -8,7 +8,7 @@ import 'package:redux/redux.dart';
 void getCurrentWinRates(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
   // TODO Change interface to actually throw an exception in the case we need special handling
-  Patch patch = currentBuildSelector(store.state);
+  Patch patch = currentPatchSelector(store.state);
   DataProvider.winRateProvider.getWinRates(patch).then((winRates) {
     store.dispatch(new FetchWinRatesSucceededAction(winRates, patch.fullVersion));
   }).catchError(

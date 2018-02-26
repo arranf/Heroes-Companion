@@ -151,6 +151,41 @@ Future upgradeTo10 (Database database) async {
   );
 }
 
+Future markAllAbilitiesTalentsOnDevice(Database database) async {
+  await database.execute('''
+    UPDATE ${ability_table.table_name}
+    SET ${ability_table.column_have_asset} = 1
+    ''');
+
+  await database.execute('''
+    UPDATE ${talent_table.table_name}
+    SET ${talent_table.column_have_asset}  = 1
+    ''');
+
+  await database.execute('''
+    UPDATE ${hero_table.table_name}
+    SET ${hero_table.column_have_assets}  = 1
+    ''');
+}
+
+Future upgradeTo12(Database database) async {
+  await database.execute(
+    '''
+    UPDATE heroes
+    SET [AdditionalSearchText] = 'Firebat Terran Heroes of the Storm'
+    WHERE [heroes].ShortName = 'blaze'
+    '''
+  );
+
+  await database.execute(
+    '''
+    UPDATE heroes
+    SET [AdditionalSearchText] = 'Shadowsong Warden Watcher Night Elf Alliance WoW World of Warcraft War3 WC3 Warcraft3 III 3 Frozen Throne FT Warlords Draenor WoD Legion Hearthstone HS'
+    WHERE [heroes].ShortName = 'maiev'
+    '''
+  );
+}
+
 
 Future upgradeTo7(Database database) async {
   await database.execute('''

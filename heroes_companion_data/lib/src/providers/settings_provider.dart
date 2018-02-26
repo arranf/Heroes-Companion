@@ -19,7 +19,7 @@ class SettingsProvider {
     // Update Time
     String currentUpdateOriginTimeUnparsed = preferences.getString(pref_keys.update_id);
     DateTime currentUpdateOriginTime = new DateTime(1970);
-    if (currentUpdateOriginTimeUnparsed.isNotEmpty) {
+    if (currentUpdateOriginTimeUnparsed != null && currentUpdateOriginTimeUnparsed.isNotEmpty) {
       currentUpdateOriginTime = DateTime.parse(currentUpdateOriginTimeUnparsed);
     }
 

@@ -30,7 +30,7 @@ class HeroListItem extends StatelessWidget {
           backgroundImage: hero.have_assets
               ? new AssetImage('assets/images/heroes/${hero.icon_file_name}')
               : new CachedNetworkImageProvider(
-                  'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/heroes/${hero.icon_file_name}'),
+                  'https://images.heroescompanion.com/heroes/${hero.icon_file_name}'),
         ),
         title: new Text(hero.name,
             style: new TextStyle(

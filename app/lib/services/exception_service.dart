@@ -20,18 +20,18 @@ class ExceptionService {
     assert(() => isDebug = true); 
     if (!isDebug) {
       FlutterError.onError = (FlutterErrorDetails details) async {
-        print('FlutterError.onError caught an error');
+        debugPrint('FlutterError.onError caught an error');
         await reportErrorAndStackTrace(details.exception, details.stack);
       };
     }
   }
 
 
-    /// Reports [error] along with its [stackTrace] to Sentry.io.
+    /// Reports [error] (either an [Exception] or an [Error]) to Sentry.io.
   Future<Null> reportError(dynamic error) async {
     if (!isDebug) {
-      print('Caught error: $error');
-      print('Reporting to Sentry.io...');
+      debugPrint('Caught error: $error');
+      debugPrint('Reporting to Sentry.io...');
 
       SentryResponse response;
       if (error is Error) {
@@ -46,9 +46,9 @@ class ExceptionService {
       }
 
       if (response.isSuccessful) {
-        print('Success! Event ID: ${response.eventId}');
+        debugPrint('Success! Event ID: ${response.eventId}');
       } else {
-        print('Failed to report to Sentry.io: ${response.error}');
+        debugPrint('Failed to report to Sentry.io: ${response.error}');
       }
     } else {
       throw error;
@@ -57,8 +57,8 @@ class ExceptionService {
 
   Future<Null> reportErrorAndStackTrace(dynamic error, dynamic stackTrace) async {
     if (!isDebug) {
-      print('Caught error: $error');
-      print('Reporting to Sentry.io...');
+      debugPrint('Caught error: $error');
+      debugPrint('Reporting to Sentry.io...');
 
       final SentryResponse response = await _sentry.captureException(
           exception: error,
@@ -66,9 +66,9 @@ class ExceptionService {
       );
 
       if (response.isSuccessful) {
-        print('Success! Event ID: ${response.eventId}');
+        debugPrint('Success! Event ID: ${response.eventId}');
       } else {
-        print('Failed to report to Sentry.io: ${response.error}');
+        debugPrint('Failed to report to Sentry.io: ${response.error}');
       }
     } else {
       throw error;
