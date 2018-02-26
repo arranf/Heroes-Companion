@@ -4,10 +4,10 @@ class LoadingView extends StatelessWidget {
   LoadingView();
   @override
   Widget build(BuildContext context) => new Container(
-      color: Colors.white,
+      color: Theme.of(context).backgroundColor,
       child: new Center(
           child: new CircularProgressIndicator(
-        backgroundColor: Colors.white,
-        valueColor: new AlwaysStoppedAnimation(Theme.of(context).primaryColor),
+        backgroundColor: Theme.of(context).backgroundColor,
+        valueColor: new AlwaysStoppedAnimation(Theme.of(context).accentColor),
       )));
 }

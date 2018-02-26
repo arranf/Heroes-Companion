@@ -76,17 +76,20 @@ class App extends StatelessWidget {
 
   App();
 
+  final ThemeData lightTheme = new ThemeData(
+              primarySwatch: Colors.deepPurple,
+              accentColor: Colors.orangeAccent,
+              backgroundColor: Colors.white
+            );
+
+  final ThemeData darkTheme = new ThemeData.dark().copyWith(accentColor: Colors.orangeAccent, buttonColor: Colors.deepPurple);
+
   @override
   Widget build(BuildContext context) => new StoreProvider(
         store: store,
         child: new MaterialApp(
             title: appName,
-            theme: new ThemeData(
-              primaryColor: Colors.deepPurple,
-              accentColor: Colors.orangeAccent,
-              backgroundColor: Colors.white,
-              textTheme: new Typography(platform: TargetPlatform.android).black,
-            ),
+            theme: lightTheme,
             // Named routes only
             routes: {
               Routes.home: (BuildContext context) {
