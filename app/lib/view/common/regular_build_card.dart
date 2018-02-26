@@ -2,43 +2,35 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class BuildCard extends StatelessWidget{
-  final StatisticalHeroBuild statisticalBuild;
-  final String type;
+class RegularBuildCard extends StatefulWidget{
+  final Build regularBuild;
   final dynamic _onPressed;
   final Hero hero;
   final dynamic showTalentBottomSheet;
 
-  BuildCard(this.statisticalBuild, this._onPressed, this.hero, this.showTalentBottomSheet, {this.type,} );
+  RegularBuildCard(this.regularBuild, this._onPressed, this.hero, this.showTalentBottomSheet);
 
-  List<Widget> buildCardTopText(BuildContext context)
- {
+  @override
+  State<StatefulWidget> createState() => new _RegularBuildCardState();
+}
 
-  TextStyle style = Theme.of(context).textTheme.body1;
-   List<Widget> widgets = [];
-   if (type != null) {
-     widgets.add(new Text(type, style: style.apply(fontWeightDelta: 1),));
-   }
-   widgets.add(new Text(
-                      '${(statisticalBuild.winRate * 100).toStringAsFixed(2)} Win %',
-                      style: style));
-  widgets.add(new Text('${statisticalBuild.gamesPlayed} Games Played',
-                      style: style));
-                    return widgets;
-                    
- }
+
+class _RegularBuildCardState extends State<RegularBuildCard> {
+  bool _isShowingDescription = false;
 
   @override
   Widget build(BuildContext context) {
     bool isPhone = MediaQuery.of(context).size.width < 600;
+    TextTheme style = Theme.of(context).textTheme;
 
     List<Talent> talents = [];
 
     try {
-      statisticalBuild.build.talentNames
-                      .forEach((talentName) {
-                        Talent talent = hero.talents.firstWhere((t) => t.talent_tree_id == talentName || t.name == talentName);
+      widget.regularBuild.talentTreeIds
+                      .forEach((talentTreeId) {
+                        Talent talent = widget.hero.talents.firstWhere((t) => t.talent_tree_id == talentTreeId);
                         talents.add(talent);
                       });
     } catch (e) {
@@ -57,10 +49,8 @@ class BuildCard extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: buildCardTopText(context),
-              ),
+              new Text(widget.regularBuild.source, style: style.body2),
+              widget.regularBuild.tagline != null ? new Text(widget.regularBuild.tagline, style: style.body1, maxLines: 3,) : new Container(),
               new Container(
                 height: 16.0,
               ),
@@ -73,12 +63,30 @@ class BuildCard extends StatelessWidget{
                 child: new ButtonBar(
                   children: <Widget>[
                     new FlatButton(
+                      child: const Text('MORE INFO'),
+                      onPressed: () async {
+                         if (await canLaunch(widget.regularBuild.url)) {
+                            await launch(widget.regularBuild.url);
+                          } else {
+                            throw new Exception('Could not launch ${widget.regularBuild.url}');
+                          }
+                      }
+                    ),
+                    new FlatButton(
                       child: const Text('PLAY BUILD'),
-                      onPressed: () => _onPressed(context, statisticalBuild),
+                      onPressed: () => widget._onPressed(context, new HeroBuild(widget.hero.hero_id, widget.regularBuild.talentTreeIds)),
+                    ),
+                    new IconButton(
+                      icon: _isShowingDescription ? const Icon(Icons.expand_less) : const Icon(Icons.expand_more),
+                      onPressed: () => setState(() {_isShowingDescription = !_isShowingDescription;}),
                     )
                   ],
                 ),
-              )
+              ),
+              _isShowingDescription ? new Padding(
+                padding: new EdgeInsets.only(top: 8.0),
+                child: new Text(widget.regularBuild.description),
+              ) : new Container(),
             ],
           ),
         ),
@@ -89,7 +97,7 @@ class BuildCard extends StatelessWidget{
   Widget _buildPhoneTalent(BuildContext context, Talent talent) {
     return new Expanded(
       child: new GestureDetector(
-        onTap: () => showTalentBottomSheet(context, talent),
+        onTap: () => widget.showTalentBottomSheet(context, talent),
          child: talent.have_asset
                 ? new Image.asset(
                     'assets/images/talents/${talent.icon_file_name}')
@@ -102,7 +110,7 @@ class BuildCard extends StatelessWidget{
 
   Widget _buildTabletTalent(BuildContext context, Talent talent) {
     return new GestureDetector(
-        onTap: () => showTalentBottomSheet(context, talent),
+        onTap: () => widget.showTalentBottomSheet(context, talent),
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

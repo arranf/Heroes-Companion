@@ -5,7 +5,7 @@ import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/maps_service.dart';
 import 'package:heroes_companion/view/common/app_drawer.dart';
 import 'package:heroes_companion/view/common/map_list.dart';
-import 'package:heroes_companion/view/common/map_timer.dart';
+import 'package:heroes_companion/view/map/map_timer.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 

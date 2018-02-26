@@ -6,7 +6,7 @@ import 'package:heroes_companion/routes.dart';
 import 'package:heroes_companion/services/build_service.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:heroes_companion/services/win_rates_service.dart';
-import 'package:heroes_companion/view/common/hero_detail.dart';
+import 'package:heroes_companion/view/hero_detail/hero_detail.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
@@ -27,7 +27,7 @@ class HeroDetailContainer extends StatefulWidget {
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
   bool _isCurrentBuildDirty = false;
   bool _isCurrentBuild = true;
-  Patch _build;
+  Patch _patch;
   int _nextCanAttemptFetchExponent = 1;
   DateTime _nextCanAttemptFetch = new DateTime.now();
 
@@ -53,16 +53,25 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
       return;
     }
 
-    _build = getCorrectBuild(store);
-    if (winRatesByBuildNumber(store.state, _build.fullVersion).isNotPresent) {
-      getWinRatesForBuild(store, _build);
+    _patch = getCorrectBuild(store);
+    if (winRatesByBuildNumber(store.state, _patch.fullVersion).isNotPresent) {
+      getWinRatesForBuild(store, _patch);
     }
 
     Optional<Hero> hero = heroSelectorByHeroId(
         heroesSelector(store.state), widget.heroId);
-    if (hero.isPresent && statisticalBuildsByHeroIdAndBuildNumber(store.state, hero.value.hero_id, _build.fullVersion).isNotPresent) {
-      getStatisticalBuilds(store, hero.value, _build);
+    if (hero.isNotPresent) {
+      throw new Exception('Hero selected that\'s not in database');
     }
+
+    if (statisticalBuildsByHeroIdAndBuildNumber(store.state, hero.value.hero_id, _patch.fullVersion).isNotPresent) {
+      getStatisticalBuilds(store, hero.value, _patch);
+    }
+
+    if (regularBuildsByHeroId(store.state, hero.value.hero_id).isNotPresent) {
+      getBuilds(store, hero.value, _patch);
+    }
+
     _nextCanAttemptFetch = new DateTime.now().add(new Duration(seconds: 2 ^ _nextCanAttemptFetchExponent));
     _nextCanAttemptFetchExponent++;
   }
@@ -73,20 +82,21 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     builder: (context, store) {
       fetchData(store);
       _ViewModel vm =
-          new _ViewModel.from(store, widget.heroId, _build ?? getCorrectBuild(store));
+          new _ViewModel.from(store, widget.heroId, _patch ?? getCorrectBuild(store));
       return new HeroDetail(vm.hero,
           key: new Key(vm.hero.short_name),
           favorite: vm.favorite,
           canOfferPreviousBuild: vm.hero.last_modified != null && vm.previousBuild.liveDate.isAfter(vm.hero.last_modified),
           heroWinRate: vm.heroWinRate,
           statisticalBuilds: vm.buildWinRates,
+          regularBuilds: vm.regularBuilds,
           isCurrentBuild: _isCurrentBuild,
           heroPatchNotesUrl: vm.heroPatchNotesUrl,
           patch: (_isCurrentBuild ? vm.currentBuild : vm.previousBuild),
           buildSwitch: () {
             setState(() {
               _isCurrentBuild = !_isCurrentBuild;
-              _build = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild);
+              _patch = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild);
             });
         });
     });
@@ -101,6 +111,7 @@ class _ViewModel {
   final Patch currentBuild;
   final Patch previousBuild;
   final String heroPatchNotesUrl;
+  final List<Build> regularBuilds;
 
   _ViewModel(
       {@required this.hero,
@@ -109,7 +120,8 @@ class _ViewModel {
       this.buildWinRates,
       this.currentBuild,
       this.previousBuild,
-      this.heroPatchNotesUrl});
+      this.heroPatchNotesUrl,
+      this.regularBuilds,});
 
   factory _ViewModel.from(Store<AppState> store, int id, Patch build) {
     final dynamic _favorite = (Hero hero) {
@@ -124,12 +136,16 @@ class _ViewModel {
     final heroWinRate = heroWinRateByHeroIdAndBuildNumber(store.state, id, build.fullVersion);
     final Optional<List<StatisticalHeroBuild>> buildWinRates =
         statisticalBuildsByHeroIdAndBuildNumber(store.state, id, build.fullVersion);
+    
+    final Optional<List<Build>> regularBuilds = regularBuildsByHeroId(store.state, id);
     final String heroPatchNotesUrl = currentPatchUrlForHero(store.state, hero.value);
+
     return new _ViewModel(
       hero: hero.value,
       favorite: _favorite,
       heroWinRate: heroWinRate.isPresent ? heroWinRate.value : null,
       buildWinRates: buildWinRates.isPresent ? buildWinRates.value : null,
+      regularBuilds: regularBuilds.isPresent ? regularBuilds.value : null,
       currentBuild: currentPatchSelector(store.state),
       previousBuild: previousPatchSelector(store.state),
       heroPatchNotesUrl: heroPatchNotesUrl,
