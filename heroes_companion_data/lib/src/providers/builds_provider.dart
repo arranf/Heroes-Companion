@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/build.dart';
 import 'package:heroes_companion_data/src/api/DTO/hots_log_builds.dart';
 import 'package:heroes_companion_data/src/api/api.dart';
 import 'package:heroes_companion_data/src/models/patch.dart';
@@ -43,6 +44,16 @@ class BuildProvider {
         heroBuilds.addAll(buildWinRates.popular_builds.map((BuildStatistics b) => new StatisticalHeroBuild.fromBuildStatistics(b, heroId, 'Popular Build')));
       }
       return heroBuilds;
+    });
+  }
+
+  Future<List<Build>> getRegularBuilds(Patch patch, int heroId) async {
+    return new Future.sync(() async {
+      List<Build> builds = await getBuildsForHero(heroId);
+      if (builds == null) {
+        throw new Exception('API call to fetch (regular) builds failed');
+      }
+      return builds;
     });
   }
 }
