@@ -77,6 +77,7 @@ class _RegularBuildCardState extends State<RegularBuildCard> {
                       onPressed: () => widget._onPressed(context, new HeroBuild(widget.hero.hero_id, widget.regularBuild.talentTreeIds)),
                     ),
                     new IconButton(
+                      tooltip: 'Show Description',
                       icon: _isShowingDescription ? const Icon(Icons.expand_less) : const Icon(Icons.expand_more),
                       onPressed: () => setState(() {_isShowingDescription = !_isShowingDescription;}),
                     )
