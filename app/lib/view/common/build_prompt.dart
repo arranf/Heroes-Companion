@@ -15,14 +15,14 @@ class BuildPrompt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     if (!_isCurrentBuild) {
       return new GestureDetector(
           onTap: onTap,
           child: new Container(
               constraints: new BoxConstraints.expand(height: 36.0),
-              color: _isCurrentBuild
-                  ? Theme.of(context).errorColor
-                  : Theme.of(context).accentColor,
+              // Check if light or dark
+              color: theme.primaryColor == Colors.deepPurple.shade500 ? theme.accentColor :  theme.hintColor,
               child: new Center(
                   child: new Text(
                 'Showing previous patch data ($patchName)'.toUpperCase(),

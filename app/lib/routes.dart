@@ -11,4 +11,5 @@ class Routes {
   static final mapsKey = new Key(maps);
   static final settings = '/settings';
   static final settingsDataSource = '/settings/data_source';
+  static final settingsThemeType = '/settings/theme_type';
 }
