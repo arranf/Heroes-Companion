@@ -133,10 +133,7 @@ class _ViewModel {
     Function onRefresh = () => true;
     if (filter == HeroFilter.freeToPlay) {
       allowRefresh = true;
-      onRefresh = () {
-        debugPrint('On Refresh');
-        return getHeroesAsync(store, isForceRefreshRotation: true);
-      };
+      onRefresh = () => getHeroesAsync(store, isForceRefreshRotation: true);
     }
 
     List<Hero> heroes = heroesbyFilterSelector(store.state);
