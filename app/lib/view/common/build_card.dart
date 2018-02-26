@@ -95,7 +95,7 @@ class BuildCard extends StatelessWidget{
                     'assets/images/talents/${talent.icon_file_name}')
                 : new Image(
                     image: new CachedNetworkImageProvider(
-                        'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}'))
+                        'https://images.heroescompanion.com/talents/${talent.icon_file_name}'))
           ),
         );
   }
@@ -111,7 +111,7 @@ class BuildCard extends StatelessWidget{
                     'assets/images/talents/${talent.icon_file_name}')
                 : new Image(
                     image: new CachedNetworkImageProvider(
-                        'https://s3.eu-west-1.amazonaws.com/data.heroescompanion.com/images/talents/${talent.icon_file_name}')),
+                        'https://images.heroescompanion.com/talents/${talent.icon_file_name}')),
             new Container(
               height: 4.0,
             ),
