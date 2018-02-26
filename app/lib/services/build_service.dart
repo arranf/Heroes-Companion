@@ -5,6 +5,21 @@ import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 
+void getBuilds(Store<AppState> store, Hero hero, Patch patch) {
+  store.dispatch(new FetchHeroBuildsStartLoadingAction());
+  DataProvider.buildProvider
+      .getRegularBuilds(patch, hero.hero_id)
+      .then((List<Build> builds) {
+        return store.dispatch(
+            new FetchHeroBuildsSucceededAction(builds, hero.hero_id));
+      })
+      .catchError((dynamic e) {
+        new ExceptionService()
+        .reportError(e);
+      store.dispatch(new FetchHeroBuildsFailedAction());
+  });
+}
+
 void getCurrentPatchStatisticalBuilds(Store<AppState> store, Hero hero) {
     Patch patch = currentPatchSelector(store.state);
     getStatisticalBuilds(store, hero, patch);

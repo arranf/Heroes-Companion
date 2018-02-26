@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/routes.dart';
-import 'package:heroes_companion/services/statistical_build_service.dart';
+import 'package:heroes_companion/services/build_service.dart';
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:heroes_companion/services/win_rates_service.dart';
 import 'package:heroes_companion/view/common/hero_detail.dart';

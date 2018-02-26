@@ -11,6 +11,8 @@ export 'src/models/data_source.dart';
 export 'src/models/theme_type.dart';
 export 'src/models/statistical_hero_build.dart';
 export 'src/models/hero_build.dart';
+// TODO Make a facade
+export 'src/api/DTO/build.dart';
 
 export 'src/data_provider.dart';
 

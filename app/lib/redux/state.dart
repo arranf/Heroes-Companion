@@ -12,10 +12,13 @@ class AppState {
   final Map<String, List<HeroWinRate>> winRates;
   final bool isLoading;
   final bool staticialBuildsLoading;
+  final bool regularBuildsLoading;
   final bool isUpdating;
 
   /// heroId => <BuildNumber, StatisticalHeroBuild>
   final Map<int, Map<String, List<StatisticalHeroBuild>>> heroStatisticalBuildsByPatchNumber;
+  final Map<int, List<Build>> regularHeroBuilds;
+
   final String searchQuery;
   final HeroFilter filter;
 
@@ -32,11 +35,13 @@ class AppState {
     this.heroStatisticalBuildsByPatchNumber,
     this.searchQuery = '',
     this.filter = HeroFilter.all,
-    this.settings
+    this.settings,
+    this.regularHeroBuilds,
+    this.regularBuildsLoading
   });
 
   factory AppState.initial() => new AppState(
-      isLoading: true, staticialBuildsLoading: false, isUpdating: false);
+      isLoading: true, staticialBuildsLoading: false, isUpdating: false, regularBuildsLoading: false);
 
   AppState copyWith({
     bool isLoading,
@@ -50,6 +55,8 @@ class AppState {
     HeroFilter filter,
     List<PlayableMap> maps,
     Settings settings,
+    Map<int, List<Build>> regularHeroBuilds,
+    bool regularBuildsLoading,
   }) {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,
@@ -63,6 +70,8 @@ class AppState {
       filter: filter ?? this.filter,
       maps: maps ?? this.filter,
       settings: settings ?? this.settings,
+      regularBuildsLoading: regularBuildsLoading ?? this.regularBuildsLoading,
+      regularHeroBuilds: regularHeroBuilds ?? this.regularHeroBuilds,
     );
   }
 
