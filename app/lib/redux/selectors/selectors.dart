@@ -204,3 +204,11 @@ DataSource dataSourceSelector(AppState state) {
   }
   return settingsSelector(state).dataSource;
 }
+
+ThemeType themeTypeSelector(AppState state) {
+  Settings settings = settingsSelector(state);
+  if (settings.themeType == null) {
+    new Exception('Settings has no saved theme type');
+  }
+  return settingsSelector(state).themeType;
+}

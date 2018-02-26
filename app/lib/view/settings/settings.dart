@@ -21,10 +21,16 @@ class Settings extends StatelessWidget {
             children: [
               new ListTile(
                 leading: const Icon(Icons.cloud_download),
-                title: new Text('Data Source'),
+                title: const Text('Data Source'),
                 subtitle: new Text('Current: ${vm.dataSource.name}'),
                 onTap: () => Navigator.of(context).pushNamed(Routes.settingsDataSource),
-              )
+              ),
+              new ListTile(
+                leading: const Icon(Icons.colorize),
+                title: const Text('Theme'),
+                subtitle: new Text('Current: ${vm.themeType.name}'),
+                onTap: () => Navigator.of(context).pushNamed(Routes.settingsThemeType),
+              ),
             ],
           )
         );
@@ -34,13 +40,15 @@ class Settings extends StatelessWidget {
 
 class _ViewModel {
   final DataSource dataSource;
+  final ThemeType themeType;
   final dynamic updateDataSource;
 
-  _ViewModel({this.dataSource, this.updateDataSource});
+  _ViewModel({this.dataSource, this.updateDataSource, this.themeType});
 
   factory _ViewModel.from(Store<AppState> store){
     return new _ViewModel(
-        dataSource: dataSourceSelector(store.state)
+        dataSource: dataSourceSelector(store.state),
+        themeType: themeTypeSelector(store.state)
     );
   }
 }

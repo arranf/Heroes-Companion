@@ -13,6 +13,7 @@ import 'package:heroes_companion/view/containers/hero_search_container.dart';
 import 'package:heroes_companion/view/containers/maps_home_container.dart';
 import 'package:heroes_companion/view/settings/settings.dart';
 import 'package:heroes_companion/view/settings/settings_data_source.dart';
+import 'package:heroes_companion/view/settings/settings_theme_type.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart' hide Settings;
@@ -89,8 +90,9 @@ class App extends StatelessWidget {
         store: store,
         child: new MaterialApp(
             title: appName,
-            theme: lightTheme,
+            theme: themeTypeSelector(store.state) == ThemeType.Light ? lightTheme : darkTheme,
             // Named routes only
+            // TODO move these into separate file
             routes: {
               Routes.home: (BuildContext context) {
                 return new StoreBuilder<AppState>(
@@ -113,6 +115,7 @@ class App extends StatelessWidget {
               },
               Routes.settings: (BuildContext context) => new StoreBuilder<AppState>(builder: (context, store) => new Settings()),
               Routes.settingsDataSource: (BuildContext context) => new StoreBuilder<AppState>(builder: (context, store) => new SettingsDataSource()),
+              Routes.settingsThemeType: (BuildContext context) => new StoreBuilder<AppState>(builder: (context, store) => new SettingsThemeType()),
             }),
       );
 }

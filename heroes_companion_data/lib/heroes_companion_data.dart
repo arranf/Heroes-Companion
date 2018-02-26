@@ -8,6 +8,7 @@ export 'src/models/patch.dart';
 export 'src/models/settings.dart';
 export 'src/models/hero_win_rate.dart';
 export 'src/models/data_source.dart';
+export 'src/models/theme_type.dart';
 export 'src/models/statistical_hero_build.dart';
 export 'src/models/hero_build.dart';
 

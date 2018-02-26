@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:heroes_companion_data/src/models/data_source.dart';
 import 'package:heroes_companion_data/src/models/settings.dart';
+import 'package:heroes_companion_data/src/models/theme_type.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:heroes_companion_data/src/shared_preferences_keys.dart'
     as pref_keys;
@@ -29,9 +30,11 @@ class SettingsProvider {
     DateTime rotationDate = unparsedRotationDate.isEmpty ? new DateTime(1970)
           : DateTime.parse(unparsedRotationDate);
 
+    ThemeType themeType = ThemeType.fromString(preferences.getString(pref_keys.theme_type));
+
     DataSource dataSource = DataSource.fromString(preferences.getString(pref_keys.data_source));
 
-    _settings = new Settings(currentUpdateOriginTime, rotationDate, updatePatchVersion, dataSource);
+    _settings = new Settings(currentUpdateOriginTime, rotationDate, updatePatchVersion, dataSource, themeType);
 
     return _settings;
   }
@@ -57,6 +60,10 @@ class SettingsProvider {
 
     if (_settings.dataSource != settings.dataSource) {
       preferences.setString(pref_keys.data_source, settings.dataSource.name);
+    }
+
+    if (_settings.themeType != settings.themeType) {
+      preferences.setString(pref_keys.theme_type, settings.themeType.name);
     }
 
     _settings = settings;
