@@ -41,8 +41,9 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     // Ensure if we're missing data we still show something
     if (!_isCurrentBuildDirty){
       Patch currentPatch = currentPatchSelector(store.state);
-      if (currentPatch != null){
-        _isCurrentBuild = currentPatch.liveDate.difference(new DateTime.now()).inDays >= -3;
+      if (currentPatch != null) {
+        int differenceInDays = currentPatch.liveDate.difference(new DateTime.now()).inDays;
+        _isCurrentBuild = (differenceInDays * -1) > 3;
         _isCurrentBuildDirty = true;
       }
     }
