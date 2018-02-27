@@ -29,7 +29,7 @@ AppState appReducer(AppState state, action) {
       filter: filterReducer(state.filter, action),
       maps: mapsReducer(state.maps, action),
       settings: settingsReducer(state.settings, action),
-      regularBuildsLoading: regularBuildsLoadingReducer(state.staticialBuildsLoading, action),
+      regularBuildsLoading: regularBuildsLoadingReducer(state.regularBuildsLoading, action),
       regularHeroBuilds: regularHeroBuildsReducer(state.regularHeroBuilds, action),
     );
 }

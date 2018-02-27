@@ -28,8 +28,6 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
   bool _isCurrentBuildDirty = false;
   bool _isCurrentBuild = true;
   Patch _patch;
-  int _nextCanAttemptFetchExponent = 1;
-  DateTime _nextCanAttemptFetch = new DateTime.now();
 
   Patch getCorrectBuild(Store<AppState> store) {
     return _isCurrentBuild
@@ -49,7 +47,7 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     }
 
     // If we're loading don't requery
-    if (isAppLoading(store.state) || _nextCanAttemptFetch.isAfter(new DateTime.now()) ){
+    if (isAppLoading(store.state)){
       return;
     }
 
@@ -72,8 +70,8 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
       getBuilds(store, hero.value, _patch);
     }
 
-    _nextCanAttemptFetch = new DateTime.now().add(new Duration(seconds: 2 ^ _nextCanAttemptFetchExponent));
-    _nextCanAttemptFetchExponent++;
+    // _nextCanAttemptFetch = new DateTime.now().add(new Duration(seconds: 2 ^ _nextCanAttemptFetchExponent));
+    // _nextCanAttemptFetchExponent++;
   }
 
   @override
