@@ -26,7 +26,7 @@ class Settings extends StatelessWidget {
                 onTap: () => Navigator.of(context).pushNamed(Routes.settingsDataSource),
               ),
               new ListTile(
-                leading: const Icon(Icons.colorize),
+                leading: const Icon(Icons.color_lens),
                 title: const Text('Theme'),
                 subtitle: new Text('Current: ${vm.themeType.name}'),
                 onTap: () => Navigator.of(context).pushNamed(Routes.settingsThemeType),
