@@ -4,7 +4,9 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:flutter/foundation.dart';
 
 bool isAppLoading(AppState state) =>
-    isLoadingSelector(state) || heroStatisticalHeroBuildLoadingSelector(state) || regularBuildsLoadingSelector(state);
+    isLoadingSelector(state) ||
+    heroStatisticalHeroBuildLoadingSelector(state) ||
+    regularBuildsLoadingSelector(state);
 
 bool isUpdatingSelector(AppState state) => state.isUpdating;
 
@@ -13,12 +15,12 @@ bool isLoadingSelector(AppState state) => state.isLoading;
 bool heroStatisticalHeroBuildLoadingSelector(AppState state) =>
     state.staticialBuildsLoading;
 
-bool regularBuildsLoadingSelector(AppState state) =>
-  state.regularBuildsLoading;
+bool regularBuildsLoadingSelector(AppState state) => state.regularBuildsLoading;
 
 HeroFilter filterSelector(AppState state) => state.filter;
 
-List<Hero> heroesSelector(AppState state) => state.heroes == null ? new List<Hero>() : state.heroes;
+List<Hero> heroesSelector(AppState state) =>
+    state.heroes == null ? new List<Hero>() : state.heroes;
 
 List<Hero> favoriteHeroesSelector(AppState state) =>
     state.heroes.where((Hero h) => h.is_favorite).toList();
@@ -48,8 +50,7 @@ List<Hero> heroesbyFilterSelector(AppState state) {
 
 Optional<Hero> heroSelectorByHeroId(List<Hero> heroes, int id) {
   try {
-    return new Optional.of(
-        heroes.firstWhere((h) => h.hero_id == id));
+    return new Optional.of(heroes.firstWhere((h) => h.hero_id == id));
   } catch (e) {
     return new Optional.absent();
   }
@@ -74,15 +75,17 @@ Patch previousPatchSelector(AppState state) {
   }
 
   int currentIndex = state.patches.indexOf(currentPatchSelector(state));
-  if (currentIndex+1 == state.patches.length - 1) {
+  if (currentIndex + 1 == state.patches.length - 1) {
     throw new Exception('Error getting previous build');
   }
-  return state.patches[currentIndex+1];
+  return state.patches[currentIndex + 1];
 }
 
-Map<String, List<HeroWinRate>> winRatesSelector(AppState state) => state.winRates;
+Map<String, List<HeroWinRate>> winRatesSelector(AppState state) =>
+    state.winRates;
 
-Optional<List<HeroWinRate>> winRatesByBuildNumber(AppState state, String buildNumber) {
+Optional<List<HeroWinRate>> winRatesByBuildNumber(
+    AppState state, String buildNumber) {
   try {
     return new Optional.of(winRatesSelector(state)[buildNumber]);
   } catch (e) {
@@ -91,8 +94,7 @@ Optional<List<HeroWinRate>> winRatesByBuildNumber(AppState state, String buildNu
 }
 
 /// A map of build number to HeroWinRate
-Optional<Map<String, HeroWinRate>> heroWinRateByHeroId(
-    AppState state, int id) {
+Optional<Map<String, HeroWinRate>> heroWinRateByHeroId(AppState state, int id) {
   if (winRatesSelector(state) == null) {
     return new Optional.absent();
   }
@@ -102,10 +104,11 @@ Optional<Map<String, HeroWinRate>> heroWinRateByHeroId(
     return new Optional.absent();
   }
 
-  Map<String, HeroWinRate> heroWinRatesByBuild =
-      new Map<String, HeroWinRate>();
-  winRatesSelector(state).forEach((String buildNumber, List<HeroWinRate> winRates) {
-    heroWinRatesByBuild[buildNumber] = winRates.firstWhere((w) => w.heroId == hero.value.hero_id);
+  Map<String, HeroWinRate> heroWinRatesByBuild = new Map<String, HeroWinRate>();
+  winRatesSelector(state)
+      .forEach((String buildNumber, List<HeroWinRate> winRates) {
+    heroWinRatesByBuild[buildNumber] =
+        winRates.firstWhere((w) => w.heroId == hero.value.hero_id);
   });
 
   if (heroWinRatesByBuild.keys.isNotEmpty) {
@@ -114,7 +117,6 @@ Optional<Map<String, HeroWinRate>> heroWinRateByHeroId(
     return new Optional.absent();
   }
 }
-
 
 Optional<HeroWinRate> heroWinRateByHeroIdAndBuildNumber(
     AppState state, int id, String buildNumber) {
@@ -129,22 +131,25 @@ Optional<HeroWinRate> heroWinRateByHeroIdAndBuildNumber(
   try {
     return new Optional.of(winRatesByBuildNumber(state, buildNumber)
         .value
-        .firstWhere((w) => w.heroId == id ));
+        .firstWhere((w) => w.heroId == id));
   } catch (e) {
     debugPrint("No winrates found for {$hero.value.name}");
     return new Optional.absent();
   }
 }
 
-bool statisticalHeroBuildLoading(AppState state) => state.staticialBuildsLoading;
+bool statisticalHeroBuildLoading(AppState state) =>
+    state.staticialBuildsLoading;
 
-Map<int, Map<String, List<StatisticalHeroBuild>>> statisticalHeroBuilds(AppState state) {
+Map<int, Map<String, List<StatisticalHeroBuild>>> statisticalHeroBuilds(
+    AppState state) {
   return state.heroStatisticalBuildsByPatchNumber;
 }
 
 Optional<Map<String, List<StatisticalHeroBuild>>> statisticalBuildsByHeroId(
     AppState state, int id) {
-  Map<int, Map<String, List<StatisticalHeroBuild>>> rates = statisticalHeroBuilds(state);
+  Map<int, Map<String, List<StatisticalHeroBuild>>> rates =
+      statisticalHeroBuilds(state);
   if (rates != null && rates.containsKey(id)) {
     return new Optional.of(rates[id]);
   }
@@ -153,7 +158,8 @@ Optional<Map<String, List<StatisticalHeroBuild>>> statisticalBuildsByHeroId(
 
 Optional<List<StatisticalHeroBuild>> statisticalBuildsByHeroIdAndBuildNumber(
     AppState state, int id, String buildNumber) {
-  Map<int, Map<String, List<StatisticalHeroBuild>>> rates = statisticalHeroBuilds(state);
+  Map<int, Map<String, List<StatisticalHeroBuild>>> rates =
+      statisticalHeroBuilds(state);
   if (rates == null || !rates.containsKey(id)) {
     return new Optional.absent();
   }
@@ -189,7 +195,8 @@ List<Hero> searchSelector(AppState state) {
 String currentPatchUrlForHero(AppState state, Hero hero) {
   // https://heroespatchnotes.com/hero/greymane.html#patch2017-09-05
   DateTime currentPatchLiveDate = currentPatchSelector(state).liveDate;
-  String currentPatchDate = '${currentPatchLiveDate.year}-${currentPatchLiveDate.month.toString().padLeft(2, '0')}-${currentPatchLiveDate.day.toString().padLeft(2, '0')}';
+  String currentPatchDate =
+      '${currentPatchLiveDate.year}-${currentPatchLiveDate.month.toString().padLeft(2, '0')}-${currentPatchLiveDate.day.toString().padLeft(2, '0')}';
   return 'heroespatchnotes.com/hero/${hero.short_name}.html#patch$currentPatchDate';
 }
 
@@ -222,8 +229,8 @@ Map<int, List<Build>> regularBuildsSelector(AppState state) {
 
 Optional<List<Build>> regularBuildsByHeroId(AppState state, int heroId) {
   Map<int, List<Build>> heroBuilds = regularBuildsSelector(state);
-  if (heroBuilds == null || !heroBuilds.containsKey(heroId)){
-    return new Optional.absent(); 
+  if (heroBuilds == null || !heroBuilds.containsKey(heroId)) {
+    return new Optional.absent();
   }
   return new Optional.of(heroBuilds[heroId]);
 }

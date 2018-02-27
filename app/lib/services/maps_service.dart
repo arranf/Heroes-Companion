@@ -7,16 +7,10 @@ import 'package:redux/redux.dart';
 void getMaps(Store<AppState> store) {
   store.dispatch(new StartLoadingAction());
 
-  DataProvider.mapProvider
-  .getMaps()
-  .then(
-    (List<PlayableMap> maps) {
-      store.dispatch(new FetchMapsSucceededAction(maps)
-      );}
-  )
-  .catchError((Error e) {
-    new ExceptionService()
-            .reportError(e); 
-        store.dispatch(new FetchMapsFailedAction()); 
+  DataProvider.mapProvider.getMaps().then((List<PlayableMap> maps) {
+    store.dispatch(new FetchMapsSucceededAction(maps));
+  }).catchError((Error e) {
+    new ExceptionService().reportError(e);
+    store.dispatch(new FetchMapsFailedAction());
   });
 }

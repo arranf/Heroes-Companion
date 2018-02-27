@@ -38,8 +38,9 @@ class HeroHome extends StatelessWidget {
               title: new Text('Heroes Companion'),
               actions: <Widget>[
                 new PopupMenuButton(
-                  onSelected: (OverflowChoice choice) => OverflowChoice
-                      .handleChoice(choice, context, patchNotesUrl: vm.patchNotesUrl), // overflow menu
+                  onSelected: (OverflowChoice choice) =>
+                      OverflowChoice.handleChoice(choice, context,
+                          patchNotesUrl: vm.patchNotesUrl), // overflow menu
                   itemBuilder: (BuildContext context) {
                     return overflowChoices.map((OverflowChoice choice) {
                       return new PopupMenuItem(
@@ -52,9 +53,12 @@ class HeroHome extends StatelessWidget {
               ],
             ),
             body:
-            // Favorite list and no favorite heroes
+                // Favorite list and no favorite heroes
                 vm.currentFilter == HeroFilter.favorite && vm.heroes.isEmpty
-                    ? new EmptyState(Icons.favorite, title: 'No Favorites', description: 'Favorited Heroes Will Appear Here') : new HeroList(vm.heroes,
+                    ? new EmptyState(Icons.favorite,
+                        title: 'No Favorites',
+                        description: 'Favorited Heroes Will Appear Here')
+                    : new HeroList(vm.heroes,
                         onTap: vm.onTap,
                         onLongPress: vm.onLongPress,
                         onRefresh: vm.onRefresh,
@@ -96,14 +100,13 @@ class _ViewModel {
   final String patchNotesUrl;
   final Function onTap = (BuildContext context, HeroListItem heroListItem) {
     Navigator.of(context).push(new PageRouteBuilder(
-          pageBuilder: (context, a1, a2) => new HeroDetailContainer(
-              heroListItem.hero.hero_id),
+          pageBuilder: (context, a1, a2) =>
+              new HeroDetailContainer(heroListItem.hero.hero_id),
         ));
   };
 
   _ViewModel(
-      {
-      this.heroes,
+      {this.heroes,
       this.loading,
       this.patchNotesUrl,
       this.onLongPress,

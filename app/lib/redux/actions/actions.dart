@@ -39,7 +39,8 @@ class FetchStatisticalHeroBuildSucceededAction {
   final List<StatisticalHeroBuild> statisticalBuilds;
   final int heroId;
 
-  FetchStatisticalHeroBuildSucceededAction(this.statisticalBuilds, this.heroId, this.buildNumber);
+  FetchStatisticalHeroBuildSucceededAction(
+      this.statisticalBuilds, this.heroId, this.buildNumber);
 }
 
 class FetchStatisticalHeroBuildFailedAction {}
@@ -78,7 +79,7 @@ class UpdateSettingsAction {
   UpdateSettingsAction(this.settings);
 }
 
-class DataSourceChangedAction{}
+class DataSourceChangedAction {}
 
 class FetchHeroBuildsStartLoadingAction {}
 

@@ -10,19 +10,17 @@ void getBuilds(Store<AppState> store, Hero hero, Patch patch) {
   DataProvider.buildProvider
       .getRegularBuilds(patch, hero.hero_id)
       .then((List<Build> builds) {
-        return store.dispatch(
-            new FetchHeroBuildsSucceededAction(builds, hero.hero_id));
-      })
-      .catchError((dynamic e) {
-        new ExceptionService()
-        .reportError(e);
-      store.dispatch(new FetchHeroBuildsFailedAction());
+    return store
+        .dispatch(new FetchHeroBuildsSucceededAction(builds, hero.hero_id));
+  }).catchError((dynamic e) {
+    new ExceptionService().reportError(e);
+    store.dispatch(new FetchHeroBuildsFailedAction());
   });
 }
 
 void getCurrentPatchStatisticalBuilds(Store<AppState> store, Hero hero) {
-    Patch patch = currentPatchSelector(store.state);
-    getStatisticalBuilds(store, hero, patch);
+  Patch patch = currentPatchSelector(store.state);
+  getStatisticalBuilds(store, hero, patch);
 }
 
 void getStatisticalBuilds(Store<AppState> store, Hero hero, Patch patch) {
@@ -30,13 +28,10 @@ void getStatisticalBuilds(Store<AppState> store, Hero hero, Patch patch) {
   DataProvider.buildProvider
       .getStatisticalBuilds(patch, hero.name)
       .then((List<StatisticalHeroBuild> statisticalBuilds) {
-        return store.dispatch(
-            new FetchStatisticalHeroBuildSucceededAction(
-                statisticalBuilds, hero.hero_id, patch.fullVersion));
-      })
-      .catchError((dynamic e) {
-        new ExceptionService()
-        .reportError(e);
-      store.dispatch(new FetchStatisticalHeroBuildFailedAction());
+    return store.dispatch(new FetchStatisticalHeroBuildSucceededAction(
+        statisticalBuilds, hero.hero_id, patch.fullVersion));
+  }).catchError((dynamic e) {
+    new ExceptionService().reportError(e);
+    store.dispatch(new FetchStatisticalHeroBuildFailedAction());
   });
 }

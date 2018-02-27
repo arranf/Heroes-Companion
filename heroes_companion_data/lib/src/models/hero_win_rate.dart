@@ -9,7 +9,6 @@ class HeroWinRate {
 
   HeroWinRate(this.heroId, this.winPercentage, this.gamesPlayed, {this.id});
 
-
   factory HeroWinRate.fromMap(Map map) {
     int id = map[table.column_id];
     int heroId = map[table.column_hero_id];
@@ -19,7 +18,8 @@ class HeroWinRate {
   }
 
   factory HeroWinRate.fromWinLossCount(WinLossCount winLossCount, int heroId) {
-    return new HeroWinRate(heroId, winLossCount.winPercentange(), winLossCount.wins + winLossCount.losses);
+    return new HeroWinRate(heroId, winLossCount.winPercentange(),
+        winLossCount.wins + winLossCount.losses);
   }
 
   Map toMap() {
@@ -30,5 +30,4 @@ class HeroWinRate {
     };
     return map;
   }
-
 }

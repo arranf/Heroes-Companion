@@ -31,7 +31,6 @@ App app;
 void main() {
   ExceptionService exceptionService = new ExceptionService();
 
-
   // Listens to onChange events and when the initial load is completed the main app is run
   void listener(AppState state) {
     if (!isAppLoading(state) &&
@@ -78,19 +77,21 @@ class App extends StatelessWidget {
   App();
 
   final ThemeData lightTheme = new ThemeData(
-              primarySwatch: Colors.deepPurple,
-              accentColor: Colors.orangeAccent,
-              backgroundColor: Colors.white
-            );
+      primarySwatch: Colors.deepPurple,
+      accentColor: Colors.orangeAccent,
+      backgroundColor: Colors.white);
 
-  final ThemeData darkTheme = new ThemeData.dark().copyWith(accentColor: Colors.orangeAccent, buttonColor: Colors.deepPurple);
+  final ThemeData darkTheme = new ThemeData.dark().copyWith(
+      accentColor: Colors.orangeAccent, buttonColor: Colors.deepPurple);
 
   @override
   Widget build(BuildContext context) => new StoreProvider(
         store: store,
         child: new MaterialApp(
             title: appName,
-            theme: themeTypeSelector(store.state) == ThemeType.Light ? lightTheme : darkTheme,
+            theme: themeTypeSelector(store.state) == ThemeType.Light
+                ? lightTheme
+                : darkTheme,
             // Named routes only
             // TODO move these into separate file
             routes: {
@@ -113,9 +114,15 @@ class App extends StatelessWidget {
                   },
                 );
               },
-              Routes.settings: (BuildContext context) => new StoreBuilder<AppState>(builder: (context, store) => new Settings()),
-              Routes.settingsDataSource: (BuildContext context) => new StoreBuilder<AppState>(builder: (context, store) => new SettingsDataSource()),
-              Routes.settingsThemeType: (BuildContext context) => new StoreBuilder<AppState>(builder: (context, store) => new SettingsThemeType()),
+              Routes.settings: (BuildContext context) =>
+                  new StoreBuilder<AppState>(
+                      builder: (context, store) => new Settings()),
+              Routes.settingsDataSource: (BuildContext context) =>
+                  new StoreBuilder<AppState>(
+                      builder: (context, store) => new SettingsDataSource()),
+              Routes.settingsThemeType: (BuildContext context) =>
+                  new StoreBuilder<AppState>(
+                      builder: (context, store) => new SettingsThemeType()),
             }),
       );
 }

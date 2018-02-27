@@ -94,7 +94,8 @@ Future<List<PatchData>> getPatchData() async {
 }
 
 Future<List<HotsLogsWinrate>> getHotsLogWinRates(Patch patch) async {
-  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs', {'patch': patch.fullVersion});
+  Uri uri =
+      new Uri.https(_baseUrl, '/v1/hotslogs', {'patch': patch.fullVersion});
 
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
@@ -103,7 +104,7 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates(Patch patch) async {
     }
 
     dynamic json = JSON.decode(_getUtf8String(response));
-    if (!(json is List && (json.isEmpty ||  json[0] is Map))) {
+    if (!(json is List && (json.isEmpty || json[0] is Map))) {
       throw new Exception(
           'Unexpected JSON format encounted fetching patch data');
     }
@@ -118,8 +119,10 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates(Patch patch) async {
   }
 }
 
-Future<List<HotsLogBuild>> getHotsLogBuilds(Patch patch, String heroName) async {
-  Uri uri = new Uri.https(_baseUrl, '/v1/hotslogs/${heroName}', {'patch': patch.fullVersion});
+Future<List<HotsLogBuild>> getHotsLogBuilds(
+    Patch patch, String heroName) async {
+  Uri uri = new Uri.https(
+      _baseUrl, '/v1/hotslogs/${heroName}', {'patch': patch.fullVersion});
 
   try {
     http.Response response = await http.get(uri, headers: _getHeaders());
@@ -129,7 +132,7 @@ Future<List<HotsLogBuild>> getHotsLogBuilds(Patch patch, String heroName) async 
 
     dynamic json = JSON.decode(_getUtf8String(response));
     // is a list which is empty or contains maps
-    if (!(json is List && (json.isEmpty ||  json[0] is Map))) {
+    if (!(json is List && (json.isEmpty || json[0] is Map))) {
       throw new Exception(
           'Unexpected JSON format encounted fetching patch data');
     }

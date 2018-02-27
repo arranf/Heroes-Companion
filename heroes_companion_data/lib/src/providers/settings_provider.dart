@@ -16,25 +16,32 @@ class SettingsProvider {
     }
 
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    
+
     // Update Time
-    String currentUpdateOriginTimeUnparsed = preferences.getString(pref_keys.update_id);
+    String currentUpdateOriginTimeUnparsed =
+        preferences.getString(pref_keys.update_id);
     DateTime currentUpdateOriginTime = new DateTime(1970);
-    if (currentUpdateOriginTimeUnparsed != null && currentUpdateOriginTimeUnparsed.isNotEmpty) {
+    if (currentUpdateOriginTimeUnparsed != null &&
+        currentUpdateOriginTimeUnparsed.isNotEmpty) {
       currentUpdateOriginTime = DateTime.parse(currentUpdateOriginTimeUnparsed);
     }
 
     String updatePatchVersion = preferences.getString(pref_keys.update_patch);
 
-    String unparsedRotationDate = (preferences.getString(pref_keys.next_rotation_date) ?? '');
-    DateTime rotationDate = unparsedRotationDate.isEmpty ? new DateTime(1970)
-          : DateTime.parse(unparsedRotationDate);
+    String unparsedRotationDate =
+        (preferences.getString(pref_keys.next_rotation_date) ?? '');
+    DateTime rotationDate = unparsedRotationDate.isEmpty
+        ? new DateTime(1970)
+        : DateTime.parse(unparsedRotationDate);
 
-    ThemeType themeType = ThemeType.fromString(preferences.getString(pref_keys.theme_type));
+    ThemeType themeType =
+        ThemeType.fromString(preferences.getString(pref_keys.theme_type));
 
-    DataSource dataSource = DataSource.fromString(preferences.getString(pref_keys.data_source));
+    DataSource dataSource =
+        DataSource.fromString(preferences.getString(pref_keys.data_source));
 
-    _settings = new Settings(currentUpdateOriginTime, rotationDate, updatePatchVersion, dataSource, themeType);
+    _settings = new Settings(currentUpdateOriginTime, rotationDate,
+        updatePatchVersion, dataSource, themeType);
 
     return _settings;
   }
@@ -47,11 +54,13 @@ class SettingsProvider {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
     if (_settings.currentUpdateOriginTime != settings.currentUpdateOriginTime) {
-      preferences.setString(pref_keys.update_id, settings.currentUpdateOriginTime.toIso8601String());
+      preferences.setString(pref_keys.update_id,
+          settings.currentUpdateOriginTime.toIso8601String());
     }
 
     if (_settings.nextRotationDate != settings.nextRotationDate) {
-      preferences.setString(pref_keys.next_rotation_date, settings.nextRotationDate.toIso8601String());
+      preferences.setString(pref_keys.next_rotation_date,
+          settings.nextRotationDate.toIso8601String());
     }
 
     if (_settings.updatePatch != settings.updatePatch) {

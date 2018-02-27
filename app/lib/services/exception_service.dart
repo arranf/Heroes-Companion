@@ -5,19 +5,18 @@ import 'package:sentry/sentry.dart';
 
 import '../dsn.dart';
 
-
 class ExceptionService {
   final SentryClient _sentry = new SentryClient(dsn: dsn);
   static bool isDebug = false;
-  
 
-    // Singleton
-  static final ExceptionService _exceptionService = new ExceptionService._internal();
+  // Singleton
+  static final ExceptionService _exceptionService =
+      new ExceptionService._internal();
 
   factory ExceptionService() => _exceptionService;
 
-  ExceptionService._internal () {
-    assert(() => isDebug = true); 
+  ExceptionService._internal() {
+    assert(() => isDebug = true);
     if (!isDebug) {
       FlutterError.onError = (FlutterErrorDetails details) async {
         debugPrint('FlutterError.onError caught an error');
@@ -26,8 +25,7 @@ class ExceptionService {
     }
   }
 
-
-    /// Reports [error] (either an [Exception] or an [Error]) to Sentry.io.
+  /// Reports [error] (either an [Exception] or an [Error]) to Sentry.io.
   Future<Null> reportError(dynamic error) async {
     if (!isDebug) {
       debugPrint('Caught error: $error');
@@ -40,9 +38,7 @@ class ExceptionService {
           stackTrace: error.stackTrace,
         );
       } else {
-        response = await _sentry.captureException(
-          exception: error
-        );
+        response = await _sentry.captureException(exception: error);
       }
 
       if (response.isSuccessful) {
@@ -55,14 +51,15 @@ class ExceptionService {
     }
   }
 
-  Future<Null> reportErrorAndStackTrace(dynamic error, dynamic stackTrace) async {
+  Future<Null> reportErrorAndStackTrace(
+      dynamic error, dynamic stackTrace) async {
     if (!isDebug) {
       debugPrint('Caught error: $error');
       debugPrint('Reporting to Sentry.io...');
 
       final SentryResponse response = await _sentry.captureException(
-          exception: error,
-          stackTrace: stackTrace,
+        exception: error,
+        stackTrace: stackTrace,
       );
 
       if (response.isSuccessful) {

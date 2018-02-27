@@ -42,7 +42,8 @@ class HeroDetail extends StatefulWidget {
   _HeroDetailState createState() => new _HeroDetailState();
 }
 
-class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateMixin {
+class _HeroDetailState extends State<HeroDetail>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
   List<Tab> _tabs = new List<Tab>();
   BuildSort buildSort = BuildSort.playrate;
@@ -72,13 +73,15 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
     int scaleFactor = (mediaQueryData.size.width / 40).floor();
     return new Container(
       key: new Key(widget.hero.name + '_title_row'),
-      padding: new EdgeInsets.symmetric(horizontal: 4.0 * scaleFactor).add(new EdgeInsets.only(bottom: 8.0)),
+      padding: new EdgeInsets.symmetric(horizontal: 4.0 * scaleFactor)
+          .add(new EdgeInsets.only(bottom: 8.0)),
       color: Theme.of(context).primaryColor,
       child: new Row(
         children: <Widget>[
           new CircleAvatar(
             backgroundImage: widget.hero.have_assets
-                ? new AssetImage('assets/images/heroes/${widget.hero.icon_file_name}')
+                ? new AssetImage(
+                    'assets/images/heroes/${widget.hero.icon_file_name}')
                 : new CachedNetworkImageProvider(
                     'https://images.heroescompanion.com/heroes/${widget.hero.icon_file_name}'),
             radius: 45.0,
@@ -90,53 +93,53 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
             padding: new EdgeInsets.only(top: 4.0),
             height: 125.0,
             child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              new Text(widget.hero.name,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .headline
-                      .apply(color: Colors.white)),
-              new Text(
-                '${widget.hero.type} ${widget.hero.role}',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .subhead
-                    .apply(color: Colors.white),
-              ),
-              new Container(
-                height: 20.0,
-              ),
-              (widget.heroWinRate != null) ? new Container(
-                child: new Column(
-                  children: <Widget>[
-                    new Text(
-                widget.heroWinRate != null
-                    ? '${widget.heroWinRate.winPercentage.toStringAsFixed(1)} Win %'
-                    : ' ',
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .headline
-                    .apply(color: Colors.white),
-              ),
-
-              
-              new Text(
-                  widget.heroWinRate != null
-                      ? '${(widget.heroWinRate.gamesPlayed).toString()} games played'
-                      : ' ',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .body1
-                      .apply(color: Colors.white))
-                  ],
-                ),
-              ) : new Container(),
-            ]),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  new Text(widget.hero.name,
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .headline
+                          .apply(color: Colors.white)),
+                  new Text(
+                    '${widget.hero.type} ${widget.hero.role}',
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .subhead
+                        .apply(color: Colors.white),
+                  ),
+                  new Container(
+                    height: 20.0,
+                  ),
+                  (widget.heroWinRate != null)
+                      ? new Container(
+                          child: new Column(
+                            children: <Widget>[
+                              new Text(
+                                widget.heroWinRate != null
+                                    ? '${widget.heroWinRate.winPercentage.toStringAsFixed(1)} Win %'
+                                    : ' ',
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .headline
+                                    .apply(color: Colors.white),
+                              ),
+                              new Text(
+                                  widget.heroWinRate != null
+                                      ? '${(widget.heroWinRate.gamesPlayed).toString()} games played'
+                                      : ' ',
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .body1
+                                      .apply(color: Colors.white))
+                            ],
+                          ),
+                        )
+                      : new Container(),
+                ]),
           )
         ],
       ),
@@ -220,13 +223,13 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
 
   void _playBuild(BuildContext context, HeroBuild heroBuild) {
     Navigator.of(context).push(new PageRouteBuilder(
-                              pageBuilder: (context, a1, a2) => new BuildSwiper(
-                                    widget.hero,
-                                    heroBuild,
-                                    key: new Key(
-                                        '${widget.hero.name}_${build.hashCode}_build_swiper'),
-                                  ),
-                            ));
+          pageBuilder: (context, a1, a2) => new BuildSwiper(
+                widget.hero,
+                heroBuild,
+                key: new Key(
+                    '${widget.hero.name}_${build.hashCode}_build_swiper'),
+              ),
+        ));
   }
 
   void showTalentBottomSheet(BuildContext context, Talent talent) {
@@ -245,24 +248,22 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
                       children: <Widget>[
                         new Flexible(
                           child: new Text(
-                          talent.name,
-                          style: Theme.of(context).textTheme.headline,
-                          overflow: TextOverflow.ellipsis,
-                          softWrap: true,
-                          maxLines: 2,
-                        ),
+                            talent.name,
+                            style: Theme.of(context).textTheme.headline,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: true,
+                            maxLines: 2,
+                          ),
                         ),
                         new Padding(
                           padding: new EdgeInsets.only(left: 8.0),
                           child: talent.have_asset
-                            ? new Image.asset(
-                                'assets/images/talents/${talent.icon_file_name}')
-                            : new Image(
-                                image: new CachedNetworkImageProvider(
-                                    'https://images.heroescompanion.com/talents/${talent.icon_file_name}')),
+                              ? new Image.asset(
+                                  'assets/images/talents/${talent.icon_file_name}')
+                              : new Image(
+                                  image: new CachedNetworkImageProvider(
+                                      'https://images.heroescompanion.com/talents/${talent.icon_file_name}')),
                         ),
-                        
-                        
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
@@ -278,71 +279,94 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
 
   void _buildTabs() {
     this._tabs.add(new Tab(
-      text: 'Statistical Builds',
-    ));
+          text: 'Statistical Builds',
+        ));
     this._tabs.add(new Tab(
-      text: 'Recommended Builds',
-    ));
+          text: 'Recommended Builds',
+        ));
   }
 
   Widget _buildPhoneView(BuildContext context, bool isLoading) {
     return new Container(
         child: new Column(
-          children: <Widget>[
-            !widget.isCurrentBuild  ? new BuildPrompt(
-              widget.isCurrentBuild,
-              widget.patch.patchName,
-              widget.buildSwitch,
-              key: new Key('${widget.hero.name}_previous_build_prompt'),
-            ) : new Container(),
-            _buildPhoneTitleRow(context),
-            isLoading ? new Container() : new TabBar(
+      children: <Widget>[
+        !widget.isCurrentBuild
+            ? new BuildPrompt(
+                widget.isCurrentBuild,
+                widget.patch.patchName,
+                widget.buildSwitch,
+                key: new Key('${widget.hero.name}_previous_build_prompt'),
+              )
+            : new Container(),
+        _buildPhoneTitleRow(context),
+        isLoading
+            ? new Container()
+            : new TabBar(
                 tabs: _tabs,
                 controller: _tabController,
                 labelColor: Theme.of(context).textTheme.title.color,
-                unselectedLabelColor:Theme.of(context).textTheme.display1.color,
-            ),
-            isLoading ? new Expanded(child: new LoadingView()) : new Expanded(
-              child: new TabBarView(
-                controller: _tabController,
-                key: new Key('${widget.hero.name}_tab_view'),
-                children: <Widget>[
-                  new StatisticalBuildList(widget.hero, _playBuild, showTalentBottomSheet, widget.statisticalBuilds, buildSort),
-                  new RegularBuildList(widget.hero, _playBuild, showTalentBottomSheet, widget.regularBuilds),
-                ],
+                unselectedLabelColor:
+                    Theme.of(context).textTheme.display1.color,
               ),
-            )
-            
-          ],
-        ));
+        isLoading
+            ? new Expanded(child: new LoadingView())
+            : new Expanded(
+                child: new TabBarView(
+                  controller: _tabController,
+                  key: new Key('${widget.hero.name}_tab_view'),
+                  children: <Widget>[
+                    new StatisticalBuildList(
+                        widget.hero,
+                        _playBuild,
+                        showTalentBottomSheet,
+                        widget.statisticalBuilds,
+                        buildSort),
+                    new RegularBuildList(widget.hero, _playBuild,
+                        showTalentBottomSheet, widget.regularBuilds),
+                  ],
+                ),
+              )
+      ],
+    ));
   }
 
   Widget _buildTabletView(BuildContext context, bool isLoading) {
     return new Column(
       children: <Widget>[
-        widget.canOfferPreviousBuild ? new BuildPrompt(
-              widget.isCurrentBuild,
-              widget.patch.patchName,
-              widget.buildSwitch,
-              key: new Key('${widget.hero.name}_previous_build_prompt'),
-            ) : new Container(),
+        widget.canOfferPreviousBuild
+            ? new BuildPrompt(
+                widget.isCurrentBuild,
+                widget.patch.patchName,
+                widget.buildSwitch,
+                key: new Key('${widget.hero.name}_previous_build_prompt'),
+              )
+            : new Container(),
         _buildTabletTitleRow(context),
         // TODO refactor reused logic
-        isLoading ? new Expanded(child: new LoadingView()) : new Expanded(
-              child: new TabBarView(
-                controller: _tabController,
-                key: new Key('${widget.hero.name}_tab_view'),
-                children: <Widget>[
-                  new StatisticalBuildList(widget.hero, _playBuild, showTalentBottomSheet, widget.statisticalBuilds, buildSort),
-                ],
-              ),
-            )
+        isLoading
+            ? new Expanded(child: new LoadingView())
+            : new Expanded(
+                child: new TabBarView(
+                  controller: _tabController,
+                  key: new Key('${widget.hero.name}_tab_view'),
+                  children: <Widget>[
+                    new StatisticalBuildList(
+                        widget.hero,
+                        _playBuild,
+                        showTalentBottomSheet,
+                        widget.statisticalBuilds,
+                        buildSort),
+                  ],
+                ),
+              )
       ],
     );
   }
 
   Widget _buildDetail(BuildContext context, bool isLoading) {
-    final List<OverflowChoice> overflowChoices = [OverflowChoice.HeroPatchNotes];
+    final List<OverflowChoice> overflowChoices = [
+      OverflowChoice.HeroPatchNotes
+    ];
     return new Scaffold(
         appBar: new AppBar(
           title: new Text(widget.hero.name),
@@ -358,41 +382,47 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
               onPressed: () => widget.favorite(widget.hero),
             ),
             new PopupMenuButton(
-                  onSelected: (Object choice) {
-                    if (choice is OverflowChoice) {
-                    OverflowChoice
-                      .handleChoice(choice, context, patchNotesUrl: widget.heroPatchNotesUrl); // overflow menu
-                    } else if (choice is BuildSort) {
-                      BuildSort newBuildSort = choice == BuildSort.playrate ? BuildSort.winrate : BuildSort.playrate;
-                      setState(() {
-                        buildSort = newBuildSort;
-                      });
-                    } else if (choice == 'Switch Build') {
-                      widget.buildSwitch();
-                    } else {
-                      throw new Exception('Unknown action');
-                    }
-                  },
-                  itemBuilder: (BuildContext context) {
-                    List<PopupMenuItem> items = overflowChoices.map((OverflowChoice choice) {
-                      return new PopupMenuItem(
-                        value: choice,
-                        child: new Text(choice.name),
-                      );
-                    }).toList();
-                    items.add(new PopupMenuItem(
-                      value: buildSort,
-                      child: new Text('Sort by ${buildSort == BuildSort.winrate ? 'Popularity' :'Win Rate'}'),
-                    ));
-                    if (widget.canOfferPreviousBuild) {
-                      items.add(new PopupMenuItem(
-                        value: 'Switch Build',
-                        child: new Text( widget.isCurrentBuild ? 'See Previous Patch Data' : 'See Current Patch Data'),
-                      ));
-                    }
-                    return items;
-                  },
-                ),
+              onSelected: (Object choice) {
+                if (choice is OverflowChoice) {
+                  OverflowChoice.handleChoice(choice, context,
+                      patchNotesUrl: widget.heroPatchNotesUrl); // overflow menu
+                } else if (choice is BuildSort) {
+                  BuildSort newBuildSort = choice == BuildSort.playrate
+                      ? BuildSort.winrate
+                      : BuildSort.playrate;
+                  setState(() {
+                    buildSort = newBuildSort;
+                  });
+                } else if (choice == 'Switch Build') {
+                  widget.buildSwitch();
+                } else {
+                  throw new Exception('Unknown action');
+                }
+              },
+              itemBuilder: (BuildContext context) {
+                List<PopupMenuItem> items =
+                    overflowChoices.map((OverflowChoice choice) {
+                  return new PopupMenuItem(
+                    value: choice,
+                    child: new Text(choice.name),
+                  );
+                }).toList();
+                items.add(new PopupMenuItem(
+                  value: buildSort,
+                  child: new Text(
+                      'Sort by ${buildSort == BuildSort.winrate ? 'Popularity' :'Win Rate'}'),
+                ));
+                if (widget.canOfferPreviousBuild) {
+                  items.add(new PopupMenuItem(
+                    value: 'Switch Build',
+                    child: new Text(widget.isCurrentBuild
+                        ? 'See Previous Patch Data'
+                        : 'See Current Patch Data'),
+                  ));
+                }
+                return items;
+              },
+            ),
           ],
         ),
         body: MediaQuery.of(context).size.width < 600

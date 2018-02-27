@@ -10,25 +10,21 @@ void getCurrentWinRates(Store<AppState> store) {
   // TODO Change interface to actually throw an exception in the case we need special handling
   Patch patch = currentPatchSelector(store.state);
   DataProvider.winRateProvider.getWinRates(patch).then((winRates) {
-    store.dispatch(new FetchWinRatesSucceededAction(winRates, patch.fullVersion));
-  }).catchError(
-      (Error e)
-      {
-        new ExceptionService()
-        .reportError(e);
-       store.dispatch(new FetchWinRatesFailedAction());
-      });
+    store.dispatch(
+        new FetchWinRatesSucceededAction(winRates, patch.fullVersion));
+  }).catchError((Error e) {
+    new ExceptionService().reportError(e);
+    store.dispatch(new FetchWinRatesFailedAction());
+  });
 }
 
 void getWinRatesForBuild(Store<AppState> store, Patch build) {
   store.dispatch(new StartLoadingAction());
   DataProvider.winRateProvider.getWinRates(build).then((winRates) {
-    store.dispatch(new FetchWinRatesSucceededAction(winRates, build.fullVersion));
-  })
-  .catchError((e)
-    {
-      new ExceptionService()
-      .reportError(e);
-      store.dispatch(new FetchWinRatesFailedAction());
-    });
+    store.dispatch(
+        new FetchWinRatesSucceededAction(winRates, build.fullVersion));
+  }).catchError((e) {
+    new ExceptionService().reportError(e);
+    store.dispatch(new FetchWinRatesFailedAction());
+  });
 }

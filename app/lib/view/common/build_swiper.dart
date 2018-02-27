@@ -26,8 +26,8 @@ class _BuildSwiperState extends State<BuildSwiper>
   void initState() {
     super.initState();
     Screen.keepOn(true);
-    _tabController = new TabController(
-        vsync: this, length: widget.build.talentNames.length);
+    _tabController =
+        new TabController(vsync: this, length: widget.build.talentNames.length);
   }
 
   @override
@@ -79,10 +79,9 @@ class _BuildSwiperState extends State<BuildSwiper>
               child: new TabBarView(
                 key: new Key('${widget.hero.name}_swiper_tab_bar_view'),
                 controller: _tabController,
-                children:
-                    widget.build.talentNames.map((String talentName) {
-                  Talent talent = widget.hero.talents
-                      .firstWhere((Talent t) => t.talent_tree_id == talentName || t.name == talentName);
+                children: widget.build.talentNames.map((String talentName) {
+                  Talent talent = widget.hero.talents.firstWhere((Talent t) =>
+                      t.talent_tree_id == talentName || t.name == talentName);
                   return new TalentCard(talent, key: new Key(talentName));
                 }).toList(),
               ),

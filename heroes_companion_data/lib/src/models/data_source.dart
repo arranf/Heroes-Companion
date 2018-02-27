@@ -5,10 +5,13 @@ class DataSource {
   static const HotsLogs = const DataSource(_hotsLogs);
   final String name;
 
-  static get values => [HotsDog, HotsLogs,];
+  static get values => [
+        HotsDog,
+        HotsLogs,
+      ];
 
   static DataSource fromString(String input) {
-    switch(input) {
+    switch (input) {
       case _hotsDog:
         return HotsDog;
       case _hotsLogs:

@@ -36,22 +36,20 @@ class TalentCard extends StatelessWidget {
                       ),
                     ),
                     new AnimatedContainer(
-                      width: 64.0,
-                      height: 64.0,
-                      duration: kThemeChangeDuration,
-                      decoration: new BoxDecoration(
-                        color: Colors.grey,
-                        image: new DecorationImage(
-                          image: talent.have_asset
-                        ? new AssetImage(
-                            'assets/images/talents/${talent.icon_file_name}')
-                        : new CachedNetworkImageProvider(
-                                'https://images.heroescompanion.com/talents/${talent.icon_file_name}')
-                        ),
-                        shape: BoxShape.rectangle,
-                      )
-                    )
-                                      ],
+                        width: 64.0,
+                        height: 64.0,
+                        duration: kThemeChangeDuration,
+                        decoration: new BoxDecoration(
+                          color: Colors.grey,
+                          image: new DecorationImage(
+                              image: talent.have_asset
+                                  ? new AssetImage(
+                                      'assets/images/talents/${talent.icon_file_name}')
+                                  : new CachedNetworkImageProvider(
+                                      'https://images.heroescompanion.com/talents/${talent.icon_file_name}')),
+                          shape: BoxShape.rectangle,
+                        ))
+                  ],
                 ),
                 new Padding(
                   padding: new EdgeInsets.only(top: 16.0),

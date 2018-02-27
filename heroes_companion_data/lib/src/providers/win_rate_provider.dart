@@ -18,27 +18,30 @@ class WinRateProvider {
     }
   }
 
-  Future<HeroWinRate> _getHeroWinRateFromWinLossCount(api.WinLossCount winLossCount, String heroName) async {
+  Future<HeroWinRate> _getHeroWinRateFromWinLossCount(
+      api.WinLossCount winLossCount, String heroName) async {
     int heroId = await DataProvider.heroProvider.getHeroIdByName(heroName);
     return new HeroWinRate.fromWinLossCount(winLossCount, heroId);
   }
 
-  Future<HeroWinRate> _getHeroWinRateFromHotsLogWinRate(HotsLogsWinrate hotsLogsWinrate) async {
-    int heroId = await DataProvider.heroProvider.getHeroIdByName(hotsLogsWinrate.name);
-    return new HeroWinRate(heroId, hotsLogsWinrate.winPercentage, hotsLogsWinrate.gamesPlayed);
+  Future<HeroWinRate> _getHeroWinRateFromHotsLogWinRate(
+      HotsLogsWinrate hotsLogsWinrate) async {
+    int heroId =
+        await DataProvider.heroProvider.getHeroIdByName(hotsLogsWinrate.name);
+    return new HeroWinRate(
+        heroId, hotsLogsWinrate.winPercentage, hotsLogsWinrate.gamesPlayed);
   }
 
   Future<List<HeroWinRate>> _hotsLogsGetWinRates(Patch patch) async {
-   List<HotsLogsWinrate> winRates = await getHotsLogWinRates(patch);
+    List<HotsLogsWinrate> winRates = await getHotsLogWinRates(patch);
 
-   if (winRates == null) {
+    if (winRates == null) {
       throw new Exception('API call to fetch hots log winrates failed');
-   }
-    List<Future> futures =  new List();
+    }
+    List<Future> futures = new List();
     winRates.forEach((HotsLogsWinrate hotsLogsWinrate) {
       futures.add(_getHeroWinRateFromHotsLogWinRate(hotsLogsWinrate));
     });
-
 
     List<HeroWinRate> heroWinRates = await Future.wait(futures);
 
@@ -52,8 +55,9 @@ class WinRateProvider {
       throw new Exception('API call to fetch hots dog hero winrates failed');
     }
 
-    List<Future> futures =  new List();
-    hotsDogWinRates.current.forEach((String heroName, api.WinLossCount winLossCount) {
+    List<Future> futures = new List();
+    hotsDogWinRates.current
+        .forEach((String heroName, api.WinLossCount winLossCount) {
       futures.add(_getHeroWinRateFromWinLossCount(winLossCount, heroName));
     });
 

@@ -9,7 +9,6 @@ class EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return new Center(
       child: new Container(
         child: new Column(
@@ -34,30 +33,28 @@ class EmptyState extends StatelessWidget {
 }
 
 Widget _buildDescription(BuildContext context, String description) {
-  if (description == null || description.isEmpty){
+  if (description == null || description.isEmpty) {
     return new Container();
   }
 
   return new Padding(
-              padding: new EdgeInsets.only(bottom: 24.0),
-              child: new Text(description,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .title
-                      .apply(color: Colors.grey)),
-            );
+    padding: new EdgeInsets.only(bottom: 24.0),
+    child: new Text(description,
+        style: Theme.of(context).textTheme.title.apply(color: Colors.grey)),
+  );
 }
 
 Widget _buildTitle(BuildContext context, String title) {
-  if (title == null || title.isEmpty){
+  if (title == null || title.isEmpty) {
     return new Container();
   }
 
   return new Padding(
-              padding: new EdgeInsets.only(bottom: 12.0),
-              child: new Text(title,
-                  style: new TextStyle(
-                      fontSize: 28.0, fontWeight: FontWeight.w500, color: Colors.grey.shade700)),
-            );
+    padding: new EdgeInsets.only(bottom: 12.0),
+    child: new Text(title,
+        style: new TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey.shade700)),
+  );
 }

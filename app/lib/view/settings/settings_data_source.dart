@@ -7,36 +7,32 @@ import 'package:heroes_companion/services/settings_service.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 
-
 class SettingsDataSource extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new StoreConnector<AppState, _ViewModel>(
-      converter: (Store<AppState> store) => new _ViewModel.from(store),
+        converter: (Store<AppState> store) => new _ViewModel.from(store),
         builder: (context, vm) {
-        dynamic onChanged = (DataSource value) => vm.updateDataSource(value);
+          dynamic onChanged = (DataSource value) => vm.updateDataSource(value);
           return new Scaffold(
-            appBar: new AppBar(
-              title: const Text('Data Source')
-            ),
-            body: new Column(
-            children: <Widget>[
-              new RadioListTile<DataSource>(
-                title: new Text(DataSource.HotsDog.name),
-                value: DataSource.HotsDog,
-                groupValue: vm.dataSource,
-                onChanged: onChanged,
-              ),
-              new RadioListTile<DataSource>(
-                title: new Text(DataSource.HotsLogs.name),
-                value: DataSource.HotsLogs,
-                groupValue: vm.dataSource,
-                onChanged: onChanged,
-              ),
-            ],
-          )
-        );
-      });
+              appBar: new AppBar(title: const Text('Data Source')),
+              body: new Column(
+                children: <Widget>[
+                  new RadioListTile<DataSource>(
+                    title: new Text(DataSource.HotsDog.name),
+                    value: DataSource.HotsDog,
+                    groupValue: vm.dataSource,
+                    onChanged: onChanged,
+                  ),
+                  new RadioListTile<DataSource>(
+                    title: new Text(DataSource.HotsLogs.name),
+                    value: DataSource.HotsLogs,
+                    groupValue: vm.dataSource,
+                    onChanged: onChanged,
+                  ),
+                ],
+              ));
+        });
   }
 }
 
@@ -46,8 +42,7 @@ class _ViewModel {
 
   _ViewModel({this.dataSource, this.updateDataSource});
 
-  factory _ViewModel.from(Store<AppState> store){
-
+  factory _ViewModel.from(Store<AppState> store) {
     final dynamic updateDataSource = (DataSource dataSource) {
       Settings settings = settingsSelector(store.state);
       updateSettings(store, settings.copyWith(dataSource: dataSource));
@@ -56,7 +51,6 @@ class _ViewModel {
 
     return new _ViewModel(
         dataSource: dataSourceSelector(store.state),
-        updateDataSource: updateDataSource
-    );
+        updateDataSource: updateDataSource);
   }
 }

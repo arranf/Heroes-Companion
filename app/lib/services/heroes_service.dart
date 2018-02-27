@@ -12,17 +12,15 @@ void getHeroes(Store<AppState> store) {
   DataProvider.heroProvider
       .updateHeroRotations()
       .catchError((e) {
-        new ExceptionService()
-          .reportError(e);                     // Future completes with 42.
+        new ExceptionService().reportError(e); // Future completes with 42.
       })
       .then((a) => DataProvider.heroProvider.getHeroes())
       .then((List<Hero> heroes) =>
           store.dispatch(new FetchHeroesSucceededAction(heroes)))
       .catchError((e) {
-        new ExceptionService()
-        .reportError(e);
+        new ExceptionService().reportError(e);
         store.dispatch(new FetchHeroesFailedAction());
-  });
+      });
 }
 
 Future getHeroesAsync(Store<AppState> store,

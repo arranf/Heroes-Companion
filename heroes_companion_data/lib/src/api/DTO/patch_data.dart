@@ -35,8 +35,9 @@ class PatchData {
     if (map.containsKey('hotsDogId')) {
       hotsDogId = map['hotsDogId'];
     }
-    
+
     return new PatchData(patchName, officialLink, patchType, gameVersion,
-        fullVersion, liveDate, patchNotesUrl, hotsDogId: hotsDogId, alternateLink: alternateLink);
+        fullVersion, liveDate, patchNotesUrl,
+        hotsDogId: hotsDogId, alternateLink: alternateLink);
   }
 }

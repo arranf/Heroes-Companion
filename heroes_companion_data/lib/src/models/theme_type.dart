@@ -1,4 +1,3 @@
-
 class ThemeType {
   static const String _light = 'Light';
   static const String _dark = 'Dark';
@@ -6,10 +5,13 @@ class ThemeType {
   static const Dark = const ThemeType(_dark);
   final String name;
 
-  static get values => [Light, Dark,];
+  static get values => [
+        Light,
+        Dark,
+      ];
 
   static ThemeType fromString(String input) {
-    switch(input) {
+    switch (input) {
       case _light:
         return Light;
       case _dark:

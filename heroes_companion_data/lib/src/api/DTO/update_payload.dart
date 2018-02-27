@@ -10,7 +10,8 @@ class UpdatePayload {
   final List<Talent> talents;
   final List<Ability> abilities;
 
-  UpdatePayload(this.id, this.patch_date, this.patch, this.heroes, this.talents, this.abilities);
+  UpdatePayload(this.id, this.patch_date, this.patch, this.heroes, this.talents,
+      this.abilities);
 
   factory UpdatePayload.fromJson(Object json) {
     if (!(json is Map)) {
@@ -20,7 +21,7 @@ class UpdatePayload {
     Map map = json;
     if (!(map['id'] is String &&
         map['heroes'] is List<Map> &&
-         map['patch'] is String &&
+        map['patch'] is String &&
         map['talents'] is List<Map> &&
         map['abilities'] is List<Map> &&
         map['patch_date'] is String)) {

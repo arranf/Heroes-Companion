@@ -15,8 +15,6 @@ List<Hero> _setLoadedHeroes(
 List<Hero> _updateHero(List<Hero> heroes, UpdateHeroAction action) {
   return heroes
       .map((Hero hero) =>
-          hero.hero_id == action.hero.hero_id
-              ? action.hero
-              : hero)
+          hero.hero_id == action.hero.hero_id ? action.hero : hero)
       .toList();
 }

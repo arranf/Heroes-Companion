@@ -11,29 +11,29 @@ import 'package:redux/redux.dart';
 
 class MapsHome extends StatelessWidget {
   MapsHome({Key key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-     return new StoreConnector<AppState, _ViewModel>(
-       onInit: (store) => getMaps(store),
-      converter: _ViewModel.fromStore,
-      builder: (context, vm) {
-        return new Scaffold(
-          drawer: new AppDrawer(),
-          appBar: new AppBar(title: new Text('Maps'),),
-          body: new MapList(vm.maps, onTap: vm.onTap),
-        );
-      }
-     );
+    return new StoreConnector<AppState, _ViewModel>(
+        onInit: (store) => getMaps(store),
+        converter: _ViewModel.fromStore,
+        builder: (context, vm) {
+          return new Scaffold(
+            drawer: new AppDrawer(),
+            appBar: new AppBar(
+              title: new Text('Maps'),
+            ),
+            body: new MapList(vm.maps, onTap: vm.onTap),
+          );
+        });
   }
 }
 
 class _ViewModel {
   final List<PlayableMap> maps;
   final dynamic onTap = (BuildContext context, PlayableMap map) {
-    Navigator.of(context).push(
-      new PageRouteBuilder(
+    Navigator.of(context).push(new PageRouteBuilder(
           pageBuilder: (context, a1, a2) => new MapTimer(map),
         ));
   };

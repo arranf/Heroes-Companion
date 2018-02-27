@@ -21,18 +21,15 @@ Future tryUpdate(Store<AppState> store) {
             .then((b) => store.dispatch(new StopUpdatingAction()))
             .then((c) => SharedPreferences.getInstance())
             .then((preferences) async {
-              Settings settings = await DataProvider.settingsProvider.readSettings();
-             homeScaffoldKey.currentState?.showSnackBar(
-                new SnackBar(
-                    content: new Text(
-                        'Updated for patch ${preferences.getString(settings.updatePatch)}'))
-             );
-            })
-            .catchError((e) => new ExceptionService().reportError(e));
+          Settings settings =
+              await DataProvider.settingsProvider.readSettings();
+          homeScaffoldKey.currentState?.showSnackBar(new SnackBar(
+              content: new Text(
+                  'Updated for patch ${preferences.getString(settings.updatePatch)}')));
+        }).catchError((e) => new ExceptionService().reportError(e));
       } else {
         store.dispatch(new StopUpdatingAction());
       }
-    })
-    .catchError((e) => new ExceptionService().reportError(e));
+    }).catchError((e) => new ExceptionService().reportError(e));
   });
 }

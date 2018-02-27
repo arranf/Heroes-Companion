@@ -22,16 +22,16 @@ class MapListItem extends StatelessWidget {
         ),
       ),
       child: new ListTile(
-        leading: new CircleAvatar(
-          backgroundColor: Colors.transparent,
-          backgroundImage: new AssetImage('assets/images/maps/${map.map_icon_filename}'),
-        ),
-        title: new Text(map.name,
-            style: new TextStyle(
-              fontSize: 18.0,
-            )),
-        onTap: () => this.onTap(context, this.map)
-      ),
+          leading: new CircleAvatar(
+            backgroundColor: Colors.transparent,
+            backgroundImage:
+                new AssetImage('assets/images/maps/${map.map_icon_filename}'),
+          ),
+          title: new Text(map.name,
+              style: new TextStyle(
+                fontSize: 18.0,
+              )),
+          onTap: () => this.onTap(context, this.map)),
     );
   }
 }

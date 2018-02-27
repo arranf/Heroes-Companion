@@ -10,9 +10,7 @@ class MapList extends StatelessWidget {
   final List<PlayableMap> maps;
   final dynamic onTap;
 
-  MapList(this.maps,
-      {this.onTap})
-      : super(key: new Key('map_list'));
+  MapList(this.maps, {this.onTap}) : super(key: new Key('map_list'));
 
   Widget _buildList(BuildContext context) {
     if (maps.isEmpty) {
@@ -24,9 +22,9 @@ class MapList extends StatelessWidget {
       itemCount: maps.length,
       itemBuilder: (BuildContext context, int index) {
         return new MapListItem(
-            map: maps[index],
-            onTap: this.onTap,
-          );
+          map: maps[index],
+          onTap: this.onTap,
+        );
       },
     );
   }
@@ -34,8 +32,9 @@ class MapList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new AppLoading(builder: (context, loading) {
-      return loading ? new LoadingView() : new Container(
-        child: _buildList(context));
+      return loading
+          ? new LoadingView()
+          : new Container(child: _buildList(context));
     });
   }
 }

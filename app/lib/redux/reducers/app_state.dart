@@ -16,20 +16,22 @@ import 'package:heroes_companion/redux/state.dart';
 // We create the State reducer by combining many smaller reducers into one!
 AppState appReducer(AppState state, action) {
   return new AppState(
-      isLoading: loadingReducer(state.isLoading, action),
-      heroes: heroesReducer(state.heroes, action),
-      patches: patchesReducer(state.patches, action),
-      winRates: winRatesReducer(state.winRates, action),
-      heroStatisticalBuildsByPatchNumber:
-          heroesStatisticalBuildsReducer(state.heroStatisticalBuildsByPatchNumber, action),
-      staticialBuildsLoading: heroStatisticialBuildsLoadingReducer(
-          state.staticialBuildsLoading, action),
-      searchQuery: searchQueryReducer(state.searchQuery, action),
-      isUpdating: isUpdatingloadingReducer(state.isUpdating, action),
-      filter: filterReducer(state.filter, action),
-      maps: mapsReducer(state.maps, action),
-      settings: settingsReducer(state.settings, action),
-      regularBuildsLoading: regularBuildsLoadingReducer(state.regularBuildsLoading, action),
-      regularHeroBuilds: regularHeroBuildsReducer(state.regularHeroBuilds, action),
-    );
+    isLoading: loadingReducer(state.isLoading, action),
+    heroes: heroesReducer(state.heroes, action),
+    patches: patchesReducer(state.patches, action),
+    winRates: winRatesReducer(state.winRates, action),
+    heroStatisticalBuildsByPatchNumber: heroesStatisticalBuildsReducer(
+        state.heroStatisticalBuildsByPatchNumber, action),
+    staticialBuildsLoading: heroStatisticialBuildsLoadingReducer(
+        state.staticialBuildsLoading, action),
+    searchQuery: searchQueryReducer(state.searchQuery, action),
+    isUpdating: isUpdatingloadingReducer(state.isUpdating, action),
+    filter: filterReducer(state.filter, action),
+    maps: mapsReducer(state.maps, action),
+    settings: settingsReducer(state.settings, action),
+    regularBuildsLoading:
+        regularBuildsLoadingReducer(state.regularBuildsLoading, action),
+    regularHeroBuilds:
+        regularHeroBuildsReducer(state.regularHeroBuilds, action),
+  );
 }

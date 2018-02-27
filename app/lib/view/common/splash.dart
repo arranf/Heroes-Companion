@@ -15,13 +15,13 @@ class _SplashState extends State<Splash> {
   bool _error = false;
   Timer _timer;
 
-  @override 
+  @override
   void initState() {
     super.initState();
-   _timer = new Timer(new Duration(seconds: 12), () => _setError());
+    _timer = new Timer(new Duration(seconds: 12), () => _setError());
   }
 
-  @override 
+  @override
   void dispose() {
     _timer.cancel();
     super.dispose();
@@ -29,7 +29,10 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) => new MaterialApp(
-      home: new Scaffold(body: !_error ? _buildRegularSplash(context, widget.appName) : _buildErrorSplash(context, widget.appName)),
+      home: new Scaffold(
+          body: !_error
+              ? _buildRegularSplash(context, widget.appName)
+              : _buildErrorSplash(context, widget.appName)),
       theme: new ThemeData(
         primarySwatch: Colors.deepPurple,
         scaffoldBackgroundColor: Colors.deepPurple,
@@ -53,21 +56,24 @@ class _SplashState extends State<Splash> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 new Text(appName,
-              style: new TextStyle(
-                  fontSize: 32.0,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white)),
-            new Text(
-              'for Heroes of the Storm',
-              style: new TextStyle(fontSize: 16.0, color: Colors.white),
-            )
+                    style: new TextStyle(
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white)),
+                new Text(
+                  'for Heroes of the Storm',
+                  style: new TextStyle(fontSize: 16.0, color: Colors.white),
+                )
               ],
             ),
           ),
           new Padding(
             padding: new EdgeInsets.symmetric(vertical: 32.0),
-            child: new Text('Loading seems to be taking a while. Please try again later.', style: 
-            new TextStyle(fontWeight: FontWeight.w600, color: Colors.white),),
+            child: new Text(
+              'Loading seems to be taking a while. Please try again later.',
+              style: new TextStyle(
+                  fontWeight: FontWeight.w600, color: Colors.white),
+            ),
           )
         ]));
   }

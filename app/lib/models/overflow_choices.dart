@@ -13,7 +13,8 @@ class OverflowChoice {
 
   static get values => [About, Feedback, PatchNotes];
 
-  static Future handleChoice(OverflowChoice choice, BuildContext context, {String patchNotesUrl}) async {
+  static Future handleChoice(OverflowChoice choice, BuildContext context,
+      {String patchNotesUrl}) async {
     switch (choice) {
       case About:
         Settings settings = await DataProvider.settingsProvider.readSettings();
@@ -61,7 +62,7 @@ class OverflowChoice {
       case HeroPatchNotes:
       case PatchNotes:
         String url = patchNotesUrl;
-        if (url == null || url.isEmpty){
+        if (url == null || url.isEmpty) {
           throw new Exception('Could get patch notes URL');
         }
         url = 'https://' + url;

@@ -10,7 +10,9 @@ class HotsLogsWinrate {
       throw new Exception('Unexpected JSON format');
     }
     Map map = json;
-    if (!(map['name'] is String && map['played'] is String && map['winPercentage'] is String)) {
+    if (!(map['name'] is String &&
+        map['played'] is String &&
+        map['winPercentage'] is String)) {
       throw new Exception('Unexpected JSON format');
     }
     String name = map['name'];

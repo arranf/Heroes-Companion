@@ -12,11 +12,9 @@ void getPatches(Store<AppState> store) {
       .then(
           (patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
       .catchError((e) {
-        new ExceptionService()
-            .reportError(e); 
-        store.dispatch(new FetchPatchesFailedAction()); 
-      }
-    );
+    new ExceptionService().reportError(e);
+    store.dispatch(new FetchPatchesFailedAction());
+  });
 }
 
 void updatePatches(Store<AppState> store) {
@@ -25,10 +23,8 @@ void updatePatches(Store<AppState> store) {
       .fetchPatches()
       .then(
           (patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
-      .catchError((e) 
-      {
-        new ExceptionService()
-        .reportError(e);
-        store.dispatch(new FetchPatchesFailedAction());
-      }); 
+      .catchError((e) {
+    new ExceptionService().reportError(e);
+    store.dispatch(new FetchPatchesFailedAction());
+  });
 }

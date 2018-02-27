@@ -22,7 +22,9 @@ class BuildPrompt extends StatelessWidget {
           child: new Container(
               constraints: new BoxConstraints.expand(height: 36.0),
               // Check if light or dark
-              color: theme.primaryColor == Colors.deepPurple.shade500 ? theme.accentColor :  theme.hintColor,
+              color: theme.primaryColor == Colors.deepPurple.shade500
+                  ? theme.accentColor
+                  : theme.hintColor,
               child: new Center(
                   child: new Text(
                 'Showing previous patch data ($patchName)'.toUpperCase(),

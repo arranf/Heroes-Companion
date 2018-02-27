@@ -1,8 +1,11 @@
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
+
 final heroStatisticialBuildsLoadingReducer = combineTypedReducers<bool>([
-  new ReducerBinding<bool, StatisticalHeroBuildStartLoadingAction>(_setNotLoaded),
-  new ReducerBinding<bool, FetchStatisticalHeroBuildSucceededAction>(_setLoaded),
+  new ReducerBinding<bool, StatisticalHeroBuildStartLoadingAction>(
+      _setNotLoaded),
+  new ReducerBinding<bool, FetchStatisticalHeroBuildSucceededAction>(
+      _setLoaded),
   new ReducerBinding<bool, FetchStatisticalHeroBuildFailedAction>(_setLoaded),
 ]);
 

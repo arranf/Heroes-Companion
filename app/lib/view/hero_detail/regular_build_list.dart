@@ -10,17 +10,25 @@ class RegularBuildList extends StatelessWidget {
   final dynamic showTalentBottomSheet;
   final List<Build> builds;
 
-  RegularBuildList(this.hero, this.playBuild, this.showTalentBottomSheet, this.builds,);
-  
+  RegularBuildList(
+    this.hero,
+    this.playBuild,
+    this.showTalentBottomSheet,
+    this.builds,
+  );
 
   @override
   Widget build(BuildContext context) {
     if (builds != null && builds.isNotEmpty) {
       return new ListView(
-        key: new Key(hero.name + '_talent_rows'),
-        children: builds.map((Build b) => new RegularBuildCard(b,  playBuild, hero, showTalentBottomSheet)).toList()
-      );
+          key: new Key(hero.name + '_talent_rows'),
+          children: builds
+              .map((Build b) => new RegularBuildCard(
+                  b, playBuild, hero, showTalentBottomSheet))
+              .toList());
     }
-    return new EmptyState(Icons.error_outline, title: 'No Data Available', description: 'No statistical data found for this hero');
+    return new EmptyState(Icons.error_outline,
+        title: 'No Data Available',
+        description: 'No statistical data found for this hero');
   }
 }

@@ -8,8 +8,8 @@ final heroesStatisticalBuildsReducer =
       FetchStatisticalHeroBuildSucceededAction>(_succeed),
   new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
       FetchStatisticalHeroBuildFailedAction>(_fail),
-    new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
-    DataSourceChangedAction>(_clear)
+  new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
+      DataSourceChangedAction>(_clear)
 ]);
 
 Map<int, Map<String, List<StatisticalHeroBuild>>> _succeed(
@@ -20,8 +20,7 @@ Map<int, Map<String, List<StatisticalHeroBuild>>> _succeed(
           winRates ?? new Map<int, Map<String, List<StatisticalHeroBuild>>>());
   newWinRates[action.heroId] = new Map<String, List<StatisticalHeroBuild>>.from(
       newWinRates[action.heroId] ?? new Map<String, StatisticalHeroBuild>());
-  newWinRates[action.heroId][action.buildNumber] =
-      action.statisticalBuilds;
+  newWinRates[action.heroId][action.buildNumber] = action.statisticalBuilds;
   return newWinRates;
 }
 
