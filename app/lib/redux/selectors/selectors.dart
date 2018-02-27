@@ -4,7 +4,7 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:flutter/foundation.dart';
 
 bool isAppLoading(AppState state) =>
-    isLoadingSelector(state) || heroStatisticalHeroBuildLoadingSelector(state);
+    isLoadingSelector(state) || heroStatisticalHeroBuildLoadingSelector(state) || regularBuildsLoadingSelector(state);
 
 bool isUpdatingSelector(AppState state) => state.isUpdating;
 
@@ -12,6 +12,9 @@ bool isLoadingSelector(AppState state) => state.isLoading;
 
 bool heroStatisticalHeroBuildLoadingSelector(AppState state) =>
     state.staticialBuildsLoading;
+
+bool regularBuildsLoadingSelector(AppState state) =>
+  state.regularBuildsLoading;
 
 HeroFilter filterSelector(AppState state) => state.filter;
 
@@ -211,4 +214,16 @@ ThemeType themeTypeSelector(AppState state) {
     new Exception('Settings has no saved theme type');
   }
   return settingsSelector(state).themeType;
+}
+
+Map<int, List<Build>> regularBuildsSelector(AppState state) {
+  return state.regularHeroBuilds;
+}
+
+Optional<List<Build>> regularBuildsByHeroId(AppState state, int heroId) {
+  Map<int, List<Build>> heroBuilds = regularBuildsSelector(state);
+  if (heroBuilds == null || !heroBuilds.containsKey(heroId)){
+    return new Optional.absent(); 
+  }
+  return new Optional.of(heroBuilds[heroId]);
 }

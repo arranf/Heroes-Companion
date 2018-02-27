@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:heroes_companion_data/heroes_companion_data.dart';
+import 'package:heroes_companion_data/src/api/DTO/build.dart';
 import 'package:heroes_companion_data/src/api/DTO/hots_log_builds.dart';
 import 'package:heroes_companion_data/src/api/DTO/hots_log_winrate.dart';
 import 'package:heroes_companion_data/src/api/DTO/rotation_data.dart';
@@ -140,5 +141,26 @@ Future<List<HotsLogBuild>> getHotsLogBuilds(Patch patch, String heroName) async 
     return builds;
   } catch (e) {
     throw new Exception('Failed to fetch hots log builds' + e.message);
+  }
+}
+
+Future<List<Build>> getBuildsForHero(int heroId) async {
+  Uri uri = new Uri.https(_baseUrl, '/v1/builds/${heroId}');
+
+  try {
+    http.Response response = await http.get(uri, headers: _getHeaders());
+    if (response.statusCode != 200) {
+      return null;
+    }
+    dynamic json = JSON.decode(_getUtf8String(response));
+    // is a list which is empty or contains maps
+    if (!(json is List && (json.isEmpty || json[0] is Map))) {
+      throw new Exception(
+          'Unexpected JSON format encounted fetching patch data');
+    }
+    List<Map> jsonArray = json;
+    return jsonArray.map((a) => new Build.fromJson(a)).toList();
+  } catch (e) {
+    throw new Exception('Failed to fetch (evergreen) builds: ' + e.message);
   }
 }

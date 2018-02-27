@@ -79,3 +79,14 @@ class UpdateSettingsAction {
 }
 
 class DataSourceChangedAction{}
+
+class FetchHeroBuildsStartLoadingAction {}
+
+class FetchHeroBuildsFailedAction {}
+
+class FetchHeroBuildsSucceededAction {
+  final List<Build> builds;
+  final int heroId;
+
+  FetchHeroBuildsSucceededAction(this.builds, this.heroId);
+}

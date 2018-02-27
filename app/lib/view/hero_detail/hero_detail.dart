@@ -2,11 +2,11 @@ import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/models/build_sort.dart';
 import 'package:heroes_companion/models/overflow_choices.dart';
 import 'package:heroes_companion/view/common/app_loading_container.dart';
-import 'package:heroes_companion/view/common/build_card.dart';
-import 'package:heroes_companion/view/common/build_prompt.dart';
+import 'package:heroes_companion/view/hero_detail/build_prompt.dart';
 import 'package:heroes_companion/view/common/build_swiper.dart';
-import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
+import 'package:heroes_companion/view/hero_detail/regular_build_list.dart';
+import 'package:heroes_companion/view/hero_detail/statistical_build_list.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -17,6 +17,7 @@ class HeroDetail extends StatefulWidget {
   final bool canOfferPreviousBuild;
   final HeroWinRate heroWinRate;
   final List<StatisticalHeroBuild> statisticalBuilds;
+  final List<Build> regularBuilds;
   final dynamic favorite;
   final dynamic buildSwitch;
   final Patch patch;
@@ -29,10 +30,11 @@ class HeroDetail extends StatefulWidget {
     @required this.favorite,
     this.heroWinRate,
     this.statisticalBuilds,
+    this.regularBuilds,
     this.isCurrentBuild,
     this.buildSwitch,
     this.patch,
-    this.heroPatchNotesUrl
+    this.heroPatchNotesUrl,
   })
       : super(key: key);
 
@@ -216,39 +218,15 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
     );
   }
 
-  void _playBuild(BuildContext context, StatisticalHeroBuild statisticalBuild) {
+  void _playBuild(BuildContext context, HeroBuild heroBuild) {
     Navigator.of(context).push(new PageRouteBuilder(
                               pageBuilder: (context, a1, a2) => new BuildSwiper(
                                     widget.hero,
-                                    statisticalBuild.build,
+                                    heroBuild,
                                     key: new Key(
                                         '${widget.hero.name}_${build.hashCode}_build_swiper'),
                                   ),
                             ));
-  }
-
-  Widget _buildTalentCards(BuildContext context) {
-    if (widget.statisticalBuilds != null && widget.statisticalBuilds.isNotEmpty) {
-
-      // Prevent duplicates (builds in popular *and* winning)
-      List<StatisticalHeroBuild> builds = widget.statisticalBuilds
-        .where((StatisticalHeroBuild b) => b.build.talentNames.length == 7 && b.winRate > 0.0)
-        .toSet()
-        .toList();
-      // Sort builds by games played
-      if (buildSort == BuildSort.playrate)
-      {
-        builds.sort((StatisticalHeroBuild a, StatisticalHeroBuild b) => -1 * a.gamesPlayed.compareTo(b.gamesPlayed));
-      } else {
-        builds.sort((StatisticalHeroBuild a, StatisticalHeroBuild b) => -1 * a.winRate.compareTo(b.winRate));
-      }
-      
-      return new ListView(
-        key: new Key(widget.hero.name + '_talent_rows'),
-        children: builds.map((StatisticalHeroBuild b) => new BuildCard(b,  _playBuild, widget.hero, showTalentBottomSheet, type: b.label,)).toList()
-      );
-    }
-    return new EmptyState(Icons.error_outline, title: 'No Data Available', description: 'No statistical data found for this hero');
   }
 
   void showTalentBottomSheet(BuildContext context, Talent talent) {
@@ -300,8 +278,10 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
 
   void _buildTabs() {
     this._tabs.add(new Tab(
-      // key: new Key('build_tab'),
-      text: 'Builds',
+      text: 'Statistical Builds',
+    ));
+    this._tabs.add(new Tab(
+      text: 'Recommended Builds',
     ));
   }
 
@@ -316,12 +296,19 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
               key: new Key('${widget.hero.name}_previous_build_prompt'),
             ) : new Container(),
             _buildPhoneTitleRow(context),
+            isLoading ? new Container() : new TabBar(
+                tabs: _tabs,
+                controller: _tabController,
+                labelColor: Theme.of(context).textTheme.title.color,
+                unselectedLabelColor:Theme.of(context).textTheme.display1.color,
+            ),
             isLoading ? new Expanded(child: new LoadingView()) : new Expanded(
               child: new TabBarView(
                 controller: _tabController,
                 key: new Key('${widget.hero.name}_tab_view'),
                 children: <Widget>[
-                  _buildTalentCards(context)
+                  new StatisticalBuildList(widget.hero, _playBuild, showTalentBottomSheet, widget.statisticalBuilds, buildSort),
+                  new RegularBuildList(widget.hero, _playBuild, showTalentBottomSheet, widget.regularBuilds),
                 ],
               ),
             )
@@ -340,7 +327,16 @@ class _HeroDetailState extends State<HeroDetail> with SingleTickerProviderStateM
               key: new Key('${widget.hero.name}_previous_build_prompt'),
             ) : new Container(),
         _buildTabletTitleRow(context),
-        isLoading ? new Expanded(child: new LoadingView()) : new Expanded(child: _buildTalentCards(context))
+        // TODO refactor reused logic
+        isLoading ? new Expanded(child: new LoadingView()) : new Expanded(
+              child: new TabBarView(
+                controller: _tabController,
+                key: new Key('${widget.hero.name}_tab_view'),
+                children: <Widget>[
+                  new StatisticalBuildList(widget.hero, _playBuild, showTalentBottomSheet, widget.statisticalBuilds, buildSort),
+                ],
+              ),
+            )
       ],
     );
   }
