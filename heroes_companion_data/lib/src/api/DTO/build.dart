@@ -6,7 +6,6 @@ class Build {
   final DateTime submitted;
   final int heroId;
   final String tagline;
-  final String md5;
   final String id;
 
   // Not always present
@@ -14,14 +13,14 @@ class Build {
   final String source;
   final String url;
 
-  Build({@required this.talentTreeIds, @required this.submitted, @required this.heroId, this.tagline, @required this.md5, @required this.id, this.description, this.source, this.url});
+  Build({@required this.talentTreeIds, @required this.submitted, @required this.heroId, this.tagline, @required this.id, this.description, this.source, this.url});
 
   factory Build.fromJson(Map json) {
     if (!(json is Map)) {
       throw new Exception('Unexpected JSON format');
     }
     Map map = json;
-    if (!( map['Submitted'] is String && map['_id'] is String && map['Talents'] is List && map['HeroId'] is int && map['Md5'] is String)) {
+    if (!( map['Submitted'] is String && map['_id'] is String && map['Talents'] is List && map['HeroId'] is int)) {
       throw new Exception('Unexpected JSON format');
     }
 
@@ -29,7 +28,6 @@ class Build {
     DateTime submitted = DateTime.parse(map['Submitted']);
     int heroId = map['HeroId'];
     String id = map['_id'];
-    String md5 = map['Md5'];
 
     String description;
     if (map.containsKey('Description')){
@@ -54,6 +52,6 @@ class Build {
     List<String> talentTreeIds = talentInfo
         .map((talent) => talent['TalentTreeId'])
         .toList();
-    return new Build(talentTreeIds: talentTreeIds, submitted: submitted, heroId: heroId, id: id, md5: md5, description: description, source: source, url: url, tagline: tagline);
+    return new Build(talentTreeIds: talentTreeIds, submitted: submitted, heroId: heroId, id: id, description: description, source: source, url: url, tagline: tagline);
   }
 }
