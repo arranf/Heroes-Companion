@@ -8,6 +8,7 @@ import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/hero_list.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
 import 'package:heroes_companion/view/containers/hero_detail_container.dart';
+import 'package:heroes_companion/view/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
@@ -32,7 +33,7 @@ class HeroSearch extends StatelessWidget {
                       onChanged: (query) => vm.onSearchType(query),
                       autofocus: true,
                       decoration: new InputDecoration(
-                        hintText: "Search heroes...",
+                        hintText: AppStrings.of(context).searchHeroes(),
                         hintStyle: new TextStyle(
                           color: new Color.fromARGB(120, 255, 255, 255),
                           fontSize: 18.0,

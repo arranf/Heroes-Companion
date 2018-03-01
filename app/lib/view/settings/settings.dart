@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/routes.dart';
+import 'package:heroes_companion/view/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 
@@ -13,22 +14,22 @@ class Settings extends StatelessWidget {
         converter: (Store<AppState> store) => new _ViewModel.from(store),
         builder: (context, vm) {
           return new Scaffold(
-              appBar: new AppBar(title: const Text('Settings')),
+              appBar: new AppBar(title: new Text(AppStrings.of(context).settings())),
               body: new ListView(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                 children: [
                   new ListTile(
                     leading: const Icon(Icons.cloud_download),
-                    title: const Text('Data Source'),
-                    subtitle: new Text('Current: ${vm.dataSource.name}'),
+                    title: new Text(AppStrings.of(context).dataSource()),
+                    subtitle: new Text('${AppStrings.of(context).current()}: ${vm.dataSource.name}'),
                     onTap: () => Navigator
                         .of(context)
                         .pushNamed(Routes.settingsDataSource),
                   ),
                   new ListTile(
                     leading: const Icon(Icons.color_lens),
-                    title: const Text('Theme'),
-                    subtitle: new Text('Current: ${vm.themeType.name}'),
+                    title: new Text(AppStrings.of(context).theme()),
+                    subtitle: new Text('${AppStrings.of(context).current()}: ${vm.themeType.name}'),
                     onTap: () => Navigator
                         .of(context)
                         .pushNamed(Routes.settingsThemeType),

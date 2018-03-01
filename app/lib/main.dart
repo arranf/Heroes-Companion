@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
@@ -11,12 +12,14 @@ import 'package:heroes_companion/view/common/launch_error.dart';
 import 'package:heroes_companion/view/containers/hero_home_container.dart';
 import 'package:heroes_companion/view/containers/hero_search_container.dart';
 import 'package:heroes_companion/view/containers/maps_home_container.dart';
+import 'package:heroes_companion/view/i18n/strings.dart';
 import 'package:heroes_companion/view/settings/settings.dart';
 import 'package:heroes_companion/view/settings/settings_data_source.dart';
 import 'package:heroes_companion/view/settings/settings_theme_type.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart' hide Settings;
+
 
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:heroes_companion/redux/reducers/app_state.dart';
@@ -70,6 +73,17 @@ void main() {
   });
 }
 
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppStrings> {
+  @override
+  Future<AppStrings> load(Locale locale) => AppStrings.load(locale);
+
+  @override
+  bool isSupported(Locale locale) => locale.languageCode == 'en';
+
+  @override
+  bool shouldReload(_AppLocalizationsDelegate old) => false;
+}
+
 class App extends StatelessWidget {
   final store =
       new Store<AppState>(appReducer, initialState: new AppState.initial());
@@ -92,6 +106,15 @@ class App extends StatelessWidget {
             theme: themeTypeSelector(store.state) == ThemeType.Light
                 ? lightTheme
                 : darkTheme,
+            localizationsDelegates: <LocalizationsDelegate<dynamic>>[
+        new _AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const <Locale>[
+        const Locale('en', 'US'),
+        const Locale('es', 'ES'),
+      ],
             // Named routes only
             // TODO move these into separate file
             routes: {

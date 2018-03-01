@@ -7,6 +7,7 @@ import 'package:heroes_companion/view/common/build_swiper.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
 import 'package:heroes_companion/view/hero_detail/regular_build_list.dart';
 import 'package:heroes_companion/view/hero_detail/statistical_build_list.dart';
+import 'package:heroes_companion/view/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -118,7 +119,7 @@ class _HeroDetailState extends State<HeroDetail>
                             children: <Widget>[
                               new Text(
                                 widget.heroWinRate != null
-                                    ? '${widget.heroWinRate.winPercentage.toStringAsFixed(1)} Win %'
+                                    ? '${widget.heroWinRate.winPercentage.toStringAsFixed(1)} ${AppStrings.of(context).win()} %'
                                     : ' ',
                                 style: Theme
                                     .of(context)
@@ -128,7 +129,7 @@ class _HeroDetailState extends State<HeroDetail>
                               ),
                               new Text(
                                   widget.heroWinRate != null
-                                      ? '${(widget.heroWinRate.gamesPlayed).toString()} games played'
+                                      ? '${(widget.heroWinRate.gamesPlayed).toString()} ${AppStrings.of(context).gamesPlayed()}'
                                       : ' ',
                                   style: Theme
                                       .of(context)
@@ -206,7 +207,7 @@ class _HeroDetailState extends State<HeroDetail>
                 ),
                 new Text(
                     widget.heroWinRate != null
-                        ? '${(widget.heroWinRate.gamesPlayed).toString()} games played'
+                        ? '${(widget.heroWinRate.gamesPlayed).toString()} ${AppStrings.of(context).gamesPlayed()}'
                         : ' ',
                     style: Theme
                         .of(context)
@@ -279,10 +280,10 @@ class _HeroDetailState extends State<HeroDetail>
 
   void _buildTabs() {
     this._tabs.add(new Tab(
-          text: 'Statistical Builds',
+          text: AppStrings.of(context).statisticalBuilds(),
         ));
     this._tabs.add(new Tab(
-          text: 'Recommended Builds',
+          text: AppStrings.of(context).recommendedBuilds(),
         ));
   }
 
@@ -373,8 +374,8 @@ class _HeroDetailState extends State<HeroDetail>
           actions: [
             new IconButton(
               tooltip: widget.hero.is_favorite
-                  ? 'Unfavorite ${widget.hero.name}'
-                  : 'Favorite ${widget.hero.name}',
+                  ? '${AppStrings.of(context).unfavorite()} ${widget.hero.name}'
+                  : '${AppStrings.of(context).favoriteTooltip()} ${widget.hero.name}',
               icon: new Icon(Icons.favorite,
                   color: widget.hero.is_favorite
                       ? Colors.red
@@ -410,14 +411,14 @@ class _HeroDetailState extends State<HeroDetail>
                 items.add(new PopupMenuItem(
                   value: buildSort,
                   child: new Text(
-                      'Sort by ${buildSort == BuildSort.winrate ? 'Popularity' :'Win Rate'}'),
+                      '${buildSort == BuildSort.winrate ? AppStrings.of(context).sortByPopularity() : AppStrings.of(context).sortByWinRate()}'),
                 ));
                 if (widget.canOfferPreviousBuild) {
                   items.add(new PopupMenuItem(
                     value: 'Switch Build',
                     child: new Text(widget.isCurrentBuild
-                        ? 'See Previous Patch Data'
-                        : 'See Current Patch Data'),
+                        ? AppStrings.of(context).seeCurrentPatchData()
+                        : AppStrings.of(context).seePreviousPatchData()),
                   ));
                 }
                 return items;

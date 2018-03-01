@@ -11,9 +11,11 @@ dependencies:
   url_launcher: "^2.0.1"
   sentry: "^0.0.6"
   screen: "^0.0.2"
-
+  intl: "^0.15.2"
   
   flutter:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.

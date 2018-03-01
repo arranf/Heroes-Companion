@@ -1,3 +1,4 @@
+import 'package:heroes_companion/view/i18n/strings.dart';
 import 'package:screen/screen.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/view/common/talent_card.dart';
@@ -64,13 +65,13 @@ class _BuildSwiperState extends State<BuildSwiper>
                     icon: new Icon(Icons.close),
                     color: Colors.white,
                     onPressed: () => Navigator.pop(context),
-                    tooltip: 'Go back',
+                    tooltip: AppStrings.of(context).goBack(),
                   ),
                   new IconButton(
                     icon: new Icon(Icons.first_page),
                     color: Colors.white,
                     onPressed: () => _firstPage(),
-                    tooltip: 'Go to first talent',
+                    tooltip: AppStrings.of(context).goToFirstTalent(),
                   )
                 ],
               ),
@@ -93,7 +94,7 @@ class _BuildSwiperState extends State<BuildSwiper>
                   color: Colors.white,
                   disabledColor: Colors.grey,
                   icon: new Icon(Icons.arrow_back),
-                  tooltip: 'Previous talent',
+                  tooltip: AppStrings.of(context).previousTalent(),
                   onPressed: () => _nextPage(-1),
                 ),
                 new TabPageSelector(
@@ -103,7 +104,7 @@ class _BuildSwiperState extends State<BuildSwiper>
                 new IconButton(
                   color: Colors.white,
                   icon: new Icon(Icons.arrow_forward),
-                  tooltip: 'Next talent',
+                  tooltip: AppStrings.of(context).nextTalent(),
                   onPressed: () => _nextPage(1),
                 ),
               ],
