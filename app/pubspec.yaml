@@ -12,7 +12,7 @@ dependencies:
   sentry: "^0.0.6"
   screen: "^0.0.2"
   intl: "^0.15.2"
-  
+  intl_translation: 0.16.1
   flutter:
     sdk: flutter
   flutter_localizations:

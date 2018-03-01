@@ -7,7 +7,7 @@ import 'package:heroes_companion/view/common/build_swiper.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
 import 'package:heroes_companion/view/hero_detail/regular_build_list.dart';
 import 'package:heroes_companion/view/hero_detail/statistical_build_list.dart';
-import 'package:heroes_companion/view/i18n/strings.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
 import 'package:cached_network_image/cached_network_image.dart';

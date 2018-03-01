@@ -2,7 +2,7 @@ import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/models/build_sort.dart';
 import 'package:heroes_companion/view/common/regular_build_card.dart';
 import 'package:heroes_companion/view/common/empty_state.dart';
-import 'package:heroes_companion/view/i18n/strings.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 
 class RegularBuildList extends StatelessWidget {
@@ -30,6 +30,6 @@ class RegularBuildList extends StatelessWidget {
     }
     return new EmptyState(Icons.error_outline,
         title: AppStrings.of(context).noDataAvailable(),
-        description: AppStrings.of(context).noStatisticalDataFoundForThisHero());
+        description: AppStrings.of(context).noStatisticalDataFound());
   }
 }

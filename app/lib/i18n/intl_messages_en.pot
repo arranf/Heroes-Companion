@@ -1,0 +1,162 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Heroes App 0.5.3\n"
+"Report-Msgid-Bugs-To: arran@heroescompanion.com.com \n"
+"Last-Translator: \n"
+"Language: en-US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#. "Title for the Heroes Companion application"
+msgid "title"
+msgstr "Heroes Companion"
+
+#. "Label for the about drawer option"
+msgid "about"
+msgstr "About"
+
+#. "Label for the Send Feedback drawer option"
+msgid "sendFeedback"
+msgstr "Send Feedback"
+
+#. "Label for the read patch notes overflow menu option on the home screen"
+msgid "readPatchNotes"
+msgstr "Read Patch Notes"
+
+#. "Label for the hero patch notes overflow menu option on the hero screen"
+msgid "heroPatchNotes"
+msgstr "Hero Patch Notes"
+
+msgid "lastUpdated"
+msgstr "Last Updated"
+
+msgid "currentPatchVersion"
+msgstr "Current Patch Version"
+
+#. "The list of places data is obtained from"
+msgid "poweredByDataFrom"
+msgstr "Powered By data from"
+
+#. "The label for showing all heroes on the home screen"
+msgid "all"
+msgstr "All"
+
+#. "The label for showing favorite heroes on the home screen"
+msgid "favorite"
+msgstr "Favorite"
+
+#. "The label for showing free to play heroes on the home screen"
+msgid "freeToPlay"
+msgstr "Free to Play"
+
+#. "The header text displayed where there are no favorite heroes in the app"
+msgid "noFavorites"
+msgstr "No Favorites"
+
+#. "The subtitle text displayed when there are no favorited heroes"
+msgid "favoritedHeroesWillAppearHere"
+msgstr "Favorited Heroes Will Appear Here"
+
+#. "The hint text displayed in the empty search box."
+msgid "searchHeroes"
+msgstr "Search heroes"
+
+#. "The text shown when previous patch data is being displayed"
+msgid "showingPreviousPatchData"
+msgstr "Showing previous patch data"
+
+#. "The suffix text displayed after the number of games played for a hero"
+msgid "gamesPlayed"
+msgstr "games played"
+
+#. "The label text for the statistical builds tab."
+msgid "statisticalBuilds"
+msgstr "Statistical Builds"
+
+#. "The label text for the recommended builds tab."
+msgid "recommendedBuilds"
+msgstr "Recommended Builds"
+
+#. "The sort option for most popular builds"
+msgid "sortByPopularity"
+msgstr "Sort by Popularity"
+
+#. "The sort option for the most succesful builds"
+msgid "sortByWinRate"
+msgstr "Sort by Win Rate"
+
+#. "The overflow text for the option to switch to the previous patch's data"
+msgid "seePreviousPatchData"
+msgstr "See Previous Patch Data"
+
+#. "The overflow text for the option to switch to the current patch's data"
+msgid "seeCurrentPatchData"
+msgstr "See Current Patch Data"
+
+#. "The error text title for when no data can be found for a particular hero"
+msgid "noDataAvailable"
+msgstr "No Data Available"
+
+#. "The error text subtitle for when no data can be found for a particular hero"
+msgid "noStatisticalDataFound"
+msgstr "No statistical data found for this hero"
+
+#. "The place where data comes from i.e. hots.dog or hotslogs.com"
+msgid "dataSource"
+msgstr "Data Source"
+
+#. "The prompt text that informs the user that the changed setting won't reflect in the app until it is launched again."
+msgid "settingUpdateOnNextLaunch"
+msgstr "This setting will update next time you launch the app."
+
+#. "Theme, the colour scheme for the app"
+msgid "theme"
+msgstr "Theme"
+
+#. "Light theme"
+msgid "light"
+msgstr "Light"
+
+#. "Dark theme"
+msgid "dark"
+msgstr "Dark"
+
+#. "Used in the context of the current option for a setting. i.e. Current: Light"
+msgid "current"
+msgstr "Current"
+
+msgid "heroes"
+msgstr "Heroes"
+
+msgid "settings"
+msgstr "Settings"
+
+#. "Tooltip for the button that goes to the hero page when playing a build "
+msgid "goBack"
+msgstr "Go back"
+
+#. "Tooltip for the button that goes to the first talent when playing a build "
+msgid "goToFirstTalent"
+msgstr "Go to first talent"
+
+#. "Tooltip for the button that goes to the next talent when playing a build "
+msgid "nextTalent"
+msgstr "Next talent"
+
+#. "Tooltip for the button that goes to the next talent when playing a build "
+msgid "previousTalent"
+msgstr "Previous talent"
+
+#. "The tooltip for the button that removes a hero from the list of favorites"
+msgid "unfavorite"
+msgstr "Unfavorite"
+
+#. "The tooltip for the button that adds a hero to the list of favorites"
+msgid "favoriteTooltip"
+msgstr "Favorite"
+
+#. "Used to describes the win percentage of a hero i.e. 51 Win %"
+msgid "win"
+msgstr "Win"
+

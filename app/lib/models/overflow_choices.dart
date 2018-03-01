@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:heroes_companion/view/i18n/strings.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -39,7 +39,7 @@ class OverflowChoice {
               new Text('${AppStrings.of(context).currentPatchVersion()} ${settings.updatePatch}'),
               new RichText(
                 text: new TextSpan(
-                    text: '${AppStrings.of(context).poweredBy()} ',
+                    text: '${AppStrings.of(context).poweredByDataFrom()} ',
                     style: new TextStyle().apply(color: Colors.black),
                     children: [
                       new TextSpan(

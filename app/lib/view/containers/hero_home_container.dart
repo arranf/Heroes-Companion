@@ -8,7 +8,7 @@ import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
 import 'package:heroes_companion/view/common/app_drawer.dart';
 import 'package:heroes_companion/view/containers/hero_detail_container.dart';
-import 'package:heroes_companion/view/i18n/strings.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:redux/redux.dart';
 
 import 'package:heroes_companion/icons.dart' as HeroesIcons;

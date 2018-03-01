@@ -1,0 +1,233 @@
+{
+  "@@last_modified": "2018-03-01T16:02:49.188910",
+  "title": "Heroes Companion",
+  "@title": {
+    "description": "Title for the Heroes Companion application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "about": "About",
+  "@about": {
+    "description": "Label for the about drawer option",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sendFeedback": "Send Feedback",
+  "@sendFeedback": {
+    "description": "Label for the Send Feedback drawer option",
+    "type": "text",
+    "placeholders": {}
+  },
+  "readPatchNotes": "Read Patch Notes",
+  "@readPatchNotes": {
+    "description": "Label for the read patch notes overflow menu option on the home screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "heroPatchNotes": "Hero Patch Notes",
+  "@heroPatchNotes": {
+    "description": "Label for the hero patch notes overflow menu option on the hero screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "lastUpdated": "Last Updated",
+  "@lastUpdated": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "currentPatchVersion": "Current Patch Version",
+  "@currentPatchVersion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "poweredByDataFrom": "Powered By data from",
+  "@poweredByDataFrom": {
+    "description": "The list of places data is obtained from",
+    "type": "text",
+    "placeholders": {}
+  },
+  "all": "All",
+  "@all": {
+    "description": "The label for showing all heroes on the home screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "favorite": "Favorite",
+  "@favorite": {
+    "description": "The label for showing favorite heroes on the home screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "freeToPlay": "Free to Play",
+  "@freeToPlay": {
+    "description": "The label for showing free to play heroes on the home screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "noFavorites": "No Favorites",
+  "@noFavorites": {
+    "description": "The header text displayed where there are no favorite heroes in the app",
+    "type": "text",
+    "placeholders": {}
+  },
+  "favoritedHeroesWillAppearHere": "Favorited Heroes Will Appear Here",
+  "@favoritedHeroesWillAppearHere": {
+    "description": "The subtitle text displayed when there are no favorited heroes",
+    "type": "text",
+    "placeholders": {}
+  },
+  "searchHeroes": "Search heroes",
+  "@searchHeroes": {
+    "description": "The hint text displayed in the empty search box.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "showingPreviousPatchData": "Showing previous patch data",
+  "@showingPreviousPatchData": {
+    "description": "The text shown when previous patch data is being displayed",
+    "type": "text",
+    "placeholders": {}
+  },
+  "gamesPlayed": "games played",
+  "@gamesPlayed": {
+    "description": "The suffix text displayed after the number of games played for a hero",
+    "type": "text",
+    "placeholders": {}
+  },
+  "statisticalBuilds": "Statistical Builds",
+  "@statisticalBuilds": {
+    "description": "The label text for the statistical builds tab.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "recommendedBuilds": "Recommended Builds",
+  "@recommendedBuilds": {
+    "description": "The label text for the recommended builds tab.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sortByPopularity": "Sort by Popularity",
+  "@sortByPopularity": {
+    "description": "The sort option for most popular builds",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sortByWinRate": "Sort by Win Rate",
+  "@sortByWinRate": {
+    "description": "The sort option for the most succesful builds",
+    "type": "text",
+    "placeholders": {}
+  },
+  "seePreviousPatchData": "See Previous Patch Data",
+  "@seePreviousPatchData": {
+    "description": "The overflow text for the option to switch to the previous patch's data",
+    "type": "text",
+    "placeholders": {}
+  },
+  "seeCurrentPatchData": "See Current Patch Data",
+  "@seeCurrentPatchData": {
+    "description": "The overflow text for the option to switch to the current patch's data",
+    "type": "text",
+    "placeholders": {}
+  },
+  "noDataAvailable": "No Data Available",
+  "@noDataAvailable": {
+    "description": "The error text title for when no data can be found for a particular hero",
+    "type": "text",
+    "placeholders": {}
+  },
+  "noStatisticalDataFound": "No statistical data found for this hero",
+  "@noStatisticalDataFound": {
+    "description": "The error text subtitle for when no data can be found for a particular hero",
+    "type": "text",
+    "placeholders": {}
+  },
+  "dataSource": "Data Source",
+  "@dataSource": {
+    "description": "The place where data comes from i.e. hots.dog or hotslogs.com",
+    "type": "text",
+    "placeholders": {}
+  },
+  "settingUpdateOnNextLaunch": "This setting will update next time you launch the app.",
+  "@settingUpdateOnNextLaunch": {
+    "description": "The prompt text that informs the user that the changed setting won't reflect in the app until it is launched again.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "theme": "Theme",
+  "@theme": {
+    "description": "Theme, the colour scheme for the app",
+    "type": "text",
+    "placeholders": {}
+  },
+  "light": "Light",
+  "@light": {
+    "description": "Light theme",
+    "type": "text",
+    "placeholders": {}
+  },
+  "dark": "Dark",
+  "@dark": {
+    "description": "Dark theme",
+    "type": "text",
+    "placeholders": {}
+  },
+  "current": "Current",
+  "@current": {
+    "description": "Used in the context of the current option for a setting. i.e. Current: Light",
+    "type": "text",
+    "placeholders": {}
+  },
+  "heroes": "Heroes",
+  "@heroes": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Settings",
+  "@settings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "goBack": "Go back",
+  "@goBack": {
+    "description": "Tooltip for the button that goes to the hero page when playing a build ",
+    "type": "text",
+    "placeholders": {}
+  },
+  "goToFirstTalent": "Go to first talent",
+  "@goToFirstTalent": {
+    "description": "Tooltip for the button that goes to the first talent when playing a build ",
+    "type": "text",
+    "placeholders": {}
+  },
+  "nextTalent": "Next talent",
+  "@nextTalent": {
+    "description": "Tooltip for the button that goes to the next talent when playing a build ",
+    "type": "text",
+    "placeholders": {}
+  },
+  "previousTalent": "Previous talent",
+  "@previousTalent": {
+    "description": "Tooltip for the button that goes to the next talent when playing a build ",
+    "type": "text",
+    "placeholders": {}
+  },
+  "unfavorite": "Unfavorite",
+  "@unfavorite": {
+    "description": "The tooltip for the button that removes a hero from the list of favorites",
+    "type": "text",
+    "placeholders": {}
+  },
+  "favoriteTooltip": "Favorite",
+  "@favoriteTooltip": {
+    "description": "The tooltip for the button that adds a hero to the list of favorites",
+    "type": "text",
+    "placeholders": {}
+  },
+  "win": "Win",
+  "@win": {
+    "description": "Used to describes the win percentage of a hero i.e. 51 Win %",
+    "type": "text",
+    "placeholders": {}
+  }
+}

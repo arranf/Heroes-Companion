@@ -12,7 +12,7 @@ import 'package:heroes_companion/view/common/launch_error.dart';
 import 'package:heroes_companion/view/containers/hero_home_container.dart';
 import 'package:heroes_companion/view/containers/hero_search_container.dart';
 import 'package:heroes_companion/view/containers/maps_home_container.dart';
-import 'package:heroes_companion/view/i18n/strings.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:heroes_companion/view/settings/settings.dart';
 import 'package:heroes_companion/view/settings/settings_data_source.dart';
 import 'package:heroes_companion/view/settings/settings_theme_type.dart';

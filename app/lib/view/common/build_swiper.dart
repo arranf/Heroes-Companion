@@ -1,4 +1,4 @@
-import 'package:heroes_companion/view/i18n/strings.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:screen/screen.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/view/common/talent_card.dart';

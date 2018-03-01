@@ -4,7 +4,7 @@ import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/settings_service.dart';
-import 'package:heroes_companion/view/i18n/strings.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 
@@ -29,7 +29,7 @@ class _SettingsThemeTypeState extends State<SettingsThemeType> {
                     if (!_haveChangedNow) {
                       Scaffold.of(context).showSnackBar(new SnackBar(
                             content: new Text(
-                                AppStrings.of(context).thisSettingWillUpdateOnNextLaunch()),
+                                AppStrings.of(context).settingUpdateOnNextLaunch()),
                           ));
                       _haveChangedNow = true;
                     }
