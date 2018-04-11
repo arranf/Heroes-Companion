@@ -73,7 +73,7 @@ class _RegularBuildCardState extends State<RegularBuildCard> {
               new ButtonTheme.bar(
                 child: new ButtonBar(
                   children: <Widget>[
-                    new FlatButton(
+                   widget.regularBuild.url != null && widget.regularBuild.url.isNotEmpty ? new FlatButton(
                         child: const Text('MORE INFO'),
                         onPressed: () async {
                           if (await canLaunch(widget.regularBuild.url)) {
@@ -82,7 +82,7 @@ class _RegularBuildCardState extends State<RegularBuildCard> {
                             throw new Exception(
                                 'Could not launch ${widget.regularBuild.url}');
                           }
-                        }),
+                        }) : Container(),
                     new FlatButton(
                       child: const Text('PLAY BUILD'),
                       onPressed: () => widget._onPressed(
