@@ -46,8 +46,8 @@ class Ability {
         description, hotkey, cooldown, mana_cost, trait, sha3_256, have_asset);
   }
 
-  Map toMap() {
-    Map map = {
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {
       table.column_id: id,
       table.column_hero_id: hero_id,
       table.column_ability_id: ability_id,

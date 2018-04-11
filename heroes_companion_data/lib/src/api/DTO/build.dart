@@ -23,16 +23,16 @@ class Build {
       this.source,
       this.url});
 
-  factory Build.fromJson(Map json) {
+  factory Build.fromJson(Map<dynamic, dynamic> json) {
     if (!(json is Map)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('Build: Unexpected JSON format making bui');
     }
-    Map map = json;
+    Map<dynamic, dynamic> map = json;
     if (!(map['Submitted'] is String &&
         map['_id'] is String &&
         map['Talents'] is List &&
         map['HeroId'] is int)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('Build: Unexpected JSON format');
     }
 
     DateTime submitted = DateTime.parse(map['Submitted'] as String);

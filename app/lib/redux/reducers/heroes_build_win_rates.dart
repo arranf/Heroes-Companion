@@ -3,12 +3,12 @@ import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
 final heroesStatisticalBuildsReducer =
-    combineTypedReducers<Map<int, Map<String, List<StatisticalHeroBuild>>>>([
-  new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
+    combineReducers<Map<int, Map<String, List<StatisticalHeroBuild>>>>([
+  new TypedReducer<Map<int, Map<String, List<StatisticalHeroBuild>>>,
       FetchStatisticalHeroBuildSucceededAction>(_succeed),
-  new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
+  new TypedReducer<Map<int, Map<String, List<StatisticalHeroBuild>>>,
       FetchStatisticalHeroBuildFailedAction>(_fail),
-  new ReducerBinding<Map<int, Map<String, List<StatisticalHeroBuild>>>,
+  new TypedReducer<Map<int, Map<String, List<StatisticalHeroBuild>>>,
       DataSourceChangedAction>(_clear)
 ]);
 

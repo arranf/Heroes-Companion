@@ -13,29 +13,35 @@ class UpdatePayload {
   UpdatePayload(this.id, this.patch_date, this.patch, this.heroes, this.talents,
       this.abilities);
 
-  factory UpdatePayload.fromJson(Object json) {
+  factory UpdatePayload.fromJson(Map<dynamic, dynamic> json) {
     if (!(json is Map)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('Update Payload: Unexpected JSON format');
     }
 
-    Map map = json;
+    Map<dynamic, dynamic> map = json;
     if (!(map['id'] is String &&
-        map['heroes'] is List<Map> &&
+        // map['heroes'] is List<Map> &&
         map['patch'] is String &&
-        map['talents'] is List<Map> &&
-        map['abilities'] is List<Map> &&
+        // map['talents'] is List<Map> &&
+        // map['abilities'] is List<Map> &&
         map['patch_date'] is String)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('Update Payload: Unexpected JSON format');
     }
 
     DateTime id = DateTime.parse(map['id'] as String);
     DateTime patchDate = DateTime.parse(map['patch_date'] as String);
-    List<Hero> heroes = map['heroes'].map((Map<dynamic, dynamic> h) => new Hero.fromMap(h)).toList();
     String patch = map.containsKey('patch') ? map['patch'] : '';
+
+    List<dynamic> heroJson = map['heroes'] as List<dynamic>;
+    List<Hero> heroes = heroJson.map((h) => new Hero.fromMap(h as Map<dynamic, dynamic>)).toList();
+
+    List<dynamic> talentsJson = map['talents'] as List<dynamic>;
     List<Talent> talents =
-        map['talents'].map((Map t) => new Talent.fromMap(t)).toList();
+        talentsJson.map((dynamic t) => new Talent.fromMap(t as Map<dynamic, dynamic>)).toList();
+
+    List<dynamic> abilitiesJson = map['abilities'] as List<dynamic>;
     List<Ability> abilities =
-        map['abilities'].map((Map a) => new Ability.fromMap(a)).toList();
+        abilitiesJson.map((dynamic a) => new Ability.fromMap(a as Map<dynamic, dynamic>)).toList();
     return new UpdatePayload(id, patchDate, patch, heroes, talents, abilities);
   }
 }

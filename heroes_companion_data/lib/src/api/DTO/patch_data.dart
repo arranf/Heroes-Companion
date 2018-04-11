@@ -13,11 +13,11 @@ class PatchData {
       this.fullVersion, this.liveDate, this.patchNotesUrl,
       {this.alternateLink, this.hotsDogId});
 
-  factory PatchData.fromJson(Object json) {
+  factory PatchData.fromJson(Map<dynamic, dynamic> json) {
     if (!(json is Map && json['liveDate'] is String)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('Patch Data: Unexpected JSON format');
     }
-    Map map = json;
+    Map<dynamic, dynamic> map = json;
     String patchName = map['patchName'];
     String officialLink = map['officialLink'];
     String patchType = map['patchType'];

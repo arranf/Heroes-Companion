@@ -4,20 +4,25 @@ class RotationData {
 
   RotationData(this.rotationEnd, this.heroes);
 
-  factory RotationData.fromJson(Object json) {
+  factory RotationData.fromJson(Map<dynamic, dynamic> json) {
     if (!(json is Map)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('Rotation Data: Unexpected JSON format. Not a map.');
     }
-    Map map = json;
-    if (!(map['end'] is String && map['heroes'] is List<Map> && map['isFreeToPlay'] is bool)) {
-      throw new Exception('Unexpected JSON format');
+    Map<dynamic, dynamic> map = json;
+    if (!(map['end'] is String )) {
+      throw new Exception('Rotation Data: Unexpected JSON format');
     }
     DateTime rotationEnd = DateTime.parse(map['end'] as String);
-    List<Map> heroInfo = map['heroes'];
-    List<String> heroes = heroInfo
+    
+    List<Map<String, dynamic>> heroInfo = map['heroes'];
+    if (!heroInfo.every((m) => m['isFreeToPlay'] is bool)) {
+      throw new Exception('Rotation Data: Unexpected JSON format. Not every isFreeToPlay is bool');
+    }
+    
+    List<String> heroNames = heroInfo
         .where((hero) => hero['isFreeToPlay'] as bool)
         .map((hero) => hero['name'])
         .toList();
-    return new RotationData(rotationEnd, heroes);
+    return new RotationData(rotationEnd, heroNames);
   }
 }

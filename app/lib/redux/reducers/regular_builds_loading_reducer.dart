@@ -1,10 +1,10 @@
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
-final regularBuildsLoadingReducer = combineTypedReducers<bool>([
-  new ReducerBinding<bool, FetchHeroBuildsStartLoadingAction>(_setNotLoaded),
-  new ReducerBinding<bool, FetchHeroBuildsFailedAction>(_setLoaded),
-  new ReducerBinding<bool, FetchHeroBuildsSucceededAction>(_setLoaded),
+final regularBuildsLoadingReducer = combineReducers<bool>([
+  new TypedReducer<bool, FetchHeroBuildsStartLoadingAction>(_setNotLoaded),
+  new TypedReducer<bool, FetchHeroBuildsFailedAction>(_setLoaded),
+  new TypedReducer<bool, FetchHeroBuildsSucceededAction>(_setLoaded),
 ]);
 
 bool _setLoaded(bool state, action) {

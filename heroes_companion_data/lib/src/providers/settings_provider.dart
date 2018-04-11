@@ -44,7 +44,6 @@ class SettingsProvider {
 
     _settings = new Settings(currentUpdateOriginTime, rotationDate,
         updatePatchVersion, dataSource, themeType);
-    print('Got settings');
     return _settings;
   }
 

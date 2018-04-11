@@ -2,10 +2,10 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
-final regularHeroBuildsReducer = combineTypedReducers<Map<int, List<Build>>>([
-  new ReducerBinding<Map<int, List<Build>>, FetchHeroBuildsSucceededAction>(
+final regularHeroBuildsReducer = combineReducers<Map<int, List<Build>>>([
+  new TypedReducer<Map<int, List<Build>>, FetchHeroBuildsSucceededAction>(
       _succeed),
-  new ReducerBinding<Map<int, List<Build>>, FetchHeroBuildsFailedAction>(_fail)
+  new TypedReducer<Map<int, List<Build>>, FetchHeroBuildsFailedAction>(_fail)
 ]);
 
 Map<int, List<Build>> _succeed(Map<int, List<Build>> regularHeroBuilds,

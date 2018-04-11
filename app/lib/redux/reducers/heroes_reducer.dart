@@ -2,9 +2,9 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
-final heroesReducer = combineTypedReducers<List<Hero>>([
-  new ReducerBinding<List<Hero>, FetchHeroesSucceededAction>(_setLoadedHeroes),
-  new ReducerBinding<List<Hero>, UpdateHeroAction>(_updateHero),
+final heroesReducer = combineReducers<List<Hero>>([
+  new TypedReducer<List<Hero>, FetchHeroesSucceededAction>(_setLoadedHeroes),
+  new TypedReducer<List<Hero>, UpdateHeroAction>(_updateHero),
 ]);
 
 List<Hero> _setLoadedHeroes(

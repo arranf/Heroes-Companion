@@ -5,15 +5,15 @@ class HotsLogsWinrate {
 
   HotsLogsWinrate(this.name, this.gamesPlayed, this.winPercentage);
 
-  factory HotsLogsWinrate.fromJson(Object json) {
+  factory HotsLogsWinrate.fromJson(Map<dynamic, dynamic> json) {
     if (!(json is Map)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('HotsLogWinrate: Unexpected JSON format');
     }
-    Map map = json;
+    Map<dynamic, dynamic> map = json;
     if (!(map['name'] is String &&
         map['played'] is String &&
         map['winPercentage'] is String)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('HotsLogWinrate: Unexpected JSON format');
     }
     String name = map['name'];
     int gamesPlayed = int.parse(map['played'] as String);
