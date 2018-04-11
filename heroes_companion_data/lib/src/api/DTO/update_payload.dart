@@ -33,15 +33,19 @@ class UpdatePayload {
     String patch = map.containsKey('patch') ? map['patch'] : '';
 
     List<dynamic> heroJson = map['heroes'] as List<dynamic>;
-    List<Hero> heroes = heroJson.map((h) => new Hero.fromMap(h as Map<dynamic, dynamic>)).toList();
+    List<Hero> heroes = heroJson
+        .map((h) => new Hero.fromMap(h as Map<dynamic, dynamic>))
+        .toList();
 
     List<dynamic> talentsJson = map['talents'] as List<dynamic>;
-    List<Talent> talents =
-        talentsJson.map((dynamic t) => new Talent.fromMap(t as Map<dynamic, dynamic>)).toList();
+    List<Talent> talents = talentsJson
+        .map((dynamic t) => new Talent.fromMap(t as Map<dynamic, dynamic>))
+        .toList();
 
     List<dynamic> abilitiesJson = map['abilities'] as List<dynamic>;
-    List<Ability> abilities =
-        abilitiesJson.map((dynamic a) => new Ability.fromMap(a as Map<dynamic, dynamic>)).toList();
+    List<Ability> abilities = abilitiesJson
+        .map((dynamic a) => new Ability.fromMap(a as Map<dynamic, dynamic>))
+        .toList();
     return new UpdatePayload(id, patchDate, patch, heroes, talents, abilities);
   }
 }

@@ -42,7 +42,7 @@ class Build {
     String source;
     if (map.containsKey('Source') && map['Source'] is String) {
       source = map['Source'] as String;
-    }   
+    }
     if (!(map['Submitted'] is String &&
         map['_id'] is String &&
         map['Talents'] is List &&
@@ -60,14 +60,16 @@ class Build {
       tagline = map['Tagline'] as String;
     }
 
-    List<Map<dynamic, dynamic>> talentInfo = (map['Talents'] as List<dynamic>).cast<Map<dynamic, dynamic>>();
+    List<Map<dynamic, dynamic>> talentInfo =
+        (map['Talents'] as List<dynamic>).cast<Map<dynamic, dynamic>>();
     talentInfo.sort((Map<dynamic, dynamic> a, Map<dynamic, dynamic> b) {
       int aVal = a['Level'];
       int bVal = b['Level'];
       return aVal.compareTo(bVal);
     });
     List<String> talentTreeIds =
-        (talentInfo.map((talent) => talent['TalentTreeId']).toList()).cast<String>();
+        (talentInfo.map((talent) => talent['TalentTreeId']).toList())
+            .cast<String>();
     return new Build(
         talentTreeIds: talentTreeIds,
         submitted: submitted,

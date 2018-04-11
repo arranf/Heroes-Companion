@@ -29,11 +29,11 @@ class PatchProvider {
       List<Map<String, dynamic>> existingPatchData = await _database.query(
           table.table_name,
           columns: [table.column_full_version, table.column_patch_name]);
-      
+
       List<dynamic> patchIds = existingPatchData
-        .map((Map<dynamic, dynamic> p) => p[table.column_full_version])
-        .toList()
-        .cast<String>();
+          .map((Map<dynamic, dynamic> p) => p[table.column_full_version])
+          .toList()
+          .cast<String>();
 
       List<Patch> patches =
           patchDatas.map((PatchData pd) => new Patch.from(pd)).toList();
@@ -53,11 +53,9 @@ class PatchProvider {
               (Patch p) => p.fullVersion == id && p.patchName.isNotEmpty))
           .toList();
 
-      patchIdNeedUpdate.forEach((version) => batch.update(
-          table.table_name,
+      patchIdNeedUpdate.forEach((version) => batch.update(table.table_name,
           patches.firstWhere((Patch p) => p.fullVersion == version).toMap(),
-          where: "${table.column_full_version} = ?",
-          whereArgs: [version]));
+          where: "${table.column_full_version} = ?", whereArgs: [version]));
 
       batch.commit();
       print(

@@ -35,7 +35,7 @@ List<Hero> heroesbyFilterSelector(AppState state) {
   if (state.heroes == null) {
     return new List<Hero>();
   }
-  
+
   switch (filterSelector(state)) {
     case HeroFilter.all:
       return heroesSelector(state);

@@ -10,8 +10,7 @@ class BuildPrompt extends StatelessWidget {
     this.patchName,
     this.onTap, {
     key,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

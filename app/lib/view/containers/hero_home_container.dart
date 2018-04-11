@@ -58,7 +58,9 @@ class HeroHome extends StatelessWidget {
                 vm.currentFilter == HeroFilter.favorite && vm.heroes.isEmpty
                     ? new EmptyState(Icons.favorite,
                         title: AppStrings.of(context).noFavorites(),
-                        description: AppStrings.of(context).favoritedHeroesWillAppearHere())
+                        description: AppStrings
+                            .of(context)
+                            .favoritedHeroesWillAppearHere())
                     : new HeroList(vm.heroes,
                         onTap: vm.onTap,
                         onLongPress: vm.onLongPress,

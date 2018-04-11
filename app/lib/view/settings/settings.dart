@@ -14,14 +14,16 @@ class Settings extends StatelessWidget {
         converter: (Store<AppState> store) => new _ViewModel.from(store),
         builder: (context, vm) {
           return new Scaffold(
-              appBar: new AppBar(title: new Text(AppStrings.of(context).settings())),
+              appBar: new AppBar(
+                  title: new Text(AppStrings.of(context).settings())),
               body: new ListView(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                 children: [
                   new ListTile(
                     leading: const Icon(Icons.cloud_download),
                     title: new Text(AppStrings.of(context).dataSource()),
-                    subtitle: new Text('${AppStrings.of(context).current()}: ${vm.dataSource.name}'),
+                    subtitle: new Text(
+                        '${AppStrings.of(context).current()}: ${vm.dataSource.name}'),
                     onTap: () => Navigator
                         .of(context)
                         .pushNamed(Routes.settingsDataSource),
@@ -29,7 +31,8 @@ class Settings extends StatelessWidget {
                   new ListTile(
                     leading: const Icon(Icons.color_lens),
                     title: new Text(AppStrings.of(context).theme()),
-                    subtitle: new Text('${AppStrings.of(context).current()}: ${vm.themeType.name}'),
+                    subtitle: new Text(
+                        '${AppStrings.of(context).current()}: ${vm.themeType.name}'),
                     onTap: () => Navigator
                         .of(context)
                         .pushNamed(Routes.settingsThemeType),

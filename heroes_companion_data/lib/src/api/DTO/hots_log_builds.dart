@@ -18,7 +18,8 @@ class HotsLogBuild {
     int gamesPlayed = int.parse(map['gamesPlayed'] as String);
     double winPercentage = double.parse(map['winPercentage'] as String);
 
-    List<Map<dynamic, dynamic>> talentInfo = (map['talents'] as List<dynamic>).cast<Map<dynamic, dynamic>>();
+    List<Map<dynamic, dynamic>> talentInfo =
+        (map['talents'] as List<dynamic>).cast<Map<dynamic, dynamic>>();
     talentInfo.sort((a, b) {
       int aVal = a['level'];
       int bVal = b['level'];

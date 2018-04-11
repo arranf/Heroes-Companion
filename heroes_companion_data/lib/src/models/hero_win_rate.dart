@@ -21,7 +21,7 @@ class HeroWinRate {
     //TODO change winLossCount.wins to int
     return new HeroWinRate(heroId, winLossCount.winPercentange().toDouble(),
         winLossCount.wins.toInt() + winLossCount.losses.toInt());
-  } 
+  }
 
   Map toMap() {
     Map map = {

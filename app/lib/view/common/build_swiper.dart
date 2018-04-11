@@ -12,8 +12,7 @@ class BuildSwiper extends StatefulWidget {
     this.hero,
     this.build, {
     key,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   State createState() => new _BuildSwiperState();

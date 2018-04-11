@@ -20,7 +20,6 @@ import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart' hide Settings;
 
-
 import 'package:heroes_companion/services/heroes_service.dart';
 import 'package:heroes_companion/redux/reducers/app_state.dart';
 import 'package:heroes_companion/redux/state.dart';
@@ -107,13 +106,13 @@ class App extends StatelessWidget {
                 ? lightTheme
                 : darkTheme,
             localizationsDelegates: <LocalizationsDelegate<dynamic>>[
-        new _AppLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: const <Locale>[
-        const Locale('en', 'US'),
-      ],
+              new _AppLocalizationsDelegate(),
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            supportedLocales: const <Locale>[
+              const Locale('en', 'US'),
+            ],
             // Named routes only
             // TODO move these into separate file
             routes: {

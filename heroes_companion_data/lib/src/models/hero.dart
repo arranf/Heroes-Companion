@@ -52,7 +52,8 @@ class Hero {
     String hero_icon_file_name = map[table.column_icon_file_name];
     String role = map[table.column_role];
     String type = map[table.column_type];
-    DateTime release_date = DateTime.parse(map[table.column_release_date] as String);
+    DateTime release_date =
+        DateTime.parse(map[table.column_release_date] as String);
     bool is_owned = map[table.column_is_owned] == 1;
     bool is_favorite = map[table.column_is_favorite] == 1;
     DateTime last_rotation_date = map[table.column_last_rotation_date] == null

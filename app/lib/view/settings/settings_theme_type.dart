@@ -22,14 +22,16 @@ class _SettingsThemeTypeState extends State<SettingsThemeType> {
         converter: (Store<AppState> store) => new _ViewModel.from(store),
         builder: (BuildContext context, _ViewModel vm) {
           return new Scaffold(
-              appBar: new AppBar(title: new Text(AppStrings.of(context).theme())),
+              appBar:
+                  new AppBar(title: new Text(AppStrings.of(context).theme())),
               body: new Builder(
                 builder: (BuildContext context) {
                   dynamic onChanged = (ThemeType value) {
                     if (!_haveChangedNow) {
                       Scaffold.of(context).showSnackBar(new SnackBar(
-                            content: new Text(
-                                AppStrings.of(context).settingUpdateOnNextLaunch()),
+                            content: new Text(AppStrings
+                                .of(context)
+                                .settingUpdateOnNextLaunch()),
                           ));
                       _haveChangedNow = true;
                     }

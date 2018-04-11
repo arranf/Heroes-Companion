@@ -16,7 +16,8 @@ class AppState {
   final bool isUpdating;
 
   /// heroId => <BuildNumber, StatisticalHeroBuild>
-  final Map<int, Map<String, List<StatisticalHeroBuild>>> heroStatisticalBuildsByPatchNumber;
+  final Map<int, Map<String, List<StatisticalHeroBuild>>>
+      heroStatisticalBuildsByPatchNumber;
   final Map<int, List<Build>> regularHeroBuilds;
 
   final String searchQuery;
@@ -24,24 +25,26 @@ class AppState {
 
   final Settings settings;
 
-  AppState({
-    this.maps,
-    this.isLoading = false,
-    this.staticialBuildsLoading = false,
-    this.isUpdating = false,
-    this.heroes,
-    this.patches,
-    this.winRates,
-    this.heroStatisticalBuildsByPatchNumber,
-    this.searchQuery = '',
-    this.filter = HeroFilter.all,
-    this.settings,
-    this.regularHeroBuilds,
-    this.regularBuildsLoading
-  });
+  AppState(
+      {this.maps,
+      this.isLoading = false,
+      this.staticialBuildsLoading = false,
+      this.isUpdating = false,
+      this.heroes,
+      this.patches,
+      this.winRates,
+      this.heroStatisticalBuildsByPatchNumber,
+      this.searchQuery = '',
+      this.filter = HeroFilter.all,
+      this.settings,
+      this.regularHeroBuilds,
+      this.regularBuildsLoading});
 
   factory AppState.initial() => new AppState(
-      isLoading: true, staticialBuildsLoading: false, isUpdating: false, regularBuildsLoading: false);
+      isLoading: true,
+      staticialBuildsLoading: false,
+      isUpdating: false,
+      regularBuildsLoading: false);
 
   AppState copyWith({
     bool isLoading,
@@ -64,8 +67,10 @@ class AppState {
       patches: patches ?? this.patches,
       winRates: winRates ?? this.winRates,
       isUpdating: isUpdating ?? this.isUpdating,
-      staticialBuildsLoading: staticialBuildsLoading ?? this.staticialBuildsLoading,
-      heroStatisticalBuildsByPatchNumber: statisticalBuilds ?? this.heroStatisticalBuildsByPatchNumber,
+      staticialBuildsLoading:
+          staticialBuildsLoading ?? this.staticialBuildsLoading,
+      heroStatisticalBuildsByPatchNumber:
+          statisticalBuilds ?? this.heroStatisticalBuildsByPatchNumber,
       searchQuery: searchQuery ?? this.searchQuery,
       filter: filter ?? this.filter,
       maps: maps ?? this.filter,
@@ -74,7 +79,6 @@ class AppState {
       regularHeroBuilds: regularHeroBuilds ?? this.regularHeroBuilds,
     );
   }
-
 
   // TODO USE COLLECTION EQUALITY SEE hots_dog_api
   @override
@@ -107,7 +111,8 @@ class AppState {
           staticialBuildsLoading == other.staticialBuildsLoading &&
 
           // TODO USE COLLECTION EQUALITY SEE hots_dog_api
-          heroStatisticalBuildsByPatchNumber == other.heroStatisticalBuildsByPatchNumber &&
+          heroStatisticalBuildsByPatchNumber ==
+              other.heroStatisticalBuildsByPatchNumber &&
           searchQuery == other.searchQuery &&
           isUpdating == other.isUpdating &&
           filter == other.filter;

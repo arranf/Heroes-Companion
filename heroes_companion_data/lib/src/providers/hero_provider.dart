@@ -41,7 +41,8 @@ class HeroProvider {
 
   Future<int> getHeroIdByName(String heroName) {
     return new Future.sync(() async {
-      List<Map<String, dynamic>> maps = await _database.query(hero_table.table_name,
+      List<Map<String, dynamic>> maps = await _database.query(
+          hero_table.table_name,
           columns: [hero_table.column_hero_id],
           where: "${hero_table.column_name} = ?",
           whereArgs: [heroName]);

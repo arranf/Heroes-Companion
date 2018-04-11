@@ -36,8 +36,7 @@ class HeroDetail extends StatefulWidget {
     this.buildSwitch,
     this.patch,
     this.heroPatchNotesUrl,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   _HeroDetailState createState() => new _HeroDetailState();
@@ -51,7 +50,8 @@ class _HeroDetailState extends State<HeroDetail>
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(vsync: this, length: this._getTabCount());
+    _tabController =
+        new TabController(vsync: this, length: this._getTabCount());
   }
 
   @override
@@ -297,8 +297,12 @@ class _HeroDetailState extends State<HeroDetail>
             ? new Container()
             : new TabBar(
                 tabs: [
-                  new Tab(text: AppStrings.of(context).statisticalBuilds(),), 
-                  new Tab(text: AppStrings.of(context).recommendedBuilds(),)
+                  new Tab(
+                    text: AppStrings.of(context).statisticalBuilds(),
+                  ),
+                  new Tab(
+                    text: AppStrings.of(context).recommendedBuilds(),
+                  )
                 ],
                 controller: _tabController,
                 labelColor: Theme.of(context).textTheme.title.color,

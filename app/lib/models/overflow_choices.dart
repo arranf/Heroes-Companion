@@ -36,7 +36,8 @@ class OverflowChoice {
             children: [
               new Text(
                   '${AppStrings.of(context).lastUpdated()}: ${lastUpdated.toLocal().year}-${lastUpdated.toLocal().month}-${lastUpdated.toLocal().day} ${lastUpdated.toLocal().hour.toString().padLeft(2, '0')}:${lastUpdated.toLocal().minute.toString().padLeft(2, '0')}'),
-              new Text('${AppStrings.of(context).currentPatchVersion()} ${settings.updatePatch}'),
+              new Text(
+                  '${AppStrings.of(context).currentPatchVersion()} ${settings.updatePatch}'),
               new RichText(
                 text: new TextSpan(
                     text: '${AppStrings.of(context).poweredByDataFrom()} ',

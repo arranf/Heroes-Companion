@@ -33,7 +33,8 @@ Future<RotationData> getRotation() async {
     return null;
   }
 
-  Map<dynamic, dynamic> jsonResponseData = json.decode(_getUtf8String(response));
+  Map<dynamic, dynamic> jsonResponseData =
+      json.decode(_getUtf8String(response));
   return new RotationData.fromJson(jsonResponseData);
 }
 
@@ -83,7 +84,8 @@ Future<List<PatchData>> getPatchData() async {
           'Unexpected JSON format encounted fetching patch data. Expected a list.');
     }
     List<PatchData> patchData = new List();
-    List<Map<dynamic, dynamic>> jsonResponseArray = jsonResponse.cast<Map<dynamic, dynamic>>();
+    List<Map<dynamic, dynamic>> jsonResponseArray =
+        jsonResponse.cast<Map<dynamic, dynamic>>();
     jsonResponseArray.forEach((Map<dynamic, dynamic> patchInfo) {
       patchData.add(new PatchData.fromJson(patchInfo));
     });
@@ -111,7 +113,8 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates(Patch patch) async {
     List<HotsLogsWinrate> winRates = new List();
     List<dynamic> jsonResponseArray = jsonResponse;
     jsonResponseArray.forEach((winRate) {
-      winRates.add(new HotsLogsWinrate.fromJson(winRate as Map<dynamic, dynamic>));
+      winRates
+          .add(new HotsLogsWinrate.fromJson(winRate as Map<dynamic, dynamic>));
     });
     return winRates;
   } catch (e) {
@@ -162,7 +165,9 @@ Future<List<Build>> getBuildsForHero(int heroId) async {
           'Unexpected JSON format encountered fetching build data');
     }
     List<dynamic> jsonResponseArray = jsonResponse;
-    List<Build> builds = jsonResponseArray.map((dynamic a) => new Build.fromJson(a as Map<dynamic, dynamic>)).toList();
+    List<Build> builds = jsonResponseArray
+        .map((dynamic a) => new Build.fromJson(a as Map<dynamic, dynamic>))
+        .toList();
     return builds;
   } catch (e) {
     throw new Exception('Failed to fetch (evergreen) builds: ${e.message}');

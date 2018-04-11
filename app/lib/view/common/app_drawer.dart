@@ -51,7 +51,9 @@ class AppDrawer extends StatelessWidget {
           const Divider(),
           new ListTile(
             leading: const Icon(Icons.settings),
-            title: new Text(AppStrings.of(context).settings(),),
+            title: new Text(
+              AppStrings.of(context).settings(),
+            ),
             onTap: () => Navigator.popAndPushNamed(context, Routes.settings),
           ),
           new ListTile(
