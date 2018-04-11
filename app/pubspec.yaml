@@ -4,16 +4,18 @@ description: A companion app for Heroes of Storm
 dependencies:
   heroes_companion_data:
     path: ../heroes_companion_data
-  redux: "^2.1.1"
-  flutter_redux: "^0.3.4"
+  redux: "^3.0.0"
+  flutter_redux: "^0.5.0"
   http: "^0.11.3+14"
   cached_network_image: "^0.3.0"
-  url_launcher: "^2.0.1"
-  sentry: "^0.0.6"
+  url_launcher: "^3.0.0"
+  sentry: ">=2.0.0 <3.0.0"
   screen: "^0.0.2"
-
-  
+  intl: "^0.15.4"
+  intl_translation: "^0.16.5"
   flutter:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.

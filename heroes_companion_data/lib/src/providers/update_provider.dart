@@ -137,7 +137,7 @@ class UpdateProvider {
         existingTalent[talent_table.column_sha3_256] != talent.sha3_256 &&
             existingTalent[talent_table.column_icon_file_name] !=
                 existingTalent[talent_table.column_icon_file_name]) {
-      Map<dynamic, dynamic> updateMap = talent.toUpdateMap();
+      Map<String, dynamic> updateMap = talent.toUpdateMap();
       updateMap[talent_table.column_have_asset] = 0;
       batch.update(talent_table.table_name, updateMap,
           where: "${talent_table.column_id} = ?",

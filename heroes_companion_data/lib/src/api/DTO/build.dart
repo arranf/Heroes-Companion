@@ -23,44 +23,53 @@ class Build {
       this.source,
       this.url});
 
-  factory Build.fromJson(Map json) {
+  factory Build.fromJson(Map<dynamic, dynamic> json) {
     if (!(json is Map)) {
-      throw new Exception('Unexpected JSON format');
-    }
-    Map map = json;
-    if (!(map['Submitted'] is String &&
-        map['_id'] is String &&
-        map['Talents'] is List &&
-        map['HeroId'] is int)) {
-      throw new Exception('Unexpected JSON format');
+      throw new Exception('Build: Unexpected JSON format making bui');
     }
 
-    DateTime submitted = DateTime.parse(map['Submitted']);
+    Map<dynamic, dynamic> map = json;
+
+    DateTime submitted = DateTime.parse(map['Submitted'] as String);
     int heroId = map['HeroId'];
     String id = map['_id'];
 
     String description;
-    if (map.containsKey('Description')) {
-      description = map['Description'];
+    if (map.containsKey('Description') && map['Description'] is String) {
+      description = map['Description'] as String;
     }
+
     String source;
-    if (map.containsKey('Source')) {
-      source = map['Source'];
+    if (map.containsKey('Source') && map['Source'] is String) {
+      source = map['Source'] as String;
     }
+    if (!(map['Submitted'] is String &&
+        map['_id'] is String &&
+        map['Talents'] is List &&
+        map['HeroId'] is int)) {
+      throw new Exception('Build: Unexpected JSON format');
+    }
+
     String url;
-    if (map.containsKey('Url')) {
-      url = map['Url'];
+    if (map.containsKey('Url') && map['Url'] is String) {
+      url = map['Url'] as String;
     }
 
     String tagline;
-    if (map.containsKey('Tagline')) {
-      tagline = map['Tagline'];
+    if (map.containsKey('Tagline') && map['Tagline'] is String) {
+      tagline = map['Tagline'] as String;
     }
 
-    List<Map> talentInfo = map['Talents'];
-    talentInfo.sort((a, b) => a['Level'].compareTo(b['Level']));
+    List<Map<dynamic, dynamic>> talentInfo =
+        (map['Talents'] as List<dynamic>).cast<Map<dynamic, dynamic>>();
+    talentInfo.sort((Map<dynamic, dynamic> a, Map<dynamic, dynamic> b) {
+      int aVal = a['Level'];
+      int bVal = b['Level'];
+      return aVal.compareTo(bVal);
+    });
     List<String> talentTreeIds =
-        talentInfo.map((talent) => talent['TalentTreeId']).toList();
+        (talentInfo.map((talent) => talent['TalentTreeId']).toList())
+            .cast<String>();
     return new Build(
         talentTreeIds: talentTreeIds,
         submitted: submitted,

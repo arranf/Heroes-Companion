@@ -1,16 +1,16 @@
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
-final loadingReducer = combineTypedReducers<bool>([
-  new ReducerBinding<bool, StartLoadingAction>(_setNotLoaded),
-  new ReducerBinding<bool, FetchHeroesSucceededAction>(_setLoaded),
-  new ReducerBinding<bool, FetchHeroesFailedAction>(_setLoaded),
-  new ReducerBinding<bool, FetchPatchesSucceededAction>(_setLoaded),
-  new ReducerBinding<bool, FetchPatchesFailedAction>(_setLoaded),
-  new ReducerBinding<bool, FetchWinRatesSucceededAction>(_setLoaded),
-  new ReducerBinding<bool, FetchWinRatesFailedAction>(_setLoaded),
-  new ReducerBinding<bool, FetchMapsSucceededAction>(_setLoaded),
-  new ReducerBinding<bool, FetchMapsFailedAction>(_setLoaded),
+final loadingReducer = combineReducers<bool>([
+  new TypedReducer<bool, StartLoadingAction>(_setNotLoaded),
+  new TypedReducer<bool, FetchHeroesSucceededAction>(_setLoaded),
+  new TypedReducer<bool, FetchHeroesFailedAction>(_setLoaded),
+  new TypedReducer<bool, FetchPatchesSucceededAction>(_setLoaded),
+  new TypedReducer<bool, FetchPatchesFailedAction>(_setLoaded),
+  new TypedReducer<bool, FetchWinRatesSucceededAction>(_setLoaded),
+  new TypedReducer<bool, FetchWinRatesFailedAction>(_setLoaded),
+  new TypedReducer<bool, FetchMapsSucceededAction>(_setLoaded),
+  new TypedReducer<bool, FetchMapsFailedAction>(_setLoaded),
 ]);
 
 bool _setLoaded(bool state, action) {

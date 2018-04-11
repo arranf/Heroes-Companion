@@ -38,7 +38,7 @@ class DatabaseClient {
     return _onUpgrade(database, 0, databaseVersion);
   }
 
-  _onUpgrade(Database database, int oldVersion, int newVersion) async {
+  Future _onUpgrade(Database database, int oldVersion, int newVersion) async {
     debugPrint('Upgrading to $newVersion');
     // TODO make this cleaner using a map
     if (oldVersion < 2) {

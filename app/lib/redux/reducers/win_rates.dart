@@ -2,12 +2,12 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
-final winRatesReducer = combineTypedReducers<Map<String, List<HeroWinRate>>>([
-  new ReducerBinding<Map<String, List<HeroWinRate>>,
+final winRatesReducer = combineReducers<Map<String, List<HeroWinRate>>>([
+  new TypedReducer<Map<String, List<HeroWinRate>>,
       FetchWinRatesSucceededAction>(_setWinRatesSucceeded),
-  new ReducerBinding<Map<String, List<HeroWinRate>>, FetchWinRatesFailedAction>(
+  new TypedReducer<Map<String, List<HeroWinRate>>, FetchWinRatesFailedAction>(
       _setWinRatesFailed),
-  new ReducerBinding<Map<String, List<HeroWinRate>>, DataSourceChangedAction>(
+  new TypedReducer<Map<String, List<HeroWinRate>>, DataSourceChangedAction>(
       _clearWinRates),
 ]);
 

@@ -2,8 +2,8 @@ import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
-final patchesReducer = combineTypedReducers<List<Patch>>([
-  new ReducerBinding<List<Patch>, FetchPatchesSucceededAction>(
+final patchesReducer = combineReducers<List<Patch>>([
+  new TypedReducer<List<Patch>, FetchPatchesSucceededAction>(
       _setLoadedBuildInfo)
 ]);
 

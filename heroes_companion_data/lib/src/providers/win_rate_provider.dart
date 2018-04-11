@@ -38,7 +38,7 @@ class WinRateProvider {
     if (winRates == null) {
       throw new Exception('API call to fetch hots log winrates failed');
     }
-    List<Future> futures = new List();
+    List<Future<HeroWinRate>> futures = new List();
     winRates.forEach((HotsLogsWinrate hotsLogsWinrate) {
       futures.add(_getHeroWinRateFromHotsLogWinRate(hotsLogsWinrate));
     });
@@ -55,7 +55,7 @@ class WinRateProvider {
       throw new Exception('API call to fetch hots dog hero winrates failed');
     }
 
-    List<Future> futures = new List();
+    List<Future<HeroWinRate>> futures = new List();
     hotsDogWinRates.current
         .forEach((String heroName, api.WinLossCount winLossCount) {
       futures.add(_getHeroWinRateFromWinLossCount(winLossCount, heroName));

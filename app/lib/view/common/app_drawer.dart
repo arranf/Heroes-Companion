@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heroes_companion/models/overflow_choices.dart';
 import 'package:heroes_companion/routes.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -34,7 +35,7 @@ class AppDrawer extends StatelessWidget {
               )),
           new ListTile(
             leading: new Icon(Icons.supervisor_account),
-            title: new Text('Heroes'),
+            title: new Text(AppStrings.of(context).heroes()),
             onTap: () {
               Navigator.popAndPushNamed(context, Routes.home);
             },
@@ -50,12 +51,14 @@ class AppDrawer extends StatelessWidget {
           const Divider(),
           new ListTile(
             leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
+            title: new Text(
+              AppStrings.of(context).settings(),
+            ),
             onTap: () => Navigator.popAndPushNamed(context, Routes.settings),
           ),
           new ListTile(
             leading: const Icon(Icons.report),
-            title: const Text('Send feedback'),
+            title: new Text(AppStrings.of(context).sendFeedback()),
             onTap: () =>
                 OverflowChoice.handleChoice(OverflowChoice.Feedback, context),
           )

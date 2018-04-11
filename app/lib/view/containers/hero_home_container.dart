@@ -8,6 +8,7 @@ import 'package:heroes_companion/view/common/empty_state.dart';
 import 'package:heroes_companion/view/common/hero_list_item.dart';
 import 'package:heroes_companion/view/common/app_drawer.dart';
 import 'package:heroes_companion/view/containers/hero_detail_container.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:redux/redux.dart';
 
 import 'package:heroes_companion/icons.dart' as HeroesIcons;
@@ -56,8 +57,10 @@ class HeroHome extends StatelessWidget {
                 // Favorite list and no favorite heroes
                 vm.currentFilter == HeroFilter.favorite && vm.heroes.isEmpty
                     ? new EmptyState(Icons.favorite,
-                        title: 'No Favorites',
-                        description: 'Favorited Heroes Will Appear Here')
+                        title: AppStrings.of(context).noFavorites(),
+                        description: AppStrings
+                            .of(context)
+                            .favoritedHeroesWillAppearHere())
                     : new HeroList(vm.heroes,
                         onTap: vm.onTap,
                         onLongPress: vm.onLongPress,
@@ -73,13 +76,13 @@ class HeroHome extends StatelessWidget {
               items: [
                 new BottomNavigationBarItem(
                     icon: new Icon(Icons.all_inclusive),
-                    title: new Text('All')),
+                    title: new Text(AppStrings.of(context).all())),
                 new BottomNavigationBarItem(
                     icon: new Icon(Icons.favorite),
-                    title: new Text('Favorite')),
+                    title: new Text(AppStrings.of(context).favorite())),
                 new BottomNavigationBarItem(
                   icon: new Icon(HeroesIcons.hexagon),
-                  title: new Text('Free to Play'),
+                  title: new Text(AppStrings.of(context).freeToPlay()),
                 ),
               ],
               onTap: (index) => vm.bottomNavTap(index),
@@ -95,7 +98,7 @@ class _ViewModel {
   final HeroFilter currentFilter;
   final Function onLongPress;
   final dynamic bottomNavTap;
-  final Function onRefresh;
+  final dynamic onRefresh;
   final bool allowRefresh;
   final String patchNotesUrl;
   final Function onTap = (BuildContext context, HeroListItem heroListItem) {

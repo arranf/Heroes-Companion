@@ -1,0 +1,26 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Lingohub 1.0.1\n"
+"Report-Msgid-Bugs-To: support@lingohub.com \n"
+"Last-Translator: Marko Bošković <marko@lingohub.com>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Let’s make the web multilingual."
+msgstr "Machen wir das Internet mehrsprachig."
+
+msgid "We connect developers and translators around the globe "
+"on Lingohub for a fantastic localization experience."
+msgstr "Wir verbinden Entwickler mit Übersetzern weltweit "
+"auf Lingohub für ein fantastisches Lokalisierungs-Erlebnis."
+
+msgid "Welcome back, %1$s! Your last visit was on %2$s"
+msgstr "Willkommen zurück, %1$s! Dein letzter Besuch war am %2$s"
+
+msgid "%d page read."
+msgid_plural "%d pages read."
+msgstr[0] "Eine Seite gelesen wurde."
+msgstr[1] "%d Seiten gelesen wurden."

@@ -41,8 +41,8 @@ class PlayableMap {
         map_icon_filename);
   }
 
-  Map toMap() {
-    Map map = new Map();
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = new Map();
     map[table.column_id] = id;
     map[table.column_name] = name;
     map[table.column_objective_name] = objective_name;

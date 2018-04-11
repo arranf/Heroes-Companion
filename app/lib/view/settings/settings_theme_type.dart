@@ -4,6 +4,7 @@ import 'package:heroes_companion/redux/actions/actions.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/redux/state.dart';
 import 'package:heroes_companion/services/settings_service.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:redux/redux.dart';
 
@@ -21,14 +22,16 @@ class _SettingsThemeTypeState extends State<SettingsThemeType> {
         converter: (Store<AppState> store) => new _ViewModel.from(store),
         builder: (BuildContext context, _ViewModel vm) {
           return new Scaffold(
-              appBar: new AppBar(title: const Text('Data Source')),
+              appBar:
+                  new AppBar(title: new Text(AppStrings.of(context).theme())),
               body: new Builder(
                 builder: (BuildContext context) {
                   dynamic onChanged = (ThemeType value) {
                     if (!_haveChangedNow) {
                       Scaffold.of(context).showSnackBar(new SnackBar(
-                            content: const Text(
-                                'This setting will update next time you launch the app.'),
+                            content: new Text(AppStrings
+                                .of(context)
+                                .settingUpdateOnNextLaunch()),
                           ));
                       _haveChangedNow = true;
                     }

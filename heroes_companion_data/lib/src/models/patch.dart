@@ -38,7 +38,7 @@ class Patch {
         patchData.hotsDogId);
   }
 
-  factory Patch.fromMap(Map map) {
+  factory Patch.fromMap(Map<dynamic, dynamic> map) {
     int id = map[table.column_id];
     String patchName = map[table.column_patch_name];
     String officialLink = map[table.column_official_link];
@@ -46,7 +46,7 @@ class Patch {
     String patchType = map[table.column_patch_type];
     String gameVersion = map[table.column_game_version];
     String fullVersion = map[table.column_full_version];
-    DateTime liveDate = DateTime.parse(map[table.column_live_date]);
+    DateTime liveDate = DateTime.parse(map[table.column_live_date] as String);
     String patchNotesUrl = map[table.column_patch_notes_url];
 
     return new Patch(
@@ -62,8 +62,8 @@ class Patch {
         id: id);
   }
 
-  Map toMap() {
-    Map map = {
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {
       table.column_id: id,
       table.column_patch_name: patchName,
       table.column_official_link: officialLink,

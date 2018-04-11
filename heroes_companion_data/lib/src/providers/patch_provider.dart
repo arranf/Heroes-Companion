@@ -12,7 +12,7 @@ class PatchProvider {
 
   Future<List<Patch>> getPatches() async {
     print('Getting patches');
-    List<Map<String, dynamic>> results =
+    List<Map<dynamic, dynamic>> results =
         await _database.query(table.table_name, columns: null);
     print('Got ${results.length} patches');
     return results.map((m) => new Patch.fromMap(m)).toList();
@@ -29,8 +29,11 @@ class PatchProvider {
       List<Map<String, dynamic>> existingPatchData = await _database.query(
           table.table_name,
           columns: [table.column_full_version, table.column_patch_name]);
-      List<String> patchIds =
-          existingPatchData.map((p) => p[table.column_full_version]).toList();
+
+      List<dynamic> patchIds = existingPatchData
+          .map((Map<dynamic, dynamic> p) => p[table.column_full_version])
+          .toList()
+          .cast<String>();
 
       List<Patch> patches =
           patchDatas.map((PatchData pd) => new Patch.from(pd)).toList();
@@ -41,19 +44,18 @@ class PatchProvider {
           .where((Patch p) => !patchIds.contains(p.fullVersion))
           .forEach((p) => batch.insert(table.table_name, p.toMap()));
 
-      List<String> patchIdNeedUpdate = existingPatchData
+      List<dynamic> patchIdNeedUpdate = existingPatchData
           .where((Map p) => p[table.column_patch_name].toString().isEmpty)
           .map((m) => m[table.column_id])
           .toList()
+          .cast<String>()
           .where((String id) => patches.contains(
               (Patch p) => p.fullVersion == id && p.patchName.isNotEmpty))
           .toList();
 
-      patchIdNeedUpdate.forEach((String version) => batch.update(
-          table.table_name,
+      patchIdNeedUpdate.forEach((version) => batch.update(table.table_name,
           patches.firstWhere((Patch p) => p.fullVersion == version).toMap(),
-          where: "${table.column_full_version} = ?",
-          whereArgs: [version]));
+          where: "${table.column_full_version} = ?", whereArgs: [version]));
 
       batch.commit();
       print(

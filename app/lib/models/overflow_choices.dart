@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,6 +10,7 @@ class OverflowChoice {
   static const Feedback = const OverflowChoice('Feedback');
   static const PatchNotes = const OverflowChoice('Read Patch Notes');
   static const HeroPatchNotes = const OverflowChoice('Hero Patch Notes');
+  // Todo get a localised name with a getter
   final String name;
 
   static get values => [About, Feedback, PatchNotes];
@@ -33,11 +35,12 @@ class OverflowChoice {
             applicationName: 'Heroes Companion',
             children: [
               new Text(
-                  'Last Updated ${lastUpdated.toLocal().year}-${lastUpdated.toLocal().month}-${lastUpdated.toLocal().day} ${lastUpdated.toLocal().hour.toString().padLeft(2, '0')}:${lastUpdated.toLocal().minute.toString().padLeft(2, '0')}'),
-              new Text('Current Patch Version ${settings.updatePatch}'),
+                  '${AppStrings.of(context).lastUpdated()}: ${lastUpdated.toLocal().year}-${lastUpdated.toLocal().month}-${lastUpdated.toLocal().day} ${lastUpdated.toLocal().hour.toString().padLeft(2, '0')}:${lastUpdated.toLocal().minute.toString().padLeft(2, '0')}'),
+              new Text(
+                  '${AppStrings.of(context).currentPatchVersion()} ${settings.updatePatch}'),
               new RichText(
                 text: new TextSpan(
-                    text: 'Powered by data from ',
+                    text: '${AppStrings.of(context).poweredByDataFrom()} ',
                     style: new TextStyle().apply(color: Colors.black),
                     children: [
                       new TextSpan(

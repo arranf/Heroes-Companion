@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sqflite: "^0.4.0"
+  sqflite: "^0.8.0"
   http: "^0.11.3"
   hots_dog_api: "^1.1.0"
   path_provider: "^0.3.0"

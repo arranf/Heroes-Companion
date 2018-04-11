@@ -1,9 +1,9 @@
 import 'package:redux/redux.dart';
 import 'package:heroes_companion/redux/actions/actions.dart';
 
-final searchQueryReducer = combineTypedReducers<String>([
-  new ReducerBinding<String, SetSearchQueryAction>(_setQuery),
-  new ReducerBinding<String, ClearSearchQueryAction>(_clearQuery)
+final searchQueryReducer = combineReducers<String>([
+  new TypedReducer<String, SetSearchQueryAction>(_setQuery),
+  new TypedReducer<String, ClearSearchQueryAction>(_clearQuery)
 ]);
 
 String _setQuery(String query, SetSearchQueryAction action) {

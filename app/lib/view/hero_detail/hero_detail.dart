@@ -7,6 +7,7 @@ import 'package:heroes_companion/view/common/build_swiper.dart';
 import 'package:heroes_companion/view/common/loading_view.dart';
 import 'package:heroes_companion/view/hero_detail/regular_build_list.dart';
 import 'package:heroes_companion/view/hero_detail/statistical_build_list.dart';
+import 'package:heroes_companion/i18n/strings.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
 import 'package:meta/meta.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -35,8 +36,7 @@ class HeroDetail extends StatefulWidget {
     this.buildSwitch,
     this.patch,
     this.heroPatchNotesUrl,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   _HeroDetailState createState() => new _HeroDetailState();
@@ -45,14 +45,13 @@ class HeroDetail extends StatefulWidget {
 class _HeroDetailState extends State<HeroDetail>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  List<Tab> _tabs = new List<Tab>();
   BuildSort buildSort = BuildSort.playrate;
 
   @override
   void initState() {
     super.initState();
-    _buildTabs();
-    _tabController = new TabController(vsync: this, length: _tabs.length);
+    _tabController =
+        new TabController(vsync: this, length: this._getTabCount());
   }
 
   @override
@@ -118,7 +117,7 @@ class _HeroDetailState extends State<HeroDetail>
                             children: <Widget>[
                               new Text(
                                 widget.heroWinRate != null
-                                    ? '${widget.heroWinRate.winPercentage.toStringAsFixed(1)} Win %'
+                                    ? '${widget.heroWinRate.winPercentage.toStringAsFixed(1)} ${AppStrings.of(context).win()} %'
                                     : ' ',
                                 style: Theme
                                     .of(context)
@@ -128,7 +127,7 @@ class _HeroDetailState extends State<HeroDetail>
                               ),
                               new Text(
                                   widget.heroWinRate != null
-                                      ? '${(widget.heroWinRate.gamesPlayed).toString()} games played'
+                                      ? '${(widget.heroWinRate.gamesPlayed).toString()} ${AppStrings.of(context).gamesPlayed()}'
                                       : ' ',
                                   style: Theme
                                       .of(context)
@@ -206,7 +205,7 @@ class _HeroDetailState extends State<HeroDetail>
                 ),
                 new Text(
                     widget.heroWinRate != null
-                        ? '${(widget.heroWinRate.gamesPlayed).toString()} games played'
+                        ? '${(widget.heroWinRate.gamesPlayed).toString()} ${AppStrings.of(context).gamesPlayed()}'
                         : ' ',
                     style: Theme
                         .of(context)
@@ -277,13 +276,8 @@ class _HeroDetailState extends State<HeroDetail>
         });
   }
 
-  void _buildTabs() {
-    this._tabs.add(new Tab(
-          text: 'Statistical Builds',
-        ));
-    this._tabs.add(new Tab(
-          text: 'Recommended Builds',
-        ));
+  int _getTabCount() {
+    return 2;
   }
 
   Widget _buildPhoneView(BuildContext context, bool isLoading) {
@@ -302,7 +296,14 @@ class _HeroDetailState extends State<HeroDetail>
         isLoading
             ? new Container()
             : new TabBar(
-                tabs: _tabs,
+                tabs: [
+                  new Tab(
+                    text: AppStrings.of(context).statisticalBuilds(),
+                  ),
+                  new Tab(
+                    text: AppStrings.of(context).recommendedBuilds(),
+                  )
+                ],
                 controller: _tabController,
                 labelColor: Theme.of(context).textTheme.title.color,
                 unselectedLabelColor:
@@ -367,14 +368,15 @@ class _HeroDetailState extends State<HeroDetail>
     final List<OverflowChoice> overflowChoices = [
       OverflowChoice.HeroPatchNotes
     ];
+
     return new Scaffold(
         appBar: new AppBar(
           title: new Text(widget.hero.name),
           actions: [
             new IconButton(
               tooltip: widget.hero.is_favorite
-                  ? 'Unfavorite ${widget.hero.name}'
-                  : 'Favorite ${widget.hero.name}',
+                  ? '${AppStrings.of(context).unfavorite()} ${widget.hero.name}'
+                  : '${AppStrings.of(context).favoriteTooltip()} ${widget.hero.name}',
               icon: new Icon(Icons.favorite,
                   color: widget.hero.is_favorite
                       ? Colors.red
@@ -410,14 +412,14 @@ class _HeroDetailState extends State<HeroDetail>
                 items.add(new PopupMenuItem(
                   value: buildSort,
                   child: new Text(
-                      'Sort by ${buildSort == BuildSort.winrate ? 'Popularity' :'Win Rate'}'),
+                      '${buildSort == BuildSort.winrate ? AppStrings.of(context).sortByPopularity() : AppStrings.of(context).sortByWinRate()}'),
                 ));
                 if (widget.canOfferPreviousBuild) {
                   items.add(new PopupMenuItem(
                     value: 'Switch Build',
                     child: new Text(widget.isCurrentBuild
-                        ? 'See Previous Patch Data'
-                        : 'See Current Patch Data'),
+                        ? AppStrings.of(context).seeCurrentPatchData()
+                        : AppStrings.of(context).seePreviousPatchData()),
                   ));
                 }
                 return items;

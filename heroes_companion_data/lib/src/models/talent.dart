@@ -56,8 +56,8 @@ class Talent {
         have_asset);
   }
 
-  Map toMap() {
-    Map map = {
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {
       table.column_id: id,
       table.column_hero_id: hero_id,
       table.column_ability_id: ability_id,
@@ -69,13 +69,13 @@ class Talent {
       table.column_description: description,
       table.column_icon_file_name: icon_file_name,
       table.column_sha3_256: sha3_256,
-      table.column_have_asset: have_asset,
+      table.column_have_asset: have_asset ?? false,
     };
     return map;
   }
 
-  Map toUpdateMap() {
-    Map map = toMap();
+  Map<String, dynamic> toUpdateMap() {
+    Map<String, dynamic> map = toMap();
     map.remove(table.column_id);
     map.remove(table.column_have_asset);
     return map;
