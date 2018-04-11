@@ -51,8 +51,7 @@ class ExceptionService {
     }
   }
 
-  Future<Null> reportErrorAndStackTrace(
-      dynamic error, dynamic stackTrace) async {
+  Future<Null> reportErrorAndStackTrace(dynamic error, dynamic stackTrace) async {
     if (!isDebug) {
       debugPrint('Caught error: $error');
       debugPrint('Reporting to Sentry.io...');

@@ -99,7 +99,7 @@ class App extends StatelessWidget {
       accentColor: Colors.orangeAccent, buttonColor: Colors.deepPurple);
 
   @override
-  Widget build(BuildContext context) => new StoreProvider(
+  Widget build(BuildContext context) => new StoreProvider<AppState>(
         store: store,
         child: new MaterialApp(
             title: appName,

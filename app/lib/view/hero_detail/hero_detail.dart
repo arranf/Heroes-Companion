@@ -46,14 +46,12 @@ class HeroDetail extends StatefulWidget {
 class _HeroDetailState extends State<HeroDetail>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  List<Tab> _tabs = new List<Tab>();
   BuildSort buildSort = BuildSort.playrate;
 
   @override
   void initState() {
     super.initState();
-    _buildTabs();
-    _tabController = new TabController(vsync: this, length: _tabs.length);
+    _tabController = new TabController(vsync: this, length: this._getTabCount());
   }
 
   @override
@@ -278,13 +276,8 @@ class _HeroDetailState extends State<HeroDetail>
         });
   }
 
-  void _buildTabs() {
-    this._tabs.add(new Tab(
-          text: AppStrings.of(context).statisticalBuilds(),
-        ));
-    this._tabs.add(new Tab(
-          text: AppStrings.of(context).recommendedBuilds(),
-        ));
+  int _getTabCount() {
+    return 2;
   }
 
   Widget _buildPhoneView(BuildContext context, bool isLoading) {
@@ -303,7 +296,10 @@ class _HeroDetailState extends State<HeroDetail>
         isLoading
             ? new Container()
             : new TabBar(
-                tabs: _tabs,
+                tabs: [
+                  new Tab(text: AppStrings.of(context).statisticalBuilds(),), 
+                  new Tab(text: AppStrings.of(context).recommendedBuilds(),)
+                ],
                 controller: _tabController,
                 labelColor: Theme.of(context).textTheme.title.color,
                 unselectedLabelColor:
@@ -368,6 +364,7 @@ class _HeroDetailState extends State<HeroDetail>
     final List<OverflowChoice> overflowChoices = [
       OverflowChoice.HeroPatchNotes
     ];
+
     return new Scaffold(
         appBar: new AppBar(
           title: new Text(widget.hero.name),

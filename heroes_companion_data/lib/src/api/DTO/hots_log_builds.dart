@@ -17,14 +17,15 @@ class HotsLogBuild {
     }
     int gamesPlayed = int.parse(map['gamesPlayed'] as String);
     double winPercentage = double.parse(map['winPercentage'] as String);
-    List<Map> talentInfo = map['talents'];
+
+    List<Map<dynamic, dynamic>> talentInfo = (map['talents'] as List<dynamic>).cast<Map<dynamic, dynamic>>();
     talentInfo.sort((a, b) {
       int aVal = a['level'];
       int bVal = b['level'];
-      aVal.compareTo(bVal);
+      return aVal.compareTo(bVal);
     });
     List<String> talentNames =
-        talentInfo.map((talent) => talent['name']).toList();
+        (talentInfo.map((talent) => talent['name']).toList()).cast<String>();
     return new HotsLogBuild(gamesPlayed, winPercentage, talentNames);
   }
 }

@@ -48,7 +48,6 @@ Future<UpdatePayload> getUpdate() async {
     Map<dynamic, dynamic> jsonResponse = json.decode(_getUtf8String(response));
     return new UpdatePayload.fromJson(jsonResponse);
   } catch (e) {
-    rethrow;
     throw new Exception('Couldn\'t contact update server');
   }
 }
@@ -65,7 +64,6 @@ Future<UpdateInfo> getUpdateInfo() async {
     Map<dynamic, dynamic> jsonResponse = json.decode(_getUtf8String(response));
     return new UpdateInfo.fromJson(jsonResponse);
   } catch (e) {
-    rethrow;
     throw new Exception('Couldn\'t contact update server');
   }
 }
@@ -91,7 +89,6 @@ Future<List<PatchData>> getPatchData() async {
     });
     return patchData;
   } catch (e) {
-    rethrow;
     throw new Exception('Failed to fetch patch data ${e.message}');
   }
 }
@@ -107,14 +104,14 @@ Future<List<HotsLogsWinrate>> getHotsLogWinRates(Patch patch) async {
     }
 
     dynamic jsonResponse = json.decode(_getUtf8String(response));
-    if (!(jsonResponse is List && (jsonResponse.isEmpty || jsonResponse[0] is Map))) {
+    if (!(jsonResponse is List)) {
       throw new Exception(
-          'Unexpected JSON format encounted fetching patch data');
+          'Unexpected JSON format encounted fetching hotslog winrate data');
     }
     List<HotsLogsWinrate> winRates = new List();
-    List<Map<dynamic, dynamic>> jsonResponseArray = jsonResponse;
+    List<dynamic> jsonResponseArray = jsonResponse;
     jsonResponseArray.forEach((winRate) {
-      winRates.add(new HotsLogsWinrate.fromJson(winRate));
+      winRates.add(new HotsLogsWinrate.fromJson(winRate as Map<dynamic, dynamic>));
     });
     return winRates;
   } catch (e) {
@@ -135,14 +132,14 @@ Future<List<HotsLogBuild>> getHotsLogBuilds(
 
     dynamic jsonResponse = json.decode(_getUtf8String(response));
     // is a list which is empty or contains maps
-    if (!(jsonResponse is List && (jsonResponse.isEmpty || jsonResponse[0] is Map))) {
+    if (!(jsonResponse is List)) {
       throw new Exception(
-          'Unexpected JSON format encounted fetching patch data');
+          'Unexpected JSON format encounted fetching hots log builds');
     }
     List<HotsLogBuild> builds = new List();
-    List<Map> jsonResponseArray = jsonResponse;
+    List<dynamic> jsonResponseArray = jsonResponse;
     jsonResponseArray.forEach((build) {
-      builds.add(new HotsLogBuild.fromJson(build));
+      builds.add(new HotsLogBuild.fromJson(build as Map<dynamic, dynamic>));
     });
     return builds;
   } catch (e) {
@@ -160,12 +157,13 @@ Future<List<Build>> getBuildsForHero(int heroId) async {
     }
     dynamic jsonResponse = json.decode(_getUtf8String(response));
     // is a list which is empty or contains maps
-    if (!(jsonResponse is List && (jsonResponse.isEmpty || jsonResponse[0] is Map))) {
+    if (!(jsonResponse is List)) {
       throw new Exception(
-          'Unexpected JSON format encounted fetching patch data');
+          'Unexpected JSON format encountered fetching build data');
     }
-    List<Map> jsonResponseArray = jsonResponse;
-    return jsonResponseArray.map((a) => new Build.fromJson(a)).toList();
+    List<dynamic> jsonResponseArray = jsonResponse;
+    List<Build> builds = jsonResponseArray.map((dynamic a) => new Build.fromJson(a as Map<dynamic, dynamic>)).toList();
+    return builds;
   } catch (e) {
     throw new Exception('Failed to fetch (evergreen) builds: ${e.message}');
   }
