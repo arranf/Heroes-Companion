@@ -3,21 +3,22 @@ import 'package:heroes_companion/models/overflow_choices.dart';
 import 'package:heroes_companion/routes.dart';
 import 'package:heroes_companion/i18n/strings.dart';
 
+//TODO Make this scroll well: https://github.com/flutter/flutter/issues/13604
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Drawer(
-      child: new ListView(
+      child: new Column(
         children: <Widget>[
           new DrawerHeader(
               decoration: new BoxDecoration(
-                  image: new DecorationImage(
-                image: new AssetImage('assets/images/maiev_1280x1024.jpg'),
-                fit: BoxFit.cover,
-                colorFilter:
+                image: new DecorationImage(
+                  image: new AssetImage('assets/images/maiev_1280x1024.jpg'),
+                  fit: BoxFit.cover,
+                  colorFilter:
                     new ColorFilter.mode(Colors.black45, BlendMode.darken),
-                // colorFilter: new ColorFilter.mode(Colors.black, BlendMode.darken)
-              )),
+                )
+              ),
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
