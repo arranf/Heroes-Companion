@@ -96,7 +96,7 @@ class _ViewModel {
   final HeroFilter currentFilter;
   final Function onLongPress;
   final dynamic bottomNavTap;
-  final Function onRefresh;
+  final dynamic onRefresh;
   final bool allowRefresh;
   final String patchNotesUrl;
   final Function onTap = (BuildContext context, HeroListItem heroListItem) {
