@@ -384,7 +384,7 @@ class _HeroDetailState extends State<HeroDetail>
               onPressed: () => widget.favorite(widget.hero),
             ),
             new PopupMenuButton(
-              onSelected: (Object choice) {
+              onSelected: (dynamic choice) {
                 if (choice is OverflowChoice) {
                   OverflowChoice.handleChoice(choice, context,
                       patchNotesUrl: widget.heroPatchNotesUrl); // overflow menu
@@ -402,13 +402,12 @@ class _HeroDetailState extends State<HeroDetail>
                 }
               },
               itemBuilder: (BuildContext context) {
-                List<PopupMenuItem> items =
-                    overflowChoices.map((OverflowChoice choice) {
-                  return new PopupMenuItem(
+                List<PopupMenuItem<dynamic>> items = [];
+                items.addAll(overflowChoices.map((OverflowChoice choice) => new PopupMenuItem(
                     value: choice,
                     child: new Text(choice.name),
-                  );
-                }).toList();
+                  )
+                ));
                 items.add(new PopupMenuItem(
                   value: buildSort,
                   child: new Text(
