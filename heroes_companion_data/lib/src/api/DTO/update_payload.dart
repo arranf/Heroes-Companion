@@ -28,9 +28,9 @@ class UpdatePayload {
       throw new Exception('Unexpected JSON format');
     }
 
-    DateTime id = DateTime.parse(map['id']);
-    DateTime patchDate = DateTime.parse(map['patch_date']);
-    List<Hero> heroes = map['heroes'].map((h) => new Hero.fromMap(h)).toList();
+    DateTime id = DateTime.parse(map['id'] as String);
+    DateTime patchDate = DateTime.parse(map['patch_date'] as String);
+    List<Hero> heroes = map['heroes'].map((Map<dynamic, dynamic> h) => new Hero.fromMap(h)).toList();
     String patch = map.containsKey('patch') ? map['patch'] : '';
     List<Talent> talents =
         map['talents'].map((Map t) => new Talent.fromMap(t)).toList();

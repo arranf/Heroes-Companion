@@ -18,9 +18,10 @@ class HeroWinRate {
   }
 
   factory HeroWinRate.fromWinLossCount(WinLossCount winLossCount, int heroId) {
-    return new HeroWinRate(heroId, winLossCount.winPercentange(),
-        winLossCount.wins + winLossCount.losses);
-  }
+    //TODO change winLossCount.wins to int
+    return new HeroWinRate(heroId, winLossCount.winPercentange().toDouble(),
+        winLossCount.wins.toInt() + winLossCount.losses.toInt());
+  } 
 
   Map toMap() {
     Map map = {

@@ -43,7 +43,7 @@ class Hero {
     this.last_modified,
   });
 
-  factory Hero.fromMap(Map map) {
+  factory Hero.fromMap(Map<dynamic, dynamic> map) {
     int heroes_companion_hero_id = map[table.column_heroes_companion_hero_id];
     int hero_id = map[table.column_hero_id];
     String name = map[table.column_name];
@@ -52,12 +52,12 @@ class Hero {
     String hero_icon_file_name = map[table.column_icon_file_name];
     String role = map[table.column_role];
     String type = map[table.column_type];
-    DateTime release_date = DateTime.parse(map[table.column_release_date]);
+    DateTime release_date = DateTime.parse(map[table.column_release_date] as String);
     bool is_owned = map[table.column_is_owned] == 1;
     bool is_favorite = map[table.column_is_favorite] == 1;
     DateTime last_rotation_date = map[table.column_last_rotation_date] == null
         ? new DateTime(1970)
-        : DateTime.parse(map[table.column_last_rotation_date]);
+        : DateTime.parse(map[table.column_last_rotation_date] as String);
     bool have_assets = map[table.column_have_assets] == 1;
     String sha3_256 = map[table.column_sha3_256];
     String additional_search_text = map[table.column_additional_search_text];
@@ -89,8 +89,8 @@ class Hero {
     return last_rotation_date.compareTo(new DateTime.now()) == 1;
   }
 
-  Map toMap() {
-    Map map = {
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {
       table.column_heroes_companion_hero_id: heroes_companion_hero_id,
       table.column_hero_id: hero_id,
       table.column_name: name,
@@ -112,8 +112,8 @@ class Hero {
     return map;
   }
 
-  Map toUpdateMap() {
-    Map map = toMap();
+  Map<String, dynamic> toUpdateMap() {
+    Map<String, dynamic> map = toMap();
     map.remove(table.column_heroes_companion_hero_id);
     map.remove(table.column_is_owned);
     map.remove(table.column_is_favorite);

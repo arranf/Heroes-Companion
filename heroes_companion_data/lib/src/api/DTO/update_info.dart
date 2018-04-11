@@ -13,7 +13,7 @@ class UpdateInfo {
       throw new Exception('Unexpected JSON format');
     }
 
-    DateTime id = DateTime.parse(map['id']);
+    DateTime id = DateTime.parse(map['id'] as String);
     return new UpdateInfo(id);
   }
 }

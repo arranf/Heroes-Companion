@@ -41,12 +41,13 @@ class HeroProvider {
 
   Future<int> getHeroIdByName(String heroName) {
     return new Future.sync(() async {
-      List<Map> maps = await _database.query(hero_table.table_name,
+      List<Map<String, dynamic>> maps = await _database.query(hero_table.table_name,
           columns: [hero_table.column_hero_id],
           where: "${hero_table.column_name} = ?",
           whereArgs: [heroName]);
       if (maps.length > 0) {
-        return maps.first[hero_table.column_hero_id];
+        int heroId = maps.first[hero_table.column_hero_id];
+        return heroId;
       }
       return null;
     });
@@ -85,7 +86,7 @@ class HeroProvider {
     });
   }
 
-  Future updateHeroRotations({isForced = false}) {
+  Future updateHeroRotations({bool isForced = false}) {
     return new Future.sync(() async {
       Settings settings = await DataProvider.settingsProvider.readSettings();
 

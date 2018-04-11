@@ -64,8 +64,8 @@ class Ability {
     return map;
   }
 
-  Map toUpdateMap() {
-    Map map = toMap();
+  Map<String, dynamic> toUpdateMap() {
+    Map<String, dynamic> map = toMap();
     map.remove(table.column_id);
     map.remove(table.column_have_asset);
     return map;

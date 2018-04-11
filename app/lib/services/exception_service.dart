@@ -16,7 +16,7 @@ class ExceptionService {
   factory ExceptionService() => _exceptionService;
 
   ExceptionService._internal() {
-    assert(() => isDebug = true);
+    assert(isDebug = true);
     if (!isDebug) {
       FlutterError.onError = (FlutterErrorDetails details) async {
         debugPrint('FlutterError.onError caught an error');

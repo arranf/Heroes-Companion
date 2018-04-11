@@ -9,8 +9,7 @@ void getPatches(Store<AppState> store) {
   // TODO Change interface to actually throw an exception in the case we need special handling
   DataProvider.patchProvider
       .getPatches()
-      .then(
-          (patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
+      .then((List<Patch> patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
       .catchError((e) {
     new ExceptionService().reportError(e);
     store.dispatch(new FetchPatchesFailedAction());
@@ -22,7 +21,7 @@ void updatePatches(Store<AppState> store) {
   DataProvider.patchProvider
       .fetchPatches()
       .then(
-          (patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
+          (List<Patch> patches) => store.dispatch(new FetchPatchesSucceededAction(patches)))
       .catchError((e) {
     new ExceptionService().reportError(e);
     store.dispatch(new FetchPatchesFailedAction());

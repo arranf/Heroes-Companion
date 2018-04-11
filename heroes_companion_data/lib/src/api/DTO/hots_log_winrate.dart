@@ -16,8 +16,8 @@ class HotsLogsWinrate {
       throw new Exception('Unexpected JSON format');
     }
     String name = map['name'];
-    int gamesPlayed = int.parse(map['played']);
-    double winPercentage = double.parse(map['winPercentage']);
+    int gamesPlayed = int.parse(map['played'] as String);
+    double winPercentage = double.parse(map['winPercentage'] as String);
     return new HotsLogsWinrate(name, gamesPlayed, winPercentage);
   }
 }

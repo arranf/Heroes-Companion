@@ -113,7 +113,6 @@ class App extends StatelessWidget {
       ],
       supportedLocales: const <Locale>[
         const Locale('en', 'US'),
-        const Locale('es', 'ES'),
       ],
             // Named routes only
             // TODO move these into separate file

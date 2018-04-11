@@ -16,7 +16,9 @@ class SettingsProvider {
     }
 
     SharedPreferences preferences = await SharedPreferences.getInstance();
-
+    if (preferences == null) {
+      throw new Exception('Unable to obtain instance of SharedPreferences');
+    }
     // Update Time
     String currentUpdateOriginTimeUnparsed =
         preferences.getString(pref_keys.update_id);
@@ -42,7 +44,7 @@ class SettingsProvider {
 
     _settings = new Settings(currentUpdateOriginTime, rotationDate,
         updatePatchVersion, dataSource, themeType);
-
+    print('Got settings');
     return _settings;
   }
 

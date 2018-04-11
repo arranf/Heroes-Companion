@@ -12,7 +12,7 @@ class PatchProvider {
 
   Future<List<Patch>> getPatches() async {
     print('Getting patches');
-    List<Map<String, dynamic>> results =
+    List<Map<dynamic, dynamic>> results =
         await _database.query(table.table_name, columns: null);
     print('Got ${results.length} patches');
     return results.map((m) => new Patch.fromMap(m)).toList();
@@ -26,7 +26,7 @@ class PatchProvider {
         throw new Exception('API call to fetch patch data failed');
       }
 
-      List<Map<String, dynamic>> existingPatchData = await _database.query(
+      List<Map<dynamic, dynamic>> existingPatchData = await _database.query(
           table.table_name,
           columns: [table.column_full_version, table.column_patch_name]);
       List<String> patchIds =
@@ -45,7 +45,7 @@ class PatchProvider {
           .where((Map p) => p[table.column_patch_name].toString().isEmpty)
           .map((m) => m[table.column_id])
           .toList()
-          .where((String id) => patches.contains(
+          .where((id) => patches.contains(
               (Patch p) => p.fullVersion == id && p.patchName.isNotEmpty))
           .toList();
 

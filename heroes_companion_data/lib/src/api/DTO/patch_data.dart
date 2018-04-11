@@ -14,7 +14,7 @@ class PatchData {
       {this.alternateLink, this.hotsDogId});
 
   factory PatchData.fromJson(Object json) {
-    if (!(json is Map)) {
+    if (!(json is Map && json['liveDate'] is String)) {
       throw new Exception('Unexpected JSON format');
     }
     Map map = json;
@@ -23,17 +23,17 @@ class PatchData {
     String patchType = map['patchType'];
     String gameVersion = map['gameVersion'];
     String fullVersion = map['fullVersion'];
-    DateTime liveDate = DateTime.parse(map['liveDate']);
+    DateTime liveDate = DateTime.parse(map['liveDate'] as String);
     String patchNotesUrl = map['patchNotesUrl'];
 
     String alternateLink = '';
-    if (map.containsKey('alternateLink')) {
-      alternateLink = map['alternateLink'];
+    if (map.containsKey('alternateLink') && map['alternateLink'] is String) {
+      alternateLink = map['alternateLink'] as String;
     }
 
     String hotsDogId = '';
-    if (map.containsKey('hotsDogId')) {
-      hotsDogId = map['hotsDogId'];
+    if (map.containsKey('hotsDogId') && map['hotsDogId'] is String) {
+      hotsDogId = map['hotsDogId'] as String;
     }
 
     return new PatchData(patchName, officialLink, patchType, gameVersion,
