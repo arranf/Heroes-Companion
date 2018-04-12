@@ -61,6 +61,9 @@ class UpdateProvider {
       ]);
 
       Set<int> heroesToMarkToUpdate = new Set();
+      // Start a set of all the talents that already exist, we'll remove the ones that we update from this list
+      Set<int> talentsToDelete = existingTalents.map((m) => m[talent_table.column_id] as int).toSet();
+
       updatePayload.talents.forEach((Talent talent) {
         Map<String, dynamic> existingTalent = existingTalents.firstWhere(
             (t) =>
@@ -70,8 +73,20 @@ class UpdateProvider {
 
         // Collect heroes who have had talents updated
         int heroId = _updateTalent(talent, existingTalent, batch);
+
+        // Remove existing talents that should still exist
+        if (existingTalent != null && existingTalent.isNotEmpty) {
+          talentsToDelete.remove(existingTalent[talent_table.column_id] as int);
+        }
         heroesToMarkToUpdate.add(heroId);
       });
+
+      // Delete old talents
+      batch.delete(
+        talent_table.table_name, 
+        where: "${talent_table.column_id} in (?)", 
+        whereArgs: [talentsToDelete.where((a) => a != null).join(',')]
+      );
 
       // Mark heroes as modified
       batch.update(
@@ -82,6 +97,8 @@ class UpdateProvider {
           },
           where: "${hero_table.column_hero_id} IN (?)",
           whereArgs: [heroesToMarkToUpdate.where((a) => a != null).join(',')]);
+      
+      // TODO Mark heroes as modified when their abilities change and delete old abilities
 
       // Ability update
       List<Map<String, dynamic>> abilities =
@@ -126,15 +143,13 @@ class UpdateProvider {
   int _updateTalent(
       Talent talent, Map<String, dynamic> existingTalent, Batch batch) {
     // Doesn't exist, insert
-    if (existingTalent == null ||
-        !existingTalent.containsKey(talent_table.column_id) ||
-        existingTalent[talent_table.column_id] == null) {
+    if (existingTalent == null || existingTalent.isEmpty) {
       batch.insert(talent_table.table_name, talent.toUpdateMap());
       return talent.hero_id;
     }
     // Changed and new image needs to be fetched
-    else if (!existingTalent.containsKey(talent_table.column_sha3_256) ||
-        existingTalent[talent_table.column_sha3_256] != talent.sha3_256 &&
+    else if ((!existingTalent.containsKey(talent_table.column_sha3_256) ||
+        existingTalent[talent_table.column_sha3_256] != talent.sha3_256) &&
             existingTalent[talent_table.column_icon_file_name] !=
                 existingTalent[talent_table.column_icon_file_name]) {
       Map<String, dynamic> updateMap = talent.toUpdateMap();
