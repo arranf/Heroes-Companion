@@ -18,8 +18,10 @@ Future tryUpdate(Store<AppState> store) {
         return DataProvider.updateProvider
             .doUpdate()
             .then((a) => getHeroesAsync(store))
-            .then((b) => store.dispatch(new StopUpdatingAction()))
-            .then((c) => SharedPreferences.getInstance())
+            .then((b) {
+              store.dispatch(new StopUpdatingAction());
+              return SharedPreferences.getInstance();
+             })
             .then((preferences) async {
           Settings settings =
               await DataProvider.settingsProvider.readSettings();

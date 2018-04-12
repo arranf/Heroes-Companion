@@ -23,7 +23,7 @@ void getHeroes(Store<AppState> store) {
       });
 }
 
-Future<Null> getHeroesAsync(Store<AppState> store,
+Future getHeroesAsync(Store<AppState> store,
     {bool isForceRefreshRotation = false}) {
   return DataProvider.heroProvider
       .updateHeroRotations(isForced: isForceRefreshRotation)
