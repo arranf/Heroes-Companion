@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:heroes_companion/models/overflow_choices.dart';
 import 'package:heroes_companion/routes.dart';
@@ -12,11 +13,12 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           new DrawerHeader(
               decoration: new BoxDecoration(
+                color: Theme.of(context).primaryColor,
                 image: new DecorationImage(
-                  image: new AssetImage('assets/images/maiev_1280x1024.jpg'),
+                  image: new CachedNetworkImageProvider('https://images.heroescompanion.com/banner.jpg'),
                   fit: BoxFit.cover,
                   colorFilter:
-                    new ColorFilter.mode(Colors.black45, BlendMode.darken),
+                    new ColorFilter.mode(Colors.black38, BlendMode.darken),
                 )
               ),
               child: new Row(

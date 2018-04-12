@@ -36,7 +36,6 @@ flutter:
   assets:
     - assets/heroes_companion.db
     # START IMAGES HERE    
-    - assets/images/maiev_1280x1024.jpg
     - assets/images/talents/storm_ui_icon_lostvikings_longboatraid.png
     - assets/images/talents/storm_ui_icon_sonya_whirlwind.png
     - assets/images/talents/storm_ui_icon_maiev_shadoworb_relentless.png
