@@ -144,6 +144,8 @@ class UpdateProvider {
       Talent talent, Map<String, dynamic> existingTalent, Batch batch) {
     // Doesn't exist, insert
     if (existingTalent == null || existingTalent.isEmpty) {
+      Map<String, dynamic> updateMap = talent.toUpdateMap();
+      updateMap[talent_table.column_have_asset] = false;
       batch.insert(talent_table.table_name, talent.toUpdateMap());
       return talent.hero_id;
     }
@@ -151,9 +153,9 @@ class UpdateProvider {
     else if ((!existingTalent.containsKey(talent_table.column_sha3_256) ||
         existingTalent[talent_table.column_sha3_256] != talent.sha3_256) &&
             existingTalent[talent_table.column_icon_file_name] !=
-                existingTalent[talent_table.column_icon_file_name]) {
+                talent.icon_file_name) {
       Map<String, dynamic> updateMap = talent.toUpdateMap();
-      updateMap[talent_table.column_have_asset] = 0;
+      updateMap[talent_table.column_have_asset] = false;
       batch.update(talent_table.table_name, updateMap,
           where: "${talent_table.column_id} = ?",
           whereArgs: [existingTalent[talent_table.column_id]]);
