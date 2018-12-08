@@ -5,16 +5,16 @@ version: 0.0.1
 #author: Arran France <email@example.com>
 
 environment:
-  sdk: '>=1.20.1 <2.0.0'
+  sdk: '>=2.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  sqflite: "^0.8.0"
-  http: "^0.11.3"
-  hots_dog_api: "^1.1.0"
-  path_provider: "^0.3.0"
-  shared_preferences: "^0.3.1"
+  sqflite: "^0.13.0"
+  http: "^0.12.0"
+  hots_dog_api: "^1.2.2"
+  path_provider: "^0.4.0"
+  shared_preferences: "^0.4.0"
 
 dev_dependencies:
-  test: ^0.12.0
+  test: ^1.5.0
