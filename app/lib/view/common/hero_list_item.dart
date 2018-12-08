@@ -38,6 +38,7 @@ class HeroListItem extends StatelessWidget {
             )),
         subtitle: new Text(hero.role),
         trailing: new Row(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             hero.is_favorite ? new Icon(Icons.favorite) : new Container(),
             hero.isOnRotation()
@@ -47,7 +48,7 @@ class HeroListItem extends StatelessWidget {
         ),
         onTap: () => this.onTap(context, this),
         onLongPress: () => this.onLongPress(context, this),
-      ),
+      )
     );
   }
 }

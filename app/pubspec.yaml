@@ -94,7 +94,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_whitemane_desperation.png
     - assets/images/talents/storm_ui_icon_hanzo_wallvault.png
     - assets/images/talents/storm_ui_icon_malganis_necrotic.png
-    - assets/images/talents/storm_ui_icon_tyrael_archangelswrath_a.png
     - assets/images/talents/storm_ui_icon_artanis_doubleslash_var1.png
     - assets/images/talents/storm_ui_icon_azmodan_allshallburn_a.png
     - assets/images/talents/storm_ui_icon_ana_aim_down_sights.png
@@ -113,14 +112,11 @@ flutter:
     - assets/images/talents/storm_ui_icon_butcher_furnaceblast.png
     - assets/images/talents/storm_ui_icon_brightwing_soothingmist.png
     - assets/images/talents/storm_ui_icon_varian_secondwind.png
-    - assets/images/talents/storm_ui_icon_diablo_firestomp_a.png
     - assets/images/talents/storm_ui_icon_greymane_beastfocus.png
-    - assets/images/talents/storm_ui_icon_sgthammer_artillery.png
     - assets/images/talents/storm_ui_icon_lostvikings_fastrestart.png
     - assets/images/talents/storm_ui_icon_tassadar_plasmashield.png
     - assets/images/talents/storm_ui_icon_tychus_overkill.png
     - assets/images/talents/storm_ui_icon_hanzo_sonicarrow.png
-    - assets/images/talents/storm_ui_icon_lili_shakeitoff.png
     - assets/images/talents/storm_ui_icon_chromie_timetraveler.png
     - assets/images/talents/storm_ui_icon_medivh_arcanemissile_a.png
     - assets/images/talents/storm_ui_icon_gall_shove.png
@@ -129,7 +125,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_genji_deflect.png
     - assets/images/talents/storm_ui_icon_talent_block.png
     - assets/images/talents/storm_ui_icon_malthael_inevitableend.png
-    - assets/images/talents/storm_ui_icon_malfurion_cleanse.png
     - assets/images/talents/storm_ui_icon_jaina_coneofcold_var1.png
     - assets/images/talents/storm_ui_icon_auriel_angelicsweep.png
     - assets/images/talents/storm_ui_icon_deckard_ruby.png
@@ -156,19 +151,15 @@ flutter:
     - assets/images/talents/storm_ui_icon_alexstrasza_dragon_scales.png
     - assets/images/talents/storm_ui_icon_kerrigan_maelstrom.png
     - assets/images/talents/storm_ui_icon_zeratul_mightofnerazim.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_phylactery.png
     - assets/images/talents/storm_ui_icon_wizard_teleport.png
     - assets/images/talents/storm_ui_icon_tassadar_psionicstorm.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_cultofthedamned.png
     - assets/images/talents/storm_ui_icon_murky_safetybubble.png
     - assets/images/talents/storm_ui_icon_whitemane_inquisition.png
     - assets/images/talents/storm_ui_icon_maiev_trait.png
     - assets/images/talents/storm_ui_icon_fenix_teleport.png
     - assets/images/talents/storm_ui_icon_dva_boosters.png
     - assets/images/talents/storm_ui_icon_jaina_coneofcold.png
-    - assets/images/talents/storm_ui_icon_firebat_flame_stream.png
     - assets/images/talents/storm_ui_icon_kelthuzad_powerofthecolddark.png
-    - assets/images/talents/storm_ui_icon_tychus_minigun_b.png
     - assets/images/talents/storm_ui_icon_genji_dodge.png
     - assets/images/talents/storm_ui_icon_tyrael_righteousness_var1.png
     - assets/images/talents/storm_ui_icon_ragnaros_moltenswing.png
@@ -177,7 +168,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_maiev_shadoworb_relentless.png
     - assets/images/talents/storm_ui_icon_lucio_soundwave_a.png
     - assets/images/talents/storm_ui_icon_auriel_angelicsweep_a.png
-    - assets/images/talents/storm_ui_icon_firebat_pyromania.png
     - assets/images/talents/storm_ui_icon_lunara_boundlessstride_a.png
     - assets/images/talents/storm_ui_icon_nazeebo_plagueoftoads.png
     - assets/images/talents/storm_ui_icon_genji_dragonblade.png
@@ -193,7 +183,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_kaelthas_gravitylapse_a.png
     - assets/images/talents/storm_ui_icon_blaze_oil_b.png
     - assets/images/talents/storm_ui_icon_stukov_lurkingarm_b.png
-    - assets/images/talents/storm_ui_icon_artanis_powerstrikes_var1.png
     - assets/images/talents/storm_ui_icon_etc_speedmetal.png
     - assets/images/talents/storm_ui_icon_nazeebo_voodooritual_a.png
     - assets/images/talents/storm_ui_icon_jaina_summonwaterelemental.png
@@ -214,7 +203,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_hanzo_shieldbreaker.png
     - assets/images/talents/storm_ui_icon_lucio_soundbarrier.png
     - assets/images/talents/storm_ui_icon_nova_holodecoy_var1.png
-    - assets/images/talents/storm_ui_icon_azmodan_gluttonousward.png
     - assets/images/talents/storm_ui_icon_tychus_drakkinlaserdrill.png
     - assets/images/talents/storm_ui_icon_deckard_horadric_staff.png
     - assets/images/talents/storm_btn_d3_traits_wizard_glasscannon.png
@@ -229,7 +217,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_chen_flyingkick.png
     - assets/images/talents/storm_ui_icon_muradin_thunderclap_a.png
     - assets/images/talents/storm_ui_icon_zarya_painistemporary.png
-    - assets/images/talents/storm_ui_icon_maiev_umbra_2.png
     - assets/images/talents/storm_ui_icon_lunara_greaterspellshield.png
     - assets/images/talents/storm_ui_icon_nazeebo_ravenousspirit.png
     - assets/images/talents/storm_ui_icon_lucio_crossfadehealing.png
@@ -239,7 +226,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_johanna_blessed_shield.png
     - assets/images/talents/storm_ui_icon_dva_boosters_a.png
     - assets/images/talents/storm_ui_icon_murky_marchofthemurlocs.png
-    - assets/images/talents/storm_ui_icon_talent_gatheringpower.png
     - assets/images/talents/storm_ui_icon_raynor_penetratinground.png
     - assets/images/talents/storm_ui_icon_alarak_lightningsurge_a.png
     - assets/images/talents/storm_ui_icon_jaina_frostarmor.png
@@ -262,12 +248,10 @@ flutter:
     - assets/images/talents/storm_ui_icon_lili_waterdragon.png
     - assets/images/talents/storm_ui_icon_junkrat_frag_launcher_e.png
     - assets/images/talents/storm_ui_icon_stukov_massiveshove.png
-    - assets/images/talents/storm_ui_icon_raynor_penetratinground_var1.png
     - assets/images/talents/storm_ui_icon_malthael_soulrip.png
     - assets/images/talents/storm_ui_icon_talent_autoattack_searing.png
     - assets/images/talents/storm_ui_icon_cassia_ringoftheleech.png
     - assets/images/talents/storm_ui_icon_chromie_timeblock.png
-    - assets/images/talents/storm_ui_icon_brightwing_pixiedust_var1.png
     - assets/images/talents/storm_ui_icon_alarak_telekinesis.png
     - assets/images/talents/storm_ui_icon_sgthammer_napalmstrike.png
     - assets/images/talents/storm_ui_icon_nova_tripletap.png
@@ -280,7 +264,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_dva_mount.png
     - assets/images/talents/storm_ui_icon_talent_antiarmorshells.png
     - assets/images/talents/storm_ui_icon_sgthammer_hypercoolingengines.png
-    - assets/images/talents/storm_ui_icon_tyrande_sentinel_a.png
     - assets/images/talents/storm_ui_icon_murky_pufferfish.png
     - assets/images/talents/storm_ui_icon_talent_autoattack_heal.png
     - assets/images/talents/storm_ui_icon_kelthuzad_chains_a.png
@@ -292,9 +275,7 @@ flutter:
     - assets/images/talents/storm_ui_icon_tyrande_trueshotaura.png
     - assets/images/talents/storm_ui_icon_sylvanas_hauntingwave.png
     - assets/images/talents/storm_ui_icon_maiev_heroic_2.png
-    - assets/images/talents/storm_ui_icon_firebat_stimpack_2.png
     - assets/images/talents/storm_ui_icon_tyrande_lightofelune_b.png
-    - assets/images/talents/storm_ui_icon_firebat_oil_spill.png
     - assets/images/talents/storm_ui_icon_talent_deaths_advance.png
     - assets/images/talents/storm_ui_icon_talent_hardenedfocus.png
     - assets/images/talents/storm_ui_icon_stukov_spinelauncher.png
@@ -302,7 +283,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_abathur_mount.png
     - assets/images/talents/storm_ui_icon_azmodan_summondemonwarrior_a.png
     - assets/images/talents/storm_ui_icon_cassia_lightningfury.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_chillingtouch.png
     - assets/images/talents/storm_ui_icon_malfurion_twilightdream.png
     - assets/images/talents/storm_ui_icon_talent_autoattack_damage.png
     - assets/images/talents/storm_ui_icon_zagara_banelingbarrage.png
@@ -321,7 +301,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_monk_allyearth.png
     - assets/images/talents/storm_ui_icon_deckard_angelic_conduit.png
     - assets/images/talents/storm_ui_icon_ragnaros_sulfurassmash.png
-    - assets/images/talents/storm_ui_icon_firebat_bunker_drop.png
     - assets/images/talents/storm_ui_icon_nova_orbitalstrike.png
     - assets/images/talents/storm_ui_icon_diablo_shadowcharge_var1.png
     - assets/images/talents/storm_ui_icon_blaze_combustion.png
@@ -338,7 +317,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_murky_pufferfish_b.png
     - assets/images/talents/storm_ui_icon_tracer_reload_b.png
     - assets/images/talents/storm_ui_icon_guldan_healthstone.png
-    - assets/images/talents/storm_ui_icon_firebat_combustion.png
     - assets/images/talents/storm_ui_icon_ragnaros_empowersulfuras.png
     - assets/images/talents/storm_ui_icon_talent_stoneskin.png
     - assets/images/talents/storm_ui_icon_medivh_dustofappearance.png
@@ -350,9 +328,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_zeratul_singularityspike.png
     - assets/images/talents/storm_ui_icon_kerrigan_ravage_b.png
     - assets/images/talents/storm_ui_icon_dehaka_trample.png
-    - assets/images/talents/storm_ui_icon_talent_envenom.png
-    - assets/images/talents/storm_ui_icon_zuljin_twincleave_a.png
-    - assets/images/talents/storm_ui_icon_tyrael_archangelswrath_b.png
     - assets/images/talents/storm_ui_icon_nova_pinningshot.png
     - assets/images/talents/storm_ui_icon_valeera_eviscerate.png
     - assets/images/talents/storm_ui_icon_etc_echopedal.png
@@ -388,13 +363,11 @@ flutter:
     - assets/images/talents/storm_ui_icon_orphea_e_terror.png
     - assets/images/talents/storm_ui_icon_cassia_valkrie_a.png
     - assets/images/talents/storm_ui_icon_johanna_condemn.png
-    - assets/images/talents/storm_ui_icon_firebat_stimpack_1.png
     - assets/images/talents/storm_ui_icon_samuro_mirrorimage.png
     - assets/images/talents/storm_ui_icon_butcher_tenderize.png
     - assets/images/talents/storm_ui_icon_malganis_blindbat.png
     - assets/images/talents/storm_ui_icon_leoric_trait.png
     - assets/images/talents/storm_ui_icon_malthael_tormentedsoul.png
-    - assets/images/talents/storm_ui_icon_azmodan_sinsgrasp.png
     - assets/images/talents/storm_ui_icon_cho_moltenblock.png
     - assets/images/talents/storm_ui_icon_mephisto_skull.png
     - assets/images/talents/storm_ui_icon_maiev_pursuit_vengeance.png
@@ -414,12 +387,10 @@ flutter:
     - assets/images/talents/storm_ui_icon_alarak_discordstrike.png
     - assets/images/talents/storm_ui_icon_raynor_acardtoplay.png
     - assets/images/talents/storm_ui_icon_probius_voidgate.png
-    - assets/images/talents/storm_ui_icon_kerrigan_ravage_a.png
     - assets/images/talents/storm_ui_icon_nazeebo_corpsespider.png
     - assets/images/talents/storm_ui_icon_lili_blindingwind.png
     - assets/images/talents/storm_ui_icon_malthael_onpalehorse.png
     - assets/images/talents/storm_ui_icon_genji_shurikens_xblade.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_glacialspike.png
     - assets/images/talents/storm_ui_icon_azmodan_globeofannihilation_a.png
     - assets/images/talents/storm_ui_icon_mephisto_splash.png
     - assets/images/talents/storm_ui_icon_cho_upheaval.png
@@ -436,7 +407,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_garrosh_bloodthirst_var1.png
     - assets/images/talents/storm_ui_icon_fenix_q.png
     - assets/images/talents/storm_ui_icon_garrosh_armor_up.png
-    - assets/images/talents/storm_ui_icon_malfurion_elunesgrace.png
     - assets/images/talents/storm_ui_icon_valeera_garrote.png
     - assets/images/talents/storm_ui_icon_hanzo_stormbow.png
     - assets/images/talents/storm_ui_icon_butcher_fullboar.png
@@ -481,7 +451,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_medivh_arcanemissile.png
     - assets/images/talents/storm_ui_icon_rehgar_ancestralhealing.png
     - assets/images/talents/storm_ui_icon_lili_fastfeet.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_deathanddecay.png
     - assets/images/talents/storm_ui_icon_wizard_archon.png
     - assets/images/talents/storm_ui_icon_cassia_valkrie.png
     - assets/images/talents/storm_ui_icon_lostvikings_64kbmarathon.png
@@ -497,14 +466,11 @@ flutter:
     - assets/images/talents/storm_ui_icon_rexxar_mishacharge.png
     - assets/images/talents/storm_ui_icon_guldan_hungerforpower.png
     - assets/images/talents/storm_ui_icon_kelthuzad_phylactery.png
-    - assets/images/talents/storm_ui_icon_artanis_doubleslash_var2.png
     - assets/images/talents/storm_ui_icon_falstad_hammerang_a.png
     - assets/images/talents/storm_ui_icon_dva_pilotmode_a.png
     - assets/images/talents/storm_ui_icon_sylvanas_blackarrows.png
     - assets/images/talents/storm_ui_icon_lucio_crossfade_all.png
-    - assets/images/talents/storm_ui_icon_rehgar_lightningshield_a.png
     - assets/images/talents/storm_ui_icon_thrall_feralspirit_var1.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_shadowfissure.png
     - assets/images/talents/storm_ui_icon_lunara_wildspear.png
     - assets/images/talents/storm_ui_icon_gall_shove_a.png
     - assets/images/talents/storm_ui_icon_talent_resistance.png
@@ -513,21 +479,18 @@ flutter:
     - assets/images/talents/storm_ui_icon_talent_boltofthestorm.png
     - assets/images/talents/storm_ui_icon_medivh_leylineblast.png
     - assets/images/talents/storm_ui_icon_sgthammer_concussiveblast.png
-    - assets/images/talents/storm_ui_icon_raynor_relentlessleader.png
     - assets/images/talents/storm_ui_icon_valeera_cheapshot.png
     - assets/images/talents/storm_ui_icon_leoric_drainhope_undead.png
     - assets/images/talents/storm_ui_icon_abathur_symbiote.png
     - assets/images/talents/storm_ui_icon_tychus_runandgun_a.png
     - assets/images/talents/storm_ui_icon_abathur_stab.png
     - assets/images/talents/storm_ui_icon_ragnaros_lavawave.png
-    - assets/images/talents/storm_ui_icon_junkrat_mayhem.png
     - assets/images/talents/storm_ui_icon_ragnaros_moltencore.png
     - assets/images/talents/storm_ui_icon_stitches_cannibalize.png
     - assets/images/talents/storm_ui_icon_medic_advancedblock.png
     - assets/images/talents/storm_ui_icon_greymane_beastfocus_var1.png
     - assets/images/talents/storm_ui_icon_talent_mercenarylord.png
     - assets/images/talents/storm_ui_icon_malganis_nightrush_b.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_frostnova.png
     - assets/images/talents/storm_ui_icon_orphea_w_2.png
     - assets/images/talents/storm_ui_icon_greymane_darkflight.png
     - assets/images/talents/storm_ui_icon_raynor_inspire_a.png
@@ -542,7 +505,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_guldan_handofguldan.png
     - assets/images/talents/storm_ui_icon_nazeebo_voodooritual.png
     - assets/images/talents/storm_ui_icon_artanis_purifierbeam.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_frozentomb.png
     - assets/images/talents/storm_ui_icon_probius_warpinpylon_b.png
     - assets/images/talents/storm_ui_icon_chromie_timewarp.png
     - assets/images/talents/storm_ui_icon_zuljin_twincleave.png
@@ -565,7 +527,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_chen_fortifyingbrew_a.png
     - assets/images/talents/storm_ui_icon_kaelthas_manaaddict.png
     - assets/images/talents/storm_ui_icon_jaina_arcaneintellect.png
-    - assets/images/talents/storm_ui_icon_malfurion_scoutingdrone.png
     - assets/images/talents/storm_ui_icon_dehaka_brushstalker.png
     - assets/images/talents/storm_ui_icon_jaina_frostbite.png
     - assets/images/talents/storm_ui_icon_chromie_aethercannon.png
@@ -594,13 +555,10 @@ flutter:
     - assets/images/talents/storm_ui_icon_monk_trait_insight.png
     - assets/images/talents/storm_ui_icon_talent_autoattack_building.png
     - assets/images/talents/storm_ui_icon_muradin_secondwind.png
-    - assets/images/talents/storm_ui_icon_sonya_ancientspear_var1.png
     - assets/images/talents/storm_ui_icon_nova_snipe.png
     - assets/images/talents/storm_ui_icon_tyrande_lunarflare.png
     - assets/images/talents/storm_ui_icon_sylvanas_wailingarrow.png
     - assets/images/talents/storm_ui_icon_genji_cyberagility_a.png
-    - assets/images/talents/storm_ui_icon_muradin_dwarftoss_a.png
-    - assets/images/talents/storm_ui_icon_raynor_puttinonaclinic.png
     - assets/images/talents/storm_ui_icon_abathur_spawnlocust_var1.png
     - assets/images/talents/storm_ui_icon_sgthammer_bluntforcegun.png
     - assets/images/talents/storm_ui_icon_arthas_runetap.png
@@ -610,7 +568,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_varian_parry.png
     - assets/images/talents/storm_ui_icon_johanna_indestructible.png
     - assets/images/talents/storm_ui_icon_monk_trait1.png
-    - assets/images/talents/storm_ui_icon_stukov_bio-killswitch_a.png
     - assets/images/talents/storm_ui_icon_gall_twistingnether_a.png
     - assets/images/talents/storm_ui_icon_necromancer_raiseskeleton.png
     - assets/images/talents/storm_ui_icon_diablo_blacksoulstone_var1.png
@@ -618,7 +575,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_fenix_r_planet_cracker.png
     - assets/images/talents/storm_ui_icon_abathur_carapace.png
     - assets/images/talents/storm_ui_icon_etc_rockstar.png
-    - assets/images/talents/storm_ui_icon_diablo_blacksoulstone_var2.png
     - assets/images/talents/storm_ui_icon_stukov_bio-killswitch.png
     - assets/images/talents/storm_ui_icon_hanzo_kaijuhunter.png
     - assets/images/talents/storm_ui_icon_kaelthas_flamestrike.png
@@ -656,7 +612,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_lunara_stiflingblossom.png
     - assets/images/talents/storm_ui_icon_malganis_ult_swarm.png
     - assets/images/talents/storm_ui_icon_zeratul_cloak.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_shiftingmalice.png
     - assets/images/talents/storm_ui_icon_kelthuzad_armorofthearchlich.png
     - assets/images/talents/storm_ui_icon_medivh_ravenform.png
     - assets/images/talents/storm_ui_icon_sonya_leap.png
@@ -669,7 +624,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_cassia_balllightning_a.png
     - assets/images/talents/storm_ui_icon_tyrande_sentinel.png
     - assets/images/talents/storm_ui_icon_tyrael_zealous_conviction.png
-    - assets/images/talents/storm_ui_icon_firebat_vanadium_plating.png
     - assets/images/talents/storm_ui_icon_murky_trait_spawnegg_var1.png
     - assets/images/talents/storm_ui_icon_genji_swiftstrike_a.png
     - assets/images/talents/storm_ui_icon_valla_hungeringarrow.png
@@ -692,7 +646,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_talent_burningrage.png
     - assets/images/talents/storm_ui_icon_valeera_ambush.png
     - assets/images/talents/storm_ui_icon_lunara_wisp.png
-    - assets/images/talents/storm_ui_icon_talent_overdrive.png
     - assets/images/talents/storm_ui_icon_junkrat_concussion_mine.png
     - assets/images/talents/storm_ui_icon_talent_healingward.png
     - assets/images/talents/storm_ui_icon_zarya_gravitonsurge.png
@@ -719,12 +672,10 @@ flutter:
     - assets/images/talents/storm_ui_icon_lostvikings_jump.png
     - assets/images/talents/storm_ui_icon_necromancer_bonearmor_b.png
     - assets/images/talents/storm_ui_icon_valeera_bladeflurry.png
-    - assets/images/talents/storm_ui_icon_chaoticenergy.png
     - assets/images/talents/storm_ui_icon_varian_taunt.png
     - assets/images/talents/storm_ui_icon_deckard_perfect_gems.png
     - assets/images/talents/storm_ui_icon_alarak_hastybargain.png
     - assets/images/talents/storm_ui_icon_medic_deployshield.png
-    - assets/images/talents/storm_ui_icon_talent_arcanepower.png
     - assets/images/talents/storm_ui_icon_auriel_restrainingblow_a.png
     - assets/images/talents/storm_ui_icon_junkrat_frag_launcher_c.png
     - assets/images/talents/storm_ui_icon_blaze_new_habits.png
@@ -739,7 +690,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_nova_personalcloaking.png
     - assets/images/talents/storm_ui_icon_dva_concussivecharge.png
     - assets/images/talents/storm_ui_icon_whitemane_aegis.png
-    - assets/images/talents/storm_ui_icon_firebat_jet_propulsion.png
     - assets/images/talents/storm_ui_icon_yrel_vindication.png
     - assets/images/talents/storm_ui_icon_azmodan_trample.png
     - assets/images/talents/storm_ui_icon_alexstrasza_cleansing_flame.png
@@ -747,7 +697,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_brightwing_pixiedust_a.png
     - assets/images/talents/storm_ui_icon_talent_abilitytalent_heal.png
     - assets/images/talents/storm_ui_icon_zagara_banelingbarrage_a.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_poweroficecrown.png
     - assets/images/talents/storm_ui_icon_lostvikings_spintowin.png
     - assets/images/talents/storm_ui_icon_tyrael_eldruinsmight_a.png
     - assets/images/talents/storm_ui_icon_ana_detachableboxmagazine.png
@@ -757,7 +706,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_zarya_particlegrenade.png
     - assets/images/talents/storm_ui_icon_varian_glorytothealliance.png
     - assets/images/talents/storm_ui_icon_malfurion_moonfire.png
-    - assets/images/talents/storm_ui_icon_kerrigan_assimilation_a.png
     - assets/images/talents/storm_ui_icon_zuljin_regeneration_a.png
     - assets/images/talents/storm_ui_icon_lostvikings_mortar.png
     - assets/images/talents/storm_ui_icon_murky_slime.png
@@ -803,7 +751,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_dva_mechmode.png
     - assets/images/talents/storm_ui_icon_thrall_feralspirit.png
     - assets/images/talents/storm_ui_icon_malfurion_tranquility.png
-    - assets/images/talents/storm_ui_icon_sonya_ferocioushealing.png
     - assets/images/talents/storm_ui_icon_zagara_hunterkiller_a.png
     - assets/images/talents/storm_ui_icon_johanna_shield_glare.png
     - assets/images/talents/storm_ui_icon_varian_twinbladesoffury.png
@@ -813,7 +760,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_abathur_locustnest.png
     - assets/images/talents/storm_ui_icon_chen_stormearthfire.png
     - assets/images/talents/storm_ui_icon_cho_runebomb.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_chains_a.png
     - assets/images/talents/storm_ui_icon_dehaka_essencecollection.png
     - assets/images/talents/storm_ui_icon_etc_facemelt_b.png
     - assets/images/talents/storm_ui_icon_dva_callmech.png
@@ -828,7 +774,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_malthael_shroudofwisdom.png
     - assets/images/talents/storm_ui_icon_greymane_snapshot.png
     - assets/images/talents/storm_ui_icon_whitemane_fanatical.png
-    - assets/images/talents/storm_ui_icon_lunara_wisp_c.png
     - assets/images/talents/storm_ui_icon_malganis_necrotic_b.png
     - assets/images/talents/storm_ui_icon_alarak_recklesscharge.png
     - assets/images/talents/storm_ui_icon_talent_shrinkray.png
@@ -848,7 +793,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_varian_demoralizingshout.png
     - assets/images/talents/storm_ui_icon_lucio_reverseamp.png
     - assets/images/talents/storm_ui_icon_talent_bloodforblood.png
-    - assets/images/talents/storm_ui_icon_maiev_heroic_1_b.png
     - assets/images/talents/storm_ui_icon_medic_healingbeam.png
     - assets/images/talents/storm_ui_icon_varian_heroicstrike.png
     - assets/images/talents/storm_ui_icon_lucio_ampitup_b.png
@@ -885,8 +829,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_malthael_touchofdeath.png
     - assets/images/talents/storm_ui_icon_muradin_avatar.png
     - assets/images/talents/storm_ui_icon_guldan_darkbargain.png
-    - assets/images/talents/storm_ui_icon_greymane_swipe_var1.png
-    - assets/images/talents/storm_ui_icon_kerrigan_queensrush.png
     - assets/images/talents/storm_ui_icon_talent_autoattack_speed.png
     - assets/images/talents/storm_ui_icon_thrall_windfury.png
     - assets/images/talents/storm_ui_icon_samuro_criticalstrike_a.png
@@ -920,8 +862,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_artanis_powerstrikes.png
     - assets/images/talents/storm_ui_icon_probius_disruptionpulse.png
     - assets/images/talents/storm_ui_icon_dva_pilotmode.png
-    - assets/images/talents/storm_ui_icon_malfurion_mule.png
-    - assets/images/talents/storm_ui_icon_nova_snipe_var1.png
     - assets/images/talents/storm_ui_icon_deckard_kanais_cube.png
     - assets/images/talents/storm_ui_icon_diablo_firestomp.png
     - assets/images/talents/storm_ui_icon_zeratul_blink.png
@@ -938,7 +878,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_brightwing_emeraldwind.png
     - assets/images/talents/storm_ui_icon_whitemane_zeal.png
     - assets/images/talents/storm_ui_icon_fenix_shield_2.png
-    - assets/images/talents/storm_ui_icon_lunara_wisp_a.png
     - assets/images/talents/storm_ui_icon_deckard_unstable_healing_potion.png
     - assets/images/talents/storm_ui_icon_alarak_telekinesis_a.png
     - assets/images/talents/storm_ui_icon_orphea_q.png
@@ -969,7 +908,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_etc_guitarsolo.png
     - assets/images/talents/storm_ui_icon_medivh_forceofwill.png
     - assets/images/talents/storm_ui_icon_talent_relentless.png
-    - assets/images/talents/storm_ui_icon_zeratul_blink_a.png
     - assets/images/talents/storm_ui_icon_zeratul_cleave.png
     - assets/images/talents/storm_ui_icon_samuro_illusiondancer.png
     - assets/images/talents/storm_ui_icon_wizard_disintegrate.png
@@ -983,7 +921,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_kaelthas_phoenix.png
     - assets/images/talents/storm_ui_icon_etc_facemelt.png
     - assets/images/talents/storm_ui_icon_nazeebo_gargantuanstomp.png
-    - assets/images/talents/storm_ui_icon_talent_scoutingdrone.png
     - assets/images/talents/storm_ui_icon_talent_cleanse.png
     - assets/images/talents/storm_ui_icon_genji_shurikens_dragonsoul.png
     - assets/images/talents/storm_ui_icon_uther_benediction.png
@@ -991,7 +928,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_dva_defensematrix_a.png
     - assets/images/talents/storm_ui_icon_murky_trait_spawnegg.png
     - assets/images/talents/storm_ui_icon_talent_autoattack_range.png
-    - assets/images/talents/storm_ui_icon_firebat_stimpack_3.png
     - assets/images/talents/storm_ui_icon_lostvikings_selectbaleog.png
     - assets/images/talents/storm_ui_icon_tassadar_plasmashield_a.png
     - assets/images/talents/storm_ui_icon_samuro_criticalstrike_b.png
@@ -1005,7 +941,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_thrall_earthquake.png
     - assets/images/talents/storm_ui_icon_anubarak_impale.png
     - assets/images/talents/storm_ui_icon_zarya_shieldally.png
-    - assets/images/talents/storm_ui_icon_brightwing_polymorph_var1.png
     - assets/images/talents/storm_ui_icon_talent_iceblock.png
     - assets/images/talents/storm_ui_icon_orphea_w.png
     - assets/images/talents/storm_ui_icon_chromie_sandstrike.png
@@ -1039,7 +974,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_hanzo_scatterarrow.png
     - assets/images/talents/storm_ui_icon_gall_psychoticbreak.png
     - assets/images/talents/storm_ui_icon_valeera_cloakofshadows.png
-    - assets/images/talents/storm_ui_icon_tyrael_archangelswrath_var1.png
     - assets/images/talents/storm_ui_icon_zeratul_vorpalblade.png
     - assets/images/talents/storm_ui_icon_stukov_healingpathogen_a.png
     - assets/images/talents/storm_ui_icon_lunara_mount.png
@@ -1085,9 +1019,6 @@ flutter:
     - assets/images/talents/storm_ui_icon_deckard_lorenado.png
     - assets/images/talents/storm_ui_icon_lunara_boundlessstride.png
     - assets/images/talents/storm_ui_icon_tassadar_archon.png
-    - assets/images/talents/storm_ui_icon_lunara_wisp_b.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_armorofthearchlich.png
-    - assets/images/talents/storm_ui_icon_kel'thuzad_chains.png
     - assets/images/talents/storm_ui_icon_muradin_haymaker.png
     - assets/images/talents/storm_ui_icon_blaze_jet.png
     - assets/images/talents/storm_ui_icon_valeera_woundpoison.png
@@ -1181,18 +1112,6 @@ flutter:
     - assets/images/heroes/gazlowe.png
     - assets/images/heroes/murky.png
     - assets/images/heroes/uther.png
-    - assets/images/maps/legendary-event-1-boe.png
-    - assets/images/maps/legendary-event-2-blackhearts-bay.png
-    - assets/images/maps/legendary-event-2.png
-    - assets/images/maps/legendary-event-3.png
-    - assets/images/maps/legendary-event-3-sky-temple.png
-    - assets/images/maps/legendary-event-2-garden.png
-    - assets/images/maps/legendary-event-3-tomb.png
-    - assets/images/maps/objective-volskaya-2.png
-    - assets/images/maps/call_down.png
-    - assets/images/maps/legendary-event-1.png
-    - assets/images/maps/zerg_waves.png
-    - assets/images/maps/legendary-event-2-dragon-shire.png
     # END IMAGES HERE
 
   # An image asset can refer to one or more resolution-specific "variants", see
