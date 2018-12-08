@@ -23,11 +23,11 @@ class HeroDetailContainer extends StatefulWidget {
 
 class _HeroDetailContainerState extends State<HeroDetailContainer> {
   bool _isCurrentBuildDirty = false;
-  bool _isCurrentBuild = true;
+  bool _isCurrentPatch = true;
   Patch _patch;
 
   Patch getCorrectBuild(Store<AppState> store) {
-    return _isCurrentBuild
+    return _isCurrentPatch
         ? currentPatchSelector(store.state)
         : previousPatchSelector(store.state);
   }
@@ -39,7 +39,8 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
       if (currentPatch != null) {
         int differenceInDays =
             currentPatch.liveDate.difference(new DateTime.now()).inDays;
-        _isCurrentBuild = (differenceInDays * -1) > 3;
+        // If a newish patch - let's show previous patch data
+        _isCurrentPatch = (differenceInDays * -1) > 5;
         _isCurrentBuildDirty = true;
       }
     }
@@ -69,9 +70,6 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
     if (regularBuildsByHeroId(store.state, hero.value.hero_id).isNotPresent) {
       getBuilds(store, hero.value, _patch);
     }
-
-    // _nextCanAttemptFetch = new DateTime.now().add(new Duration(seconds: 2 ^ _nextCanAttemptFetchExponent));
-    // _nextCanAttemptFetchExponent++;
   }
 
   @override
@@ -88,13 +86,13 @@ class _HeroDetailContainerState extends State<HeroDetailContainer> {
           heroWinRate: vm.heroWinRate,
           statisticalBuilds: vm.buildWinRates,
           regularBuilds: vm.regularBuilds,
-          isCurrentBuild: _isCurrentBuild,
+          isCurrentBuild: _isCurrentPatch,
           heroPatchNotesUrl: vm.heroPatchNotesUrl,
-          patch: (_isCurrentBuild ? vm.currentBuild : vm.previousBuild),
+          patch: (_isCurrentPatch ? vm.currentBuild : vm.previousBuild),
           buildSwitch: () {
         setState(() {
-          _isCurrentBuild = !_isCurrentBuild;
-          _patch = (_isCurrentBuild ? vm.currentBuild : vm.previousBuild);
+          _isCurrentPatch = !_isCurrentPatch;
+          _patch = (_isCurrentPatch ? vm.currentBuild : vm.previousBuild);
         });
       });
     });
@@ -122,7 +120,7 @@ class _ViewModel {
     this.regularBuilds,
   });
 
-  factory _ViewModel.from(Store<AppState> store, int id, Patch build) {
+  factory _ViewModel.from(Store<AppState> store, int id, Patch patch) {
     final dynamic _favorite = (Hero hero) {
       hero.is_favorite ? unFavorite(store, hero) : setFavorite(store, hero);
     };
@@ -133,10 +131,10 @@ class _ViewModel {
     }
 
     final heroWinRate =
-        heroWinRateByHeroIdAndBuildNumber(store.state, id, build.fullVersion);
+        heroWinRateByHeroIdAndBuildNumber(store.state, id, patch.fullVersion);
     final Optional<List<StatisticalHeroBuild>> buildWinRates =
         statisticalBuildsByHeroIdAndBuildNumber(
-            store.state, id, build.fullVersion);
+            store.state, id, patch.fullVersion);
 
     final Optional<List<Build>> regularBuilds =
         regularBuildsByHeroId(store.state, id);

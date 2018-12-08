@@ -334,7 +334,7 @@ class _HeroDetailState extends State<HeroDetail>
   Widget _buildTabletView(BuildContext context, bool isLoading) {
     return new Column(
       children: <Widget>[
-        widget.canOfferPreviousBuild
+        !widget.isCurrentBuild
             ? new BuildPrompt(
                 widget.isCurrentBuild,
                 widget.patch.patchName,
@@ -416,7 +416,7 @@ class _HeroDetailState extends State<HeroDetail>
                 if (widget.canOfferPreviousBuild) {
                   items.add(new PopupMenuItem(
                     value: 'Switch Build',
-                    child: new Text(widget.isCurrentBuild
+                    child: new Text(!widget.isCurrentBuild
                         ? AppStrings.of(context).seeCurrentPatchData()
                         : AppStrings.of(context).seePreviousPatchData()),
                   ));
