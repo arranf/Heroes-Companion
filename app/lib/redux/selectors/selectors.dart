@@ -53,11 +53,11 @@ List<Hero> heroesbyFilterSelector(AppState state) {
 }
 
 Optional<Hero> heroSelectorByHeroId(List<Hero> heroes, int id) {
-  try {
-    return new Optional.of(heroes.firstWhere((h) => h.hero_id == id));
-  } catch (e) {
-    return new Optional.absent();
+  Hero hero = heroes.firstWhere((h) => h.hero_id == id, orElse: null);
+  if (hero != null) {
+    return new Optional.of(hero);
   }
+  return new Optional.absent();
 }
 
 List<Patch> patchesSelector(AppState state) => state.patches;
@@ -90,11 +90,11 @@ Map<String, List<HeroWinRate>> winRatesSelector(AppState state) =>
 
 Optional<List<HeroWinRate>> winRatesByBuildNumber(
     AppState state, String buildNumber) {
-  try {
-    return new Optional.of(winRatesSelector(state)[buildNumber]);
-  } catch (e) {
-    return new Optional.absent();
+  Map<String, List<HeroWinRate>> winrates = winRatesSelector(state);
+  if (winrates.containsKey(buildNumber)) {
+    return new Optional.of(winrates[buildNumber]);
   }
+  return new Optional.absent();
 }
 
 /// A map of build number to HeroWinRate
@@ -168,11 +168,10 @@ Optional<List<StatisticalHeroBuild>> statisticalBuildsByHeroIdAndBuildNumber(
     return new Optional.absent();
   }
 
-  try {
+  if (rates.containsKey(id) && rates[id].containsKey(buildNumber)){
     return new Optional.of(rates[id][buildNumber]);
-  } catch (e) {
-    return new Optional.absent();
   }
+  return new Optional.absent();
 }
 
 List<PlayableMap> mapsSelector(AppState state) => state.maps;
