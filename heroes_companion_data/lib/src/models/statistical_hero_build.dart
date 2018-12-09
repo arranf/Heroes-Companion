@@ -34,4 +34,17 @@ class StatisticalHeroBuild {
         gamesPlayed: hotsLogBuild.gamesPlayed,
         winRate: hotsLogBuild.winPercentage / 100);
   }
+
+  @override
+  int get hashCode {
+    return this.build.hashCode;
+  }
+
+  @override
+  bool operator == (Object other) 
+  {
+      return identical(this, other) ||
+      other is StatisticalHeroBuild &&
+          this.build == other.build;
+  }
 }
