@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:heroes_companion/redux/selectors/selectors.dart';
 import 'package:heroes_companion/services/exception_service.dart';
 import 'package:heroes_companion/services/patch_service.dart';
@@ -48,7 +47,7 @@ void main() {
     }
   }
 
-  // Run the splasscreen, create an instance of app, dispatch and event to load the initial data, and setup a listener to check for completion
+  // Run the splashcreen, create an instance of app, dispatch and event to load the initial data, and setup a listener to check for completion
   app = new App();
   runApp(new Splash(appName));
 

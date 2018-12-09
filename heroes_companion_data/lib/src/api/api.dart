@@ -170,6 +170,6 @@ Future<List<Build>> getBuildsForHero(int heroId) async {
         .toList();
     return builds;
   } catch (e) {
-    throw new Exception('Failed to fetch (evergreen) builds: ${e.message}');
+    throw new Exception('Failed to fetch (evergreen/regular) builds: ${e.message}');
   }
 }
