@@ -15,13 +15,18 @@ class DatabaseClient {
   static HeroProvider heroProvider;
   static DatabaseClient _client = new DatabaseClient._internal();
   static final String databaseName = "heroes_companion.db";
-  static final int databaseVersion = 12;
+  static final int databaseVersion = 13;
 
   factory DatabaseClient() {
     return _client;
   }
 
   DatabaseClient._internal();
+
+// TODO: Make initial migration stuff quicker
+// * Identify which upgrade migrations should happen during create
+// * Add another constant to represent which version databases that are created using this version of the app should start at
+// That will allow us to avoid running _onUpgrade() every time 
 
   Future _onCreate(Database database, int version) async {
     // Add our initial set of columns
@@ -97,12 +102,16 @@ class DatabaseClient {
     if (oldVersion < 12) {
       await upgradeTo12(database);
     }
+
+    if (oldVersion < 13) {
+      // Fix talent constraint excluding a level 20 Alarak talent
+      await upgradeTo13(database);
+    }
   }
 
   Future<Database> start() async {
     String databasePath = await _getDatabasePath(databaseName);
-    return await openDatabase(databasePath,
-        version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
+    return await openDatabase(databasePath, version: databaseVersion, onCreate: _onCreate, onUpgrade: _onUpgrade);
   }
 
   /// @param databaseName The name of the database (e.g. heroes.db)

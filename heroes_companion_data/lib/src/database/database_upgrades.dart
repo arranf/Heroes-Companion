@@ -1,7 +1,9 @@
 import 'dart:async';
 
-import 'package:heroes_companion_data/src/models/playable_map.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
+
+import 'package:heroes_companion_data/src/models/playable_map.dart';
 import 'package:heroes_companion_data/src/tables/hero_table.dart' as hero_table;
 import 'package:heroes_companion_data/src/tables/ability_table.dart'
     as ability_table;
@@ -12,8 +14,6 @@ import 'package:heroes_companion_data/src/tables/map_table.dart' as map_table;
 
 import 'package:heroes_companion_data/src/tables/patch_table.dart'
     as patch_table;
-
-import 'package:flutter/foundation.dart';
 
 Future upgradeTo2(Database database) async {
   await database.execute('''
@@ -264,6 +264,48 @@ Future upgradeTo12(Database database) async {
     SET [AdditionalSearchText] = 'Shadowsong Warden Watcher Night Elf Alliance WoW World of Warcraft War3 WC3 Warcraft3 III 3 Frozen Throne FT Warlords Draenor WoD Legion Hearthstone HS'
     WHERE [heroes].ShortName = 'maiev'
     ''');
+}
+
+//
+Future upgradeTo13(Database database) async {
+  List<Map<String, dynamic>> hasTalentAlready = await database.rawQuery('SELECT COUNT(*) FROM talents WHERE [ToolTipId] = \'AlarakDeadlyCharge\' AND [HeroId] = 56');
+  if (hasTalentAlready.length > 1) {
+    return Future.value();
+  } 
+
+  debugPrint('Altering talent table constraint to include TalentTreeId');
+
+  await database.execute('''
+    BEGIN TRANSACTION;
+
+    ALTER TABLE talents RENAME TO old_talents;
+
+    CREATE TABLE IF NOT EXISTS `talents` (
+      `Id`	INTEGER,
+      `HeroId`	INTEGER,
+      `AbilityId`	TEXT,
+      `TalentTreeId`	TEXT,
+      `ToolTipId`	TEXT,
+      `Level`	INTEGER,
+      `SortOrder`	INTEGER,
+      `Name`	TEXT,
+      `Description`	TEXT,
+      `IconFileName`	TEXT,
+        `Sha3256` TEXT,
+        UNIQUE(HeroId, ToolTipId, TalentTreeId)
+      PRIMARY KEY(Id)
+    );
+
+    INSERT INTO talents SELECT * FROM old_talents;
+
+    INSERT OR IGNORE INTO talents (HeroId, AbilityId, TalentTreeId, ToolTipId, Level, SortOrder, Name, Description, IconFileName, Sha3256)
+                VALUES (56, 'Alarak|R1', 'AlarakDeadlyChargeSecondHeroic', 'AlarakDeadlyCharge', 20, 2, 'Deadly Charge', "After channeling, Alarak charges forward dealing 200 (+4% per level) damage to all enemies in his path. Distance is increased based on the amount of time channeled, up to 1.5 seconds.  Issuing a Move order while this is channeling will cancel it at no cost. Taking damage will interrupt the channeling.",
+                            'storm_ui_icon_alarak_recklesscharge.png', 'ea854faa5e26110bca1911b420ac46fe8e9fb4f9fbdae0175f3c5360aa385157');
+
+    DROP table old_talents;
+
+    COMMIT;
+  ''');
 }
 
 Future upgradeTo7(Database database) async {
