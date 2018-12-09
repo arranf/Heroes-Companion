@@ -1,5 +1,5 @@
 import 'package:heroes_companion/i18n/strings.dart';
-// import 'package:screen/screen.dart';
+import 'package:screen/screen.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:heroes_companion/view/common/talent_card.dart';
 import 'package:heroes_companion_data/heroes_companion_data.dart';
@@ -25,7 +25,7 @@ class _BuildSwiperState extends State<BuildSwiper>
   @override
   void initState() {
     super.initState();
-    // Screen.keepOn(true);
+    Screen.keepOn(true);
     _tabController =
         new TabController(vsync: this, length: widget.build.talentNames.length);
   }
@@ -33,7 +33,7 @@ class _BuildSwiperState extends State<BuildSwiper>
   @override
   void dispose() {
     _tabController.dispose();
-    // Screen.keepOn(false);
+    Screen.keepOn(false);
     super.dispose();
   }
 

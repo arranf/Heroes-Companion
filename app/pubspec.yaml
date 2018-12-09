@@ -12,6 +12,11 @@ dependencies:
   sentry: ">=2.0.0 <3.0.0"
   intl: "^0.15.4"
   intl_translation: "^0.17.0"
+  screen: 
+      git: 
+        url: "git@github.com:ened/flutter_screen.git"
+        ref: "android-cleanup"
+      # version: "^0.0.5"
   flutter:
     sdk: flutter
   flutter_localizations:
