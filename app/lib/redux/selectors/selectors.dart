@@ -91,7 +91,7 @@ Map<String, List<HeroWinRate>> winRatesSelector(AppState state) =>
 Optional<List<HeroWinRate>> winRatesByBuildNumber(
     AppState state, String buildNumber) {
   Map<String, List<HeroWinRate>> winrates = winRatesSelector(state);
-  if (winrates.containsKey(buildNumber)) {
+  if (winrates != null && winrates.containsKey(buildNumber)) {
     return new Optional.of(winrates[buildNumber]);
   }
   return new Optional.absent();
