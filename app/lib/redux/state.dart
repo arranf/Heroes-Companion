@@ -15,7 +15,7 @@ class AppState {
   final bool regularBuildsLoading;
   final bool isUpdating;
 
-  /// heroId => <BuildNumber, StatisticalHeroBuild>
+  /// heroId => <PatchNumber, StatisticalHeroBuild>
   final Map<int, Map<String, List<StatisticalHeroBuild>>>
       heroStatisticalBuildsByPatchNumber;
   final Map<int, List<Build>> regularHeroBuilds;
