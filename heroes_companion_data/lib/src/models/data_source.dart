@@ -6,9 +6,9 @@ class DataSource {
   final String name;
 
   static get values => [
-        HotsDog,
-        HotsLogs,
-      ];
+    HotsDog,
+    HotsLogs,
+  ];
 
   static DataSource fromString(String input) {
     switch (input) {
@@ -17,7 +17,7 @@ class DataSource {
       case _hotsLogs:
         return HotsLogs;
       default:
-        return HotsDog;
+        return HotsLogs;
     }
   }
 
