@@ -56,6 +56,7 @@ class UpdateProvider {
         talent_table.column_id,
         talent_table.column_hero_id,
         talent_table.column_tool_tip_id,
+        talent_table.column_talent_tree_id,
         talent_table.column_sha3_256,
         talent_table.column_have_asset
       ]);
@@ -68,27 +69,28 @@ class UpdateProvider {
         Map<String, dynamic> existingTalent = existingTalents.firstWhere(
             (t) =>
                 t[talent_table.column_tool_tip_id] == talent.tool_tip_id &&
+                t[talent_table.column_talent_tree_id] == talent.talent_tree_id &&
                 t[talent_table.column_hero_id] == talent.hero_id,
             orElse: () => {});
 
         // Collect heroes who have had talents updated
         int heroId = _updateTalent(talent, existingTalent, batch);
 
-        // Remove existing talents that should still exist
+        // Remove existing talents that should still exist from the talents to delete set
         if (existingTalent != null && existingTalent.isNotEmpty) {
           talentsToDelete.remove(existingTalent[talent_table.column_id] as int);
         }
         heroesToMarkToUpdate.add(heroId);
       });
 
-      // Delete old talents
+      // Delete old talents that are no longer part of the game
       batch.delete(
         talent_table.table_name, 
         where: "${talent_table.column_id} in (?)", 
         whereArgs: [talentsToDelete.where((a) => a != null).join(',')]
       );
 
-      // Mark heroes as modified
+      // Mark heroes as modified if they've had talents changed
       batch.update(
           hero_table.table_name,
           {
@@ -140,6 +142,11 @@ class UpdateProvider {
     }
   }
 
+  // Given a talent from the update payload, and an existing talent row if one is found. This function either:
+  //   a) Inserts a new row in table for the talent 
+  //   b) Updates the existing row and marks the row as not having the image asset in the apk bundle
+  //   c) Updates the existing row without changing the asset bundle boolean
+  ///  d) Doesn't change anything (talent already exists and sha3 hashes match)
   int _updateTalent(
       Talent talent, Map<String, dynamic> existingTalent, Batch batch) {
     // Doesn't exist, insert
